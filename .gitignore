@@ -1,0 +1,31 @@
+# User's personal progress tracking
+learning-log.md
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Agent scratch
+.agent-notes/
+.agent-history/
+*.agent-audit.log
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts if someone forks for examples
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
