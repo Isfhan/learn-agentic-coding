@@ -8,7 +8,7 @@ A free, open-source, step-by-step roadmap that takes you from *"I type prompts i
 to *"I design, build, and ship production agent systems."*
 
 ![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-blue)
-![Steps](https://img.shields.io/badge/Steps-19-purple)
+![Steps](https://img.shields.io/badge/Steps-20-purple)
 ![Updated](https://img.shields.io/badge/Updated-2026-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)
@@ -48,7 +48,8 @@ flowchart TD
     I --> J[11 · Hooks & Automation]
     J --> K[12 · Subagents & Orchestration]
     K --> L[13 · Context Engineering]
-    L --> M[14 · Evals & Testing]
+    L --> L2[13.5 · Spec-Driven Development]
+    L2 --> M[14 · Evals & Testing]
     M --> N[15 · Security & Safety]
     N --> O[16 · Build Your Own Agent]
     O --> P[17 · Advanced Patterns]
@@ -57,13 +58,14 @@ flowchart TD
     style A fill:#6366f1,color:#fff
     style H fill:#ef4444,color:#fff
     style G fill:#ef4444,color:#fff
+    style L2 fill:#0ea5e9,color:#fff
     style O fill:#10b981,color:#fff
     style Q fill:#f59e0b,color:#fff
 ```
 
 ---
 
-## 📚 The 19 steps
+## 📚 The 20 steps
 
 | #  | Step | Focus | Est. time |
 |----|------|-------|-----------|
@@ -81,6 +83,7 @@ flowchart TD
 | 11 | [Hooks & Automation](./steps/11-hooks-automation.md) | Pre/post agent loops | 2 h |
 | 12 | [Subagents & Orchestration](./steps/12-subagents-orchestration.md) | Multi-agent teams | 3 h |
 | 13 | [Context Engineering](./steps/13-context-engineering.md) | The 2026 breakout skill | 3 h |
+| 13.5 | [Spec-Driven Development](./steps/13.5-spec-driven-development.md) | GitHub Spec Kit + OpenSpec; Specify → Plan → Implement | 2 h |
 | 14 | [Evals & Testing](./steps/14-evals-testing.md) | Measure agent quality | 2 h |
 | 15 | [Security & Safety](./steps/15-security-safety.md) | Don't get pwned | 2 h |
 | 16 | [Build Your Own Agent](./steps/16-build-your-own-agent.md) | From scratch with SDKs | 4 h |
@@ -106,14 +109,14 @@ flowchart TD
 ├── README.md                ← You are here
 ├── ROADMAP.md               ← The visual learning path
 ├── CONTRIBUTING.md          ← How to improve this roadmap
-├── steps/                   ← The 19 numbered learning modules
+├── steps/                   ← The 20 numbered learning modules (includes 13.5)
 ├── resources/               ← Curated YouTube, GitHub, books, communities
 └── projects/                ← Hands-on portfolio projects
 ```
 
 ---
 
-## 🔥 The 5 mental models that will save you months
+## 🔥 The 6 mental models that will save you months
 
 Before you dive in, internalize these. Everything else is commentary.
 
@@ -122,6 +125,7 @@ Before you dive in, internalize these. Everything else is commentary.
 3. **MCP is the USB-C of AI.** One standard. Any client (Cursor, Claude, Copilot) can plug into any server (GitHub, Postgres, your internal API).
 4. **Skills > Prompts > Rules, for scale.** Prompts are per-task. Rules are per-repo. Skills are per-capability and travel with you.
 5. **Evals beat vibes.** "It felt better" is not a shipping criterion. Write evals early. Your future self will thank you.
+6. **Spec is the source of truth.** In the Spec-Driven Development era, you write the spec first; the agent generates the code. Code is the build artifact — the spec is what you maintain.
 
 ---
 

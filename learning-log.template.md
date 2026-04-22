@@ -20,6 +20,7 @@
 - [ ] 11 · Hooks & Automation
 - [ ] 12 · Subagents & Orchestration
 - [ ] 13 · Context Engineering
+- [ ] 13.5 · Spec-Driven Development
 - [ ] 14 · Evals & Testing
 - [ ] 15 · Security & Safety
 - [ ] 16 · Build Your Own Agent

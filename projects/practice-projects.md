@@ -36,6 +36,30 @@ Pick 3 prompts you use weekly. Write 10 promptfoo evals. Run against 2 models. P
 
 **You'll learn:** evals mindset. Skill: Step 14.
 
+### B6 · Spec-Driven mini feature (Spec Kit or OpenSpec)
+Pick any tiny feature (e.g. a `/commit` slash command or a Markdown link checker) and run the full **Spec-Driven Development** loop. **Pick one path**:
+
+**Path A — [GitHub Spec Kit](https://github.com/github/spec-kit) (greenfield, new project)**
+- `uvx --from git+https://github.com/github/spec-kit.git specify init <name>`
+- `/speckit.constitution` — 3 binding rules.
+- `/speckit.specify` — high-level spec (what and why).
+- `/speckit.clarify` — answer the agent's questions.
+- `/speckit.plan` + `/speckit.tasks` — review before coding.
+- `/speckit.implement` — let the agent build it.
+- Commit `spec.md`, `plan.md`, and `tasks.md` **alongside** the code.
+
+**Path B — [OpenSpec](https://github.com/Fission-AI/OpenSpec) (brownfield, existing repo)**
+- `npm install -g @fission-ai/openspec@latest && openspec init` in an existing repo.
+- `/opsx:propose <change-name>` — generate proposal + spec delta + design + tasks.
+- Review and edit `openspec/changes/<name>/` before implementing.
+- `/opsx:apply` — let the agent implement.
+- `/opsx:verify` — check code against the spec delta.
+- `/opsx:archive` — merge the delta into `openspec/specs/`.
+
+Either path: map each acceptance criterion to 1 eval (Step 14).
+
+**You'll learn:** how specs become the source of truth, reduce hallucinations, and make PRs reviewable. Skill: Step 13.5.
+
 ---
 
 ## 🥈 Silver — intermediate (1–2 days each)

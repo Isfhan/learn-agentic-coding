@@ -18,9 +18,9 @@ flowchart LR
         B1[Cursor] --> B2[Claude Code] --> B3[OSS CLIs] --> B4[Rules] --> B5[Skills]
     end
 
-    subgraph P3["🔌 Phase 3 · Extender (Steps 09-13)"]
+    subgraph P3["🔌 Phase 3 · Extender (Steps 09-13.5)"]
         direction TB
-        C1[MCP intro] --> C2[Build MCP server] --> C3[Hooks] --> C4[Subagents] --> C5[Context engineering]
+        C1[MCP intro] --> C2[Build MCP server] --> C3[Hooks] --> C4[Subagents] --> C5[Context engineering] --> C6[Spec-Driven Dev]
     end
 
     subgraph P4["🧠 Phase 4 · Architect (Steps 14-18)"]
@@ -44,7 +44,7 @@ flowchart LR
 |-------|----------------------------|
 | **🌱 Foundations** | Explain what an agent is, pick a tool, write prompts that don't waste tokens. |
 | **🛠️ Operator** | Use Cursor & Claude Code at near-expert level. Configure rules and skills that make you 2-5x faster. |
-| **🔌 Extender** | Plug agents into any data source via MCP. Automate pre/post-agent steps with hooks. Run multi-agent workflows. |
+| **🔌 Extender** | Plug agents into any data source via MCP. Automate pre/post-agent steps with hooks. Run multi-agent workflows. Drive features from specs (GitHub Spec Kit). |
 | **🧠 Architect** | Write evals, harden for production, build agents from scratch with the SDK, design multi-agent systems. |
 
 ---
@@ -59,13 +59,16 @@ flowchart TD
     Q2 -->|No| S4[Start at Step 04<br/>but skim 00-03]
     Q2 -->|Yes| Q3{Have you built<br/>an MCP server?}
     Q3 -->|No| S9[Start at Step 09]
-    Q3 -->|Yes| Q4{Do you write<br/>evals for agents?}
+    Q3 -->|Yes| Q35{Do you use<br/>Spec-Driven<br/>Development?}
+    Q35 -->|No| S135[Start at Step 13.5]
+    Q35 -->|Yes| Q4{Do you write<br/>evals for agents?}
     Q4 -->|No| S14[Start at Step 14]
     Q4 -->|Yes| S17[You're ahead!<br/>Go to Step 17]
 
     style S0 fill:#6366f1,color:#fff
     style S4 fill:#10b981,color:#fff
     style S9 fill:#ef4444,color:#fff
+    style S135 fill:#0ea5e9,color:#fff
     style S14 fill:#f59e0b,color:#fff
     style S17 fill:#8b5cf6,color:#fff
 ```
@@ -100,7 +103,7 @@ flowchart TD
 | Day | Steps | Outcome |
 |-----|-------|---------|
 | Mon | 12 | Multi-agent delegation working |
-| Tue | 13 | Context engineering patterns applied |
+| Tue | 13, 13.5 | Context engineering applied; spec-driven workflow running via GitHub Spec Kit |
 | Wed | 14 | You have 10+ evals for your agent |
 | Thu | 15 | Threat-modeled your agent setup |
 | Fri | 16 | Agent-from-scratch in ~200 lines |
@@ -127,6 +130,7 @@ Copy this into a `learning-log.md` in your own repo:
 - [ ] 11 · Hooks & Automation
 - [ ] 12 · Subagents & Orchestration
 - [ ] 13 · Context Engineering
+- [ ] 13.5 · Spec-Driven Development
 - [ ] 14 · Evals & Testing
 - [ ] 15 · Security & Safety
 - [ ] 16 · Build Your Own Agent
