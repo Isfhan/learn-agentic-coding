@@ -31,6 +31,7 @@ The included workflow (`.github/workflows/deploy-pages.yml`) assembles the HTML 
 1. Go to **Settings → Pages** in your GitHub repo.
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
 3. Push any commit to `main` — the workflow runs and your site is live at `https://<user>.github.io/<repo>/`.
+   Example: [https://isfhan.github.io/learn-agentic-coding/](https://isfhan.github.io/learn-agentic-coding/)
 
 ### Cloudflare Pages / Netlify / Vercel
 
