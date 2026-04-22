@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/block-dangerous-shell.sh",
+        "failClosed": false
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "type": "prompt",
+        "prompt": "Provide a short post-edit checklist: syntax sanity, security concerns, and whether tests/evals should be updated."
+      }
+    ]
+  }
+}

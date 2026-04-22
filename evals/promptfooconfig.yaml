@@ -1,0 +1,105 @@
+description: Agentic roadmap eval suite for coding-agent quality gates
+
+prompts:
+  - |
+    ROLE: You are a software engineering agent.
+    GOAL: {{task}}
+    CONSTRAINTS:
+    - Explain original industry term first, then plain words in parentheses.
+    - Return concise markdown.
+    FORMAT: bullet list
+
+providers:
+  - anthropic:claude-sonnet-4.5
+  - openai:gpt-5.1
+
+tests:
+  - vars:
+      task: "Define MCP and why developers use it."
+    assert:
+      - type: contains
+        value: "MCP"
+      - type: llm-rubric
+        value: "Defines protocol interoperability and includes plain-language explanation."
+
+  - vars:
+      task: "Differentiate prompt engineering vs context engineering."
+    assert:
+      - type: contains
+        value: "context engineering"
+      - type: llm-rubric
+        value: "Clearly compares scope and practical workflow impact."
+
+  - vars:
+      task: "Explain LLM hallucination risk in agent loops."
+    assert:
+      - type: contains
+        value: "hallucination"
+      - type: llm-rubric
+        value: "Mentions compounding risk and mitigation."
+
+  - vars:
+      task: "Explain evals over vibes."
+    assert:
+      - type: contains
+        value: "eval"
+      - type: llm-rubric
+        value: "Prefers measurable tests over subjective impressions."
+
+  - vars:
+      task: "When should subagents be used?"
+    assert:
+      - type: contains
+        value: "subagent"
+      - type: llm-rubric
+        value: "Mentions context isolation and scoped tasks."
+
+  - vars:
+      task: "Define HITL in agentic systems."
+    assert:
+      - type: contains
+        value: "Human-in-the-loop"
+      - type: llm-rubric
+        value: "Describes explicit approvals for risky actions."
+
+  - vars:
+      task: "List top three security controls for coding agents."
+    assert:
+      - type: llm-rubric
+        value: "Includes least privilege, secret handling, and destructive command controls."
+
+  - vars:
+      task: "Give one orchestrator-worker pattern example."
+    assert:
+      - type: contains
+        value: "orchestrator"
+      - type: llm-rubric
+        value: "Explains planner and workers with synthesis."
+
+  - vars:
+      task: "Explain why context windows matter."
+    assert:
+      - type: contains
+        value: "context window"
+      - type: llm-rubric
+        value: "Mentions token limits and retrieval/selection strategy."
+
+  - vars:
+      task: "Define tool calling in one paragraph."
+    assert:
+      - type: contains
+        value: "tool"
+      - type: llm-rubric
+        value: "Explains model requesting external actions."
+
+  - vars:
+      task: "What does a roadmap capstone need to prove?"
+    assert:
+      - type: llm-rubric
+        value: "Mentions runnable artifact, eval evidence, and documentation."
+
+  - vars:
+      task: "How should developers stay current in the agent era?"
+    assert:
+      - type: llm-rubric
+        value: "Recommends recurring cadence for releases, experiments, and notes."

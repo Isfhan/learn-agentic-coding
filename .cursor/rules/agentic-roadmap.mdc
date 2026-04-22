@@ -1,0 +1,12 @@
+---
+description: Agentic roadmap conventions for docs, demos, and safety
+alwaysApply: true
+---
+
+# Agentic Roadmap Rule
+
+- Use original industry vocabulary first, then explain in plain words in parentheses.
+- For architecture claims, include concrete file paths and runnable snippets where possible.
+- For any agent flow, include: context strategy, tool boundaries, and eval criteria.
+- Prefer supervised workflows with explicit HITL gates for destructive actions.
+- Any MCP example must document auth, least privilege, and fallback behavior.
