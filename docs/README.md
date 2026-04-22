@@ -8,32 +8,42 @@ A single-file, zero-build, modern landing page for **The Agentic Coding Roadmap*
 
 ## Preview locally
 
-Any static server works. Examples:
+Serve the **repo root** (not the `docs/` folder) so that `steps/` and other content directories are reachable alongside the HTML files:
 
 ```bash
-# Python 3
-python -m http.server --directory site 8080
-# then open http://localhost:8080
+# Python 3 — serve from the repo root
+python -m http.server 8080
+# then open http://localhost:8080/docs/
 
 # Node (no install needed if you have npx)
-npx serve site
-
-# Or just double-click site/index.html
+npx serve .
+# then open http://localhost:3000/docs/
 ```
 
 ## Deploy
 
-### GitHub Pages (recommended — free, one-click)
+### GitHub Pages via GitHub Actions (recommended)
+
+The included workflow (`.github/workflows/deploy-pages.yml`) assembles the HTML files together with `steps/`, `ROADMAP.md`, and other referenced content into a single `_site/` output and deploys it automatically on every push to `main`.
+
+**One-time setup:**
 
 1. Go to **Settings → Pages** in your GitHub repo.
-2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-3. Branch: `main` · Folder: `/site`. Save.
-4. In ~60 seconds, your site is live at `https://<user>.github.io/<repo>/`.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Push any commit to `main` — the workflow runs and your site is live at `https://<user>.github.io/<repo>/`.
 
 ### Cloudflare Pages / Netlify / Vercel
 
-- **Build command:** *(leave empty)*
-- **Output directory:** `site`
+Run the same build step manually:
+
+```bash
+mkdir -p _site
+cp docs/index.html docs/read.html _site/
+cp -r steps ROADMAP.md CONTRIBUTING.md learning-log.template.md LICENSE _site/
+cp -r projects resources _site/ 2>/dev/null; true
+```
+
+Then set the **publish directory** to `_site`.
 
 ## What's inside
 
@@ -46,7 +56,7 @@ npx serve site
 - **What you'll build** — portfolio outputs
 - **Differentiators + final CTA + footer**
 
-All links point to real files in this repo (`../steps/...`, `../ROADMAP.md`, etc.), so the page works both locally and once deployed.
+All reader links use paths relative to `read.html` (e.g. `steps/00-introduction.md`), which work correctly once the build step has placed the HTML files and content at the same level.
 
 ## Updating content
 
@@ -54,7 +64,7 @@ Almost everything is declarative. To update the step list, edit the `steps` arra
 
 ```js
 const steps = [
-  { n: "00", title: "…", focus: "…", time: "30 min", href: "../steps/00-introduction.md", tone: "violet" },
+  { n: "00", title: "…", focus: "…", time: "30 min", href: "steps/00-introduction.md", tone: "violet" },
   // …
 ];
 ```

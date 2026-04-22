@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build site
+        run: |
+          mkdir -p _site
+          # HTML files are the entry points
+          cp docs/index.html _site/index.html
+          cp docs/read.html _site/read.html
+          # Content referenced by the reader (paths are relative to read.html, no ../ needed)
+          cp -r steps _site/steps
+          cp ROADMAP.md _site/ROADMAP.md
+          cp CONTRIBUTING.md _site/CONTRIBUTING.md
+          cp learning-log.template.md _site/learning-log.template.md
+          cp LICENSE _site/LICENSE
+          cp -r projects _site/projects 2>/dev/null || true
+          cp -r resources _site/resources 2>/dev/null || true
+          # Disable Jekyll so files starting with _ or . are served as-is
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - uses: actions/deploy-pages@v4
+        id: deployment
