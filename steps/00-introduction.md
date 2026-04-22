@@ -10,7 +10,7 @@ By the end of this step you'll be able to:
 
 - Define **agentic coding** in one sentence.
 - Explain the difference between *autocomplete*, *chat*, and *agents*.
-- Draw the mental model of an agent loop on a napkin.
+- Draw the big picture of an agent loop on a napkin.
 - Know the vocabulary for the rest of this roadmap.
 
 ---
@@ -33,7 +33,7 @@ You are here → **Gen 3.**
 
 ---
 
-## 🧠 The mental model that unlocks everything
+## 🧠 The big picture that unlocks everything
 
 Under the hood, **every agent is just this**:
 

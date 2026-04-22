@@ -1,6 +1,6 @@
 # 🗺️ The Visual Roadmap
 
-> A one-page mental model. Print it, screenshot it, put it on your desk.
+> A one-page big picture. Print it, screenshot it, put it on your desk.
 
 ---
 
@@ -94,7 +94,7 @@ flowchart TD
 |-----|-------|---------|
 | Mon | 07 | `.cursor/rules/` and `AGENTS.md` set up |
 | Tue | 08 | Your first custom skill |
-| Wed | 09 | MCP mental model locked in |
+| Wed | 09 | MCP big picture locked in |
 | Thu | 10 | **Your own MCP server running** |
 | Fri | 11 | Hooks running on every session |
 | Weekend | **Mini project:** build an MCP server that connects Claude to a real API you use |

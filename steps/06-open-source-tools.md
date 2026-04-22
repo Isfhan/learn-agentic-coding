@@ -11,7 +11,7 @@ Closed tools are convenient. Open-source tools give you **privacy, portability, 
 - The four flagship OSS coding agents: **Aider, Cline, Continue, Qwen Code**.
 - When to reach for OSS vs. a commercial tool.
 - How to run an agent fully **local** (no cloud) with Ollama + Qwen.
-- A mental model of "agent internals" you'll reuse in Step 16.
+- A big picture of "agent internals" you'll reuse in Step 16.
 
 ---
 
@@ -124,7 +124,7 @@ Now you have a coding agent running **completely offline**. No API keys, no data
 
 ---
 
-## 6. Mental model: "what's actually inside"
+## 6. Big picture: "what's actually inside"
 
 Every OSS agent does roughly this:
 

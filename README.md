@@ -116,7 +116,7 @@ flowchart TD
 
 ---
 
-## 🔥 The 6 mental models that will save you months
+## 🔥 The big picture: 6 ideas that will save you months
 
 Before you dive in, internalize these. Everything else is commentary.
 

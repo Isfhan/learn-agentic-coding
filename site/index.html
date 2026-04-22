@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>The Agentic Coding Roadmap — Learn to build software with AI agents</title>
+<meta name="description" content="A free, open-source, 20-step roadmap from 'I type prompts into Cursor' to 'I design, build, and ship production agent systems.' MCP, Skills, Hooks, Subagents, Context Engineering, Spec-Driven Dev, Evals — all of it." />
+<meta name="theme-color" content="#0a0707" />
+
+<meta property="og:title" content="The Agentic Coding Roadmap" />
+<meta property="og:description" content="From 'I type prompts into Cursor' to 'I ship production agent systems.' 20 steps. Free. Open source. 2026-current." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"General Sans"', 'Inter', 'ui-sans-serif', 'system-ui'],
+          display: ['"General Sans"', 'Inter', 'ui-sans-serif', 'system-ui'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          ink: {
+            950: '#0a0707',
+            900: '#120a0b',
+            800: '#1a0e10',
+            700: '#231318',
+            600: '#2e181f',
+          },
+          accent: {
+            // Rose/red family — preserving class names to avoid HTML churn.
+            violet: '#fecdd3', // rose-200  (Explorer, muted)
+            cyan:   '#fb7185', // rose-400  (Operator)
+            pink:   '#f43f5e', // rose-500  (Extender)
+            lime:   '#fda4af', // rose-300  (Build in public)
+            amber:  '#e11d48', // rose-600  (Architect / primary)
+          }
+        },
+        boxShadow: {
+          glow: '0 0 90px -18px rgba(225,29,72,0.55), 0 0 60px -20px rgba(244,63,94,0.22)',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    /* Red/rose gradients — rose-400 → rose-600 → rose-900 */
+    --grad-1: linear-gradient(135deg, #fb7185 0%, #e11d48 55%, #9f1239 100%);
+    --grad-2: linear-gradient(135deg, #fecdd3 0%, #e11d48 55%, #881337 100%);
+    --grad-3: linear-gradient(135deg, #f43f5e 0%, #9f1239 100%);
+
+    /* Primary CTA: rose-500 → rose-600 → rose-700 */
+    --btn-primary: linear-gradient(180deg, #f43f5e 0%, #e11d48 42%, #be123c 100%);
+    --btn-primary-hover: linear-gradient(180deg, #fb7185 0%, #e11d48 45%, #9f1239 100%);
+    --btn-primary-ring:
+      0 1px 0 rgba(255,255,255,0.22) inset,
+      0 0 0 1px rgba(253,164,175,0.35) inset,
+      0 14px 36px -16px rgba(225,29,72,0.7),
+      0 10px 28px -14px rgba(244,63,94,0.28);
+    --btn-primary-ring-hover:
+      0 1px 0 rgba(255,255,255,0.28) inset,
+      0 0 0 1px rgba(254,205,211,0.45) inset,
+      0 18px 44px -14px rgba(225,29,72,0.82),
+      0 12px 32px -12px rgba(244,63,94,0.38);
+  }
+
+  .btn-primary-bg {
+    background: var(--btn-primary);
+    box-shadow: var(--btn-primary-ring);
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+  }
+  .btn-primary-bg:hover {
+    background: var(--btn-primary-hover);
+    box-shadow: var(--btn-primary-ring-hover);
+  }
+
+  /* Diagonal sheen on primary buttons (replaces flat white overlay) */
+  .btn-primary-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      125deg,
+      rgba(255,255,255,0.28) 0%,
+      rgba(255,255,255,0.06) 35%,
+      transparent 55%,
+      rgba(251,113,133,0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .group:hover .btn-primary-overlay { opacity: 1; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0707;
+    color: #efe6e4;
+    font-family: 'General Sans', 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .font-display { letter-spacing: -0.02em; font-weight: 600; }
+
+  /* Grid + noise background */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(239,230,228,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239,230,228,0.03) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 80%);
+  }
+
+  .noise::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: .035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Animated orbs */
+  .orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: .55;
+    pointer-events: none;
+    animation: float 18s ease-in-out infinite;
+  }
+  .orb.a { background: #e11d48; width: 520px; height: 520px; top: -120px; left: -120px; opacity: .32; }
+  .orb.b { background: #f43f5e; width: 420px; height: 420px; top: 40%; right: -140px; animation-delay: -6s; opacity: .24; }
+  .orb.c { background: #be123c; width: 380px; height: 380px; bottom: -140px; left: 30%; animation-delay: -12s; opacity: .22; }
+  @keyframes float {
+    0%,100% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(30px,-40px,0) scale(1.08); }
+  }
+
+  /* Gradient text */
+  .text-grad {
+    background: var(--grad-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-grad-2 {
+    background: var(--grad-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glass card */
+  .glass {
+    background: linear-gradient(180deg, rgba(239,230,228,0.05), rgba(239,230,228,0.015));
+    border: 1px solid rgba(239,230,228,0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass-hover {
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s, box-shadow .4s, color .25s;
+  }
+  .glass-hover:hover {
+    transform: translateY(-3px);
+    border-color: rgba(244,63,94,0.45);
+    box-shadow:
+      0 28px 72px -28px rgba(225,29,72,0.38),
+      0 16px 40px -20px rgba(244,63,94,0.18);
+  }
+
+  /* Outline CTAs (next to primary buttons): clearer glass + crisp label */
+  .glass-cta {
+    color: rgba(247,240,240,0.96);
+    background: linear-gradient(180deg, rgba(239,230,228,0.07), rgba(244,63,94,0.04));
+    border: 1px solid rgba(239,230,228,0.14);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+  }
+  .glass-cta.glass-hover:hover {
+    border-color: rgba(251,113,133,0.5);
+    background: linear-gradient(180deg, rgba(239,230,228,0.1), rgba(244,63,94,0.08));
+  }
+
+  /* Gradient border card */
+  .grad-border {
+    position: relative;
+    border-radius: 1.25rem;
+    background: #120a0b;
+  }
+  .grad-border::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--grad-1);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  /* Shimmering underline link */
+  .link-shim {
+    background-image: linear-gradient(90deg, #f43f5e, #e11d48);
+    background-size: 200% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 2px;
+    transition: background-size .4s;
+  }
+  .link-shim:hover { background-size: 100% 2px; }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal[data-delay="1"] { transition-delay: .08s; }
+  .reveal[data-delay="2"] { transition-delay: .16s; }
+  .reveal[data-delay="3"] { transition-delay: .24s; }
+  .reveal[data-delay="4"] { transition-delay: .32s; }
+  .reveal[data-delay="5"] { transition-delay: .40s; }
+
+  /* Marquee */
+  .marquee {
+    display: flex;
+    gap: 3rem;
+    animation: marq 38s linear infinite;
+    width: max-content;
+  }
+  @keyframes marq {
+    to { transform: translateX(-50%); }
+  }
+
+  /* Code block */
+  .code-frame {
+    background: #0f0a0b;
+    border: 1px solid rgba(239,230,228,0.08);
+    border-radius: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    line-height: 1.65;
+    color: #efe6e4;
+  }
+  .code-frame .cmt { color: #a09090; font-style: italic; }
+  .code-frame .kw  { color: #f43f5e; }
+  .code-frame .str { color: #fda4af; }
+  .code-frame .fn  { color: #fb7185; }
+  .code-frame .num { color: #fecdd3; }
+
+  /* Pulse dot */
+  .pulse {
+    position: relative;
+    width: 8px; height: 8px;
+    border-radius: 9999px;
+    background: #e11d48;
+  }
+  .pulse::after {
+    content: "";
+    position: absolute; inset: -4px;
+    border-radius: 9999px;
+    background: #e11d48;
+    opacity: .45;
+    animation: ping 1.6s cubic-bezier(0,0,.2,1) infinite;
+  }
+  @keyframes ping { 75%,100% { transform: scale(2.4); opacity: 0; } }
+
+  /* Step card number */
+  .step-num {
+    font-family: 'General Sans', 'Inter', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    background: var(--grad-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Selection */
+  ::selection { background: #e11d48; color: #0a0707; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0707; }
+  ::-webkit-scrollbar-thumb { background: #3a2a2c; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #5a3038; }
+
+  /* =================== Punch-Card / Eras section =================== */
+  .eras-scroll {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 1fr);
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1.5rem;
+    padding-bottom: .5rem;
+    scrollbar-width: thin;
+  }
+  @media (min-width: 1024px) {
+    .eras-scroll {
+      grid-auto-columns: 1fr;
+      overflow-x: visible;
+    }
+  }
+  .era-card {
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 1rem;
+    padding: 1.25rem 1.25rem 1.1rem;
+    background: linear-gradient(180deg, rgba(239,230,228,0.035), rgba(239,230,228,0.01));
+    border: 1px solid rgba(239,230,228,0.09);
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    transition: border-color .35s, transform .35s, background .35s;
+  }
+  .era-card:hover {
+    border-color: rgba(244,63,94,0.4);
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(244,63,94,0.06), rgba(239,230,228,0.015));
+  }
+  .era-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a08082;
+  }
+  .era-title {
+    font-family: 'General Sans', 'Inter', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: .5rem;
+    color: #f7eded;
+  }
+  .era-tag {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-family: 'General Sans', 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #d9bfc0;
+  }
+  .era-artifact {
+    margin-top: 1rem;
+    background: #0d0809;
+    border: 1px solid rgba(239,230,228,0.08);
+    border-radius: .65rem;
+    padding: .7rem .8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .74rem;
+    line-height: 1.55;
+    color: #efe0de;
+    min-height: 140px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(239,230,228,0.04);
+  }
+  .era-artifact .bar {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .62rem;
+    letter-spacing: 0.14em;
+    color: #9a8585;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    padding-bottom: .45rem;
+    border-bottom: 1px dashed rgba(239,230,228,0.08);
+  }
+  .era-artifact .bar::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 9999px;
+    background: #e11d48;
+    box-shadow: 0 0 0 3px rgba(225,29,72,0.2);
+  }
+  .era-artifact .row { color: #c8b0b2; }
+  .era-artifact .cmt { color: #9a7a7c; font-style: italic; }
+  .era-artifact .kw  { color: #f43f5e; }
+  .era-artifact .str { color: #fda4af; }
+  .era-artifact .fn  { color: #fb7185; }
+  .era-artifact .dim { color: #7a6266; }
+  .era-artifact .punch {
+    letter-spacing: 0.22em;
+    color: #d9c0c2;
+  }
+  .era-artifact .hole {
+    display: inline-block;
+    width: 10px; height: 14px; border-radius: 2px;
+    background: #efe6e4;
+    margin: 0 2px 0 0;
+    vertical-align: -2px;
+  }
+  .era-artifact .hole.off { background: transparent; border: 1px solid rgba(239,230,228,0.18); }
+</style>
+</head>
+<body class="noise">
+
+<!-- =================== NAV =================== -->
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="glass rounded-2xl px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 font-display font-bold tracking-tight">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: var(--grad-1)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </span>
+        <span>Agentic<span class="text-grad">.Roadmap</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-white/70">
+        <a class="hover:text-white transition" href="#eras">Eras</a>
+        <a class="hover:text-white transition" href="#models">Big picture</a>
+        <a class="hover:text-white transition" href="#roadmap">20 steps</a>
+        <a class="hover:text-white transition" href="#phases">Phases</a>
+        <a class="hover:text-white transition" href="#plan">3-week plan</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/" class="hidden sm:inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.76 2.68 1.25 3.33.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.43-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.15v3.18c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a href="read.html?path=../steps/00-introduction.md" class="relative inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl text-white overflow-hidden group btn-primary-bg">
+          <span class="btn-primary-overlay"></span>
+          <span class="relative">Start Learning</span>
+          <svg class="relative" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =================== HERO =================== -->
+<section id="top" class="relative pt-36 pb-28 md:pt-44 md:pb-40 overflow-hidden">
+  <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-14 items-center">
+      <!-- Copy -->
+      <div class="lg:col-span-7">
+        <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-white/80">
+          <span class="pulse"></span>
+          <span>2026-current · MCP · Skills · Subagents · Spec-Driven Dev</span>
+        </div>
+
+        <h1 class="reveal mt-6 font-display font-bold tracking-tight text-5xl sm:text-6xl lg:text-7xl leading-[0.98]">
+          Learn to build software
+          <span class="block text-grad">with AI agents.</span>
+        </h1>
+
+        <p class="reveal mt-7 max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed" data-delay="1">
+          A free, open-source, <span class="text-white font-semibold">20-step roadmap</span> that takes you from
+          <em class="text-white/90">"I type prompts into Cursor"</em> to
+          <em class="text-white/90">"I design, build, and ship production agent systems."</em>
+        </p>
+
+        <div class="reveal mt-10 flex flex-wrap items-center gap-4" data-delay="2">
+          <a href="read.html?path=../steps/00-introduction.md" class="relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white overflow-hidden group btn-primary-bg">
+            <span class="btn-primary-overlay"></span>
+            <span class="relative">Start at Step 00</span>
+            <svg class="relative transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#roadmap" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold glass glass-hover glass-cta">
+            See the 20 steps
+          </a>
+          <a href="read.html?path=../ROADMAP.md" class="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View full ROADMAP.md
+          </a>
+        </div>
+
+        <!-- Mini stats -->
+        <div class="reveal mt-12 grid grid-cols-3 max-w-lg gap-0 divide-x divide-white/10" data-delay="3">
+          <div class="pr-6">
+            <div class="font-display text-3xl font-bold text-grad">20</div>
+            <div class="text-xs text-white/60 mt-1">structured steps</div>
+          </div>
+          <div class="px-6">
+            <div class="font-display text-3xl font-bold text-grad-2">~40h</div>
+            <div class="text-xs text-white/60 mt-1">of deep learning</div>
+          </div>
+          <div class="pl-6">
+            <div class="font-display text-3xl font-bold" style="background: var(--grad-3); -webkit-background-clip:text; background-clip:text; color:transparent;">$0</div>
+            <div class="text-xs text-white/60 mt-1">free &amp; open source</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero visual -->
+      <div class="lg:col-span-5">
+        <div class="reveal relative" data-delay="2">
+          <div class="grad-border p-5 md:p-6 rounded-3xl shadow-glow">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+              <span class="ml-3 text-xs text-white/50 font-mono">agent_loop.py</span>
+            </div>
+            <pre class="code-frame p-5 overflow-x-auto"><code><span class="cmt"># An agent is just an LLM in a loop with tools.</span>
+<span class="kw">while</span> <span class="kw">not</span> done:
+    step  = llm.<span class="fn">plan</span>(state, <span class="str">"what next?"</span>)
+    tool  = llm.<span class="fn">pick_tool</span>(step)
+    obs   = registry.<span class="fn">run</span>(tool, args)
+    state = state.<span class="fn">with_observation</span>(obs)
+
+    <span class="kw">if</span> evaluator.<span class="fn">passes</span>(state, spec):
+        done = <span class="num">True</span>
+
+<span class="cmt"># Context is the product. Evals beat vibes.</span></code></pre>
+            <div class="mt-5 grid grid-cols-3 gap-3">
+              <div class="glass rounded-xl px-3 py-2.5 text-center">
+                <div class="text-[10px] uppercase tracking-wider text-white/50">Plan</div>
+                <div class="text-sm font-semibold mt-0.5">Spec</div>
+              </div>
+              <div class="glass rounded-xl px-3 py-2.5 text-center">
+                <div class="text-[10px] uppercase tracking-wider text-white/50">Act</div>
+                <div class="text-sm font-semibold mt-0.5">Tools + MCP</div>
+              </div>
+              <div class="glass rounded-xl px-3 py-2.5 text-center">
+                <div class="text-[10px] uppercase tracking-wider text-white/50">Verify</div>
+                <div class="text-sm font-semibold mt-0.5">Evals</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating tags -->
+          <div class="absolute -left-8 top-10 glass rounded-xl px-3 py-2 text-xs font-medium hidden md:block animate-[float_6s_ease-in-out_infinite]">
+            <span class="text-grad font-semibold">MCP</span> · tools
+          </div>
+          <div class="absolute -right-6 top-1/3 glass rounded-xl px-3 py-2 text-xs font-medium hidden md:block animate-[float_7s_ease-in-out_infinite_reverse]">
+            <span class="text-grad-2 font-semibold">Skills</span> · reusable
+          </div>
+          <div class="absolute -right-4 bottom-8 glass rounded-xl px-3 py-2 text-xs font-medium hidden md:block animate-[float_8s_ease-in-out_infinite]">
+            <span style="background: var(--grad-3); -webkit-background-clip:text; background-clip:text; color:transparent;" class="font-semibold">Spec</span> · source of truth
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TOOLS MARQUEE =================== -->
+<section class="relative py-10 border-y border-white/5 bg-ink-900/70">
+  <div class="max-w-7xl mx-auto px-6 mb-5">
+    <p class="text-xs uppercase tracking-[0.2em] text-white/40 text-center">Tool-agnostic · Works with every major agentic IDE &amp; CLI</p>
+  </div>
+  <div class="overflow-hidden">
+    <div class="marquee text-white/70 font-display text-xl md:text-2xl font-medium">
+      <span class="flex items-center gap-12 pr-12">
+        <span>Cursor</span><span class="text-white/20">·</span>
+        <span>Claude Code</span><span class="text-white/20">·</span>
+        <span>GitHub Copilot</span><span class="text-white/20">·</span>
+        <span>Qwen CLI</span><span class="text-white/20">·</span>
+        <span>Aider</span><span class="text-white/20">·</span>
+        <span>Cline</span><span class="text-white/20">·</span>
+        <span>Continue</span><span class="text-white/20">·</span>
+        <span>Codex</span><span class="text-white/20">·</span>
+        <span>Gemini CLI</span><span class="text-white/20">·</span>
+        <span>Windsurf</span><span class="text-white/20">·</span>
+        <span>Kiro</span><span class="text-white/20">·</span>
+        <span>OpenSpec</span><span class="text-white/20">·</span>
+        <span>Spec Kit</span>
+      </span>
+      <span class="flex items-center gap-12 pr-12" aria-hidden="true">
+        <span>Cursor</span><span class="text-white/20">·</span>
+        <span>Claude Code</span><span class="text-white/20">·</span>
+        <span>GitHub Copilot</span><span class="text-white/20">·</span>
+        <span>Qwen CLI</span><span class="text-white/20">·</span>
+        <span>Aider</span><span class="text-white/20">·</span>
+        <span>Cline</span><span class="text-white/20">·</span>
+        <span>Continue</span><span class="text-white/20">·</span>
+        <span>Codex</span><span class="text-white/20">·</span>
+        <span>Gemini CLI</span><span class="text-white/20">·</span>
+        <span>Windsurf</span><span class="text-white/20">·</span>
+        <span>Kiro</span><span class="text-white/20">·</span>
+        <span>OpenSpec</span><span class="text-white/20">·</span>
+        <span>Spec Kit</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ERAS / PUNCH CARDS =================== -->
+<section id="eras" class="relative py-28 md:py-36 overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+  <div class="absolute -left-40 top-1/3 w-[420px] h-[420px] rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#e11d48"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#fb7185">
+        <span class="h-px w-8" style="background:#fb7185"></span> A short history of abstraction
+      </div>
+      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
+        Every era of software
+        <span class="italic text-grad">rewrote the job</span>.
+      </h2>
+      <p class="reveal mt-5 text-white/65 text-lg max-w-2xl" data-delay="2">
+        Each new layer automated what the last generation did by hand. The developers who figured out the layer first became the ones everyone else relied on. Agents are the current layer. Your job is to learn to direct them.
+      </p>
+    </div>
+
+    <div class="reveal mt-12" data-delay="2">
+      <div class="eras-scroll" id="eras-scroll">
+
+        <!-- Era 1 · Punch Cards -->
+        <article class="era-card">
+          <div class="era-meta">1940s – 50s · Step 1 / 5</div>
+          <h3 class="era-title">Punch Cards</h3>
+          <div class="era-artifact" aria-hidden="true">
+            <div class="bar">IBM 80-col card</div>
+            <div class="punch">
+              <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+            </div>
+            <div class="punch mt-1">
+              <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
+            </div>
+            <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
+          </div>
+          <p class="era-tag">“We punched ones and zeroes, one hole at a time.”</p>
+        </article>
+
+        <!-- Era 2 · Assembly -->
+        <article class="era-card">
+          <div class="era-meta">1950s – 60s · Step 2 / 5</div>
+          <h3 class="era-title">Assembly</h3>
+          <div class="era-artifact" aria-hidden="true">
+            <div class="bar">&gt;_ monitor v2.1</div>
+            <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
+            <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
+            <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
+            <div class="row mt-2 cmt">; names for operations, finally</div>
+          </div>
+          <p class="era-tag">“We stopped memorising the machine and started naming it.”</p>
+        </article>
+
+        <!-- Era 3 · High-Level Languages -->
+        <article class="era-card">
+          <div class="era-meta">1960s – 80s · Step 3 / 5</div>
+          <h3 class="era-title">High-Level Languages</h3>
+          <div class="era-artifact" aria-hidden="true">
+            <div class="bar">greet.py</div>
+            <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
+            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
+            <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
+            <div class="row mt-2 cmt"># say what, not how</div>
+          </div>
+          <p class="era-tag">“We described the what. The compiler figured out the how.”</p>
+        </article>
+
+        <!-- Era 4 · Frameworks & OSS -->
+        <article class="era-card">
+          <div class="era-meta">2000s – 10s · Step 4 / 5</div>
+          <h3 class="era-title">Frameworks &amp; OSS</h3>
+          <div class="era-artifact" aria-hidden="true">
+            <div class="bar">app.tsx</div>
+            <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+            <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
+            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
+            <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+            <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+          </div>
+          <p class="era-tag">“We stopped writing primitives and started composing other people's.”</p>
+        </article>
+
+        <!-- Era 5 · Agents -->
+        <article class="era-card" style="border-color: rgba(225,29,72,0.45); background: linear-gradient(180deg, rgba(225,29,72,0.08), rgba(239,230,228,0.015));">
+          <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
+          <h3 class="era-title">Agentic Coding</h3>
+          <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
+            <div class="bar">agent · &gt;_ task</div>
+            <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
+            <div class="row dim mt-1">· reading spec.md</div>
+            <div class="row dim">· calling mcp://github</div>
+            <div class="row dim">· running evals (8/8)</div>
+            <div class="row mt-2 cmt"># you direct, it executes</div>
+          </div>
+          <p class="era-tag">“We stopped typing every character and started directing the machine.”</p>
+        </article>
+
+      </div>
+
+      <div class="mt-6 hidden md:flex items-center gap-3 text-xs text-white/45">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <span>Scroll horizontally — each era is a new layer of abstraction. The last one is yours.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== BIG PICTURE =================== -->
+<section id="models" class="relative py-28 md:py-36">
+  <div class="absolute inset-0 bg-grid opacity-50 pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+        <span class="h-px w-8 bg-accent-cyan"></span> The big picture, in 6 ideas
+      </div>
+      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+        Internalize these.
+        <span class="text-grad">Everything else is commentary.</span>
+      </h2>
+      <p class="reveal mt-5 text-white/65 text-lg max-w-2xl" data-delay="2">
+        Strip the mystique. Most of the "AI engineering" field collapses into these six ideas. If you actually hold them in your head, you'll save months of confusion.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- 1 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#e11d48"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">01</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">Agents are just LLMs in a loop</h3>
+          <p class="mt-3 text-sm text-white/60">An agent = <code class="font-mono text-[11px] text-accent-cyan">while not done: pick_tool(); run(); feed_back()</code>. That's it. The rest is plumbing.</p>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="1">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#f43f5e"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">02</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">Context is the product</h3>
+          <p class="mt-3 text-sm text-white/60">What you <em>put into</em> the window matters more than the model or the prompt. Context engineering is the skill.</p>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="2">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fb7185"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">03</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">MCP is the USB-C of AI</h3>
+          <p class="mt-3 text-sm text-white/60">One standard. Any client (Cursor, Claude, Copilot) plugs into any server (GitHub, Postgres, your API).</p>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fda4af"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">04</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">Skills &gt; Prompts &gt; Rules</h3>
+          <p class="mt-3 text-sm text-white/60">Prompts are per-task. Rules per-repo. Skills are per-capability and <em>travel with you</em>. Scale accordingly.</p>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="1">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fecdd3"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">05</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">Evals beat vibes</h3>
+          <p class="mt-3 text-sm text-white/60">"It felt better" is not a shipping criterion. Write evals early. Your future self will thank you.</p>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="2">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#9f1239"></div>
+        <div class="relative">
+          <div class="text-5xl font-display step-num">06</div>
+          <h3 class="mt-3 font-display text-xl font-semibold">Spec is the source of truth</h3>
+          <p class="mt-3 text-sm text-white/60">You write the spec. The agent generates code. Code is the build artifact — the spec is what you maintain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PHASES =================== -->
+<section id="phases" class="relative py-28 border-y border-white/5">
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div class="max-w-2xl">
+        <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-pink">
+          <span class="h-px w-8 bg-accent-pink"></span> The journey
+        </div>
+        <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+          Four phases.
+          <span class="text-grad-2">One path.</span>
+        </h2>
+      </div>
+      <p class="reveal text-white/60 max-w-md" data-delay="2">
+        Each phase layers on the last. You can jump in at any phase, but don't skip — even "obvious" steps hide the nuggets.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Phase 1 -->
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" style="background: linear-gradient(160deg, rgba(254,205,211,.14), rgba(254,205,211,.02));border:1px solid rgba(254,205,211,.28)">
+        <div class="text-xs font-mono text-accent-violet">PHASE 1 · Steps 00–03</div>
+        <h3 class="mt-2 font-display text-2xl font-semibold">Explorer</h3>
+        <p class="mt-3 text-sm text-white/60">Understand LLMs, tokens, context, and the modern AI coding tool landscape. Pick your stack.</p>
+        <ul class="mt-5 space-y-2 text-sm text-white/75">
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span> Foundations of LLMs</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span> Prompt engineering for coders</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span> Tool landscape</li>
+        </ul>
+      </div>
+      <!-- Phase 2 -->
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="1" style="background: linear-gradient(160deg, rgba(251,113,133,.16), rgba(251,113,133,.02));border:1px solid rgba(251,113,133,.3)">
+        <div class="text-xs font-mono text-accent-cyan">PHASE 2 · Steps 04–08</div>
+        <h3 class="mt-2 font-display text-2xl font-semibold">Operator</h3>
+        <p class="mt-3 text-sm text-white/60">Master your IDE and CLI agents. Ship features 2–3× faster with Rules, Memory, and Skills.</p>
+        <ul class="mt-5 space-y-2 text-sm text-white/75">
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-cyan"></span> Cursor + Claude Code mastery</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-cyan"></span> Rules &amp; memory</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-cyan"></span> Reusable skills</li>
+        </ul>
+      </div>
+      <!-- Phase 3 -->
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="2" style="background: linear-gradient(160deg, rgba(244,63,94,.18), rgba(244,63,94,.02));border:1px solid rgba(244,63,94,.32)">
+        <div class="text-xs font-mono text-accent-pink">PHASE 3 · Steps 09–13.5</div>
+        <h3 class="mt-2 font-display text-2xl font-semibold">Extender</h3>
+        <p class="mt-3 text-sm text-white/60">Plug agents into the world. Build MCP servers, hooks, subagents. Drive features from specs.</p>
+        <ul class="mt-5 space-y-2 text-sm text-white/75">
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-pink"></span> MCP servers</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-pink"></span> Subagents &amp; context eng.</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-pink"></span> Spec-Driven Dev</li>
+        </ul>
+      </div>
+      <!-- Phase 4 -->
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="3" style="background: linear-gradient(160deg, rgba(225,29,72,.2), rgba(225,29,72,.02));border:1px solid rgba(225,29,72,.35)">
+        <div class="text-xs font-mono text-accent-amber">PHASE 4 · Steps 14–18</div>
+        <h3 class="mt-2 font-display text-2xl font-semibold">Architect</h3>
+        <p class="mt-3 text-sm text-white/60">Ship production systems. Evals, security, your own agent from scratch, advanced patterns.</p>
+        <ul class="mt-5 space-y-2 text-sm text-white/75">
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-amber"></span> Evals &amp; testing</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-amber"></span> Security &amp; safety</li>
+          <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-amber"></span> Build your own agent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 20 STEPS =================== -->
+<section id="roadmap" class="relative py-28 md:py-36">
+  <div class="absolute inset-0 bg-grid opacity-40 pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-violet">
+        <span class="h-px w-8 bg-accent-violet"></span> The curriculum
+      </div>
+      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+        All 20 steps,
+        <span class="text-grad">one scroll away.</span>
+      </h2>
+      <p class="reveal mt-5 text-white/65 text-lg" data-delay="2">
+        Each step: a concept, a hands-on exercise, and curated external links. Click through to the module.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="steps-grid">
+      <!-- populated by JS below -->
+    </div>
+  </div>
+</section>
+
+<!-- =================== 3-WEEK PLAN =================== -->
+<section id="plan" class="relative py-28 border-y border-white/5 bg-ink-900/60">
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-cyan">
+        <span class="h-px w-8 bg-accent-cyan"></span> Suggested pace
+      </div>
+      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+        Ship in
+        <span class="text-grad">three focused weeks.</span>
+      </h2>
+      <p class="reveal mt-5 text-white/65 text-lg" data-delay="2">
+        One step per day, or one step per week for a calmer pace. Either way — finish with a capstone you can put in your portfolio.
+      </p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-3 gap-5">
+      <div class="reveal glass glass-hover rounded-2xl p-7">
+        <div class="flex items-center justify-between">
+          <div class="text-xs font-mono text-accent-violet">WEEK 1</div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Operator</span>
+        </div>
+        <h3 class="mt-3 font-display text-2xl font-semibold">Get fluent</h3>
+        <p class="mt-2 text-sm text-white/60">Tooling setup. Ship a tiny agent-driven refactor. Keep a learning log.</p>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-violet">Mon</span><span>00 · 01 · 02</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-violet">Tue</span><span>03 · 04</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-violet">Wed</span><span>05</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-violet">Thu</span><span>06</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-violet">Fri</span><span>07 · 08</span></li>
+        </ul>
+      </div>
+
+      <div class="reveal glass glass-hover rounded-2xl p-7" data-delay="1">
+        <div class="flex items-center justify-between">
+          <div class="text-xs font-mono text-accent-pink">WEEK 2</div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Extender</span>
+        </div>
+        <h3 class="mt-3 font-display text-2xl font-semibold">Extend the agent</h3>
+        <p class="mt-2 text-sm text-white/60">Project rule, custom skill, MCP server, hooks, subagents.</p>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-pink">Mon</span><span>09</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-pink">Tue</span><span>10</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-pink">Wed</span><span>11</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-pink">Thu</span><span>12</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-pink">Fri</span><span>13 · 13.5</span></li>
+        </ul>
+      </div>
+
+      <div class="reveal glass glass-hover rounded-2xl p-7" data-delay="2">
+        <div class="flex items-center justify-between">
+          <div class="text-xs font-mono text-accent-amber">WEEK 3</div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60">Architect</span>
+        </div>
+        <h3 class="mt-3 font-display text-2xl font-semibold">Ship production</h3>
+        <p class="mt-2 text-sm text-white/60">Eval suite, threat model, your own agent, capstone.</p>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-amber">Mon</span><span>14</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-amber">Tue</span><span>15</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-amber">Wed</span><span>16</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-amber">Thu</span><span>17</span></li>
+          <li class="flex items-start gap-3"><span class="font-mono text-xs mt-0.5 text-accent-amber">Fri</span><span>18 · Capstone</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== WHAT YOU BUILD =================== -->
+<section id="build" class="relative py-28 md:py-36">
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-lime">
+        <span class="h-px w-8 bg-accent-lime"></span> Build in public
+      </div>
+      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+        By the end, you'll have
+        <span class="text-grad">a portfolio, not a pile of notes.</span>
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="reveal glass glass-hover rounded-2xl p-6">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fb7185, #e11d48)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">Your first MCP server</h3>
+        <p class="mt-2 text-sm text-white/60">Expose a real API (GitHub, Postgres, your own) as tools any agent client can call.</p>
+      </div>
+      <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="1">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fecdd3, #f43f5e)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">A custom agent</h3>
+        <p class="mt-2 text-sm text-white/60">~200 lines of Python implementing plan→act→verify, tool registry, and safety gates.</p>
+      </div>
+      <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="2">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fda4af, #e11d48)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">An eval suite</h3>
+        <p class="mt-2 text-sm text-white/60">10+ promptfoo tests with rubric and LLM-as-judge assertions running on two models.</p>
+      </div>
+      <div class="reveal glass glass-hover rounded-2xl p-6">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fb7185, #9f1239)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">A threat model</h3>
+        <p class="mt-2 text-sm text-white/60">Concrete STRIDE-style analysis + hook-based guardrails that block destructive commands.</p>
+      </div>
+      <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="1">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #f43f5e, #881337)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">A living spec</h3>
+        <p class="mt-2 text-sm text-white/60">Spec-Driven Dev with GitHub Spec Kit or OpenSpec — specs version alongside code.</p>
+      </div>
+      <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="2">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fecdd3, #be123c)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-semibold">A public capstone</h3>
+        <p class="mt-2 text-sm text-white/60">Shipped, documented, and shareable — a single repo that says "I get it, and here's the proof."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== DIFFERENTIATORS =================== -->
+<section class="relative py-28 border-y border-white/5 bg-ink-900/60">
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-amber">
+          <span class="h-px w-8 bg-accent-amber"></span> Why this one
+        </div>
+        <h2 class="reveal mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight" data-delay="1">
+          Not another course.
+          <span class="text-grad-2">A living map.</span>
+        </h2>
+        <p class="reveal mt-5 text-white/65 text-lg max-w-xl" data-delay="2">
+          The AI tooling space moves weekly. Courses go stale in months. This roadmap is maintained in public — if something's broken or missing, open a PR.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="reveal glass rounded-2xl p-5">
+          <div class="font-display text-xl font-semibold">Tool-agnostic</div>
+          <p class="mt-2 text-sm text-white/60">Cursor, Claude Code, Qwen, Aider, Cline, Continue, Copilot — we cover them all.</p>
+        </div>
+        <div class="reveal glass rounded-2xl p-5" data-delay="1">
+          <div class="font-display text-xl font-semibold">2026-current</div>
+          <p class="mt-2 text-sm text-white/60">MCP, Skills, Hooks, Subagents, SDD — the stuff that didn't exist 12 months ago.</p>
+        </div>
+        <div class="reveal glass rounded-2xl p-5" data-delay="2">
+          <div class="font-display text-xl font-semibold">Hands-on</div>
+          <p class="mt-2 text-sm text-white/60">Every step ends with an exercise you can finish in under an hour.</p>
+        </div>
+        <div class="reveal glass rounded-2xl p-5" data-delay="3">
+          <div class="font-display text-xl font-semibold">Free forever</div>
+          <p class="mt-2 text-sm text-white/60">MIT-licensed, no course paywall, every link to docs / YouTube / GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FINAL CTA =================== -->
+<section class="relative py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full opacity-30 blur-3xl" style="background: var(--grad-1)"></div>
+  <div class="relative max-w-4xl mx-auto px-6 text-center">
+    <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-white/80">
+      <span class="pulse"></span> The next era belongs to builders who can direct agents
+    </div>
+    <h2 class="reveal mt-7 font-display text-5xl md:text-7xl font-bold tracking-tight leading-[1]" data-delay="1">
+      Start today.
+      <span class="block text-grad">Ship in 3 weeks.</span>
+    </h2>
+    <p class="reveal mt-6 text-lg text-white/70 max-w-xl mx-auto" data-delay="2">
+      Free. Open source. MIT. Fork it, remix it, teach it. The only requirement is that you actually do the exercises.
+    </p>
+    <div class="reveal mt-10 flex flex-wrap justify-center gap-4" data-delay="3">
+      <a href="read.html?path=../steps/00-introduction.md" class="relative inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-white overflow-hidden group btn-primary-bg">
+        <span class="btn-primary-overlay"></span>
+        <span class="relative">Begin Step 00 →</span>
+      </a>
+      <a href="read.html?path=../ROADMAP.md" class="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold glass glass-hover glass-cta">
+        Browse the full roadmap
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="border-t border-white/5 py-14">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2.5 font-display font-bold tracking-tight text-lg">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: var(--grad-1)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </span>
+          <span>Agentic<span class="text-grad">.Roadmap</span></span>
+        </div>
+        <p class="mt-4 text-sm text-white/55 max-w-sm">
+          Made with 🤖 + ☕ for the next generation of AI-native builders. MIT Licensed. Fork, remix, teach.
+        </p>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] text-white/40">Roadmap</div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../steps/00-introduction.md">Start at Step 00</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../ROADMAP.md">Full ROADMAP.md</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../projects/practice-projects.md">Practice projects</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../resources/README.md">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] text-white/40">Community</div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../CONTRIBUTING.md">Contribute</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../learning-log.template.md">Learning log</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=../LICENSE">License (MIT)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
+      <div>© 2026 · The Agentic Coding Roadmap</div>
+      <div class="flex items-center gap-5">
+        <a href="#top" class="hover:text-white/70 transition">Back to top ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== SCRIPTS =================== -->
+<script>
+  // Build the 20 steps grid
+  const steps = [
+    { n: "00", title: "Introduction to Agentic Coding", focus: "What & why", time: "30 min", href: "../steps/00-introduction.md", tone: "violet" },
+    { n: "01", title: "Foundations of LLMs",           focus: "Tokens, context, models", time: "2 h", href: "../steps/01-foundations.md", tone: "violet" },
+    { n: "02", title: "Prompt Engineering for Coders", focus: "Prompts that work", time: "2 h", href: "../steps/02-prompt-engineering.md", tone: "violet" },
+    { n: "03", title: "AI Coding Tool Landscape",      focus: "Pick your stack", time: "1 h", href: "../steps/03-ai-coding-tools.md", tone: "violet" },
+    { n: "04", title: "Cursor Mastery",                focus: "IDE-native agent", time: "3 h", href: "../steps/04-cursor-mastery.md", tone: "cyan" },
+    { n: "05", title: "Claude Code Mastery",           focus: "CLI-native agent", time: "3 h", href: "../steps/05-claude-code-mastery.md", tone: "cyan" },
+    { n: "06", title: "Open-Source CLIs",              focus: "Aider · Cline · Continue · Qwen", time: "2 h", href: "../steps/06-open-source-tools.md", tone: "cyan" },
+    { n: "07", title: "Rules & Memory",                focus: "Persistent guidance", time: "2 h", href: "../steps/07-rules-and-memory.md", tone: "cyan" },
+    { n: "08", title: "Skills",                        focus: "Reusable agent abilities", time: "2 h", href: "../steps/08-skills.md", tone: "cyan" },
+    { n: "09", title: "MCP — Introduction",            focus: "The USB-C of AI", time: "2 h", href: "../steps/09-mcp-introduction.md", tone: "pink" },
+    { n: "10", title: "Building MCP Servers",          focus: "Ship your first server", time: "4 h", href: "../steps/10-mcp-building-servers.md", tone: "pink" },
+    { n: "11", title: "Hooks & Automation",            focus: "Pre/post agent loops", time: "2 h", href: "../steps/11-hooks-automation.md", tone: "pink" },
+    { n: "12", title: "Subagents & Orchestration",     focus: "Multi-agent teams", time: "3 h", href: "../steps/12-subagents-orchestration.md", tone: "pink" },
+    { n: "13", title: "Context Engineering",           focus: "The 2026 breakout skill", time: "3 h", href: "../steps/13-context-engineering.md", tone: "pink" },
+    { n: "13.5", title: "Spec-Driven Development",     focus: "Spec Kit + OpenSpec", time: "2 h", href: "../steps/13.5-spec-driven-development.md", tone: "pink" },
+    { n: "14", title: "Evals & Testing",               focus: "Measure agent quality", time: "2 h", href: "../steps/14-evals-testing.md", tone: "amber" },
+    { n: "15", title: "Security & Safety",             focus: "Don't get pwned", time: "2 h", href: "../steps/15-security-safety.md", tone: "amber" },
+    { n: "16", title: "Build Your Own Agent",          focus: "From scratch with SDKs", time: "4 h", href: "../steps/16-build-your-own-agent.md", tone: "amber" },
+    { n: "17", title: "Advanced Patterns",             focus: "Swarms · routers · reflection", time: "3 h", href: "../steps/17-advanced-patterns.md", tone: "amber" },
+    { n: "18", title: "Staying Current",               focus: "Never fall behind", time: "ongoing", href: "../steps/18-staying-current.md", tone: "amber" },
+  ];
+
+  const toneMap = {
+    violet: { bg: "rgba(254,205,211,.10)", border: "rgba(254,205,211,.26)", dot: "#fecdd3", label: "Explorer" },
+    cyan:   { bg: "rgba(251,113,133,.12)", border: "rgba(251,113,133,.28)", dot: "#fb7185", label: "Operator" },
+    pink:   { bg: "rgba(244,63,94,.14)",   border: "rgba(244,63,94,.32)",   dot: "#f43f5e", label: "Extender" },
+    amber:  { bg: "rgba(225,29,72,.16)",   border: "rgba(225,29,72,.36)",   dot: "#e11d48", label: "Architect" },
+  };
+
+  const grid = document.getElementById('steps-grid');
+  steps.forEach((s, i) => {
+    const t = toneMap[s.tone];
+    const card = document.createElement('a');
+    card.href = 'read.html?path=' + encodeURIComponent(s.href);
+    card.className = "reveal group relative glass glass-hover rounded-2xl p-5 block";
+    card.setAttribute('data-delay', String(i % 3));
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full" style="background:${t.dot}"></span>
+          <span class="text-[10px] uppercase tracking-[0.18em] text-white/50">${t.label}</span>
+        </div>
+        <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/60 font-mono">${s.time}</span>
+      </div>
+      <div class="mt-3 flex items-start gap-4">
+        <div class="font-display text-3xl font-bold step-num leading-none shrink-0 min-w-[56px]">${s.n}</div>
+        <div>
+          <h3 class="font-display text-lg font-semibold leading-tight">${s.title}${s.hot ? ' <span class="ml-1 align-middle text-[10px] font-mono px-1.5 py-0.5 rounded-md" style="background:linear-gradient(135deg,#e11d48,#f43f5e);color:#fff">NEW</span>' : ''}</h3>
+          <p class="mt-1.5 text-sm text-white/55">${s.focus}</p>
+        </div>
+      </div>
+      <div class="mt-5 flex items-center gap-1.5 text-xs font-medium text-white/50 group-hover:text-white transition">
+        Open module
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Tiny UX touch: nav blur on scroll
+  const hdr = document.querySelector('header');
+  const onScroll = () => {
+    if (window.scrollY > 8) hdr.classList.add('scrolled');
+    else hdr.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+</body>
+</html>

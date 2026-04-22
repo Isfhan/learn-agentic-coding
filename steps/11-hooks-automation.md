@@ -15,7 +15,7 @@ Hooks are tiny scripts (or prompt-based checks) that run around the agent's acti
 
 ---
 
-## 1. The mental model
+## 1. The big picture
 
 An agent session is a timeline. Hooks run at specific points:
 
