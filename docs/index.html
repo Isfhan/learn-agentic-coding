@@ -306,25 +306,48 @@
   ::-webkit-scrollbar-thumb:hover { background: #5a3038; }
 
   /* =================== Punch-Card / Eras section =================== */
-  .eras-scroll {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(280px, 1fr);
-    gap: 1.25rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 1.5rem;
-    padding-bottom: .5rem;
-    scrollbar-width: thin;
+
+  /* Anchor offset so sticky nav doesn't overlap when scrolling to #eras */
+  #eras { scroll-margin-top: 80px; }
+
+  /* Tall outer container — its height drives the sticky pin duration */
+  .eras-scrolly {
+    position: relative;
+    height: calc(100vh * 3.5);
   }
-  @media (min-width: 1024px) {
-    .eras-scroll {
-      grid-auto-columns: 1fr;
-      overflow-x: visible;
-    }
+
+  /* Sticky pinned panel — locks in place while .eras-scrolly scrolls past */
+  .eras-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
+
+  /* Parallax heading layer */
+  .eras-parallax-head { will-change: transform; }
+
+  /* Clipping viewport for the horizontal card track */
+  .eras-viewport {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Full-width track holding 5 cards side-by-side */
+  .eras-track {
+    display: flex;
+    width: 500%;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* Each card occupies 20% of the 500%-wide track = 100% of the viewport */
   .era-card {
-    scroll-snap-align: start;
+    flex: 0 0 20%;
+    box-sizing: border-box;
     position: relative;
     border-radius: 1rem;
     padding: 1.25rem 1.25rem 1.1rem;
@@ -332,13 +355,41 @@
     border: 1px solid rgba(239,230,228,0.09);
     display: flex;
     flex-direction: column;
-    min-height: 360px;
-    transition: border-color .35s, transform .35s, background .35s;
+    min-height: 260px;
+    transition: border-color .35s, background .35s;
   }
   .era-card:hover {
     border-color: rgba(244,63,94,0.4);
-    transform: translateY(-3px);
     background: linear-gradient(180deg, rgba(244,63,94,0.06), rgba(239,230,228,0.015));
+  }
+
+  /* Progress dots */
+  .eras-dots { display: flex; align-items: center; gap: 6px; }
+  .era-dot {
+    height: 6px;
+    width: 6px;
+    border-radius: 9999px;
+    background: rgba(239,230,228,0.22);
+    transition: background 0.35s, width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .era-dot.active { background: #e11d48; width: 22px; }
+
+  /* Step counter */
+  .eras-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: rgba(239,230,228,0.5);
+  }
+
+  /* Reduced-motion: drop sticky scroll, show all cards in a column */
+  @media (prefers-reduced-motion: reduce) {
+    .eras-scrolly { height: auto; }
+    .eras-sticky  { position: static; height: auto; overflow: visible; }
+    .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; }
+    .era-card     { flex: 0 0 auto; width: 100%; }
+    .eras-parallax-head { transform: none !important; }
+    .eras-dots, .eras-counter { display: none; }
   }
   .era-meta {
     font-family: 'JetBrains Mono', monospace;
@@ -607,113 +658,148 @@
 </section>
 
 <!-- =================== ERAS / PUNCH CARDS =================== -->
-<section id="eras" class="relative py-28 md:py-36 overflow-hidden">
-  <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
-  <div class="absolute -left-40 top-1/3 w-[420px] h-[420px] rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#e11d48"></div>
+<section id="eras" class="relative">
 
-  <div class="relative max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl">
-      <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#fb7185">
-        <span class="h-px w-8" style="background:#fb7185"></span> A short history of abstraction
-      </div>
-      <h2 class="reveal mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
-        Every era of software
-        <span class="italic text-grad">rewrote the job</span>.
-      </h2>
-      <p class="reveal mt-5 text-white/65 text-lg max-w-2xl" data-delay="2">
-        Each new layer automated what the last generation did by hand. The developers who figured out the layer first became the ones everyone else relied on. Agents are the current layer. Your job is to learn to direct them.
-      </p>
-    </div>
+  <!-- Tall scrolly wrapper — its height sets how long the sticky panel stays pinned -->
+  <div class="eras-scrolly" id="eras-scrolly">
+    <div class="eras-sticky" id="eras-sticky">
 
-    <div class="reveal mt-12" data-delay="2">
-      <div class="eras-scroll" id="eras-scroll">
+      <!-- Backgrounds travel with the sticky panel -->
+      <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+      <div id="eras-parallax-bg" class="absolute -left-40 w-[420px] h-[420px] rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#e11d48; top:33%;"></div>
 
-        <!-- Era 1 · Punch Cards -->
-        <article class="era-card">
-          <div class="era-meta">1940s – 50s · Step 1 / 5</div>
-          <h3 class="era-title">Punch Cards</h3>
-          <div class="era-artifact" aria-hidden="true">
-            <div class="bar">IBM 80-col card</div>
-            <div class="punch">
-              <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+      <!-- Screen-reader announcer -->
+      <div id="eras-live" aria-live="polite" class="sr-only"></div>
+
+      <!-- Centred content column -->
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 sm:py-12">
+
+        <!-- Intro copy — parallax layer -->
+        <div class="eras-parallax-head max-w-3xl">
+          <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#fb7185">
+            <span class="h-px w-8" style="background:#fb7185"></span> A short history of abstraction
+          </div>
+          <h2 class="reveal mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
+            Every era of software
+            <span class="italic text-grad">rewrote the job</span>.
+          </h2>
+          <p class="reveal mt-4 text-white/65 text-base sm:text-lg max-w-2xl" data-delay="2">
+            Each new layer automated what the last generation did by hand. The developers who figured out the layer first became the ones everyone else relied on. Agents are the current layer. Your job is to learn to direct them.
+          </p>
+        </div>
+
+        <!-- Cards area -->
+        <div class="mt-6 sm:mt-8">
+
+          <!-- Progress dots + step counter -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="eras-dots" id="eras-dots" aria-hidden="true">
+              <span class="era-dot active"></span>
+              <span class="era-dot"></span>
+              <span class="era-dot"></span>
+              <span class="era-dot"></span>
+              <span class="era-dot"></span>
             </div>
-            <div class="punch mt-1">
-              <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
+            <div class="eras-counter">
+              <span id="eras-current">1</span><span style="opacity:.4"> / 5</span>
             </div>
-            <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
           </div>
-          <p class="era-tag">“We punched ones and zeroes, one hole at a time.”</p>
-        </article>
 
-        <!-- Era 2 · Assembly -->
-        <article class="era-card">
-          <div class="era-meta">1950s – 60s · Step 2 / 5</div>
-          <h3 class="era-title">Assembly</h3>
-          <div class="era-artifact" aria-hidden="true">
-            <div class="bar">&gt;_ monitor v2.1</div>
-            <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
-            <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
-            <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
-            <div class="row mt-2 cmt">; names for operations, finally</div>
+          <!-- Clipping viewport hides all but the active card -->
+          <div class="eras-viewport" id="eras-viewport">
+            <div class="eras-track" id="eras-track">
+
+              <!-- Era 1 · Punch Cards -->
+              <article class="era-card">
+                <div class="era-meta">1940s – 50s · Step 1 / 5</div>
+                <h3 class="era-title">Punch Cards</h3>
+                <div class="era-artifact" aria-hidden="true">
+                  <div class="bar">IBM 80-col card</div>
+                  <div class="punch">
+                    <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+                  </div>
+                  <div class="punch mt-1">
+                    <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
+                  </div>
+                  <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
+                </div>
+                <p class="era-tag">“We punched ones and zeroes, one hole at a time.”</p>
+              </article>
+
+              <!-- Era 2 · Assembly -->
+              <article class="era-card">
+                <div class="era-meta">1950s – 60s · Step 2 / 5</div>
+                <h3 class="era-title">Assembly</h3>
+                <div class="era-artifact" aria-hidden="true">
+                  <div class="bar">&gt;_ monitor v2.1</div>
+                  <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
+                  <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
+                  <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
+                  <div class="row mt-2 cmt">; names for operations, finally</div>
+                </div>
+                <p class="era-tag">“We stopped memorising the machine and started naming it.”</p>
+              </article>
+
+              <!-- Era 3 · High-Level Languages -->
+              <article class="era-card">
+                <div class="era-meta">1960s – 80s · Step 3 / 5</div>
+                <h3 class="era-title">High-Level Languages</h3>
+                <div class="era-artifact" aria-hidden="true">
+                  <div class="bar">greet.py</div>
+                  <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
+                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
+                  <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
+                  <div class="row mt-2 cmt"># say what, not how</div>
+                </div>
+                <p class="era-tag">“We described the what. The compiler figured out the how.”</p>
+              </article>
+
+              <!-- Era 4 · Frameworks & OSS -->
+              <article class="era-card">
+                <div class="era-meta">2000s – 10s · Step 4 / 5</div>
+                <h3 class="era-title">Frameworks &amp; OSS</h3>
+                <div class="era-artifact" aria-hidden="true">
+                  <div class="bar">app.tsx</div>
+                  <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+                  <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
+                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
+                  <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+                  <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+                </div>
+                <p class="era-tag">“We stopped writing primitives and started composing other people’s.”</p>
+              </article>
+
+              <!-- Era 5 · Agents -->
+              <article class="era-card" style="border-color: rgba(225,29,72,0.45); background: linear-gradient(180deg, rgba(225,29,72,0.08), rgba(239,230,228,0.015));">
+                <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
+                <h3 class="era-title">Agentic Coding</h3>
+                <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
+                  <div class="bar">agent · &gt;_ task</div>
+                  <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
+                  <div class="row dim mt-1">· reading spec.md</div>
+                  <div class="row dim">· calling mcp://github</div>
+                  <div class="row dim">· running evals (8/8)</div>
+                  <div class="row mt-2 cmt"># you direct, it executes</div>
+                </div>
+                <p class="era-tag">“We stopped typing every character and started directing the machine.”</p>
+              </article>
+
+            </div><!-- /.eras-track -->
+          </div><!-- /.eras-viewport -->
+
+          <!-- Scroll hint -->
+          <div class="mt-4 flex items-center gap-2 text-xs text-white/40">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <span>Scroll down to step through each era — each one rewrote the job.</span>
           </div>
-          <p class="era-tag">“We stopped memorising the machine and started naming it.”</p>
-        </article>
 
-        <!-- Era 3 · High-Level Languages -->
-        <article class="era-card">
-          <div class="era-meta">1960s – 80s · Step 3 / 5</div>
-          <h3 class="era-title">High-Level Languages</h3>
-          <div class="era-artifact" aria-hidden="true">
-            <div class="bar">greet.py</div>
-            <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
-            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
-            <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
-            <div class="row mt-2 cmt"># say what, not how</div>
-          </div>
-          <p class="era-tag">“We described the what. The compiler figured out the how.”</p>
-        </article>
+        </div><!-- /.cards area -->
+      </div><!-- /.content column -->
+    </div><!-- /.eras-sticky -->
+  </div><!-- /.eras-scrolly -->
 
-        <!-- Era 4 · Frameworks & OSS -->
-        <article class="era-card">
-          <div class="era-meta">2000s – 10s · Step 4 / 5</div>
-          <h3 class="era-title">Frameworks &amp; OSS</h3>
-          <div class="era-artifact" aria-hidden="true">
-            <div class="bar">app.tsx</div>
-            <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
-            <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
-            <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
-            <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-            <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
-          </div>
-          <p class="era-tag">“We stopped writing primitives and started composing other people's.”</p>
-        </article>
-
-        <!-- Era 5 · Agents -->
-        <article class="era-card" style="border-color: rgba(225,29,72,0.45); background: linear-gradient(180deg, rgba(225,29,72,0.08), rgba(239,230,228,0.015));">
-          <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
-          <h3 class="era-title">Agentic Coding</h3>
-          <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
-            <div class="bar">agent · &gt;_ task</div>
-            <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
-            <div class="row dim mt-1">· reading spec.md</div>
-            <div class="row dim">· calling mcp://github</div>
-            <div class="row dim">· running evals (8/8)</div>
-            <div class="row mt-2 cmt"># you direct, it executes</div>
-          </div>
-          <p class="era-tag">“We stopped typing every character and started directing the machine.”</p>
-        </article>
-
-      </div>
-
-      <div class="mt-6 hidden md:flex items-center gap-3 text-xs text-white/45">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        <span>Scroll horizontally — each era is a new layer of abstraction. The last one is yours.</span>
-      </div>
-    </div>
-  </div>
 </section>
-
 <!-- =================== BIG PICTURE =================== -->
 <section id="models" class="relative py-28 md:py-36">
   <div class="absolute inset-0 bg-grid opacity-50 pointer-events-none"></div>
@@ -1199,6 +1285,67 @@
     else hdr.classList.remove('scrolled');
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ======================== Eras scroll-driven slider ========================
+  (function () {
+    var scrolly   = document.getElementById('eras-scrolly');
+    var track     = document.getElementById('eras-track');
+    var dots      = document.querySelectorAll('.era-dot');
+    var counter   = document.getElementById('eras-current');
+    var live      = document.getElementById('eras-live');
+    var pHead     = document.querySelector('.eras-parallax-head');
+    var pBg       = document.getElementById('eras-parallax-bg');
+    var N         = 5;
+    var currentIdx = -1;
+    var rafId     = null;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!scrolly || !track) return;
+
+    function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+
+    function update() {
+      rafId = null;
+      var rect       = scrolly.getBoundingClientRect();
+      var scrollable = scrolly.offsetHeight - window.innerHeight;
+      var t          = clamp(-rect.top / Math.max(scrollable, 1), 0, 1);
+
+      // Discrete index — each era occupies an equal scroll band
+      var idx = Math.min(Math.floor(t * N), N - 1);
+
+      // Slide the track: each step is 20% of the 500%-wide track
+      if (!reducedMotion) {
+        track.style.transform = 'translate3d(-' + (idx * 20) + '%, 0, 0)';
+      }
+
+      // Update dots, counter, and aria-live only on index change
+      if (idx !== currentIdx) {
+        currentIdx = idx;
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === idx);
+        });
+        counter.textContent = String(idx + 1);
+        var title = track.querySelectorAll('.era-title')[idx];
+        if (title && live) live.textContent = title.textContent;
+      }
+
+      // Subtle parallax — head drifts up -24px, bg glow drifts up -44px
+      if (!reducedMotion) {
+        if (pHead) pHead.style.transform = 'translateY(' + (-(t * 24)) + 'px)';
+        if (pBg)   pBg.style.transform   = 'translateY(' + (-(t * 44)) + 'px)';
+      }
+    }
+
+    function scheduleUpdate() {
+      if (!rafId) rafId = requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+
+    // Run once on load so initial state is correct
+    update();
+  })();
 </script>
 
 </body>
