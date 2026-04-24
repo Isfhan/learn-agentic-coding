@@ -235,6 +235,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+  h2.reveal {
+    padding-right: 0;
+  }
   .reveal[data-delay="1"] { transition-delay: .08s; }
   .reveal[data-delay="2"] { transition-delay: .16s; }
   .reveal[data-delay="3"] { transition-delay: .24s; }
@@ -323,11 +326,18 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    /* No overflow:hidden here — vertical card content must not be clipped.
+       Horizontal clipping is handled by .eras-viewport and body overflow-x:hidden. */
   }
 
   /* Parallax heading layer */
   .eras-parallax-head { will-change: transform; }
+
+  /* On very short screens hide the description to give the card room */
+  @media (max-height: 640px) {
+    .eras-parallax-head p { display: none; }
+    .eras-sticky { height: auto; min-height: 100vh; }
+  }
 
   /* Clipping viewport for the horizontal card track */
   .eras-viewport {
@@ -363,6 +373,26 @@
     background: linear-gradient(180deg, rgba(244,63,94,0.06), rgba(239,230,228,0.015));
   }
 
+  /* Left column: meta, title, artifact */
+  .era-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Split into two columns on wider viewports: body left, tag right */
+  @media (min-width: 768px) {
+    .era-card {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 1.5rem;
+    }
+    .era-body {
+      flex: 1 1 60%;
+    }
+  }
+
   /* Progress dots */
   .eras-dots { display: flex; align-items: center; gap: 6px; }
   .era-dot {
@@ -387,7 +417,7 @@
     .eras-scrolly { height: auto; }
     .eras-sticky  { position: static; height: auto; overflow: visible; }
     .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; }
-    .era-card     { flex: 0 0 auto; width: 100%; }
+    .era-card     { flex: 0 0 auto; width: 100%; flex-direction: column; }
     .eras-parallax-head { transform: none !important; }
     .eras-dots, .eras-counter { display: none; }
   }
@@ -414,6 +444,30 @@
     font-style: italic;
     font-size: 1rem;
     color: #d9bfc0;
+  }
+  @media (min-width: 768px) {
+    .era-tag {
+      flex: 0 0 38%;
+      max-width: 38%;
+      margin-top: 0;
+      padding-top: 0;
+      padding-left: 1.25rem;
+      border-left: 1px dashed rgba(239,230,228,0.12);
+      align-self: center;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .era-tag {
+      flex: 0 0 auto;
+      max-width: none;
+      margin-top: auto;
+      padding-top: 1rem;
+      padding-left: 0;
+      border-left: 0;
+      align-self: stretch;
+    }
   }
   .era-artifact {
     margin-top: 1rem;
@@ -477,7 +531,7 @@
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: var(--grad-1)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </span>
-        <span>Agentic<span class="text-grad">.Roadmap</span></span>
+        <span>Agentic<span class="text-grad"> Coding</span></span>
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm text-white/70">
         <a class="hover:text-white transition" href="#eras">Eras</a>
@@ -487,10 +541,6 @@
         <a class="hover:text-white transition" href="#plan">3-week plan</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="https://isfhan.github.io/learn-agentic-coding/" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Website
-        </a>
         <a href="https://github.com/Isfhan/learn-agentic-coding" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.76 2.68 1.25 3.33.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.43-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.15v3.18c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
           GitHub
@@ -522,7 +572,7 @@
 
         <h1 class="reveal mt-6 font-display font-bold tracking-tight text-5xl sm:text-6xl lg:text-7xl leading-[0.98]">
           Learn to build software
-          <span class="block text-grad">with AI agents.</span>
+          <span class="block text-grad pb-3.5">with AI agents.</span>
         </h1>
 
         <p class="reveal mt-7 max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed" data-delay="1">
@@ -672,7 +722,7 @@
       <div id="eras-live" aria-live="polite" class="sr-only"></div>
 
       <!-- Centred content column -->
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 sm:py-12">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-6 sm:py-8">
 
         <!-- Intro copy — parallax layer -->
         <div class="eras-parallax-head max-w-3xl">
@@ -681,7 +731,7 @@
           </div>
           <h2 class="reveal mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
             Every era of software
-            <span class="italic text-grad">rewrote the job</span>.
+            <span class="italic text-grad pr-[10px]">rewrote the job</span>.
           </h2>
           <p class="reveal mt-4 text-white/65 text-base sm:text-lg max-w-2xl" data-delay="2">
             Each new layer automated what the last generation did by hand. The developers who figured out the layer first became the ones everyone else relied on. Agents are the current layer. Your job is to learn to direct them.
@@ -711,76 +761,86 @@
 
               <!-- Era 1 · Punch Cards -->
               <article class="era-card">
-                <div class="era-meta">1940s – 50s · Step 1 / 5</div>
-                <h3 class="era-title">Punch Cards</h3>
-                <div class="era-artifact" aria-hidden="true">
-                  <div class="bar">IBM 80-col card</div>
-                  <div class="punch">
-                    <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+                <div class="era-body">
+                  <div class="era-meta">1940s – 50s · Step 1 / 5</div>
+                  <h3 class="era-title">Punch Cards</h3>
+                  <div class="era-artifact" aria-hidden="true">
+                    <div class="bar">IBM 80-col card</div>
+                    <div class="punch">
+                      <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+                    </div>
+                    <div class="punch mt-1">
+                      <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
+                    </div>
+                    <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
                   </div>
-                  <div class="punch mt-1">
-                    <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
-                  </div>
-                  <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
                 </div>
                 <p class="era-tag">“We punched ones and zeroes, one hole at a time.”</p>
               </article>
 
               <!-- Era 2 · Assembly -->
               <article class="era-card">
-                <div class="era-meta">1950s – 60s · Step 2 / 5</div>
-                <h3 class="era-title">Assembly</h3>
-                <div class="era-artifact" aria-hidden="true">
-                  <div class="bar">&gt;_ monitor v2.1</div>
-                  <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
-                  <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
-                  <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
-                  <div class="row mt-2 cmt">; names for operations, finally</div>
+                <div class="era-body">
+                  <div class="era-meta">1950s – 60s · Step 2 / 5</div>
+                  <h3 class="era-title">Assembly</h3>
+                  <div class="era-artifact" aria-hidden="true">
+                    <div class="bar">&gt;_ monitor v2.1</div>
+                    <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
+                    <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
+                    <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
+                    <div class="row mt-2 cmt">; names for operations, finally</div>
+                  </div>
                 </div>
                 <p class="era-tag">“We stopped memorising the machine and started naming it.”</p>
               </article>
 
               <!-- Era 3 · High-Level Languages -->
               <article class="era-card">
-                <div class="era-meta">1960s – 80s · Step 3 / 5</div>
-                <h3 class="era-title">High-Level Languages</h3>
-                <div class="era-artifact" aria-hidden="true">
-                  <div class="bar">greet.py</div>
-                  <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
-                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
-                  <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
-                  <div class="row mt-2 cmt"># say what, not how</div>
+                <div class="era-body">
+                  <div class="era-meta">1960s – 80s · Step 3 / 5</div>
+                  <h3 class="era-title">High-Level Languages</h3>
+                  <div class="era-artifact" aria-hidden="true">
+                    <div class="bar">greet.py</div>
+                    <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
+                    <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
+                    <div class="row mt-2 cmt"># say what, not how</div>
+                  </div>
                 </div>
                 <p class="era-tag">“We described the what. The compiler figured out the how.”</p>
               </article>
 
               <!-- Era 4 · Frameworks & OSS -->
               <article class="era-card">
-                <div class="era-meta">2000s – 10s · Step 4 / 5</div>
-                <h3 class="era-title">Frameworks &amp; OSS</h3>
-                <div class="era-artifact" aria-hidden="true">
-                  <div class="bar">app.tsx</div>
-                  <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
-                  <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
-                  <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
-                  <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-                  <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+                <div class="era-body">
+                  <div class="era-meta">2000s – 10s · Step 4 / 5</div>
+                  <h3 class="era-title">Frameworks &amp; OSS</h3>
+                  <div class="era-artifact" aria-hidden="true">
+                    <div class="bar">app.tsx</div>
+                    <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+                    <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
+                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
+                    <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+                    <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+                  </div>
                 </div>
                 <p class="era-tag">“We stopped writing primitives and started composing other people’s.”</p>
               </article>
 
               <!-- Era 5 · Agents -->
               <article class="era-card" style="border-color: rgba(225,29,72,0.45); background: linear-gradient(180deg, rgba(225,29,72,0.08), rgba(239,230,228,0.015));">
-                <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
-                <h3 class="era-title">Agentic Coding</h3>
-                <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
-                  <div class="bar">agent · &gt;_ task</div>
-                  <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
-                  <div class="row dim mt-1">· reading spec.md</div>
-                  <div class="row dim">· calling mcp://github</div>
-                  <div class="row dim">· running evals (8/8)</div>
-                  <div class="row mt-2 cmt"># you direct, it executes</div>
+                <div class="era-body">
+                  <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
+                  <h3 class="era-title">Agentic Coding</h3>
+                  <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
+                    <div class="bar">agent · &gt;_ task</div>
+                    <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
+                    <div class="row dim mt-1">· reading spec.md</div>
+                    <div class="row dim">· calling mcp://github</div>
+                    <div class="row dim">· running evals (8/8)</div>
+                    <div class="row mt-2 cmt"># you direct, it executes</div>
+                  </div>
                 </div>
                 <p class="era-tag">“We stopped typing every character and started directing the machine.”</p>
               </article>
@@ -1143,7 +1203,7 @@
     </div>
     <h2 class="reveal mt-7 font-display text-5xl md:text-7xl font-bold tracking-tight leading-[1]" data-delay="1">
       Start today.
-      <span class="block text-grad">Ship in 3 weeks.</span>
+      <span class="block text-grad pb-3.5">Ship in 3 weeks.</span>
     </h2>
     <p class="reveal mt-6 text-lg text-white/70 max-w-xl mx-auto" data-delay="2">
       Free. Open source. MIT. Fork it, remix it, teach it. The only requirement is that you actually do the exercises.
@@ -1169,7 +1229,7 @@
           <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: var(--grad-1)">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
           </span>
-          <span>Agentic<span class="text-grad">.Roadmap</span></span>
+          <span>Agentic<span class="text-grad"> Coding</span></span>
         </div>
         <p class="mt-4 text-sm text-white/55 max-w-sm">
           Made with 🤖 + ☕ for the next generation of AI-native builders. MIT Licensed. Fork, remix, teach.
