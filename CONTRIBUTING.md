@@ -11,6 +11,7 @@ Thanks for wanting to make this better! A roadmap for a space moving this fast o
 3. **Tool-agnostic.** We highlight multiple tools. No vendor lock-in.
 4. **Recent.** Links older than ~12 months are flagged; tool docs older than ~6 months should be reviewed.
 5. **Hands-on.** Every step must end with a doable exercise.
+6. **Clear English.** Keep the real industry term, then explain it in plain words on first use: `MCP (Model Context Protocol: a standard way for AI tools to connect to tools and data)`.
 
 ---
 
@@ -50,6 +51,7 @@ Thanks for wanting to make this better! A roadmap for a space moving this fast o
 - **Headings:** Title Case for H1/H2, Sentence case for H3+.
 - **Emoji:** keep modest; 1 per heading max; use them to aid scanning, not decorate.
 - **Voice:** direct, slightly informal, 2nd person ("you'll…").
+- **Language:** prefer short sentences, active voice, and concrete examples for non-native English readers.
 - **Time estimates** on every step header.
 - **"Watch / Read / Exercise"** subsections exist on every `steps/*.md` — preserve them.
 - **Links:** full URLs (no markdown-reference style); prefer canonical sources (official docs > blog posts > tweets).
@@ -60,9 +62,14 @@ Thanks for wanting to make this better! A roadmap for a space moving this fast o
 
 ## 🧪 Verify before submitting
 
+- [ ] Run `python scripts/check_docs.py` for local Markdown links and Mermaid fence checks.
+- [ ] Run `python scripts/check_docs.py --list-mermaid` to review every diagram location.
+- [ ] Run `python -m py_compile agents/roadmap_agent.py scripts/check_docs.py`.
+- [ ] Run `node --check mcp/hn-context-server/server.js`.
 - [ ] All links resolve (you can use `lychee` CLI or any link checker).
-- [ ] Mermaid diagrams render (paste into [mermaid.live](https://mermaid.live)).
+- [ ] Mermaid diagrams render in GitHub or [mermaid.live](https://mermaid.live), and in the local reader at `docs/read.html`.
 - [ ] Spell-check run (at least once).
+- [ ] New buzzwords are explained with `term (plain-English meaning)` on first use.
 - [ ] Step numbers and inter-step links still consistent.
 
 ---

@@ -7,5 +7,6 @@ Curated, opinionated, maintained.
 - 📚 [**Books, Essays & Papers**](./books-papers.md)
 - 👥 [**Communities**](./communities.md)
 - 🗒 [**Cheatsheets**](./cheatsheets.md) ← print this one out
+- 🧭 [**Glossary**](./glossary.md) ← plain-English meanings for AI coding terms
 
 [⬅ Back to README](../README.md)

@@ -51,6 +51,8 @@ flowchart LR
 
 ## Decision tree: *where should I start?*
 
+Fast path means **skim earlier steps for vocabulary**, not ignore them completely. If a term feels unclear, jump to the [glossary](./resources/glossary.md) or the earlier step that introduces it.
+
 ```mermaid
 flowchart TD
     Q1{Have you ever<br/>used Cursor or<br/>Claude Code?}
@@ -138,4 +140,4 @@ Copy this into a `learning-log.md` in your own repo:
 - [ ] 18 · Staying Current
 ```
 
-Post your completed check-list on Twitter/X with `#AgenticCoding` and tag the repo. 💪
+Post your completed checklist on Twitter/X, LinkedIn, or GitHub with `#AgenticCoding` and tag the repo.

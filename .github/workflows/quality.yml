@@ -1,0 +1,58 @@
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docs-and-code:
+    name: Docs and code checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check docs links and Mermaid fences
+        run: python scripts/check_docs.py
+
+      - name: Compile Python agent examples
+        run: python -m py_compile agents/roadmap_agent.py scripts/check_docs.py
+
+      - name: Check MCP server syntax
+        run: node --check mcp/hn-context-server/server.js
+
+  optional-evals:
+    name: Optional promptfoo evals
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Skip when provider keys are unavailable
+        if: ${{ env.ANTHROPIC_API_KEY == '' || env.OPENAI_API_KEY == '' }}
+        run: |
+          echo "Skipping promptfoo evals because provider API keys are not configured."
+          echo "This keeps forked PRs and learner repos safe by default."
+
+      - name: Run promptfoo evals
+        if: ${{ env.ANTHROPIC_API_KEY != '' && env.OPENAI_API_KEY != '' }}
+        run: npx --yes promptfoo@latest eval -c evals/promptfooconfig.yaml

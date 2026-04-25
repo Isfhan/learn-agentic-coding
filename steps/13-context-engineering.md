@@ -4,7 +4,7 @@
 
 > *"Context engineering: the delicate art and science of filling the context window with just the right information for the next step."* — Andrej Karpathy
 
-Gartner named context engineering the **breakout AI skill of 2026**. If you master one thing in this roadmap beyond "using the tool," make it this.
+Context engineering is widely treated as a **breakout AI skill of 2026** (a skill that suddenly became important). If you master one thing in this roadmap beyond "using the tool," make it this.
 
 ---
 
@@ -82,7 +82,7 @@ Pull it back in only when needed.
 ### 2. Select — retrieve only what's relevant
 Before every step, ask: *"What does the model actually need right now?"* Pull that. Leave the rest.
 
-This is what tools like Aider's "repo map," RAG, and `@file` references in Cursor do.
+This is what tools like Aider's "repo map," **RAG (retrieval-augmented generation: fetching relevant documents before answering)**, and `@file` references in Cursor do.
 
 ### 3. Compress — summarize before context overflows
 At a checkpoint (e.g., after finishing a phase), compact the history:
@@ -98,7 +98,7 @@ Move noisy exploration into a subagent (Step 12). Only its summary returns.
 ## 5. 8 concrete moves (copy-paste into your habits)
 
 ### Move 1 — Start fresh sessions often
-A new chat is *free cleanup*. Multi-hour sessions are a smell.
+A new chat is *free cleanup*. Multi-hour sessions are a warning sign that the context may be too messy.
 
 ### Move 2 — Pin the goal at the top
 Re-state the goal every few turns. It pushes to the bottom otherwise and gets forgotten.
@@ -125,7 +125,7 @@ Log turn-by-turn token counts. When quality drops, usually the cause is a contex
 
 ## 6. The "system prompt cooking" technique
 
-Great agent operators treat their `AGENTS.md` / `CLAUDE.md` / rules like a *chef refining a recipe*.
+Great agent operators treat their `AGENTS.md` / `CLAUDE.md` / rules like a *chef refining a recipe*. In plain English: improve your agent instructions a little every time the agent makes a repeated mistake.
 
 1. Start with a rough version.
 2. Use the agent for a week.

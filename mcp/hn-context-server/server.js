@@ -6,6 +6,7 @@ const { stdin, stdout, stderr } = require("node:process");
 
 const API_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
 const API_ITEM = "https://hacker-news.firebaseio.com/v0/item";
+const FETCH_TIMEOUT_MS = 5000;
 
 function writeMessage(message) {
   stdout.write(`${JSON.stringify(message)}\n`);
@@ -16,22 +17,43 @@ function writeError(message) {
 }
 
 async function fetchJson(url) {
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status} for ${url}`);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} for ${url}`);
+    }
+    return res.json();
+  } catch (err) {
+    if (err.name === "AbortError") {
+      throw new Error(`Timed out after ${FETCH_TIMEOUT_MS}ms for ${url}`);
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
   }
-  return res.json();
 }
 
 async function getTopStory(rank = 0) {
+  const requestedRank = Number(rank);
+  if (!Number.isInteger(requestedRank) || requestedRank < 0) {
+    throw new Error("rank must be a non-negative integer.");
+  }
+
   const ids = await fetchJson(API_TOP_STORIES);
   if (!Array.isArray(ids) || ids.length === 0) {
     throw new Error("No top stories returned by API.");
   }
 
-  const normalizedRank = Math.max(0, Math.min(Number(rank) || 0, ids.length - 1));
+  const normalizedRank = Math.min(requestedRank, ids.length - 1);
   const id = ids[normalizedRank];
   const item = await fetchJson(`${API_ITEM}/${id}.json`);
+
+  if (!item || typeof item !== "object") {
+    throw new Error(`Story ${id} was not returned by API.`);
+  }
 
   return {
     rank: normalizedRank,
@@ -87,7 +109,7 @@ async function routeRequest(msg) {
         tools: [
           {
             name: "get_hn_top_story",
-            description: "Return metadata for a top Hacker News story by rank.",
+            description: "Read-only tool. Return metadata for a top Hacker News story by rank.",
             inputSchema: {
               type: "object",
               properties: {

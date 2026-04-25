@@ -89,7 +89,7 @@ Finish the Step 16 capstone. Extend with:
 **You'll learn:** agents stop being magic.
 
 ### S3 · Multi-agent swarm for a real task
-Pick something embarrassingly parallel (scan 50 files for dead code; audit 20 repos for stale deps). Build a driver script that fans out subagent calls.
+Pick something embarrassingly parallel (work that splits into independent pieces, like scanning 50 files for dead code or auditing 20 repos for stale deps). Build a driver script that fans out subagent calls.
 
 **You'll learn:** orchestration mechanics.
 

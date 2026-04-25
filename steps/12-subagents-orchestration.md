@@ -76,7 +76,7 @@ You can launch 5 subagents in parallel if the work is independent. Massive speed
 ## 3. The three orchestration patterns
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph Router["1. Router"]
         R[Main agent] --> R1[Subagent A]
         R --> R2[Subagent B]
@@ -84,7 +84,7 @@ flowchart LR
     end
 
     subgraph Pipeline["2. Pipeline"]
-        P1[Agent 1:<br/>Plan] --> P2[Agent 2:<br/>Build] --> P3[Agent 3:<br/>Test] --> P4[Agent 4:<br/>Review]
+        P1[Agent 1<br/>Plan] --> P2[Agent 2<br/>Build] --> P3[Agent 3<br/>Test] --> P4[Agent 4<br/>Review]
     end
 
     subgraph Swarm["3. Swarm"]

@@ -65,7 +65,7 @@ Input → Router → { refund-agent | billing-agent | bug-agent }
 **Example:** customer support routing to specialized assistants; code-reviewer-per-language.
 
 **When to use:** distinct input categories with different handling.
-**Pitfall:** train/test drift — users find inputs you didn't categorize.
+**Pitfall:** train/test drift (real users send inputs that were not in your examples) — users find inputs you didn't categorize.
 
 ---
 
@@ -78,7 +78,7 @@ Two flavors:
 - **Voting** — run the same task N times, majority-vote the answer (for reliability).
 
 **Example:** *"Scan every file for vulnerabilities"* → 1 subagent per file.
-**When:** embarrassingly parallel tasks, or needing robustness.
+**When:** embarrassingly parallel tasks (work that splits into independent pieces with almost no coordination), or needing robustness.
 
 ---
 
@@ -232,7 +232,7 @@ Take a real workflow you do weekly (e.g., "write a blog post + publish + share")
 4. Identify the HITL checkpoints.
 5. Optionally: wire it up using Claude Code subagents or LangGraph.
 
-Post the Mermaid diagram on Twitter/X. It's shareable catnip. `#AgenticCoding`.
+Post the Mermaid diagram on Twitter/X, LinkedIn, or GitHub. Visual examples are easy for other learners to understand. `#AgenticCoding`.
 
 ---
 

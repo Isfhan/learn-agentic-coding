@@ -7,7 +7,7 @@
 - Python (for build-your-own-agent example)
 
 ## Structure
-- `steps/`: 19 learning modules
+- `steps/`: 20 step files (00-18, including 13.5)
 - `resources/`: external references and cheatsheets
 - `.cursor/rules/`: persistent project guidance
 - `.cursor/skills/`: reusable agent capabilities
@@ -20,7 +20,8 @@
 ## Conventions
 - Keep examples production-minded and security-aware.
 - Prefer small, testable artifacts over large monolithic demos.
-- Explain industry terms with plain-English meaning in parentheses.
+- Explain industry terms with plain-English meaning in parentheses on first use, especially for non-native English readers.
+- Prefer clear words over slang. If a common AI phrase is useful, keep it and add the plain meaning.
 
 ## Commands
 - `node mcp/hn-context-server/server.js`
@@ -34,4 +35,4 @@
 ## Don'ts
 - Do not put secrets in tracked files.
 - Do not expose destructive tools without HITL approval.
-- Do not ship "vibe-only" changes without eval evidence.
+- Do not ship "vibe-only" (guesswork-only) changes without eval evidence.

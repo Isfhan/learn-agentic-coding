@@ -23,7 +23,7 @@ Agentic coding moves weekly. This final step is about **never falling behind**.
 
 ### 📆 Weekly (30 minutes)
 - One issue of **Simon Willison's Weeknotes** + **Elvis Saravia's newsletter** + **Latent Space podcast** (pick 1 episode).
-- Skim release notes of: **Cursor, Claude Code, OpenAI Agents SDK**. All three publish often.
+- Skim release notes of: **Cursor, Claude Code, GitHub Copilot, Codex, Gemini CLI, OpenAI Agents SDK**. All publish often or change surfaces quickly.
 - Try **one new MCP server** or **one new skill**.
 
 ### 🗓 Monthly (2 hours)
@@ -53,7 +53,7 @@ These 10 consistently produce high-signal content on agentic coding:
 - **[@dair_ai](https://twitter.com/dair_ai)** — Elvis Saravia's daily AI feed.
 
 ### Bonus: build your own X list
-On X, create a private list called "Agentic Coding." Add the above + 5–10 builders whose work you admire. Open that list daily instead of the main feed. You'll learn 10x faster.
+On X, create a private list called "Agentic Coding." Add the above + 5–10 builders whose work you admire. Open that list daily instead of the main feed. You'll learn much faster because the signal is cleaner.
 
 ---
 
@@ -65,7 +65,7 @@ Pick 1–2. Unsubscribing is fine.
 - 📧 **[Simon Willison's Weeknotes](https://simonwillison.net/)** — weekly, deep.
 - 📧 **[Latent Space by swyx](https://www.latent.space/)** — weekly podcast + newsletter.
 - 📧 **[Ahead of AI (Sebastian Raschka)](https://magazine.sebastianraschka.com/)** — monthly, rigorous.
-- 📧 **[Import AI (Jack Clark)](https://jack-clark.net/)** — weekly policy + research + vibes.
+- 📧 **[Import AI (Jack Clark)](https://jack-clark.net/)** — weekly policy, research, and industry mood.
 - 📧 **[Dair.ai / Elvis Saravia](https://nlp.elvissaravia.com/)** — weekly paper digest.
 
 ---
@@ -126,6 +126,20 @@ Protect those. Replace specific tools as needed.
 
 ---
 
+## 9. Tool freshness checklist
+
+Run this checklist once per quarter when you update your AI stack or this roadmap.
+
+- **Capability changed?** Check whether Cursor, Claude Code, Copilot, Codex, Gemini, Qwen, Cline, Continue, Aider, and cloud agents added or removed major features.
+- **MCP support changed?** Verify whether each tool supports MCP tools, resources, prompts, auth, and remote servers.
+- **Security model changed?** Review approval prompts, sandboxing, token storage, and destructive-action controls.
+- **Cost changed?** Note pricing, rate limits, context window size, and model availability.
+- **Team workflow changed?** Check issue-to-PR agents, code review support, CI integration, and audit logs.
+- **Docs still true?** Update Step 03 if a tool moved categories or a claim is older than 6 months.
+- **Eval still passes?** Re-run the eval suite after changing models, rules, skills, or MCP servers.
+
+---
+
 ## 🎥 Watch
 
 - **[Latent Space podcast (YouTube)](https://www.youtube.com/@latentspacepodcast)** — always current.
@@ -147,7 +161,8 @@ Protect those. Replace specific tools as needed.
    - What changed about how you code.
    - What you want to learn next.
 2. Post your journey. Consider a thread on Twitter/X with `#AgenticCoding` linking to this roadmap + your own creations.
-3. Star **this** repo if it helped. Open a PR if something could be better. Now you're a contributor.
+3. Run the tool freshness checklist above and note one thing that changed recently.
+4. Star **this** repo if it helped. Open a PR if something could be better. Now you're a contributor.
 
 ---
 

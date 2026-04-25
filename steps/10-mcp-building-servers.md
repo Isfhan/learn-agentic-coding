@@ -217,6 +217,21 @@ Anthropic has published guidance on this ([see this must-read](https://www.anthr
 - **Scope credentials minimally.** A "read-only GH" token > full PAT.
 - **Sandbox shell-like tools.** If a tool runs commands, allowlist.
 - **Log every invocation.** You'll want the audit trail.
+- **Document auth.** Say exactly where tokens come from, what scopes they need, and what happens when they are missing.
+- **Define fallback behavior.** Timeouts, rate limits, and failed APIs should return clear errors, not crash the server.
+- **Use HITL for writes.** Any tool that posts, deletes, deploys, charges money, or changes production data should require human approval.
+
+### Minimal MCP safety checklist
+
+Before you connect a server to Cursor, Claude Code, Copilot, or any other host:
+
+- [ ] Tool list is small and each tool has a clear action verb.
+- [ ] Inputs are validated with Zod, Pydantic, or an equivalent schema.
+- [ ] Secrets are loaded from environment variables, not committed config files.
+- [ ] Permissions follow least privilege (only the access needed for this server).
+- [ ] Read-only tools are clearly marked read-only.
+- [ ] Write tools have HITL approval and audit logs.
+- [ ] Network failures and rate limits have a clear fallback response.
 
 ---
 
@@ -258,6 +273,8 @@ Build a real MCP server for *your* life. Pick one:
 - **Notes server** — exposes `search_notes(query)`, `create_note(title, body)` over your Obsidian/Markdown vault.
 - **GitHub-lite** — just the 3 tools you actually use: `list_my_prs`, `open_pr_comments(number)`, `assign_reviewers(number, reviewers)`.
 - **Time tracker** — `start_task(name)`, `stop_task()`, `daily_summary(date)` — backed by a SQLite file.
+
+For your first version, prefer a read-only server. If you add write actions, include the safety checklist above in your README.
 
 Requirements:
 1. Written in TypeScript or Python.

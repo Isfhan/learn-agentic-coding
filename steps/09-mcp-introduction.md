@@ -47,7 +47,7 @@ One protocol. Any client. Any server.
 
 N + M integrations. Sanity.
 
-> 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources).
+> 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources). **JSON-RPC** means the client and server send JSON messages that say “call this method with these arguments.”
 
 Anthropic open-sourced MCP in late 2024. By 2026, OpenAI, Google, GitHub, and most AI tool vendors support it.
 
@@ -90,8 +90,8 @@ flowchart LR
 ### Transports
 
 An MCP server talks to its client over:
-- **stdio** — server is a local subprocess. (Most common.)
-- **HTTP+SSE** — server is remote. (Used for hosted MCP servers.)
+- **stdio** (standard input/output) — server is a local subprocess that reads and writes text streams. Most common.
+- **HTTP+SSE** (HTTP plus server-sent events) — server is remote and can push updates over a web connection. Used for hosted MCP servers.
 
 ---
 
@@ -151,6 +151,8 @@ A `sql-helper` server exposes a prompt called `optimize-query` that takes a SQL 
 ```
 
 Restart Cursor. Ask your agent: *"Find every open PR on the `myorg/myrepo` repo and summarize them."* — it now has a `github` tool available.
+
+**Security note:** Do not commit real tokens in `.cursor/mcp.json`. Put secrets in environment variables, use read-only tokens when possible, and give every MCP server the smallest permission set it needs.
 
 ### In Claude Code
 

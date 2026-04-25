@@ -1,8 +1,8 @@
 # Step 14 · Evals & Testing
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 13
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 13.5
 
-> *"If you can't measure it, you're not engineering. You're vibing."*
+> *"If you can't measure it, you're not engineering. You're vibing (guessing from feel)."*
 
 The difference between a hobbyist and a pro agent builder is one word: **evals**.
 
@@ -25,7 +25,7 @@ An **eval** is a test case for an AI system.
 Input  →  (LLM / agent)  →  Output  →  Pass/fail
 ```
 
-It's unit testing for non-deterministic systems.
+It's unit testing for non-deterministic systems (systems where the same input may not always produce the exact same output).
 
 ### Three levels of eval
 
@@ -183,6 +183,41 @@ You do **not** need huge numbers to benefit. 20 well-chosen evals will catch 80%
 
 ---
 
+## 8. Production bridge: tests, evals, and CI
+
+Production-grade software needs both **deterministic tests** (normal tests that should pass or fail the same way every run) and **evals** (quality checks for AI behavior).
+
+| Check | What it protects | Example |
+|------|------------------|---------|
+| **Unit test** | One function or module | `reverseString()` handles empty input |
+| **Integration test** | Two or more parts working together | API route writes to the database correctly |
+| **End-to-end test** | A real user flow | Login → create project → see dashboard |
+| **Contract test** | A stable interface | MCP tool returns the promised JSON shape |
+| **Eval** | AI quality and safety | Agent refuses to commit secrets |
+
+Add these checks to **CI (continuous integration: automatic checks before merge)** so the repo catches mistakes before humans review the PR:
+
+1. Run deterministic tests first because they are fast and cheap.
+2. Run evals for agent-facing changes: prompts, rules, skills, MCP tools, and safety policies.
+3. Keep expensive LLM-as-judge evals optional or scheduled if the project is small.
+4. Require **HITL (human-in-the-loop: explicit human approval)** before deployment, destructive data changes, or permission changes.
+
+Also keep basic **observability** (logs, traces, and metrics that explain what happened). For agents, that means recording the prompt version, tool calls, final answer, cost, latency, and pass/fail result.
+
+### Production release checklist
+
+Before shipping an AI-assisted change to real users:
+
+- [ ] Deterministic tests pass locally and in CI.
+- [ ] Relevant evals pass, or failures are documented with a human decision.
+- [ ] A human reviewed the diff, especially agent-written code.
+- [ ] Secrets and credentials were not added to the repo.
+- [ ] Observability is in place: logs, traces, cost, latency, and error signals.
+- [ ] Rollback plan is clear: previous version, database recovery path, or feature flag.
+- [ ] Risky tools or deploy actions require HITL approval.
+
+---
+
 ## 🎥 Watch
 
 - **[Hamel Husain — "LLM eval that works"](https://www.youtube.com/results?search_query=hamel+husain+LLM+eval+that+works)** — the best practical overview. Google his blog too.
@@ -208,9 +243,10 @@ You do **not** need huge numbers to benefit. 20 well-chosen evals will catch 80%
    - 2 LLM-as-judge.
 3. Run against **2 different models**. Compare.
 4. Make a small change to your prompt/skill/rule. Re-run. Did any case regress?
-5. Commit `promptfooconfig.yaml` to your repo.
+5. Add one deterministic test or contract check for any tool the agent calls.
+6. Commit `promptfooconfig.yaml` to your repo.
 
-Bonus: add a GitHub Action that runs `promptfoo eval` on PRs that touch `.cursor/rules/**` or `.claude/skills/**`.
+Bonus: add a GitHub Action that runs `promptfoo eval` on PRs that touch `.cursor/rules/**` or `.claude/skills/**`. This repo includes [.github/workflows/quality.yml](../.github/workflows/quality.yml) as a safe baseline: deterministic checks always run, while provider-backed promptfoo evals skip when API keys are missing.
 
 ---
 

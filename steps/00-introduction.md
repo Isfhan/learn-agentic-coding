@@ -1,6 +1,6 @@
 # Step 00 · Introduction to Agentic Coding
 
-> **⏱️ Time:** 30 minutes · **Prereq:** You've used Cursor / Claude Code / Copilot at least once
+> **⏱️ Time:** 30 minutes · **Prereq:** Basic programming and basic Git. If you have never used an AI coding agent, this step will show you what to watch for.
 
 ---
 
@@ -79,6 +79,8 @@ Under the hood, **every agent is just this**:
 ---
 
 ## 📖 Vocabulary — the 12 words you need
+
+For a longer plain-English reference, keep the [glossary](../resources/glossary.md) open in another tab.
 
 | Term | In plain English |
 |------|------------------|

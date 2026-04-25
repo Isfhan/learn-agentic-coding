@@ -87,7 +87,7 @@ When an LLM generates a response, it picks the next token from a probability dis
 
 Most coding agents set temperature low (0–0.3) by default. You usually don't need to touch it.
 
-**Top-p** (nucleus sampling) is a different lever: only sample from the top X% of probability mass. Use `top_p = 0.95` and temperature together — tweaking both is overkill for most coding tasks.
+**Top-p** (nucleus sampling: limiting choices to the most likely next tokens) is a different lever. It samples only from the top X% of **probability mass** (the group of likely next-token choices). Use `top_p = 0.95` and temperature together only when you know why; tweaking both is too much for most coding tasks.
 
 ---
 
@@ -113,7 +113,7 @@ In an agent loop, hallucinations compound:
 
 | Type | What it is | Example | When coders use it |
 |------|-----------|---------|---------------------|
-| **Base model** | Raw next-token predictor, never RLHF'd | Llama 3 base | Almost never directly |
+| **Base model** | Raw next-token predictor, not yet tuned with RLHF (reinforcement learning from human feedback) | Llama 3 base | Almost never directly |
 | **Instruct model** | Fine-tuned to follow instructions | GPT-4o, Claude Sonnet, Qwen Coder | Default for most agent work |
 | **Reasoning model** | Generates a hidden "thinking" pass before answering | GPT-5, Claude Opus with extended thinking, DeepSeek R1 | Hard debugging, architecture, multi-step planning |
 
@@ -140,7 +140,7 @@ In an agent loop, hallucinations compound:
 
 ## ✍️ Exercise (30 min)
 
-Open [chat.openai.com](https://chat.openai.com) or [claude.ai](https://claude.ai) in a regular browser (*not* inside Cursor).
+Open [chat.openai.com](https://chat.openai.com) or [claude.ai](https://claude.ai) in a regular browser (*not* inside Cursor). This exercise needs internet access.
 
 1. **Hallucination hunt:** Ask: *"What's the exact signature of `os.path.splitroot` in Python 3.9?"* (Hint: it was added in 3.12.) Observe whether the model admits ignorance or makes something up.
 2. **Context limit:** Paste a **really long** file (>5000 lines). Ask for the first and last function. See what it remembers.

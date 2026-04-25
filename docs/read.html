@@ -149,6 +149,52 @@
     color: #efe6e4;
     font-size: inherit;
   }
+  .mermaid-wrap {
+    background: #fdf7f7;
+    border: 1px solid rgba(244,63,94,0.18);
+    border-radius: .9rem;
+    margin: 1.3rem 0;
+    padding: 1rem;
+    overflow-x: auto;
+    box-shadow: 0 18px 50px -34px rgba(225,29,72,0.45);
+  }
+  .mermaid-diagram {
+    min-width: min(720px, 100%);
+    color: #1f1719;
+  }
+  .mermaid-diagram svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .mermaid-diagram text,
+  .mermaid-diagram .label {
+    font-family: 'Inter', 'General Sans', system-ui, sans-serif !important;
+    font-size: 15px !important;
+  }
+  .mermaid-fallback {
+    margin-top: .85rem;
+    color: #57343a;
+    font-size: .88rem;
+  }
+  .mermaid-fallback summary {
+    cursor: pointer;
+    font-weight: 650;
+  }
+  .mermaid-fallback pre {
+    background: rgba(15,10,11,0.95);
+    color: #efe6e4;
+    margin-bottom: 0;
+  }
+  .mermaid-error .mermaid-diagram {
+    background: rgba(225,29,72,0.08);
+    border: 1px solid rgba(225,29,72,0.22);
+    border-radius: .7rem;
+    color: #7f1d1d;
+    padding: .8rem;
+    white-space: normal;
+  }
   .prose-roadmap table {
     width: 100%;
     border-collapse: collapse;
@@ -252,6 +298,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
   const rawPath = params.get('path') || '';
@@ -295,7 +342,7 @@
           if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + r.statusText);
           return r.text();
         })
-        .then(text => {
+        .then(async text => {
           statusEl.classList.add('hidden');
           if (isMarkdown) {
             marked.setOptions({ gfm: true, breaks: false });
@@ -316,6 +363,7 @@
                 }
               } catch (_) {}
             });
+            await renderMermaidDiagrams();
             contentEl.classList.remove('hidden');
           } else {
             plainEl.textContent = text;
@@ -326,6 +374,87 @@
           showError(err.message + '. The file was requested at: ' + resolvedUrl.href);
         });
     }
+  }
+
+  async function renderMermaidDiagrams() {
+    const blocks = Array.from(contentEl.querySelectorAll('pre > code.language-mermaid'));
+    if (!blocks.length) return;
+
+    if (!window.mermaid) {
+      blocks.forEach((codeEl) => {
+        codeEl.parentElement.insertAdjacentElement('beforebegin', buildMermaidFailure('Mermaid renderer did not load.', codeEl.textContent));
+      });
+      return;
+    }
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#fdf2f2',
+        primaryTextColor: '#1f1719',
+        primaryBorderColor: '#e11d48',
+        lineColor: '#9f1239',
+        secondaryColor: '#fff7ed',
+        tertiaryColor: '#f8fafc',
+        fontFamily: 'Inter, General Sans, system-ui, sans-serif',
+      },
+      flowchart: {
+        htmlLabels: false,
+        useMaxWidth: true,
+      },
+    });
+
+    for (const [index, codeEl] of blocks.entries()) {
+      const source = codeEl.textContent.trim();
+      const wrapper = buildMermaidWrapper(source);
+      codeEl.parentElement.replaceWith(wrapper);
+
+      try {
+        const id = `mermaid-${Date.now()}-${index}`;
+        const { svg } = await mermaid.render(id, source);
+        wrapper.querySelector('.mermaid-diagram').innerHTML = DOMPurify.sanitize(svg, {
+          USE_PROFILES: { svg: true, svgFilters: true },
+        });
+      } catch (error) {
+        wrapper.classList.add('mermaid-error');
+        wrapper.querySelector('.mermaid-diagram').textContent = 'Could not render this Mermaid diagram. Open the source below to inspect it.';
+        wrapper.querySelector('.mermaid-fallback').open = true;
+      }
+    }
+  }
+
+  function buildMermaidWrapper(source) {
+    const wrapper = document.createElement('figure');
+    wrapper.className = 'mermaid-wrap';
+
+    const diagram = document.createElement('div');
+    diagram.className = 'mermaid-diagram';
+    diagram.setAttribute('aria-label', 'Rendered Mermaid diagram');
+    wrapper.appendChild(diagram);
+
+    const fallback = document.createElement('details');
+    fallback.className = 'mermaid-fallback';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Show Mermaid source';
+    const pre = document.createElement('pre');
+    const code = document.createElement('code');
+    code.textContent = source;
+    pre.appendChild(code);
+    fallback.appendChild(summary);
+    fallback.appendChild(pre);
+    wrapper.appendChild(fallback);
+
+    return wrapper;
+  }
+
+  function buildMermaidFailure(message, source) {
+    const wrapper = buildMermaidWrapper(source);
+    wrapper.classList.add('mermaid-error');
+    wrapper.querySelector('.mermaid-diagram').textContent = message;
+    wrapper.querySelector('.mermaid-fallback').open = true;
+    return wrapper;
   }
 
   // Returns a path relative to the directory of `fromPath` that points at `toPath`.

@@ -333,10 +333,20 @@
   /* Parallax heading layer */
   .eras-parallax-head { will-change: transform; }
 
-  /* On very short screens hide the description to give the card room */
-  @media (max-height: 640px) {
-    .eras-parallax-head p { display: none; }
-    .eras-sticky { height: auto; min-height: 100vh; }
+  .eras-card-area {
+    position: relative;
+  }
+  .eras-card-area::before {
+    content: "";
+    position: absolute;
+    inset: 1.75rem 7% -1.25rem;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 18% 35%, rgba(251,113,133,0.2), transparent 34%),
+      radial-gradient(circle at 80% 55%, rgba(225,29,72,0.18), transparent 36%);
+    filter: blur(28px);
+    opacity: .7;
+    pointer-events: none;
   }
 
   /* Clipping viewport for the horizontal card track */
@@ -344,12 +354,28 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    border-radius: 1.35rem;
+    isolation: isolate;
+    box-shadow: 0 28px 90px -54px rgba(225,29,72,0.82);
+  }
+  .eras-viewport::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      inset 0 -1px 0 rgba(10,7,7,0.85);
   }
 
   /* Full-width track holding 5 cards side-by-side */
   .eras-track {
     display: flex;
     width: 500%;
+    position: relative;
+    z-index: 1;
     transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
   }
@@ -359,18 +385,79 @@
     flex: 0 0 20%;
     box-sizing: border-box;
     position: relative;
-    border-radius: 1rem;
-    padding: 1.25rem 1.25rem 1.1rem;
-    background: linear-gradient(180deg, rgba(239,230,228,0.035), rgba(239,230,228,0.01));
-    border: 1px solid rgba(239,230,228,0.09);
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 1.35rem;
+    padding: clamp(1.1rem, 2.2vw, 1.65rem);
+    background:
+      radial-gradient(circle at 16% 0%, rgba(251,113,133,0.13), transparent 32%),
+      linear-gradient(140deg, rgba(239,230,228,0.075), rgba(239,230,228,0.018) 44%, rgba(225,29,72,0.035));
+    border: 1px solid rgba(239,230,228,0.12);
+    box-shadow:
+      0 24px 80px -42px rgba(0,0,0,0.92),
+      0 18px 56px -46px rgba(225,29,72,0.8),
+      inset 0 1px 0 rgba(255,255,255,0.08);
     display: flex;
     flex-direction: column;
-    min-height: 260px;
-    transition: border-color .35s, background .35s;
+    min-height: 292px;
+    transition: border-color .35s, background .35s, box-shadow .35s;
   }
-  .era-card:hover {
-    border-color: rgba(244,63,94,0.4);
-    background: linear-gradient(180deg, rgba(244,63,94,0.06), rgba(239,230,228,0.015));
+  .era-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.08), transparent 20%, transparent 80%, rgba(225,29,72,0.12)),
+      radial-gradient(circle at 100% 0%, rgba(244,63,94,0.16), transparent 34%);
+    opacity: .72;
+    pointer-events: none;
+  }
+  .era-card::after {
+    content: "";
+    position: absolute;
+    right: -70px;
+    top: -90px;
+    width: 220px;
+    height: 220px;
+    border-radius: 9999px;
+    background: rgba(225,29,72,0.18);
+    filter: blur(44px);
+    opacity: .55;
+    pointer-events: none;
+  }
+  .era-card.active {
+    border-color: rgba(251,113,133,0.36);
+    box-shadow:
+      0 30px 100px -46px rgba(0,0,0,0.95),
+      0 20px 66px -40px rgba(225,29,72,0.9),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .era-card.is-featured {
+    border-color: rgba(225,29,72,0.48);
+    background:
+      radial-gradient(circle at 14% 0%, rgba(253,164,175,0.16), transparent 32%),
+      linear-gradient(140deg, rgba(225,29,72,0.105), rgba(239,230,228,0.026) 46%, rgba(159,18,57,0.13));
+  }
+  .era-card.is-featured .era-meta { color: #fb7185; }
+  .era-card.is-featured .era-artifact {
+    border-color: rgba(225,29,72,0.28);
+    background:
+      radial-gradient(circle at 86% 4%, rgba(225,29,72,0.18), transparent 30%),
+      linear-gradient(180deg, #12080a, #0b0607);
+  }
+  .era-card.is-featured .era-artifact .bar {
+    color: #fda4af;
+    border-bottom-color: rgba(225,29,72,0.22);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .era-card:hover {
+      border-color: rgba(244,63,94,0.34);
+      background:
+        radial-gradient(circle at 16% 0%, rgba(251,113,133,0.16), transparent 32%),
+        linear-gradient(140deg, rgba(239,230,228,0.085), rgba(239,230,228,0.02) 44%, rgba(225,29,72,0.048));
+    }
   }
 
   /* Left column: meta, title, artifact */
@@ -394,32 +481,42 @@
   }
 
   /* Progress dots */
-  .eras-dots { display: flex; align-items: center; gap: 6px; }
+  .eras-progress {
+    position: relative;
+    z-index: 1;
+    padding: 0 .15rem;
+  }
+  .eras-dots { display: flex; align-items: center; gap: 7px; }
   .era-dot {
     height: 6px;
-    width: 6px;
+    width: clamp(22px, 4vw, 42px);
     border-radius: 9999px;
-    background: rgba(239,230,228,0.22);
-    transition: background 0.35s, width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(239,230,228,0.14);
+    box-shadow: inset 0 0 0 1px rgba(239,230,228,0.06);
+    transition: background 0.35s, box-shadow 0.35s, opacity 0.35s;
   }
-  .era-dot.active { background: #e11d48; width: 22px; }
+  .era-dot.completed {
+    background: rgba(244,63,94,0.38);
+    box-shadow: 0 0 16px -8px rgba(244,63,94,0.75);
+  }
+  .era-dot.active {
+    background: var(--grad-1);
+    box-shadow:
+      0 0 0 1px rgba(254,205,211,0.18),
+      0 0 24px -8px rgba(225,29,72,0.9);
+  }
 
   /* Step counter */
   .eras-counter {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
-    color: rgba(239,230,228,0.5);
-  }
-
-  /* Reduced-motion: drop sticky scroll, show all cards in a column */
-  @media (prefers-reduced-motion: reduce) {
-    .eras-scrolly { height: auto; }
-    .eras-sticky  { position: static; height: auto; overflow: visible; }
-    .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; }
-    .era-card     { flex: 0 0 auto; width: 100%; flex-direction: column; }
-    .eras-parallax-head { transform: none !important; }
-    .eras-dots, .eras-counter { display: none; }
+    color: rgba(239,230,228,0.62);
+    padding: .45rem .65rem;
+    border: 1px solid rgba(239,230,228,0.08);
+    border-radius: 9999px;
+    background: rgba(10,7,7,0.45);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .era-meta {
     font-family: 'JetBrains Mono', monospace;
@@ -430,7 +527,7 @@
   }
   .era-title {
     font-family: 'General Sans', 'Inter', sans-serif;
-    font-size: 1.55rem;
+    font-size: clamp(1.45rem, 3.8vw, 2.05rem);
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -439,49 +536,54 @@
   }
   .era-tag {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 1.1rem;
     font-family: 'General Sans', 'Inter', sans-serif;
     font-style: italic;
     font-size: 1rem;
     color: #d9bfc0;
+    text-wrap: pretty;
   }
   @media (min-width: 768px) {
     .era-tag {
       flex: 0 0 38%;
       max-width: 38%;
       margin-top: 0;
-      padding-top: 0;
-      padding-left: 1.25rem;
-      border-left: 1px dashed rgba(239,230,228,0.12);
+      padding: 1rem 0 1rem 1.45rem;
+      border-left: 1px solid rgba(239,230,228,0.1);
       align-self: center;
       font-size: 1.05rem;
       line-height: 1.55;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .era-tag {
-      flex: 0 0 auto;
-      max-width: none;
-      margin-top: auto;
-      padding-top: 1rem;
-      padding-left: 0;
-      border-left: 0;
-      align-self: stretch;
+      color: #ead1d2;
     }
   }
   .era-artifact {
-    margin-top: 1rem;
-    background: #0d0809;
-    border: 1px solid rgba(239,230,228,0.08);
-    border-radius: .65rem;
-    padding: .7rem .8rem;
+    position: relative;
+    margin-top: 1.1rem;
+    background:
+      linear-gradient(180deg, rgba(18,9,10,0.98), rgba(8,5,6,0.98));
+    border: 1px solid rgba(239,230,228,0.11);
+    border-radius: .95rem;
+    padding: .85rem .95rem .9rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: .74rem;
     line-height: 1.55;
     color: #efe0de;
-    min-height: 140px;
+    min-height: 148px;
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(239,230,228,0.04);
+    box-shadow:
+      inset 0 1px 0 rgba(239,230,228,0.06),
+      0 18px 42px -34px rgba(0,0,0,0.9);
+  }
+  .era-artifact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(239,230,228,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239,230,228,0.018) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: .34;
+    pointer-events: none;
   }
   .era-artifact .bar {
     display: flex;
@@ -491,9 +593,10 @@
     letter-spacing: 0.14em;
     color: #9a8585;
     text-transform: uppercase;
-    margin-bottom: .5rem;
-    padding-bottom: .45rem;
-    border-bottom: 1px dashed rgba(239,230,228,0.08);
+    position: relative;
+    margin-bottom: .65rem;
+    padding-bottom: .55rem;
+    border-bottom: 1px solid rgba(239,230,228,0.08);
   }
   .era-artifact .bar::before {
     content: "";
@@ -501,7 +604,11 @@
     background: #e11d48;
     box-shadow: 0 0 0 3px rgba(225,29,72,0.2);
   }
-  .era-artifact .row { color: #c8b0b2; }
+  .era-artifact .row,
+  .era-artifact .punch {
+    position: relative;
+  }
+  .era-artifact .row { color: #d8c0c2; }
   .era-artifact .cmt { color: #9a7a7c; font-style: italic; }
   .era-artifact .kw  { color: #f43f5e; }
   .era-artifact .str { color: #fda4af; }
@@ -519,6 +626,112 @@
     vertical-align: -2px;
   }
   .era-artifact .hole.off { background: transparent; border: 1px solid rgba(239,230,228,0.18); }
+
+  /* On short screens, keep the story readable before decorative spacing. */
+  @media (max-height: 640px) {
+    .eras-parallax-head p { display: none; }
+    .eras-card-area { margin-top: 1rem; }
+    .era-card {
+      min-height: 228px;
+      padding: .95rem;
+    }
+    .era-artifact {
+      min-height: 112px;
+      margin-top: .75rem;
+      padding: .65rem .75rem;
+      font-size: .68rem;
+      line-height: 1.45;
+    }
+    .era-tag {
+      padding-top: .75rem;
+      font-size: .92rem;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .eras-viewport { border-radius: 1rem; }
+    .era-card {
+      min-height: 330px;
+    }
+    .eras-dots { gap: 5px; }
+    .era-dot { width: clamp(18px, 9vw, 32px); }
+    .era-artifact {
+      font-size: .68rem;
+      min-height: 132px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 980px) {
+    .eras-parallax-head h2 {
+      font-size: clamp(2.35rem, 5.8vw, 3.2rem) !important;
+    }
+    .eras-parallax-head p {
+      max-width: 34rem;
+      font-size: .98rem;
+      line-height: 1.55;
+    }
+    .era-card {
+      min-height: 250px;
+      padding: 1rem;
+      gap: 1rem;
+    }
+    .era-title {
+      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+    }
+    .era-artifact {
+      min-height: 118px;
+      font-size: .68rem;
+      line-height: 1.45;
+    }
+    .era-tag {
+      font-size: .95rem;
+      line-height: 1.45;
+      padding-left: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 980px) and (max-height: 960px) {
+    .eras-parallax-head p { display: none; }
+    .eras-card-area { margin-top: 1rem; }
+    .era-card {
+      min-height: 220px;
+      padding: .9rem;
+    }
+    .era-artifact {
+      min-height: 100px;
+      margin-top: .65rem;
+      padding: .6rem .7rem;
+    }
+    .era-scroll-hint { display: none; }
+  }
+
+  /* Reduced-motion: drop sticky scroll, show all cards in a column */
+  @media (prefers-reduced-motion: reduce) {
+    .eras-scrolly { height: auto; }
+    .eras-sticky  { position: static; height: auto; overflow: visible; }
+    .eras-card-area::before { display: none; }
+    .eras-viewport {
+      overflow: visible;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .eras-viewport::before { display: none; }
+    .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; transform: none !important; }
+    .era-card     { flex: 0 0 auto; width: 100%; flex-direction: column; min-height: auto; }
+    .era-card.active { border-color: rgba(239,230,228,0.12); }
+    .eras-parallax-head { transform: none !important; }
+    .eras-dots, .eras-counter { display: none; }
+    .era-tag {
+      flex: 0 0 auto;
+      max-width: none;
+      margin-top: auto;
+      padding-top: 1rem;
+      padding-left: 0;
+      border-left: 0;
+      align-self: stretch;
+    }
+  }
 </style>
 </head>
 <body class="noise">
@@ -739,10 +952,10 @@
         </div>
 
         <!-- Cards area -->
-        <div class="mt-6 sm:mt-8">
+        <div class="eras-card-area mt-6 sm:mt-8">
 
           <!-- Progress dots + step counter -->
-          <div class="flex items-center justify-between mb-4">
+          <div class="eras-progress flex items-center justify-between mb-4">
             <div class="eras-dots" id="eras-dots" aria-hidden="true">
               <span class="era-dot active"></span>
               <span class="era-dot"></span>
@@ -829,11 +1042,11 @@
               </article>
 
               <!-- Era 5 · Agents -->
-              <article class="era-card" style="border-color: rgba(225,29,72,0.45); background: linear-gradient(180deg, rgba(225,29,72,0.08), rgba(239,230,228,0.015));">
+              <article class="era-card is-featured">
                 <div class="era-body">
-                  <div class="era-meta" style="color:#f43f5e">2020s → now · Step 5 / 5</div>
+                  <div class="era-meta">2020s → now · Step 5 / 5</div>
                   <h3 class="era-title">Agentic Coding</h3>
-                  <div class="era-artifact" aria-hidden="true" style="background:#100809; border-color: rgba(225,29,72,0.22);">
+                  <div class="era-artifact" aria-hidden="true">
                     <div class="bar">agent · &gt;_ task</div>
                     <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
                     <div class="row dim mt-1">· reading spec.md</div>
@@ -849,7 +1062,7 @@
           </div><!-- /.eras-viewport -->
 
           <!-- Scroll hint -->
-          <div class="mt-4 flex items-center gap-2 text-xs text-white/40">
+          <div class="era-scroll-hint mt-4 flex items-center gap-2 text-xs text-white/40">
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             <span>Scroll down to step through each era — each one rewrote the job.</span>
           </div>
@@ -1351,6 +1564,7 @@
     var scrolly   = document.getElementById('eras-scrolly');
     var track     = document.getElementById('eras-track');
     var dots      = document.querySelectorAll('.era-dot');
+    var cards     = track ? track.querySelectorAll('.era-card') : [];
     var counter   = document.getElementById('eras-current');
     var live      = document.getElementById('eras-live');
     var pHead     = document.querySelector('.eras-parallax-head');
@@ -1373,27 +1587,29 @@
       // Discrete index — each era occupies an equal scroll band
       var idx = Math.min(Math.floor(t * N), N - 1);
 
-      // Slide the track: each step is 20% of the 500%-wide track
-      if (!reducedMotion) {
-        track.style.transform = 'translate3d(-' + (idx * 20) + '%, 0, 0)';
-      }
+      if (reducedMotion) return;
 
-      // Update dots, counter, and aria-live only on index change
+      // Slide the track: each step is 20% of the 500%-wide track
+      track.style.transform = 'translate3d(-' + (idx * 20) + '%, 0, 0)';
+
+      // Update visual state and aria-live only on index change
       if (idx !== currentIdx) {
         currentIdx = idx;
         dots.forEach(function (d, i) {
+          d.classList.toggle('completed', i < idx);
           d.classList.toggle('active', i === idx);
         });
-        counter.textContent = String(idx + 1);
+        cards.forEach(function (card, i) {
+          card.classList.toggle('active', i === idx);
+        });
+        if (counter) counter.textContent = String(idx + 1);
         var title = track.querySelectorAll('.era-title')[idx];
         if (title && live) live.textContent = title.textContent;
       }
 
       // Subtle parallax — head drifts up -24px, bg glow drifts up -44px
-      if (!reducedMotion) {
-        if (pHead) pHead.style.transform = 'translateY(' + (-(t * 24)) + 'px)';
-        if (pBg)   pBg.style.transform   = 'translateY(' + (-(t * 44)) + 'px)';
-      }
+      if (pHead) pHead.style.transform = 'translateY(' + (-(t * 24)) + 'px)';
+      if (pBg)   pBg.style.transform   = 'translateY(' + (-(t * 44)) + 'px)';
     }
 
     function scheduleUpdate() {

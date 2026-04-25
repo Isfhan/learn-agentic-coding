@@ -18,30 +18,11 @@ You do **not** need to master every tool. You need to know the *categories*, pic
 ## The 4 categories
 
 ```mermaid
-flowchart LR
-    A[Agentic Coding Tools] --> B[IDE-native]
-    A --> C[CLI-native]
-    A --> D[OSS Frameworks]
-    A --> E[Cloud Agents]
-
-    B --> B1[Cursor]
-    B --> B2[GitHub Copilot Agent]
-    B --> B3[Windsurf]
-    B --> B4[JetBrains AI Assistant]
-
-    C --> C1[Claude Code]
-    C --> C2[Qwen Code]
-    C --> C3[Aider]
-    C --> C4[OpenAI Codex CLI]
-
-    D --> D1[Cline - VS Code]
-    D --> D2[Continue - VS Code/JetBrains]
-    D --> D3[Roo Code]
-
-    E --> E1[Devin]
-    E --> E2[GitHub Copilot Workspace]
-    E --> E3[OpenAI Codex Cloud]
-    E --> E4[Cursor Cloud Agents]
+flowchart TD
+    A[Agentic Coding<br/>Tools] --> B[IDE-native<br/>in your editor]
+    A --> C[CLI-native<br/>in your terminal]
+    A --> D[OSS frameworks<br/>open-source tools]
+    A --> E[Cloud agents<br/>remote PR builders]
 ```
 
 ### 1. IDE-native (the "in-editor" experience)
@@ -51,7 +32,7 @@ Built into (or deeply integrated with) your code editor.
 | Tool | Strength | Weakness | Pricing |
 |------|----------|----------|---------|
 | **Cursor** | Best-in-class agent + inline edits + rules/skills/hooks | Forks VS Code (not VS Code itself) | ~$20/mo |
-| **GitHub Copilot (Agent Mode)** | Universal, works in VS Code / JetBrains / Xcode; deep GitHub integration; MCP support | Less bleeding-edge | $10–39/mo |
+| **GitHub Copilot (Agent Mode + coding agent)** | Universal, works in VS Code / JetBrains / Xcode; deep GitHub integration; MCP support | Less bleeding-edge than Cursor for some agent workflows | $10–39/mo |
 | **Windsurf** | Cascade "flow" feels very natural | Smaller ecosystem | ~$15/mo |
 | **JetBrains AI Assistant** | Native for IntelliJ/PyCharm users | Catching up on agent features | ~$10/mo |
 
@@ -62,7 +43,8 @@ Run in your shell, see your files, execute commands directly.
 | Tool | Strength | Weakness | Pricing |
 |------|----------|----------|---------|
 | **Claude Code** | Most agent-native workflow; Skills, hooks, subagents, plugins | Tied to Anthropic | Usage-based |
-| **OpenAI Codex CLI** | Great GPT integration | Newer ecosystem | Usage-based |
+| **OpenAI Codex CLI** | Great GPT integration; strong for terminal tasks and cloud handoff | Newer ecosystem | Usage-based |
+| **Gemini CLI** | Strong Google model access; useful for large-context exploration | Less standardized across teams | Usage-based / plan-based |
 | **Qwen Code** | Fully open; can run local (480B params!); fully self-hostable | Infra required for best perf | Free (model costs) |
 | **Aider** | Token-efficient repo-map; git-native auto-commits | Terminal-only UX | Free (model costs) |
 
@@ -81,9 +63,10 @@ You assign a task, they return a PR.
 | Tool | Strength | Weakness |
 |------|----------|----------|
 | **Devin** | Full autonomous "employee" UX | Expensive; mixed reviews |
-| **GitHub Copilot Workspace / Copilot coding agent** | Tight GitHub issue → PR loop | GitHub-only |
+| **GitHub Copilot Workspace / Copilot coding agent** | Tight GitHub issue → PR loop; good governance fit for GitHub teams | GitHub-only |
 | **Cursor Cloud Agents** | Spawn agents from your phone/web | Still maturing |
 | **OpenAI Codex (Cloud)** | Parallel multi-task execution | Newer |
+| **Gemini / Google cloud agent surfaces** | Strong if your team already lives in Google Cloud or Gemini tooling | Product surface changes quickly |
 
 ---
 
@@ -123,9 +106,24 @@ Pick a **primary** (your daily driver) and a **sidekick** (for when the primary 
 | **Cursor** | **Claude Code** | Full-time engineers who want the best GUI + a CLI fallback for multi-step refactors |
 | **Claude Code** | **Cursor** | Power users who live in the terminal but want an IDE for browsing |
 | **GitHub Copilot** | **Aider** | GitHub-heavy teams wanting governance + a free terminal fallback |
+| **Copilot coding agent** | **Codex CLI** | GitHub-first teams that want issue-to-PR automation plus a terminal backup |
+| **Gemini CLI** | **Cursor or Copilot** | Learners who want large-context exploration plus a familiar editor agent |
 | **Cline** | **Qwen Code** | Privacy-focused / self-hosted / no-cloud environments |
 
 > Going through this roadmap, **we'll use both Cursor (Step 04) and Claude Code (Step 05)**. If you can, install both. They're complementary.
+
+---
+
+## Vendor-neutral comparison checklist
+
+Use this checklist when a new tool appears. Tool names change fast; capabilities matter more than hype.
+
+- **Context strategy:** Can it read the right files without dumping the whole repo into context?
+- **Tool boundaries:** Can you approve shell, file, browser, MCP, and deploy actions separately?
+- **MCP support:** Can it connect to your tools through MCP, and can you limit server permissions?
+- **Review workflow:** Does it produce a diff or PR that a human can review before merge?
+- **Eval fit:** Can you measure whether the tool improved your task quality, speed, or safety?
+- **Fallback:** If the tool fails, can you continue in another agent without losing the task state?
 
 ---
 
@@ -145,14 +143,14 @@ Pick a **primary** (your daily driver) and a **sidekick** (for when the primary 
 
 ## ✍️ Exercise (30 min)
 
-1. Install **two** tools from different categories — e.g., Cursor (IDE) + Claude Code (CLI), *or* VS Code + Cline (OSS) + Aider (CLI).
+1. Install **two** tools from different categories — e.g., Cursor (IDE) + Claude Code (CLI), Copilot Agent + Codex CLI, Gemini CLI + Cursor, or VS Code + Cline + Aider.
 2. Give them **the same small task** (e.g., "add input validation to the /login endpoint of my demo repo").
 3. Fill in this table in your learning log:
 
-| Tool | How many turns? | Quality 1–5 | What I liked | What frustrated me |
-|------|-----------------|-------------|--------------|---------------------|
-| (Tool 1) | | | | |
-| (Tool 2) | | | | |
+| Tool | How many turns? | Quality 1–5 | Safety controls | What I liked | What frustrated me |
+|------|-----------------|-------------|-----------------|--------------|---------------------|
+| (Tool 1) | | | | | |
+| (Tool 2) | | | | | |
 
 This 20-minute exercise will teach you more about tool differences than any blog post.
 

@@ -51,7 +51,7 @@ Then set the **publish directory** to `_site`.
 - **Hero** with animated orbs, grid background, and a live-looking `agent_loop.py` code card
 - **Tools marquee** (Cursor, Claude Code, Qwen, MCP servers, Spec Kit, OpenSpec, …)
 - **The big picture** — six thesis cards
-- **Four phases** (Explorer · Operator · Extender · Architect) color-coded
+- **Four phases** (Foundations · Operator · Extender · Architect) color-coded
 - **All 20 steps** rendered from a single JS array — easy to update
 - **3-week plan** timeline
 - **What you'll build** — portfolio outputs
@@ -70,4 +70,4 @@ const steps = [
 ];
 ```
 
-Tones control the phase colors: `violet` → Explorer, `cyan` → Operator, `pink` → Extender, `amber` → Architect.
+Tones control the phase colors: `violet` → Foundations, `cyan` → Operator, `pink` → Extender, `amber` → Architect.
