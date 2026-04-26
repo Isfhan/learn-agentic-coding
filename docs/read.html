@@ -57,6 +57,7 @@
     color: #efe6e4;
     font-family: 'General Sans', 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   .font-display { letter-spacing: -0.02em; font-weight: 600; }
 
@@ -91,15 +92,19 @@
     letter-spacing: -0.015em;
     color: #f7eded;
   }
-  .prose-roadmap h1 { font-size: 2.6rem; line-height: 1.1; margin: 0 0 1.2rem; }
+  .prose-roadmap h1 {
+    font-size: clamp(1.75rem, 5.5vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+  }
   .prose-roadmap h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.35rem, 4vw, 1.8rem);
     margin: 2.4rem 0 1rem;
     padding-bottom: .45rem;
     border-bottom: 1px solid rgba(239,230,228,0.08);
   }
-  .prose-roadmap h3 { font-size: 1.35rem; margin: 1.8rem 0 .6rem; }
-  .prose-roadmap h4 { font-size: 1.1rem; margin: 1.4rem 0 .5rem; color:#efe6e4; }
+  .prose-roadmap h3 { font-size: clamp(1.12rem, 3.2vw, 1.35rem); margin: 1.8rem 0 .6rem; }
+  .prose-roadmap h4 { font-size: clamp(1rem, 2.5vw, 1.1rem); margin: 1.4rem 0 .5rem; color:#efe6e4; }
   .prose-roadmap p { margin: 0 0 1rem; }
   .prose-roadmap a {
     color: #f43f5e;
@@ -195,16 +200,24 @@
     padding: .8rem;
     white-space: normal;
   }
+  .table-wrap {
+    margin: 1.2rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
   .prose-roadmap table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.2rem 0;
+    margin: 0;
     font-size: .95rem;
   }
   .prose-roadmap th, .prose-roadmap td {
     border: 1px solid rgba(239,230,228,0.08);
     padding: .55rem .8rem;
     text-align: left;
+    word-break: break-word;
+    hyphens: auto;
   }
   .prose-roadmap th { background: rgba(239,230,228,0.03); color: #f7eded; font-weight: 600; }
   .prose-roadmap img { max-width: 100%; border-radius: .6rem; margin: 1rem 0; }
@@ -240,28 +253,34 @@
     animation: spin .9s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  .reader-nav-btn {
+    outline: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .reader-nav-btn:focus-visible {
+    box-shadow: 0 0 0 2px #0a0707, 0 0 0 4px rgba(225, 29, 72, 0.45);
+  }
 </style>
 </head>
 <body>
 
 <header class="sticky top-0 z-40 backdrop-blur-xl" style="background: rgba(10,7,7,0.78); border-bottom: 1px solid rgba(239,230,228,0.07);">
-  <div class="max-w-4xl mx-auto px-6 py-3.5 flex items-center justify-between gap-4">
-    <a href="index.html" class="inline-flex items-center gap-2.5 font-display tracking-tight text-[17px]">
-      <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg" style="background: linear-gradient(180deg, #e11d48 0%, #9f1239 100%)">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4 min-w-0">
+    <a href="index.html" class="reader-nav-btn inline-flex min-w-0 items-center gap-2 sm:gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 py-2 sm:px-3 font-display tracking-tight text-[14px] sm:text-[17px] text-white/90 hover:border-white/18 hover:bg-white/[0.07]">
+      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg" style="background: linear-gradient(180deg, #e11d48 0%, #9f1239 100%)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       </span>
-      <span>Back to <span class="text-grad italic">roadmap</span></span>
+      <span class="min-w-0 leading-tight">Back to <span class="text-grad italic">roadmap</span></span>
     </a>
-    <div class="flex items-center gap-2">
-      <a id="raw-link" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-white/60 hover:text-white transition px-3 py-1.5 rounded-lg glass glass-hover">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <span>Raw file</span>
-      </a>
-    </div>
+    <a id="raw-link" target="_blank" rel="noopener" class="reader-nav-btn inline-flex h-10 w-10 shrink-0 items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:border-white/20 hover:bg-white/[0.07] hover:text-white sm:h-auto sm:w-auto sm:px-3 sm:py-2 sm:text-xs sm:font-medium" aria-label="Open raw file in new tab">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 sm:h-[13px] sm:w-[13px]" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span class="hidden sm:inline">Raw file</span>
+    </a>
   </div>
 </header>
 
-<main class="max-w-4xl mx-auto px-6 py-10 md:py-14">
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-14">
   <div id="status" class="flex items-center gap-3 text-white/60 text-sm">
     <div class="spinner"></div>
     <span>Loading…</span>
@@ -284,7 +303,7 @@
     </div>
   </div>
 
-  <article id="content" class="hidden prose-roadmap"></article>
+  <article id="content" class="hidden prose-roadmap w-full max-w-none 2xl:mx-auto 2xl:max-w-[48rem]"></article>
   <pre id="plain" class="hidden plain-text"></pre>
 
   <div class="mt-14 pt-8 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-sm">
@@ -348,6 +367,14 @@
             marked.setOptions({ gfm: true, breaks: false });
             const html = marked.parse(text);
             contentEl.innerHTML = DOMPurify.sanitize(html);
+            contentEl.querySelectorAll('table').forEach((table) => {
+              const parent = table.parentElement;
+              if (parent && parent.classList.contains('table-wrap')) return;
+              const wrap = document.createElement('div');
+              wrap.className = 'table-wrap';
+              table.parentNode.insertBefore(wrap, table);
+              wrap.appendChild(table);
+            });
             // Rewrite relative .md links so clicks stay in the reader.
             contentEl.querySelectorAll('a[href]').forEach(a => {
               const href = a.getAttribute('href');
