@@ -34,7 +34,7 @@ They're complementary. **Prompt engineering is a subset of context engineering.*
 
 Models in 2026 support 1M+ tokens. Problem solved, right?
 
-No. Quality measurably degrades past ~32–64K tokens. This is documented across vendors and is called the **"lost in the middle"** problem. A focused 20K-token context **outperforms** a bloated 200K-token context on almost every task.
+No. Bigger context increases capacity, but it does not guarantee attention, relevance, or correctness. Long prompts are vulnerable to **lost in the middle** behavior, where details buried inside a large context are easier for the model to miss. In practice, a focused context with the right files and facts often beats a bloated context full of stale logs, unrelated files, and old conversation history.
 
 > **Karpathy law of context:** *The best context is the smallest context that still contains everything the model needs.*
 
@@ -186,7 +186,7 @@ Compare time, quality, token cost. Log the delta.
 ## ✅ Self-check
 
 1. Name the 4 context-failure modes.
-2. Why does a 200K-token context often perform *worse* than a 20K-token one?
+2. Why can a huge context perform *worse* than a smaller, focused one?
 3. When would you use `/compact` vs. start a fresh session?
 
 ---

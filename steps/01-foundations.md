@@ -60,7 +60,7 @@ The **context window** is the LLM's short-term memory. Everything the model sees
            LLM RESPONDS
 ```
 
-Typical limits in 2026:
+Examples of common limits in 2026. Check current vendor docs before treating these as exact:
 
 | Model family | Context window |
 |--------------|----------------|
@@ -71,9 +71,9 @@ Typical limits in 2026:
 
 ### ⚠️ The cliff
 
-Even if a model supports 1M tokens, **quality degrades sharply past ~32K–64K tokens**. This is called the "lost in the middle" problem. You'll hear about it again in [Step 13 · Context Engineering](./13-context-engineering.md).
+Even if a model supports 1M tokens, bigger context is not automatically better. Many long-context tasks suffer from **lost in the middle** behavior: important details buried in the middle of a long prompt can be ignored or underweighted. You'll hear about it again in [Step 13 · Context Engineering](./13-context-engineering.md).
 
-> **Rule of thumb:** A focused 20K-token context beats a bloated 200K-token context on almost every task.
+> **Rule of thumb:** A focused, relevant context usually beats a much larger context full of stale logs, unrelated files, and old conversation history.
 
 ---
 

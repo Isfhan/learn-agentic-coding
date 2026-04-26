@@ -49,7 +49,7 @@ N + M integrations. Sanity.
 
 > 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources). **JSON-RPC** means the client and server send JSON messages that say “call this method with these arguments.”
 
-Anthropic open-sourced MCP in late 2024. By 2026, OpenAI, Google, GitHub, and most AI tool vendors support it.
+Anthropic open-sourced MCP in late 2024. By 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
 
 ---
 
@@ -90,8 +90,8 @@ flowchart LR
 ### Transports
 
 An MCP server talks to its client over:
-- **stdio** (standard input/output) — server is a local subprocess that reads and writes text streams. Most common.
-- **HTTP+SSE** (HTTP plus server-sent events) — server is remote and can push updates over a web connection. Used for hosted MCP servers.
+- **stdio** (standard input/output) — server is a local subprocess that reads and writes text streams. Most common for local MCP servers.
+- **Streamable HTTP** (HTTP requests with optional server-sent event streaming) — current remote transport in the MCP spec. It replaced the older **HTTP+SSE** transport, which you may still see in older clients, servers, and tutorials for backward compatibility.
 
 ---
 
@@ -207,6 +207,7 @@ Community-maintained registry: **[mcp.so](https://mcp.so/)** — hundreds of ser
 ## 📚 Read
 
 - 📘 [**modelcontextprotocol.io**](https://modelcontextprotocol.io/) — official spec + docs. Start here.
+- 📘 [**MCP transports**](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) — current stdio and Streamable HTTP details.
 - 📘 [**modelcontextprotocol/servers** (GitHub)](https://github.com/modelcontextprotocol/servers) — official servers to learn from.
 - 📘 [**mcp.so**](https://mcp.so/) — community registry of 100s of servers.
 - 📄 [**SynapseWire — MCP Practical Guide 2026**](https://synapsewire.com/en/posts/mcp-agentic-ai-practical-guide-2026/) — excellent overview.

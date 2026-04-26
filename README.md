@@ -111,9 +111,17 @@ flowchart TD
 ├── README.md                ← You are here
 ├── ROADMAP.md               ← The visual learning path
 ├── CONTRIBUTING.md          ← How to improve this roadmap
+├── AGENTS.md                ← Project guidance for coding agents
 ├── steps/                   ← The 20 step files (00-18, including 13.5)
 ├── resources/               ← Curated YouTube, GitHub, books, communities
-└── projects/                ← Hands-on portfolio projects
+├── projects/                ← Hands-on portfolio projects
+├── agents/                  ← Build-your-own-agent examples
+├── mcp/                     ← Sample MCP servers
+├── evals/                   ← Quality checks for agent behavior
+├── security/                ← Threat model and safety notes
+├── capstone/                ← Public-facing final artifact
+├── scripts/                 ← Repo maintenance checks
+└── .cursor/                 ← Rules, skills, and hooks for agent workflows
 ```
 
 ---
