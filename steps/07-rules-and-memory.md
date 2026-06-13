@@ -36,7 +36,7 @@ Rules are how you teach it — once — so you never have to repeat yourself.
 
 ```mermaid
 flowchart LR
-    U[User rules<br/>~/.cursor/rules<br/>~/.claude/CLAUDE.md] -->|applied first| X[Every session]
+    U[User rules<br/>Cursor Settings → Rules<br/>~/.claude/CLAUDE.md] -->|applied first| X[Every session]
     P[Project rules<br/>.cursor/rules/<br/>./AGENTS.md] -->|applied for this repo| X
     T[Team rules<br/>Cursor dashboard /<br/>shared plugin] -->|organization policy| X
     X --> Y[Agent behavior]
@@ -57,7 +57,7 @@ flowchart LR
 - Claude Code reads it automatically.
 - Cursor reads it (and `.cursor/rules/` also).
 - OpenAI Codex reads it.
-- Aider and Cline respect it.
+- Aider and Cline may support it via configuration — verify in each tool's docs.
 - Any future tool *should* read it too.
 
 This means your rules travel with the repo across tools. **Write once, use everywhere.**
@@ -145,7 +145,7 @@ People conflate these. Here's the crisp difference:
 | Thing | When it loads | Contains | Example |
 |-------|---------------|----------|---------|
 | **Rule** | Automatically, based on scope/globs | Instructions the agent should always follow | "Use Biome not ESLint" |
-| **Memory** (where supported) | Automatically, cross-session | Facts the agent has *learned* about you | "User prefers `fn` over `function`" |
+| **Memory** (Cursor Memories, Claude memory where enabled) | Automatically, cross-session | Facts the agent has *learned* about you | "User prefers `fn` over `function`" |
 | **Skill** | Loaded on demand when task matches | Step-by-step how-to + optional scripts | How to publish a release |
 | **Command** (slash-command) | Explicitly invoked (`/foo`) | A saved prompt you run often | `/review` = "review the last commit" |
 

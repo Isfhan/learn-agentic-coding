@@ -32,7 +32,7 @@ They're complementary. **Prompt engineering is a subset of context engineering.*
 
 ## 2. The "bigger window" fallacy
 
-Models in 2026 support 1M+ tokens. Problem solved, right?
+Models in June 2026 support 1M+ tokens on frontier models (`claude-opus-4-8`, `gpt-5.5`, `gemini-3.5-pro`). Problem solved, right?
 
 No. Bigger context increases capacity, but it does not guarantee attention, relevance, or correctness. Long prompts are vulnerable to **lost in the middle** behavior, where details buried inside a large context are easier for the model to miss. In practice, a focused context with the right files and facts often beats a bloated context full of stale logs, unrelated files, and old conversation history.
 
@@ -152,7 +152,7 @@ Every time you think "ugh, I explained that three times" — that's a missing ru
 
 ## 🎥 Watch
 
-- **[Andrej Karpathy tweets on context engineering](https://twitter.com/karpathy)** — follow him. Seriously.
+- **[Andrej Karpathy on context engineering](https://x.com/karpathy)** — follow him. Seriously.
 - **[Lance Martin (LangChain) — Context engineering talk](https://www.youtube.com/results?search_query=context+engineering+lance+martin)**
 - **[AI Engineer conference — context engineering sessions](https://www.youtube.com/@aiengineerfoundation)**
 

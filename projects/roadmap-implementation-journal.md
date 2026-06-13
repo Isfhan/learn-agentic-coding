@@ -11,7 +11,7 @@
 
 - Added first custom skill: `.cursor/skills/roadmap-execution/SKILL.md`.
 - Built MCP server connected to live Hacker News API: `mcp/hn-context-server/server.js`.
-- Added hooks automation and shell safety gate: `.cursor/hooks.json`, `.cursor/hooks/block-dangerous-shell.sh`.
+- Added hooks automation and shell safety gate: `.cursor/hooks.json`, `.cursor/hooks/block-dangerous-shell.js`.
 
 ## Week 3 (Architect)
 

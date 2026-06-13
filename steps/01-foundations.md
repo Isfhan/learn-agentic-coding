@@ -60,14 +60,14 @@ The **context window** is the LLM's short-term memory. Everything the model sees
            LLM RESPONDS
 ```
 
-Examples of common limits in 2026. Check current vendor docs before treating these as exact:
+Examples of common limits in June 2026. Check current vendor docs before treating these as exact:
 
-| Model family | Context window |
-|--------------|----------------|
-| GPT-5 / Codex | 200K–400K tokens |
-| Claude Opus / Sonnet | 200K–1M tokens |
-| Gemini 2.5 | 1M–2M tokens |
-| Open-source (Qwen, Llama) | 128K–256K tokens |
+| Model family | Example models | Context window |
+|--------------|----------------|----------------|
+| OpenAI GPT-5.5 / Codex | `gpt-5.5`, `gpt-5.2-codex` | ~1M tokens (GPT-5.5); 400K in Codex |
+| Anthropic Claude | `claude-opus-4-8`, `claude-sonnet-4-6` | Up to 1M tokens |
+| Google Gemini 3.5 | `gemini-3.5-flash`, `gemini-3.5-pro` | 1M (Flash); up to 2M (Pro) |
+| Open-source (Qwen, Llama) | Qwen3-Coder, Llama 4 | 128K–256K tokens |
 
 ### ⚠️ The cliff
 
@@ -114,8 +114,8 @@ In an agent loop, hallucinations compound:
 | Type | What it is | Example | When coders use it |
 |------|-----------|---------|---------------------|
 | **Base model** | Raw next-token predictor, not yet tuned with RLHF (reinforcement learning from human feedback) | Llama 3 base | Almost never directly |
-| **Instruct model** | Fine-tuned to follow instructions | GPT-4o, Claude Sonnet, Qwen Coder | Default for most agent work |
-| **Reasoning model** | Generates a hidden "thinking" pass before answering | GPT-5, Claude Opus with extended thinking, DeepSeek R1 | Hard debugging, architecture, multi-step planning |
+| **Instruct model** | Fine-tuned to follow instructions | `gpt-5.4-mini`, `claude-sonnet-4-6`, `gemini-3.5-flash` | Default for most agent work |
+| **Reasoning model** | Generates a hidden "thinking" pass before answering | `gpt-5.5`, `claude-opus-4-8`, DeepSeek R1 | Hard debugging, architecture, multi-step planning |
 
 **Rule of thumb for coding:**
 
@@ -132,7 +132,7 @@ In an agent loop, hallucinations compound:
 
 ## 📚 Read
 
-- 📄 [**Anthropic: Prompt engineering overview**](https://docs.anthropic.com/claude/docs/prompt-engineering) — short + practical.
+- 📄 [**Anthropic: Prompt engineering overview**](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview) — short + practical.
 - 📄 [**Lilian Weng: Prompt Engineering**](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/) — comprehensive reference.
 - 📄 [**Simon Willison — Hallucinations in code are the least dangerous form**](https://simonwillison.net/2025/Mar/2/hallucinations-in-code/) — beautiful short read.
 

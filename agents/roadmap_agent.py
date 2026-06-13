@@ -3,7 +3,7 @@
 roadmap_agent.py
 
 Reference implementation for "Build Your Own Agent" step.
-This is a small supervised agent runtime with:
+This is a small **supervised stub** (deterministic planner, no LLM) with:
 - explicit context state
 - pluggable tools
 - safety checks for shell usage
@@ -15,7 +15,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import shlex
 import subprocess
 import textwrap
 from dataclasses import dataclass, field
@@ -90,9 +89,21 @@ def tool_write_file(args: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def is_shell_safe(command: str) -> bool:
-    blocked = ["rm -rf", "git reset --hard", "git push --force", "DROP TABLE", "curl | sh"]
+    blocked = [
+        "rm -rf",
+        "git reset --hard",
+        "git push --force",
+        "drop table",
+        "curl | sh",
+        "del /f",
+        "rd /s",
+        "remove-item",
+        "format c:",
+        "shutdown",
+        "mkfs",
+    ]
     normalized = " ".join(command.strip().split()).lower()
-    return not any(token.lower() in normalized for token in blocked)
+    return not any(token in normalized for token in blocked)
 
 
 def tool_shell(args: Dict[str, Any]) -> Dict[str, Any]:
@@ -132,7 +143,7 @@ def naive_planner(state: AgentState, tools: ToolRegistry) -> Dict[str, Any]:
     """
     task = state.task.lower()
     if "summarize" in task and "roadmap" in task:
-        return {"tool": "read_file", "args": {"path": "README.md"}}
+        return {"tool": "read_file", "args": {"path": "ROADMAP.md"}}
     if "create file" in task:
         return {"tool": "write_file", "args": {"path": "output.txt", "content": "created by roadmap_agent"}}
     if "list files" in task:
@@ -187,10 +198,8 @@ def run_agent(task: str, max_steps: int) -> AgentState:
         observation = evaluate_step(result)
         state.add_observation(f"Step {step} / {tool}\n{observation}")
 
-        # Early stop conditions
-        if result.get("ok") and tool == "read_file":
-            break
-        if result.get("ok") and "returncode" in str(result.get("data", "")):
+        # Early stop: task satisfied after successful file read for summarize flows
+        if result.get("ok") and tool == "read_file" and "summarize" in state.task.lower():
             break
 
     return state
@@ -244,7 +253,11 @@ def main() -> None:
 
     print(f"Run complete. Report written to {report_path}")
     print()
-    print(state.summarize())
+    summary = state.summarize()
+    try:
+        print(summary)
+    except UnicodeEncodeError:
+        print(summary.encode("ascii", errors="replace").decode("ascii"))
 
 
 if __name__ == "__main__":

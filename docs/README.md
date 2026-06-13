@@ -4,7 +4,7 @@ A single-file, zero-build, modern landing page for **The Agentic Coding Roadmap*
 
 - **File:** `index.html` (everything inline: Tailwind via CDN, fonts, styles, JS)
 - **No build step.** No `node_modules`. No bundler. Just open the file.
-- **No tracking, no analytics, no external calls** beyond Google Fonts and `cdn.tailwindcss.com`.
+- **No tracking, no analytics.** External calls: Google Fonts, Fontshare, Tailwind CDN, and (in `read.html`) jsDelivr for marked/DOMPurify/Mermaid.
 
 ## Preview locally
 

@@ -1,6 +1,8 @@
 # 🗺️ The Visual Roadmap
 
 > A one-page big picture. Print it, screenshot it, put it on your desk.
+>
+> **Last verified: June 2026.** See [README.md](./README.md#-currency) for refresh guidance.
 
 ---
 

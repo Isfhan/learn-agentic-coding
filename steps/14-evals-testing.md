@@ -134,8 +134,8 @@ prompts:
   - 'Write a short Python function to {{task}}.'
 
 providers:
-  - anthropic:claude-sonnet-4.5
-  - openai:gpt-5.1
+  - anthropic:claude-sonnet-4-6
+  - openai:gpt-5.5
 
 tests:
   - vars:
@@ -229,7 +229,7 @@ Before shipping an AI-assisted change to real users:
 - 📘 [**promptfoo docs**](https://www.promptfoo.dev/docs/intro/) — start here.
 - 📄 [**Hamel Husain — "Your AI product needs evals"**](https://hamel.dev/blog/posts/evals/)
 - 📄 [**Eugene Yan — "Evaluation & Hallucination Detection for Abstractive Summaries"**](https://eugeneyan.com/writing/evals/)
-- 📄 [**Anthropic — Creating evals**](https://docs.anthropic.com/claude/docs/creating-evals)
+- 📄 [**Anthropic — Creating evals**](https://docs.claude.com/en/docs/test-and-evaluate/develop-tests)
 - 📘 [**openai/evals**](https://github.com/openai/evals)
 
 ---

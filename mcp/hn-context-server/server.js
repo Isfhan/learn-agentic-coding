@@ -78,7 +78,7 @@ async function handleCallTool(params) {
   }
 
   try {
-    const story = await getTopStory(args.rank);
+    const story = await getTopStory(args.rank ?? 0);
     return {
       content: [{ type: "text", text: JSON.stringify(story, null, 2) }]
     };
@@ -94,7 +94,7 @@ async function routeRequest(msg) {
   switch (msg.method) {
     case "initialize":
       return {
-        protocolVersion: "2024-11-05",
+        protocolVersion: "2025-11-25",
         capabilities: {
           tools: {}
         },
@@ -116,9 +116,11 @@ async function routeRequest(msg) {
                 rank: {
                   type: "integer",
                   minimum: 0,
+                  default: 0,
                   description: "Top story rank to fetch. 0 = current top story."
                 }
-              }
+              },
+              required: []
             }
           }
         ]

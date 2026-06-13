@@ -26,7 +26,7 @@ sessionStart ──► preToolUse ──► [tool runs] ──► postToolUse �
                "validate!"                       "format! lint!"
 ```
 
-Every agentic tool (Cursor, Claude Code) fires the same general set of events. The names differ slightly; the idea is identical.
+Every agentic tool (Cursor, Claude Code) fires a similar set of events. Names and schemas differ slightly — always check your tool's docs.
 
 ### Common hook events
 
@@ -36,10 +36,12 @@ Every agentic tool (Cursor, Claude Code) fires the same general set of events. T
 | `sessionEnd` | Session ends | Summary email, cleanup |
 | `preToolUse` | Before any tool | Validate, block unsafe calls |
 | `postToolUse` | After any tool | Log, format |
-| `beforeShellExecution` | Before `bash` tool | Block `rm -rf /`, `force-push` |
+| `beforeShellExecution` | Before shell tool | Block `rm -rf /`, `force-push` |
 | `afterFileEdit` | After an edit | `prettier`, update index |
 | `beforeMCPExecution` | Before MCP call | Scan args for secrets |
 | `subagentStart` / `subagentStop` | Sub-agent boundaries | Attribute cost, swap rules |
+
+All hook configs should include `"version": 1` at the top level.
 
 ---
 
@@ -47,10 +49,11 @@ Every agentic tool (Cursor, Claude Code) fires the same general set of events. T
 
 ### a) Command hooks — deterministic
 
-A shell command, fed JSON on stdin, expected to emit JSON on stdout (or exit 0/non-zero to allow/block).
+A shell command. Cursor passes hook context as **JSON on stdin**; the script reads it, then exits 0 (allow) or non-zero (block). Some tools also expose env vars like `$CURSOR_EDITED_FILE` (Cursor) or `$CLAUDE_EDITED_FILE` (Claude Code).
 
 ```json
 {
+  "version": 1,
   "hooks": {
     "afterFileEdit": [
       { "command": "pnpm prettier --write \"$CURSOR_EDITED_FILE\"" }
@@ -67,9 +70,11 @@ Instead of a shell command, you write a prompt. A small model evaluates it and r
 
 ```json
 {
+  "version": 1,
   "hooks": {
     "beforeShellExecution": [
       {
+        "type": "prompt",
         "prompt": "Is this command safe to run in our repo? Block: rm -rf, force push to main, DROP TABLE without WHERE, secrets being echoed. Allow otherwise."
       }
     ]
@@ -87,7 +92,7 @@ Slower + costs tokens, but **great for nuanced policies** no regex can catch.
 
 ```json
 "afterFileEdit": [
-  { "command": "pnpm prettier --write \"$EDITED_FILE\" 2>/dev/null || true" }
+  { "command": "pnpm prettier --write \"$CURSOR_EDITED_FILE\" 2>/dev/null || true" }
 ]
 ```
 
@@ -118,7 +123,7 @@ The agent sees what's changed and what you've been working on. Saves 3 clarifyin
 ```json
 "postToolUse": [
   {
-    "matcher": { "tool": "edit_file" },
+    "matcher": "Write",
     "command": "pnpm typecheck --pretty false 2>&1 | head -50"
   }
 ]
@@ -126,12 +131,15 @@ The agent sees what's changed and what you've been working on. Saves 3 clarifyin
 
 The agent sees type errors immediately — self-corrects without you asking.
 
-### Recipe 5: Scan MCP tool args for secrets (command)
+### Recipe 5: Block dangerous shells (command)
+
+Use a script that reads stdin JSON and blocks known-dangerous patterns. This repo ships an example at `.cursor/hooks/block-dangerous-shell.js` (Node.js, cross-platform).
 
 ```json
-"beforeMCPExecution": [
+"beforeShellExecution": [
   {
-    "command": "bash -c 'grep -E \"(sk-|ghp_|-----BEGIN)\" <<< \"$MCP_ARGS\" && echo BLOCKED || echo OK'"
+    "command": ".cursor/hooks/block-dangerous-shell.js",
+    "failClosed": true
   }
 ]
 ```
@@ -168,7 +176,7 @@ Project-level beats user-level. Commit project hooks to git.
 
 When a hook misbehaves, you need visibility. Tips:
 
-- Log to a file: `"command": "bash -c 'echo $EDITED_FILE >> ~/hooks.log && prettier --write $EDITED_FILE'"`.
+- Log to a file: `"command": "bash -c 'echo \"$CURSOR_EDITED_FILE\" >> ~/hooks.log && prettier --write \"$CURSOR_EDITED_FILE\"'"`.
 - Start with `exit 0` — confirm the hook *fires* before adding real logic.
 - Keep hook commands fast (<500ms). Slow hooks make the agent feel broken.
 - For prompt hooks, err on the side of allowing — false blocks are worse than false allows during development.

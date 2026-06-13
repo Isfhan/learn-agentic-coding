@@ -110,11 +110,13 @@ See `example.md`.
 
 ```json
 {
+  "version": 1,
   "hooks": {
     "sessionStart": [{ "command": "git status --porcelain" }],
-    "afterFileEdit": [{ "command": "pnpm prettier --write \"$EDITED_FILE\" 2>/dev/null || true" }],
+    "afterFileEdit": [{ "command": "pnpm prettier --write \"$CURSOR_EDITED_FILE\" 2>/dev/null || true" }],
     "beforeShellExecution": [{
-      "prompt": "Block: rm -rf, force push, DROP TABLE, curl | sh, edits outside repo. Allow otherwise."
+      "command": "node .cursor/hooks/block-dangerous-shell.js",
+      "failClosed": true
     }]
   }
 }
@@ -139,8 +141,8 @@ See `example.md`.
 prompts:
   - 'Write {{language}} code to {{task}}. Return code only.'
 providers:
-  - anthropic:claude-sonnet-4.5
-  - openai:gpt-5.1
+  - anthropic:claude-sonnet-4-6
+  - openai:gpt-5.5
 tests:
   - vars: { language: Python, task: "reverse a string" }
     assert:

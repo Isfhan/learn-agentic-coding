@@ -13,7 +13,7 @@
 | **[ARUNAGIRINATHAN-K/awesome-ai-agents](https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents)** | Orchestration frameworks + coding agents. |
 | **[Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)** | LLM app examples — great project ideas. |
 | **[e2b-dev/awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents)** | Another curated index. |
-| **[dair-ai/Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)** | 40k⭐ prompt engineering reference. |
+| **[dair-ai/Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)** | Curated prompt engineering reference. |
 | **[dair-ai/ML-Papers-of-the-Week](https://github.com/dair-ai/ML-Papers-of-the-Week)** | Weekly papers roundup. |
 
 ---
@@ -23,13 +23,13 @@
 | Repo | Notes |
 |------|-------|
 | **[anthropics/claude-code](https://github.com/anthropics/claude-code)** | Official Claude Code — source, issues, plugins. |
-| **[paul-gauthier/aider](https://github.com/paul-gauthier/aider)** | 40k+⭐ terminal agent with git + repo map. |
-| **[cline/cline](https://github.com/cline/cline)** | 57k+⭐ autonomous VS Code extension. |
+| **[paul-gauthier/aider](https://github.com/paul-gauthier/aider)** | Terminal agent with git + repo map. |
+| **[cline/cline](https://github.com/cline/cline)** | Autonomous VS Code extension. |
 | **[continuedev/continue](https://github.com/continuedev/continue)** | Configurable IDE assistant. |
 | **[QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)** | Alibaba's open CLI agent. |
 | **[RooCodeInc/Roo-Code](https://github.com/RooCodeInc/Roo-Code)** | Cline fork with role-based modes. |
 | **[huggingface/smolagents](https://github.com/huggingface/smolagents)** | Tiny, readable agent framework — great for learning. |
-| **[OpenDevin/OpenDevin](https://github.com/OpenDevin/OpenDevin)** | Open-source alternative to Devin. |
+| **[openhands-ai/OpenHands](https://github.com/All-Hands-AI/OpenHands)** | Open-source autonomous coding agent (formerly OpenDevin). |
 
 ---
 

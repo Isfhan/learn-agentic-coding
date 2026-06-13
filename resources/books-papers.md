@@ -25,7 +25,7 @@ These ~10 pieces are referenced again and again across this roadmap.
 
 - 📘 **[promptingguide.ai](https://www.promptingguide.ai/)** — community canonical reference.
 - 📄 **[Lilian Weng — Prompt Engineering](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/)** — academic-quality overview.
-- 📄 **[Anthropic — Prompt engineering for Claude](https://docs.anthropic.com/claude/docs/prompt-engineering)**
+- 📄 **[Anthropic — Prompt engineering for Claude](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)**
 - 📄 **[OpenAI Cookbook — Techniques to improve reliability](https://cookbook.openai.com/articles/techniques_to_improve_reliability)**
 - 📄 **[Claude Lab — Context Engineering guide](https://claudelab.net/en/articles/api-sdk/context-engineering-ai-agents-guide)**
 

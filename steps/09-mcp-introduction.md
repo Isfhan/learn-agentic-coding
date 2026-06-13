@@ -49,7 +49,9 @@ N + M integrations. Sanity.
 
 > 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources). **JSON-RPC** means the client and server send JSON messages that say “call this method with these arguments.”
 
-Anthropic open-sourced MCP in late 2024. By 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
+Anthropic open-sourced MCP in late 2024. By June 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
+
+> **Coming soon:** MCP `2026-07-28` (release candidate locked May 2026) makes the protocol stateless — no `initialize` handshake, no `Mcp-Session-Id` header. Existing `2025-11-25` servers keep working; migrate before the July 2026 final spec ships. See [modelcontextprotocol.io](https://modelcontextprotocol.io/).
 
 ---
 
@@ -144,7 +146,7 @@ A `sql-helper` server exposes a prompt called `optimize-query` that takes a SQL 
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem",
-               "/Users/me/projects"]
+               "./"]
     }
   }
 }
@@ -222,7 +224,7 @@ Community-maintained registry: **[mcp.so](https://mcp.so/)** — hundreds of ser
 3. Give the agent these tasks, one per new chat:
    - *"Summarize the top 5 open issues in `modelcontextprotocol/servers`."* (tests `github`)
    - *"Fetch https://modelcontextprotocol.io and tell me the headline."* (tests `fetch`)
-   - *"What's the largest file in `~/Downloads` by size?"* (tests `filesystem`)
+   - *"What's the largest file in this repo by size?"* (tests `filesystem`)
 4. In your log, note: for each task, which tool(s) did it use? How many calls? Any surprises?
 
 ---

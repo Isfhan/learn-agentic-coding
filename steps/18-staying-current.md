@@ -1,6 +1,6 @@
 # Step 18 · Staying Current
 
-> **⏱️ Time:** ongoing · **Prereq:** All previous steps (or at least 00–05)
+> **⏱️ Time:** ongoing · **Prereq:** All previous steps (or skim 00–03 for vocabulary if you're only here for the cadence)
 
 Agentic coding moves weekly. This final step is about **never falling behind**.
 
@@ -41,16 +41,16 @@ Agentic coding moves weekly. This final step is about **never falling behind**.
 
 These 10 consistently produce high-signal content on agentic coding:
 
-- **[@simonw](https://twitter.com/simonw)** (Simon Willison) — LLM tooling's best diary.
-- **[@karpathy](https://twitter.com/karpathy)** — transformer-era luminary; "LLM OS" came from him.
-- **[@anthropicAI](https://twitter.com/AnthropicAI)** — official Anthropic.
-- **[@OpenAIDevs](https://twitter.com/OpenAIDevs)** — OpenAI dev announcements.
-- **[@cursor_ai](https://twitter.com/cursor_ai)** — Cursor updates.
-- **[@swyx](https://twitter.com/swyx)** — Latent Space podcast host; great curator.
-- **[@HamelHusain](https://twitter.com/HamelHusain)** — evals & practical ML.
-- **[@hwchase17](https://twitter.com/hwchase17)** — LangChain founder.
-- **[@mattpocockuk](https://twitter.com/mattpocockuk)** — clear AI + TS content.
-- **[@dair_ai](https://twitter.com/dair_ai)** — Elvis Saravia's daily AI feed.
+- **[@simonw](https://x.com/simonw)** (Simon Willison) — LLM tooling's best diary.
+- **[@karpathy](https://x.com/karpathy)** — transformer-era luminary; "LLM OS" came from him.
+- **[@anthropicAI](https://x.com/AnthropicAI)** — official Anthropic.
+- **[@OpenAIDevs](https://x.com/OpenAIDevs)** — OpenAI dev announcements.
+- **[@cursor_ai](https://x.com/cursor_ai)** — Cursor updates.
+- **[@swyx](https://x.com/swyx)** — Latent Space podcast host; great curator.
+- **[@HamelHusain](https://x.com/HamelHusain)** — evals & practical ML.
+- **[@hwchase17](https://x.com/hwchase17)** — LangChain founder.
+- **[@mattpocockuk](https://x.com/mattpocockuk)** — clear AI + TS content.
+- **[@dair_ai](https://x.com/dair_ai)** — Elvis Saravia's daily AI feed.
 
 ### Bonus: build your own X list
 On X, create a private list called "Agentic Coding." Add the above + 5–10 builders whose work you admire. Open that list daily instead of the main feed. You'll learn much faster because the signal is cleaner.
@@ -77,7 +77,7 @@ Pick 1–2. Unsubscribing is fine.
 - **[anthropics/skills](https://github.com/anthropics/skills)**
 - **[openai/openai-agents-python](https://github.com/openai/openai-agents-python)**
 - **[langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)**
-- **[caramaschiHG/awesome-ai-agents-2026](https://github.com/caramaschiHG/awesome-ai-agents-2026)** — meta-list.
+- **[caramaschiHG/awesome-ai-agents](https://github.com/caramaschiHG/awesome-ai-agents-2026)** — meta-list of agent tools (check repo for latest year).
 - **[PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)**
 
 ---
@@ -85,7 +85,7 @@ Pick 1–2. Unsubscribing is fine.
 ## 5. Podcasts
 
 - 🎧 **[Latent Space](https://www.latent.space/podcast)** — weekly; the *the* podcast for AI devs.
-- 🎧 **[The AI Engineer Podcast](https://open.spotify.com/show/?)** — search; conference-associated.
+- 🎧 **[The AI Engineer Podcast](https://www.latent.space/podcast)** — also on Spotify; search "Latent Space" or "AI Engineer".
 - 🎧 **[No Priors](https://www.nopriors.com/)** — Sarah Guo; exec/founder angle.
 - 🎧 **[Practical AI](https://changelog.com/practicalai)** — weekly, grounded.
 - 🎧 **[Dwarkesh Patel](https://www.dwarkeshpatel.com/podcast)** — deep interviews with researchers.
@@ -109,7 +109,7 @@ The best way to learn is to teach. Try one:
 - **Do a 30-second video** showing a cool agent workflow. Post on X or LinkedIn.
 - **Do a lunch-and-learn** at work. You'll internalize 10x more than passive learning.
 
-> **The best engineers in AI tooling today were beginners 18 months ago who wrote in public.**
+> **The best engineers in AI tooling today were beginners not long ago who wrote in public.**
 
 ---
 

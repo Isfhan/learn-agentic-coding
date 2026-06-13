@@ -1,6 +1,6 @@
 # HN Context MCP Server
 
-Minimal MCP-compatible server that connects to a real external API (Hacker News public API) and exposes one tool:
+Minimal MCP-compatible server (protocol `2025-11-25`) that connects to a real external API (Hacker News public API) and exposes one tool:
 
 - `get_hn_top_story`: fetches current top story metadata
 

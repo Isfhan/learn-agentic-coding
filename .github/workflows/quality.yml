@@ -55,4 +55,4 @@ jobs:
 
       - name: Run promptfoo evals
         if: ${{ env.ANTHROPIC_API_KEY != '' && env.OPENAI_API_KEY != '' }}
-        run: npx --yes promptfoo@latest eval -c evals/promptfooconfig.yaml
+        run: npx --yes promptfoo@0.117.0 eval -c evals/promptfooconfig.yaml

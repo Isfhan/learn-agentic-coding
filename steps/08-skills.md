@@ -120,7 +120,7 @@ See `example.md` in this folder for a real, good PR body.
 | Tool | Location |
 |------|----------|
 | **Claude Code** | `.claude/skills/<name>/SKILL.md` or `~/.claude/skills/…` |
-| **Cursor** | `.cursor/skills/<name>/SKILL.md` |
+| **Cursor** | `.cursor/skills/<name>/SKILL.md` or via Marketplace plugin |
 | **Plugins** | Bundle multiple skills into one installable |
 | **Claude.ai** | Settings → Skills (for the consumer web app) |
 

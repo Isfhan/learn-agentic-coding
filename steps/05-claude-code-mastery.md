@@ -59,7 +59,7 @@ TypeScript 5, Node 20, Fastify, Prisma + Postgres, Vitest.
 3. After edits, run typecheck + tests before claiming done.
 ```
 
-> 🧠 The `AGENTS.md` convention is becoming cross-tool: Claude Code, Codex, Cursor, and many OSS agents all read it. Write once, use everywhere.
+> 🧠 The `AGENTS.md` convention is becoming cross-tool: Claude Code, Codex, and Cursor all read it natively. Some OSS tools (Aider, Cline) can be configured to include it — check each tool's docs.
 
 ---
 
@@ -72,7 +72,7 @@ Frequently used:
 - `/clear` — reset context (start fresh — you'll do this often).
 - `/compact` — summarize & compress context when it's getting full.
 - `/edit` — enter edit mode on a file.
-- `/model` — switch between Haiku / Sonnet / Opus mid-session.
+- `/model` — switch between Haiku / Sonnet / Opus mid-session (e.g., `claude-sonnet-4-6`, `claude-opus-4-8`).
 - `/plugin` — manage plugins.
 
 ### Custom slash commands
@@ -158,6 +158,7 @@ Like Cursor's, but config lives at `.claude/hooks.json` (project) or `~/.claude/
 
 ```json
 {
+  "version": 1,
   "hooks": {
     "afterFileEdit": [
       { "command": "pnpm prettier --write \"$CLAUDE_EDITED_FILE\"" }
@@ -191,10 +192,10 @@ Or edit `~/.claude/mcp.json` directly. Same servers work in Claude Code, Cursor,
 Claude Code plugins bundle **commands + skills + hooks + MCP** into one installable unit. Think of them as the "VS Code extensions" of agents.
 
 ```bash
-claude plugin add https://github.com/anthropics/some-plugin
+claude plugin add https://github.com/anthropics/skills
 ```
 
-There's a growing marketplace. Watch [`claude-plugins`](https://github.com/topics/claude-plugins) on GitHub.
+Browse the growing plugin ecosystem on GitHub under [`claude-plugins`](https://github.com/topics/claude-plugins).
 
 ---
 
@@ -238,8 +239,8 @@ In any repo:
 
 1. Run `/init` to generate a starter `CLAUDE.md`. Edit it to match your project.
 2. Create `.claude/commands/review.md` — a slash-command that does a self-review of the last commit.
-3. Create one **skill** at `.claude/skills/write-commit/SKILL.md` that teaches Claude your team's commit-message format.
-4. Run `/review` on a recent commit. Run `/write-commit` after staging a change.
+3. Create `.claude/commands/write-commit.md` — a slash-command that teaches Claude your team's commit-message format (use a command, not a skill, so `/write-commit` works).
+4. Run `/review` on a recent commit. Stage a change and run `/write-commit`.
 5. In your learning log, write: *"What did Claude Code do better than Cursor for this task? What did it do worse?"*
 
 ---

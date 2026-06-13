@@ -9,7 +9,7 @@ to *"I design, build, test, and ship production agent systems."*
 
 ![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-blue)
 ![Steps](https://img.shields.io/badge/Steps-20-purple)
-![Updated](https://img.shields.io/badge/Updated-2026-brightgreen)
+![Updated](https://img.shields.io/badge/Last%20verified-June%202026-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)
 
@@ -23,7 +23,7 @@ to *"I design, build, test, and ship production agent systems."*
 
 You already know basic programming: variables, loops, functions, and basic Git. You do **not** need to know agent tools yet.
 
-This roadmap is for learners who use, or want to use, **Cursor**, **Claude Code**, **Qwen CLI**, **GitHub Copilot**, **Codex**, **Gemini CLI**, or similar tools. It explains the buzzwords as you meet them: **MCP (Model Context Protocol: a standard way for AI tools to connect to tools and data)**, **skills (reusable agent instructions)**, **rules (project guidance)**, **hooks (scripts that run around agent actions)**, **subagents (smaller agents for focused work)**, **context engineering (choosing what the AI sees)**, and **evals (tests for AI behavior)**.
+This roadmap is for learners who use, or want to use, **Cursor**, **Claude Code**, **Qwen CLI**, **GitHub Copilot**, **Codex**, **Gemini CLI**, **Google Antigravity**, or similar tools. It explains the buzzwords as you meet them: **MCP (Model Context Protocol: a standard way for AI tools to connect to tools and data)**, **skills (reusable agent instructions)**, **rules (project guidance)**, **hooks (scripts that run around agent actions)**, **subagents (smaller agents for focused work)**, **context engineering (choosing what the AI sees)**, and **evals (tests for AI behavior)**.
 
 This roadmap maps the deeper layer under everyday AI coding.
 
@@ -141,11 +141,17 @@ Before you dive in, internalize these. Everything else is commentary.
 
 ## 🌟 What makes this roadmap different
 
-- ✅ **Tool-aware, not vendor-locked.** We cover Cursor, Claude Code, Qwen, Aider, Cline, Continue, Copilot, Codex, Gemini, and cloud agents.
-- ✅ **2026-current.** MCP, Skills, Hooks, Subagents — the stuff that didn't exist 12 months ago.
+- ✅ **Tool-aware, not vendor-locked.** We cover Cursor, Claude Code, Qwen, Aider, Cline, Continue, Copilot, Codex, Gemini, Antigravity, and cloud agents.
+- ✅ **2026-current.** GPT-5.5, Claude Opus 4.8, Gemini 3.5, MCP stateless RC, Skills, Hooks, async subagents — the stuff that didn't exist 12 months ago.
 - ✅ **Free & open-source.** No course paywall. Every link is a YouTube video, docs page, or GitHub repo.
 - ✅ **Hands-on.** Every step ends with an exercise you can finish in under an hour.
 - ✅ **Maintained.** The AI tooling space moves weekly. We keep this current — [see CONTRIBUTING](./CONTRIBUTING.md).
+
+---
+
+## 📅 Currency
+
+**Last verified: June 2026.** Model names, tool features, and pricing change weekly. When something looks off, check [Step 18 · Staying Current](./steps/18-staying-current.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). Priority refresh targets: [Step 03](./steps/03-ai-coding-tools.md) (tool landscape), [Step 01](./steps/01-foundations.md) (model context windows), and [resources/staying-current-cadence.md](./resources/staying-current-cadence.md).
 
 ---
 

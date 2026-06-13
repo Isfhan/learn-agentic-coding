@@ -84,7 +84,7 @@ For a longer plain-English reference, keep the [glossary](../resources/glossary.
 
 | Term | In plain English |
 |------|------------------|
-| **LLM** | The brain. GPT-5, Claude Opus, Gemini, Qwen, Llama, etc. |
+| **LLM** | The brain. `gpt-5.5`, `claude-opus-4-8`, `gemini-3.5-flash`, Qwen, Llama, etc. |
 | **Context window** | Everything the LLM can "see" right now (code + chat + tool results). Measured in tokens. |
 | **Token** | A chunk of text (≈¾ of an English word). "hello" = 1 token, "unbelievable" = 3. |
 | **Prompt** | What you type. The question or instruction. |
@@ -119,7 +119,7 @@ For a longer plain-English reference, keep the [glossary](../resources/glossary.
 1. Open your favorite agent tool (Cursor Agent, Claude Code, etc.).
 2. Give it this prompt: *"List every file in this repo and summarize what each one does in one sentence."*
 3. **Watch carefully.** Note down:
-   - What tools did it invoke? (e.g., `list_files`, `read_file`)
+   - What tools did it invoke? (e.g., `Glob`, `Read`, `Shell` in Cursor; `read_file`, `run_terminal_cmd` in other tools)
    - How many steps did it take?
    - Did it ever get confused or ask you a question?
 4. Write 3 sentences in your `learning-log.md`:

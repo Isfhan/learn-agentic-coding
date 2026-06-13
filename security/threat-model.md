@@ -39,7 +39,7 @@
 
 ## Mitigations checklist
 
-- [x] Hook blocks dangerous shell patterns
+- [x] Hook blocks dangerous shell patterns (`.cursor/hooks/block-dangerous-shell.js`)
 - [x] Least privilege principle documented
 - [x] Evals added for reliability checks
 - [x] Human approval required for irreversible actions

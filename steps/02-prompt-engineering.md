@@ -95,7 +95,7 @@ This one habit saves hours. You catch misunderstandings *before* files change.
 Paste 2–3 before/after pairs of what you want. Especially powerful for refactors.
 
 ### 4. Force verification
-> "Before claiming a file exists, use `read_file`. Before claiming a command works, run it with the shell tool."
+> "Before claiming a file exists, use `Read` (or `read_file`). Before claiming a command works, run it with the shell tool."
 
 Prevents hallucinations from compounding.
 
@@ -121,7 +121,7 @@ The model often catches its own bugs. Free QA round.
 | 🚫 Anti-pattern | ✅ Do instead |
 |----------|----------|
 | "Fix the bug." | "The test `test_login_redirects` fails with `TypeError: null is not an object`. Find the root cause before changing anything." |
-| Dumping 20 files into context | Point to 2-3 files and let the agent use `read_file` for the rest. |
+| Dumping 20 files into context | Point to 2-3 files and let the agent use `Read` / `read_file` for the rest. |
 | "Rewrite this to be better." | "Rewrite this for readability. Constraints: keep the public API; keep performance within 10%; add JSDoc to exported functions." |
 | "Make it production-ready." | "Production-ready for *us* means: has unit tests, logs errors with our logger, and handles the 3 edge cases we hit before (empty, auth-expired, network-flaky)." |
 | Asking follow-ups in a *huge* chat | Start a new session for a new task — clean context outperforms huge context. |
@@ -131,7 +131,7 @@ The model often catches its own bugs. Free QA round.
 ## Prompt recipes (steal these)
 
 ### 🔍 Exploration
-> "Before I describe the task, explore this repo for me. Use `list_files`, then `read_file` on the 5 most architecturally important files. Summarize the architecture in a tree and a paragraph. Do not edit anything."
+> "Before I describe the task, explore this repo for me. Use `Glob` to list files, then `Read` the 5 most architecturally important files. Summarize the architecture in a tree and a paragraph. Do not edit anything."
 
 ### 🐛 Bug hunt
 > "Reproduce the bug described in `bug-report.md`. Add failing tests that demonstrate it. Do *not* fix it yet — I want to see the failing tests first."
@@ -157,8 +157,8 @@ The model often catches its own bugs. Free QA round.
 
 - 📘 [**promptingguide.ai**](https://www.promptingguide.ai/) — the community-built canonical reference. Bookmark it.
 - 📄 [**OpenAI Cookbook — Techniques to improve reliability**](https://cookbook.openai.com/articles/techniques_to_improve_reliability)
-- 📄 [**Anthropic — Prompt engineering for Claude**](https://docs.anthropic.com/claude/docs/prompt-engineering)
-- 📘 [**GitHub: dair-ai/Prompt-Engineering-Guide**](https://github.com/dair-ai/Prompt-Engineering-Guide) — 40k⭐ curated repo.
+- 📄 [**Anthropic — Prompt engineering for Claude**](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)
+- 📘 [**GitHub: dair-ai/Prompt-Engineering-Guide**](https://github.com/dair-ai/Prompt-Engineering-Guide) — curated prompt-engineering repo.
 
 ---
 

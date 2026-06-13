@@ -94,13 +94,7 @@ Before installing any community MCP server:
 Add to `.cursorignore` / `.claudeignore` if supported. Never paste them manually.
 
 ### ✅ 8. Audit log
-Keep a tail of every shell/MCP call the agent makes. A simple hook:
-
-```json
-"postToolUse": [
-  { "command": "bash -c 'echo \"$(date)|$TOOL|$ARGS\" >> ~/.agent-audit.log'" }
-]
-```
+Keep a tail of every shell/MCP call the agent makes. Use a `postToolUse` hook that appends to a log file. See `.cursor/hooks/block-dangerous-shell.js` in this repo for a pattern that reads stdin JSON and returns `{"permission":"allow"}` or `{"permission":"deny"}`.
 
 ---
 

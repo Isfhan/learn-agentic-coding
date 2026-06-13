@@ -2,14 +2,14 @@
 
 > **⏱️ Time:** ~3 hours · **Prereq:** Step 03, Cursor installed
 
-We'll go from *"I use Tab + Chat"* to *"I configure agents, rules, skills, hooks, and MCP servers in Cursor."*
+We'll go from *"I use Tab + Chat"* to *"I configure agents, rules, skills, hooks, MCP servers, and plugins in Cursor 3.0."*
 
 ---
 
 ## 🎯 What you'll learn
 
 - Every mode Cursor ships: **Tab**, **Cmd-K**, **Chat**, **Agent**, **Plan**, **Ask**, **Debug**.
-- How to use **Rules**, **Skills**, **Hooks**, **Subagents**, and **MCP** inside Cursor.
+- How to use **Rules**, **Skills**, **Hooks**, **Subagents**, **MCP**, and **Marketplace plugins** inside Cursor.
 - Which keyboard shortcuts are worth memorizing.
 - How to make Cursor 2x faster for *your* codebase specifically.
 
@@ -44,7 +44,7 @@ Rules are persistent instructions that ride along with every request. Set them o
 | Scope | Location | Use for |
 |-------|----------|---------|
 | **Project** | `.cursor/rules/*.mdc` | Tech stack, code style, testing conventions (version-controlled) |
-| **User** | Cursor Settings → Rules | Personal preferences (e.g., "I prefer tabs, no semicolons") |
+| **User** | Cursor Settings → Rules (or `~/.cursor/rules/`) | Personal preferences (e.g., "I prefer tabs, no semicolons") |
 | **Team** | Team dashboard | Shared policies |
 
 ### Rule types
@@ -110,7 +110,7 @@ Hooks run before/after agent events. Example uses:
 - Block edits to `package.json` unless explicit approval.
 - Inject `git diff` at session start so the agent knows what's changed.
 
-### Example: `/.cursor/hooks.json`
+### Example: `.cursor/hooks.json`
 
 ```json
 {
@@ -132,12 +132,17 @@ We'll build more in [Step 11 · Hooks & Automation](./11-hooks-automation.md).
 
 ## 5. Subagents — delegate for parallelism & context isolation
 
-Cursor ships built-in subagents:
-- **Explore** — searches and analyzes codebases (read-only, safe)
-- **Bash** — runs shell command sequences
-- **Browser** — controls a browser via MCP
+Cursor ships built-in subagents (names may vary slightly by version):
+- **explore** — searches and analyzes codebases (read-only, safe)
+- **shell** — runs shell command sequences
+- **generalPurpose** — full-power sub-agent for complex tasks
+- **browser-use** — controls a browser via MCP
 
-You invoke them by asking the agent to use them, e.g., *"Use the Explore subagent to find every place we call `/api/users` across frontend + backend, then summarize."*
+You invoke them by asking the agent to use them, e.g., *"Use the explore subagent to find every place we call `/api/users` across frontend + backend, then summarize."*
+
+**Async subagents (2026):** Subagents can now run in the background and spawn their own subagents. Use `/multitask` to parallelize large tasks across a fleet of async subagents.
+
+**Worktrees:** Use `/worktree` for isolated git branches per agent task, or `/best-of-n` to run the same task across multiple models and compare outcomes.
 
 **Why this is huge:** the subagent has its *own* context window. Its messy exploration doesn't pollute your main session.
 
@@ -154,7 +159,7 @@ Cursor supports MCP servers out of the box. Add them at `.cursor/mcp.json`:
   "mcpServers": {
     "postgres": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgres://localhost/mydb"]
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"]
     },
     "github": {
       "command": "npx",
@@ -167,9 +172,23 @@ Cursor supports MCP servers out of the box. Add them at `.cursor/mcp.json`:
 
 Now the agent can query your DB and GitHub. We'll cover MCP properly in [Step 09](./09-mcp-introduction.md) and [Step 10](./10-mcp-building-servers.md).
 
+> **Heads-up (June 2026):** MCP `2026-07-28` release candidate removes the `initialize` handshake and session IDs. Existing servers keep working on `2025-11-25`; plan to migrate before July 2026.
+
 ---
 
-## 7. Keyboard shortcuts worth learning
+## 7. Marketplace plugins — install capabilities in one click
+
+Cursor 2.5+ ships a **Marketplace** at [cursor.com/plugins](https://cursor.com/plugins). Plugins bundle skills, subagents, MCP servers, hooks, and rules into one install.
+
+```text
+/add-plugin    # browse and install from the editor
+```
+
+Browse plugins from Amplitude, AWS, Figma, Linear, Stripe, and more. When your team's skills + hooks pile up, package them as a plugin.
+
+---
+
+## 8. Keyboard shortcuts worth learning
 
 | Shortcut (Mac / Win) | Action |
 |----------------------|--------|

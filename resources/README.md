@@ -1,6 +1,6 @@
 # 📦 Resources
 
-Curated, opinionated, maintained.
+Curated, opinionated, maintained. **Last verified: June 2026.**
 
 - 🎥 [**YouTube Channels & Playlists**](./youtube.md)
 - 🐙 [**Essential GitHub Repositories**](./github-repos.md)

@@ -37,29 +37,29 @@
 Build a **private list** called "Agentic Coding" with these accounts (add 5–10 more as you find them). Open this list instead of your main feed.
 
 **Researchers & founders:**
-- [@karpathy](https://twitter.com/karpathy)
-- [@simonw](https://twitter.com/simonw)
-- [@AnthropicAI](https://twitter.com/AnthropicAI)
-- [@OpenAI](https://twitter.com/OpenAI)
-- [@GoogleDeepMind](https://twitter.com/GoogleDeepMind)
-- [@hwchase17](https://twitter.com/hwchase17) (LangChain)
-- [@lateinteraction](https://twitter.com/lateinteraction) (DSPy)
+- [@karpathy](https://x.com/karpathy)
+- [@simonw](https://x.com/simonw)
+- [@AnthropicAI](https://x.com/AnthropicAI)
+- [@OpenAI](https://x.com/OpenAI)
+- [@GoogleDeepMind](https://x.com/GoogleDeepMind)
+- [@hwchase17](https://x.com/hwchase17) (LangChain)
+- [@lateinteraction](https://x.com/lateinteraction) (DSPy)
 
 **Tool creators / evangelists:**
-- [@cursor_ai](https://twitter.com/cursor_ai)
-- [@amanrsanger](https://twitter.com/amanrsanger) (Cursor)
-- [@swyx](https://twitter.com/swyx) (Latent Space)
-- [@mattpocockuk](https://twitter.com/mattpocockuk)
-- [@levelsio](https://twitter.com/levelsio) (indie-hacker view)
+- [@cursor_ai](https://x.com/cursor_ai)
+- [@amanrsanger](https://x.com/amanrsanger) (Cursor)
+- [@swyx](https://x.com/swyx) (Latent Space)
+- [@mattpocockuk](https://x.com/mattpocockuk)
+- [@levelsio](https://x.com/levelsio) (indie-hacker view)
 
 **Applied / evals / prod:**
-- [@HamelHusain](https://twitter.com/HamelHusain)
-- [@eugeneyan](https://twitter.com/eugeneyan)
-- [@jxnlco](https://twitter.com/jxnlco) (Jason Liu, Instructor)
+- [@HamelHusain](https://x.com/HamelHusain)
+- [@eugeneyan](https://x.com/eugeneyan)
+- [@jxnlco](https://x.com/jxnlco) (Jason Liu, Instructor)
 
 **Curators:**
-- [@dair_ai](https://twitter.com/dair_ai) (Elvis Saravia)
-- [@rasbt](https://twitter.com/rasbt) (Sebastian Raschka)
+- [@dair_ai](https://x.com/dair_ai) (Elvis Saravia)
+- [@rasbt](https://x.com/rasbt) (Sebastian Raschka)
 
 ---
 

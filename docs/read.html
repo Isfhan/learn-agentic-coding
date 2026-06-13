@@ -336,14 +336,22 @@
     errorEl.classList.remove('hidden');
   }
 
+  function contentBaseUrl() {
+    const readerDir = new URL('.', window.location.href);
+    // Local dev serves from /docs/ while content lives at repo root.
+    if (/\/docs\/?$/i.test(readerDir.pathname)) {
+      return new URL('../', readerDir);
+    }
+    return readerDir;
+  }
+
   if (!rawPath) {
     showError('No file path provided. Expected ?path=steps/00-introduction.md');
   } else {
-    // Resolve relative to the directory containing read.html (strips the filename).
-    const readerDir = new URL('.', window.location.href);
+    const baseUrl = contentBaseUrl();
     let resolvedUrl;
     try {
-      resolvedUrl = new URL(rawPath, readerDir);
+      resolvedUrl = new URL(rawPath, baseUrl);
     } catch (e) {
       showError('Invalid path: ' + rawPath);
     }

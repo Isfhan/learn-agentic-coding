@@ -161,7 +161,7 @@ def run(user_msg: str):
     messages = [{"role": "user", "content": user_msg}]
     while True:
         resp = client.messages.create(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=4096,
             system=SYSTEM,
             tools=TOOL_SCHEMAS,
@@ -229,7 +229,7 @@ async function run(userMsg: string) {
   const messages: any[] = [{ role: "user", content: userMsg }];
   while (true) {
     const resp = await client.messages.create({
-      model: "claude-sonnet-4-5",
+      model: "claude-sonnet-4-6",
       max_tokens: 4096,
       system: "You are Mini-Agent…",
       tools,
@@ -272,6 +272,8 @@ Once you understand the loop, frameworks become valuable. They give you:
 
 > **Don't pick a framework before you've built the 200-LOC agent above.** If you skip this step, every framework will feel like magic. Once you've done it, frameworks feel like shortcuts you earned.
 
+> **This repo's reference agent:** [`agents/roadmap_agent.py`](../agents/roadmap_agent.py) is a **supervised stub** (deterministic planner, no LLM) for safe demos and CI. The exercise above builds the real LLM-powered version. Run it with: `python agents/roadmap_agent.py --task "Summarize roadmap"`.
+
 ---
 
 ## 🎥 Watch
@@ -282,7 +284,7 @@ Once you understand the loop, frameworks become valuable. They give you:
 
 ## 📚 Read
 
-- 📘 [**Anthropic SDK tool-use docs**](https://docs.anthropic.com/claude/docs/tool-use)
+- 📘 [**Anthropic SDK tool-use docs**](https://docs.claude.com/en/docs/build-with-claude/tool-use)
 - 📘 [**OpenAI Agents SDK**](https://github.com/openai/openai-agents-python)
 - 📘 [**LangGraph docs**](https://langchain-ai.github.io/langgraph/)
 - 📘 [**Hugging Face — smolagents**](https://github.com/huggingface/smolagents) — read this source code; it's *tiny* and teaches you everything.

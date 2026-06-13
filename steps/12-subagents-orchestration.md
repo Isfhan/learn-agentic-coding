@@ -47,7 +47,7 @@ Result: the parent stays focused, and the child can dive deep without polluting.
 
 ## 2. Built-in subagents (2026)
 
-Both Cursor and Claude Code ship these:
+Both Cursor and Claude Code ship these (June 2026):
 
 | Subagent | What it's for | Mode |
 |----------|---------------|------|
@@ -55,6 +55,8 @@ Both Cursor and Claude Code ship these:
 | **shell** / **bash** | Execute a shell command series | write-capable |
 | **generalPurpose** | Full-power sub-agent for multi-step tasks | write-capable |
 | **browser-use** | Navigate web pages, fill forms, test UIs | via MCP |
+
+> **Custom subagents:** You can also define your own in `.cursor/agents/` (Cursor) with custom prompts, models, and tool access. Names like `postgres-migrator` or `reviewer` in recipes below refer to *custom* subagents you define — not built-ins.
 
 ### How to invoke
 
@@ -64,12 +66,12 @@ In Cursor or Claude Code, just *ask*:
 
 The agent spawns the subagent, waits for its summary, and continues.
 
-### Foreground vs. background
+### Foreground vs. background (async)
 
 - **Foreground** — blocks until the subagent finishes. Use for sequential tasks.
-- **Background** — returns immediately; the subagent runs in parallel. Use for long/parallel tasks.
+- **Background (async)** — returns immediately; the subagent runs in parallel. Use `/multitask` in Cursor to fan out work across multiple async subagents.
 
-You can launch 5 subagents in parallel if the work is independent. Massive speedup.
+Subagents can now spawn their own subagents (nesting). You can launch many in parallel if the work is independent. Massive speedup — but watch token cost.
 
 ---
 
@@ -101,7 +103,7 @@ flowchart TD
 
 The main agent decides *which* specialist handles the task.
 
-> **User:** "I need to upgrade TypeScript to v5.5 everywhere."
+> **User:** "I need to upgrade TypeScript to the latest version everywhere."
 >
 > **Main agent (internal):** This is a multi-file codemod. Delegate to `generalPurpose` subagent. It delegates the DB-specific migration piece to a separate `postgres-migrator` subagent.
 

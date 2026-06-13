@@ -24,6 +24,7 @@ Let's build a server that exposes one tool: `roll_dice(sides, count)`.
 ```bash
 mkdir mcp-dice && cd mcp-dice
 npm init -y
+npm pkg set type=module
 npm i @modelcontextprotocol/sdk zod
 npm i -D typescript @types/node tsx
 npx tsc --init
@@ -32,6 +33,7 @@ npx tsc --init
 ### `src/index.ts`
 
 ```typescript
+import { promises as fs } from "node:fs";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -110,6 +112,20 @@ Add to `.cursor/mcp.json` (or Claude's config):
 ```
 
 Restart. Ask the agent: *"Roll 3d6 for me."* Watch it invoke your tool.
+
+### Publishing (optional)
+
+To share your server with others:
+
+```bash
+# TypeScript: add a bin entry in package.json, then
+npm publish
+
+# Python: use uvx for zero-install distribution
+uvx --from . your-mcp-server
+```
+
+> **Note:** This repo's sample server at `mcp/hn-context-server/server.js` uses hand-rolled JSON-RPC (no SDK) to teach the wire protocol. Production servers should use the official SDK.
 
 ---
 

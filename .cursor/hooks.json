@@ -3,8 +3,8 @@
   "hooks": {
     "beforeShellExecution": [
       {
-        "command": ".cursor/hooks/block-dangerous-shell.sh",
-        "failClosed": false
+        "command": "node .cursor/hooks/block-dangerous-shell.js",
+        "failClosed": true
       }
     ],
     "afterFileEdit": [

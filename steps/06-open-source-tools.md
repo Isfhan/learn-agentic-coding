@@ -17,12 +17,12 @@ Closed tools are convenient. Open-source tools give you **privacy, portability, 
 
 ## The contenders at a glance
 
-| Tool | Shape | Stars | Vibe |
-|------|-------|-------|------|
-| **Aider** | CLI | 40k+ | Unix-philosophy. Git-native. Token-efficient. |
-| **Cline** | VS Code extension | 57k+ | Autonomous with step approval. Polished UI. |
-| **Continue** | VS Code + JetBrains | 26k+ | Most configurable. Great autocomplete + chat. |
-| **Qwen Code** | CLI | Growing fast | Alibaba's open-source agent. Runs massive local models. |
+| Tool | Shape | Vibe |
+|------|-------|------|
+| **Aider** | CLI | Unix-philosophy. Git-native. Token-efficient. |
+| **Cline** | VS Code extension | Autonomous with step approval. Polished UI. |
+| **Continue** | VS Code + JetBrains | Most configurable. Great autocomplete + chat. |
+| **Qwen Code** | CLI | Alibaba's open-source agent. Runs massive local models. |
 
 All are **free** — you pay only for LLM tokens (or zero if you self-host).
 
@@ -38,13 +38,13 @@ aider
 
 **Why it's special:**
 - Auto-commits every change with a clear message.
-- "Repo map" summarizes your codebase into a few thousand tokens instead of dumping whole files → ~40% fewer tokens than Cline for multi-file work.
-- Works with 75+ model providers.
+- "Repo map" summarizes your codebase into a few thousand tokens instead of dumping whole files — more token-efficient than naive full-file dumps for multi-file work.
+- Works with many model providers (check current docs for the full list).
 
 **Killer workflow:**
 ```bash
-# Use Claude for the plan, GPT-4o for edits
-aider --architect --editor-model openai/gpt-4o --model anthropic/claude-sonnet
+# Use Claude for the plan, a fast model for edits
+aider --architect --editor-model openai/gpt-5.4-mini --model anthropic/claude-sonnet-4-6
 ```
 "Architect mode" lets a strong reasoning model plan, while a faster/cheaper model does the mechanical edits.
 
@@ -55,7 +55,7 @@ aider --architect --editor-model openai/gpt-4o --model anthropic/claude-sonnet
 - Install from the VS Code marketplace.
 - Shows every step (read this file, run this command, edit this) and asks approval.
 - Great for regulated environments needing audit trails.
-- Supports 75+ providers; also supports **Plan vs. Act modes**.
+- Supports many model providers; also supports **Plan vs. Act modes**.
 
 **Killer feature:** it can control a **real browser** natively, which is gold for frontend work.
 
@@ -74,7 +74,7 @@ Example `config.yaml`:
 models:
   - name: Claude Sonnet
     provider: anthropic
-    model: claude-sonnet-4.5
+    model: claude-sonnet-4-6
     roles: [chat, edit]
   - name: Qwen 2.5 Coder
     provider: ollama
@@ -112,7 +112,7 @@ A fun exercise that'll make you popular at work:
 ```bash
 # 1. Install Ollama: https://ollama.com
 # 2. Pull a coding model
-ollama pull qwen2.5-coder:7b  # ~4 GB, runs on a M1 Mac with 16GB RAM
+ollama pull qwen2.5-coder:7b  # size varies; check Ollama docs for your hardware
 
 # 3. Point Aider at it
 aider --model ollama/qwen2.5-coder:7b --no-auto-commits
@@ -120,7 +120,7 @@ aider --model ollama/qwen2.5-coder:7b --no-auto-commits
 
 Now you have a coding agent running **completely offline**. No API keys, no data leaving your machine.
 
-> ⚠️ Quality is noticeably below Claude/GPT. Use for privacy-critical tasks or experimentation, not everything.
+> ⚠️ Quality is noticeably below frontier cloud models (`claude-opus-4-8`, `gpt-5.5`). Use for privacy-critical tasks or experimentation, not everything.
 
 ---
 

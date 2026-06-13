@@ -985,7 +985,7 @@
         <span>Codex</span><span class="text-white/20">·</span>
         <span>Gemini CLI</span><span class="text-white/20">·</span>
         <span>Windsurf</span><span class="text-white/20">·</span>
-        <span>Kiro</span><span class="text-white/20">·</span>
+        <span>Antigravity</span><span class="text-white/20">·</span>
         <span>OpenSpec</span><span class="text-white/20">·</span>
         <span>Spec Kit</span>
       </span>
@@ -1000,10 +1000,39 @@
         <span>Codex</span><span class="text-white/20">·</span>
         <span>Gemini CLI</span><span class="text-white/20">·</span>
         <span>Windsurf</span><span class="text-white/20">·</span>
-        <span>Kiro</span><span class="text-white/20">·</span>
+        <span>Antigravity</span><span class="text-white/20">·</span>
         <span>OpenSpec</span><span class="text-white/20">·</span>
         <span>Spec Kit</span>
       </span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MODELS (June 2026) =================== -->
+<section class="relative py-14 border-b border-white/5 bg-ink-900/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <p class="text-xs uppercase tracking-[0.2em] text-white/40 text-center mb-6">Frontier models referenced in this roadmap · Last verified June 2026</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      <div class="glass rounded-xl p-4">
+        <div class="text-white/50 text-xs font-mono">OpenAI</div>
+        <div class="mt-1 font-semibold">GPT-5.5 · GPT-5.4 mini</div>
+        <div class="mt-1 text-white/55">Codex: gpt-5.2-codex</div>
+      </div>
+      <div class="glass rounded-xl p-4">
+        <div class="text-white/50 text-xs font-mono">Anthropic</div>
+        <div class="mt-1 font-semibold">Opus 4.8 · Sonnet 4.6</div>
+        <div class="mt-1 text-white/55">Haiku 4.5 · Fable 5</div>
+      </div>
+      <div class="glass rounded-xl p-4">
+        <div class="text-white/50 text-xs font-mono">Google</div>
+        <div class="mt-1 font-semibold">Gemini 3.5 Flash</div>
+        <div class="mt-1 text-white/55">Gemini 3.5 Pro (2M ctx)</div>
+      </div>
+      <div class="glass rounded-xl p-4">
+        <div class="text-white/50 text-xs font-mono">MCP</div>
+        <div class="mt-1 font-semibold">Spec 2025-11-25</div>
+        <div class="mt-1 text-white/55">Stateless RC: 2026-07-28</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1259,7 +1288,7 @@
       <!-- Phase 1 -->
       <div class="reveal relative rounded-2xl p-7 overflow-hidden" style="background: linear-gradient(160deg, rgba(254,205,211,.14), rgba(254,205,211,.02));border:1px solid rgba(254,205,211,.28)">
         <div class="text-xs font-mono text-accent-violet">PHASE 1 · Steps 00–03</div>
-        <h3 class="mt-2 font-display text-2xl font-semibold">Explorer</h3>
+        <h3 class="mt-2 font-display text-2xl font-semibold">Foundations</h3>
         <p class="mt-3 text-sm text-white/60">Understand LLMs, tokens, context, and the modern AI coding tool landscape. Pick your stack.</p>
         <ul class="mt-5 space-y-2 text-sm text-white/75">
           <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span> Foundations of LLMs</li>
@@ -1421,7 +1450,7 @@
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A custom agent</h3>
-        <p class="mt-2 text-sm text-white/60">~200 lines of Python implementing plan→act→verify, tool registry, and safety gates.</p>
+        <p class="mt-2 text-sm text-white/60">Supervised Python agent stub + Step 16 LLM capstone: plan→act→verify, tool registry, safety gates.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="2">
         <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fda4af, #e11d48)">
@@ -1435,7 +1464,7 @@
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A threat model</h3>
-        <p class="mt-2 text-sm text-white/60">Concrete STRIDE-style analysis + hook-based guardrails that block destructive commands.</p>
+        <p class="mt-2 text-sm text-white/60">Threat/control table + hook-based guardrails that block destructive shell commands.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="1">
         <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #f43f5e, #881337)">
@@ -1591,7 +1620,7 @@
   ];
 
   const toneMap = {
-    violet: { bg: "rgba(254,205,211,.10)", border: "rgba(254,205,211,.26)", dot: "#fecdd3", label: "Explorer" },
+    violet: { bg: "rgba(254,205,211,.10)", border: "rgba(254,205,211,.26)", dot: "#fecdd3", label: "Foundations" },
     cyan:   { bg: "rgba(251,113,133,.12)", border: "rgba(251,113,133,.28)", dot: "#fb7185", label: "Operator" },
     pink:   { bg: "rgba(244,63,94,.14)",   border: "rgba(244,63,94,.32)",   dot: "#f43f5e", label: "Extender" },
     amber:  { bg: "rgba(225,29,72,.16)",   border: "rgba(225,29,72,.36)",   dot: "#e11d48", label: "Architect" },

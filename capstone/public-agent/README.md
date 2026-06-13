@@ -10,7 +10,7 @@ It should be small enough to audit, but complete enough to show production-minde
 
 ## What's included
 
-- custom agent runtime (`agents/roadmap_agent.py`)
+- custom supervised agent stub (`agents/roadmap_agent.py` — deterministic planner, no LLM; see Step 16 for the LLM capstone)
 - MCP server with real API integration (`mcp/hn-context-server/server.js`)
 - eval suite (`evals/promptfooconfig.yaml`)
 - safety model (`security/threat-model.md`)
