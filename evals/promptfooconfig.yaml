@@ -103,3 +103,27 @@ tests:
     assert:
       - type: llm-rubric
         value: "Recommends recurring cadence for releases, experiments, and notes."
+
+  - vars:
+      task: "Define loop engineering for coding agents."
+    assert:
+      - type: contains
+        value: "loop"
+      - type: llm-rubric
+        value: "Explains agent loops plus stop rules (max iterations, budgets, success conditions) so loops don't run forever."
+
+  - vars:
+      task: "Explain graph engineering and when to use it."
+    assert:
+      - type: contains
+        value: "graph"
+      - type: llm-rubric
+        value: "Mentions nodes and edges, and contrasts predictable workflows (graphs) with open-ended tasks (free agent loop)."
+
+  - vars:
+      task: "What does a forward deployed engineer (FDE) do?"
+    assert:
+      - type: contains
+        value: "forward deployed"
+      - type: llm-rubric
+        value: "Describes an engineer embedded at the customer's site shipping AI solutions, and names relevant skills like MCP, evals, and context engineering."

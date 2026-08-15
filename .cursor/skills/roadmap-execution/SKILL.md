@@ -25,6 +25,7 @@ Turn roadmap learning steps into concrete repository artifacts that demonstrate 
 - Eval config with 10+ tests.
 - Threat model document.
 - Build-your-own-agent implementation (~200 lines).
+- One agent-system-engineering artifact (loops, graphs, harness notes from Step 19).
 - Capstone README with test plan.
 
 ## Quality Gates

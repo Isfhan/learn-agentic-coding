@@ -26,6 +26,7 @@
 - [ ] 16 · Build Your Own Agent
 - [ ] 17 · Advanced Patterns
 - [ ] 18 · Staying Current
+- [ ] 19 · Agent System Engineering
 
 ---
 

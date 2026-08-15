@@ -183,12 +183,12 @@ Combining patterns you'll see in Cursor/Claude Code:
 
 ```mermaid
 flowchart LR
-    User --> Plan[Plan mode<br/>(Plan-and-execute)]
-    Plan --> Agent[Agent<br/>(ReAct w/ tools)]
+    User --> Plan["Plan mode (Plan-and-execute)"]
+    Plan --> Agent["Agent (ReAct w/ tools)"]
     Agent -->|spawns| ExSA[Explore<br/>subagent]
     Agent -->|spawns| WorkSA[Worker<br/>subagent]
     Agent -->|produces| Draft
-    Draft --> Review[Reviewer<br/>(Evaluator-optimizer)]
+    Draft --> Review["Reviewer (Evaluator-optimizer)"]
     Review --> PR[PR]
     Hooks[.hooks.json] -.->|gates| Agent
     Hooks -.->|gates| WorkSA
@@ -203,6 +203,8 @@ Recognize each pattern?
 Most failed agent projects look like this: *one enormous prompt + 30 tools + unlimited context = chaos.*
 
 Break it up. Prefer **many small, focused agents** orchestrated simply over **one big agent trying to do everything.**
+
+> **Next level:** each pattern above is a tiny **graph** (steps + connections). Drawing your whole system as a graph — with fixed paths where you know the answer and model-chosen paths where you don't — is **graph engineering**. See [Step 19](./19-agent-engineering.md).
 
 ---
 
@@ -246,4 +248,4 @@ Post the Mermaid diagram on Twitter/X, LinkedIn, or GitHub. Visual examples are 
 
 ## 🧭 Next
 
-→ [Step 18 · Staying Current](./18-staying-current.md)
+→ [Step 19 · Agent System Engineering](./19-agent-engineering.md) — draw your patterns as graphs, wrap them in loops, and meet the FDE role. (Then Step 18 to stay current.)

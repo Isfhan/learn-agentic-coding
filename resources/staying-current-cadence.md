@@ -16,7 +16,8 @@
 
 - Cursor docs, changelog, and [cursor.com/plugins](https://cursor.com/plugins)
 - Anthropic + OpenAI developer updates (GPT-5.5, Claude Opus 4.8)
-- MCP ecosystem: watch for `2026-07-28` stateless spec migration
+- MCP ecosystem: `2026-07-28` stateless spec shipped — check client support and migrate servers
+- Loop/graph/harness engineering articles (Step 19) — new "X engineering" disciplines appear often; re-check quarterly
 - AI engineering communities listed in `resources/communities.md`
 
 ## Definition of done

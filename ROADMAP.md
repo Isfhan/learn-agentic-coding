@@ -2,7 +2,7 @@
 
 > A one-page big picture. Print it, screenshot it, put it on your desk.
 >
-> **Last verified: June 2026.** See [README.md](./README.md#-currency) for refresh guidance.
+> **Last verified: August 2026.** See [README.md](./README.md#-currency) for refresh guidance.
 
 ---
 
@@ -25,9 +25,9 @@ flowchart LR
         C1[MCP intro] --> C2[Build MCP server] --> C3[Hooks] --> C4[Subagents] --> C5[Context engineering] --> C6[Spec-Driven Dev]
     end
 
-    subgraph P4["🧠 Phase 4 · Architect (Steps 14-18)"]
+    subgraph P4["🧠 Phase 4 · Architect (Steps 14-19)"]
         direction TB
-        D1[Evals] --> D2[Security] --> D3[Build from scratch] --> D4[Advanced patterns] --> D5[Stay current]
+        D1[Evals] --> D2[Security] --> D3[Build from scratch] --> D4[Advanced patterns] --> D5[Agent system engineering] --> D6[Stay current]
     end
 
     P1 --> P2 --> P3 --> P4
@@ -47,7 +47,7 @@ flowchart LR
 | **🌱 Foundations** | Explain what an agent is, pick a tool, write prompts that don't waste tokens. |
 | **🛠️ Operator** | Use Cursor & Claude Code at near-expert level. Configure rules and skills that make you 2-5x faster. |
 | **🔌 Extender** | Plug agents into any data source via MCP. Automate pre/post-agent steps with hooks. Run multi-agent workflows. Drive features from specs (GitHub Spec Kit). |
-| **🧠 Architect** | Write evals, harden for production, build agents from scratch with the SDK, design multi-agent systems. |
+| **🧠 Architect** | Write evals, harden for production, build agents from scratch with the SDK, design multi-agent systems, and engineer the loops, graphs, and harness that make agents production-ready. |
 
 ---
 
@@ -110,7 +110,7 @@ flowchart TD
 | Tue | 13, 13.5 | Context engineering applied; spec-driven workflow running via GitHub Spec Kit |
 | Wed | 14 | You have 10+ evals for your agent |
 | Thu | 15 | Threat-modeled your agent setup |
-| Fri | 16 | Agent-from-scratch in ~200 lines |
+| Fri | 16, 19 | Agent-from-scratch in ~200 lines; loop + graph + harness designed |
 | Weekend | **Capstone:** ship a public agent on GitHub with README + evals + MCP server |
 
 ---
@@ -140,6 +140,7 @@ Copy this into a `learning-log.md` in your own repo:
 - [ ] 16 · Build Your Own Agent
 - [ ] 17 · Advanced Patterns
 - [ ] 18 · Staying Current
+- [ ] 19 · Agent System Engineering
 ```
 
 Post your completed checklist on Twitter/X, LinkedIn, or GitHub with `#AgenticCoding` and tag the repo.

@@ -8,8 +8,8 @@ A free, open-source, step-by-step roadmap that takes you from *"I know basic cod
 to *"I design, build, test, and ship production agent systems."*
 
 ![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-blue)
-![Steps](https://img.shields.io/badge/Steps-20-purple)
-![Updated](https://img.shields.io/badge/Last%20verified-June%202026-brightgreen)
+![Steps](https://img.shields.io/badge/Steps-21-purple)
+![Updated](https://img.shields.io/badge/Last%20verified-August%202026-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)
 
@@ -55,7 +55,8 @@ flowchart TD
     M --> N[15 · Security & Safety]
     N --> O[16 · Build Your Own Agent]
     O --> P[17 · Advanced Patterns]
-    P --> Q[18 · Staying Current]
+    P --> R[19 · Agent System Engineering]
+    R --> Q[18 · Staying Current]
 
     style A fill:#6366f1,color:#fff
     style H fill:#ef4444,color:#fff
@@ -63,11 +64,12 @@ flowchart TD
     style L2 fill:#0ea5e9,color:#fff
     style O fill:#10b981,color:#fff
     style Q fill:#f59e0b,color:#fff
+    style R fill:#14b8a6,color:#fff
 ```
 
 ---
 
-## 📚 The 20 steps
+## 📚 The 21 steps
 
 | #  | Step | Focus | Est. time |
 |----|------|-------|-----------|
@@ -91,6 +93,7 @@ flowchart TD
 | 16 | [Build Your Own Agent](./steps/16-build-your-own-agent.md) | From scratch with SDKs | 4 h |
 | 17 | [Advanced Patterns](./steps/17-advanced-patterns.md) | Swarms, routers, reflection | 3 h |
 | 18 | [Staying Current](./steps/18-staying-current.md) | Never fall behind | ongoing |
+| 19 | [Agent System Engineering](./steps/19-agent-engineering.md) | Loop, graph & harness engineering; the FDE role | 2 h |
 
 ---
 
@@ -112,7 +115,7 @@ flowchart TD
 ├── ROADMAP.md               ← The visual learning path
 ├── CONTRIBUTING.md          ← How to improve this roadmap
 ├── AGENTS.md                ← Project guidance for coding agents
-├── steps/                   ← The 20 step files (00-18, including 13.5)
+├── steps/                   ← The 21 step files (00-19, including 13.5)
 ├── resources/               ← Curated YouTube, GitHub, books, communities
 ├── projects/                ← Hands-on portfolio projects
 ├── agents/                  ← Build-your-own-agent examples
@@ -136,6 +139,7 @@ Before you dive in, internalize these. Everything else is commentary.
 4. **Skills > Prompts > Rules, for scale.** Prompts are per-task. Rules are per-repo. Skills are per-capability and travel with you.
 5. **Evals beat vibes (tests beat guessing).** "It felt better" is not a shipping criterion. Write evals early. Your future self will thank you.
 6. **Spec is the source of truth.** In the Spec-Driven Development era, you write the spec first; the agent generates the code. Code is the build artifact — the spec is what you maintain.
+7. **The loop is the product.** The model is the engine; the loops, graphs, and harness around it are the car. Mastering those systems (Step 19) is what separates demos from production.
 
 ---
 
@@ -151,7 +155,7 @@ Before you dive in, internalize these. Everything else is commentary.
 
 ## 📅 Currency
 
-**Last verified: June 2026.** Model names, tool features, and pricing change weekly. When something looks off, check [Step 18 · Staying Current](./steps/18-staying-current.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). Priority refresh targets: [Step 03](./steps/03-ai-coding-tools.md) (tool landscape), [Step 01](./steps/01-foundations.md) (model context windows), and [resources/staying-current-cadence.md](./resources/staying-current-cadence.md).
+**Last verified: August 2026.** Model names, tool features, and pricing change weekly. When something looks off, check [Step 18 · Staying Current](./steps/18-staying-current.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). Priority refresh targets: [Step 03](./steps/03-ai-coding-tools.md) (tool landscape), [Step 01](./steps/01-foundations.md) (model context windows), and [resources/staying-current-cadence.md](./resources/staying-current-cadence.md).
 
 ---
 

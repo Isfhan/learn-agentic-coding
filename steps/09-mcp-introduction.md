@@ -51,7 +51,7 @@ N + M integrations. Sanity.
 
 Anthropic open-sourced MCP in late 2024. By June 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
 
-> **Coming soon:** MCP `2026-07-28` (release candidate locked May 2026) makes the protocol stateless — no `initialize` handshake, no `Mcp-Session-Id` header. Existing `2025-11-25` servers keep working; migrate before the July 2026 final spec ships. See [modelcontextprotocol.io](https://modelcontextprotocol.io/).
+> **Current status:** MCP `2026-07-28` (shipped July 2026) made the protocol stateless — no `initialize` handshake, no `Mcp-Session-Id` header. Existing `2025-11-25` servers keep working; migrate once your clients support the new spec. See [modelcontextprotocol.io](https://modelcontextprotocol.io/).
 
 ---
 

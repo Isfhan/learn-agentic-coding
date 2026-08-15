@@ -42,6 +42,15 @@ These ~10 pieces are referenced again and again across this roadmap.
 
 ---
 
+## 🔁 Loop, graph & harness engineering (Step 19)
+
+- 📄 **[LangChain — The Art of Loop Engineering](https://www.langchain.com/blog/the-art-of-loop-engineering)** — the 4 stacked loops: agent → verification → event-driven → hill-climbing.
+- 📄 **[LangChain — 3 Years of Graph Engineering with LangGraph](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph)** — nodes, edges, state; when to use graphs vs. free agent loops.
+- 📄 **[swyx — loopcraft: the art of stacking loops](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)** — the essay that named the skill.
+- 📄 **[The New Stack — FDE is AI's hottest job](https://thenewstack.io/forward-deployed-engineer-fde-openai-google/)** — what forward deployed engineers do and how to become one.
+
+---
+
 ## 🔌 MCP (official + community)
 
 - 📘 **[modelcontextprotocol.io spec](https://modelcontextprotocol.io/)** — the spec itself.

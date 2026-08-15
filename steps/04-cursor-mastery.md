@@ -172,7 +172,7 @@ Cursor supports MCP servers out of the box. Add them at `.cursor/mcp.json`:
 
 Now the agent can query your DB and GitHub. We'll cover MCP properly in [Step 09](./09-mcp-introduction.md) and [Step 10](./10-mcp-building-servers.md).
 
-> **Heads-up (June 2026):** MCP `2026-07-28` release candidate removes the `initialize` handshake and session IDs. Existing servers keep working on `2025-11-25`; plan to migrate before July 2026.
+> **Heads-up (August 2026):** MCP `2026-07-28` made the protocol stateless — no `initialize` handshake, no session IDs. Existing `2025-11-25` servers keep working; migrate when your client supports the new spec.
 
 ---
 

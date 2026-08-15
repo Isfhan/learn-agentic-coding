@@ -212,6 +212,7 @@ python agent.py "Add a function double(x: int) -> int to a new file math_helpers
 4. **Safer shell** — block `rm -rf`, `curl | sh` before asking for approval.
 5. **MCP support** — there's an `mcp` Python SDK; connect to any MCP server and expose its tools to your agent. Congrats, now your agent talks to GitHub/Postgres/etc. for free.
 6. **Multi-model routing** — cheap model for simple turns, reasoning model for hard ones.
+7. **A verification loop** — a grader (run tests, or an LLM-as-judge) scores the agent's output and retries once with feedback. That's loop engineering in action ([Step 19](./19-agent-engineering.md)).
 
 ---
 
@@ -261,7 +262,7 @@ Once you understand the loop, frameworks become valuable. They give you:
 
 | Framework | Language | Sweet spot |
 |-----------|----------|-----------|
-| **LangGraph** | Python, TS | Graph-based multi-agent; prod ready |
+| **LangGraph** | Python, TS | Graph-based multi-agent; prod ready — the tool for graph engineering ([Step 19](./19-agent-engineering.md)) |
 | **OpenAI Agents SDK** | Python, TS | Official, minimal, solid |
 | **PydanticAI** | Python | Type-safe, Pythonic |
 | **CrewAI** | Python | Role-based multi-agent |

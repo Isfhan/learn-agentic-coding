@@ -7,7 +7,7 @@
 - Python (for build-your-own-agent example)
 
 ## Structure
-- `steps/`: 20 step files (00-18, including 13.5)
+- `steps/`: 21 step files (00-19, including 13.5)
 - `resources/`: external references and cheatsheets
 - `.cursor/rules/`: persistent project guidance
 - `.cursor/skills/`: reusable agent capabilities

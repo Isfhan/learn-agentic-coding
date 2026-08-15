@@ -20,6 +20,19 @@ Use this glossary when a lesson uses a new AI or software term. The roadmap keep
 - **Subagent:** A smaller agent started by a parent agent for a focused task, such as code review or repo exploration.
 - **HITL (human-in-the-loop):** A person must approve risky actions before the agent continues.
 - **Orchestration:** Coordinating several tools or agents so each one handles a clear part of the work.
+- **Loop engineering:** Designing the cycles (repeated rounds) an agent runs in — and the stop rules (limits on iterations, cost, or time) that keep those cycles from running forever.
+- **Loopcraft:** Another word for loop engineering, popularized by swyx: the craft of stacking loops (e.g., agent loop → verification loop → event loop) so each outer loop improves the inner one.
+- **Verification loop:** A checker (tests, or an LLM-as-judge) scores the agent's output against a rubric; failures go back to the agent with feedback for a retry.
+- **Event-driven loop:** The agent starts when an event fires (webhook, GitHub issue, cron timer) instead of when a human types a prompt.
+- **Hill-climbing loop:** An analysis agent reads traces (run records) from many runs and improves the prompt, tool, or grader config — the agent improves itself over time.
+- **Graph engineering:** Drawing an agent workflow as a graph (diagram) of nodes and edges so the builder controls the paths the agent can take.
+- **Node:** One unit of work in a graph: fixed code, a single LLM call, or a whole agent with its own internal loop.
+- **Edge:** A connection in a graph that says "what happens next" — fixed, or conditional (a router decides at runtime).
+- **Harness engineering:** Building the whole shell around the model: context, tools, memory, and permissions.
+- **Cognitive architecture:** The fixed structure of an agent system (the graph, memory, and loops) — the "brain wiring" you design, as opposed to the model inside it.
+- **LLM-as-judge:** Using one LLM to grade another LLM's output; a common checker in the verification loop.
+- **Compaction:** Squeezing conversation history into a shorter summary so a long agent run fits the context window.
+- **FDE (forward deployed engineer):** A software engineer who works at a customer's company for weeks or months, building and deploying the vendor's product inside the customer's systems. Popularized by Palantir; a hot AI role at OpenAI, Anthropic, AWS, and Google.
 
 ## Context And Knowledge
 

@@ -52,7 +52,7 @@ Then set the **publish directory** to `_site`.
 - **Tools marquee** (Cursor, Claude Code, Qwen, MCP servers, Spec Kit, OpenSpec, …)
 - **The big picture** — six thesis cards
 - **Four phases** (Foundations · Operator · Extender · Architect) color-coded
-- **All 20 steps** rendered from a single JS array — easy to update
+- **All 21 steps** rendered from a single JS array — easy to update
 - **3-week plan** timeline
 - **What you'll build** — portfolio outputs
 - **Differentiators + final CTA + footer**

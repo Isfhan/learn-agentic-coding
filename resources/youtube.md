@@ -68,6 +68,11 @@
 - **[Hamel Husain](https://www.youtube.com/results?search_query=hamel+husain+evals)** — search, not a channel; he lectures widely.
 - **[promptfoo official](https://www.youtube.com/@promptfoo)**
 
+### Loop, graph & harness engineering
+- **[LangChain/LangGraph official](https://www.youtube.com/@LangChain)** — loop and graph engineering talks.
+- **Search:** [`"loop engineering agents"`](https://www.youtube.com/results?search_query=loop+engineering+agents)
+- **Search:** [`"LangGraph tutorial 2026"`](https://www.youtube.com/results?search_query=langgraph+tutorial+2026)
+
 ### Security / prompt injection
 - **[Simon Willison talks](https://www.youtube.com/results?search_query=simon+willison+prompt+injection)** — the authority.
 

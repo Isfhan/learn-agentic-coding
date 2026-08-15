@@ -37,6 +37,8 @@ It's unit testing for non-deterministic systems (systems where the same input ma
 
 Start small. 10 end-to-end cases beat 0 comprehensive ones.
 
+> **Production note:** wrap your evals around a running agent and you've built the **verification loop** — the agent's output gets graded and retried with feedback. That's loop engineering (Step 19) in its simplest form.
+
 ---
 
 ## 2. The three scoring methods

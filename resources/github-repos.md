@@ -72,6 +72,19 @@
 
 ---
 
+## 🔁 Loop, Graph & Harness Engineering (Step 19)
+
+| Resource | What |
+|------|-------|
+| 📄 [**LangChain — The Art of Loop Engineering**](https://www.langchain.com/blog/the-art-of-loop-engineering) | The 4 stacked loops: agent → verification → event-driven → hill-climbing. |
+| 📄 [**LangChain — 3 Years of Graph Engineering with LangGraph**](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph) | Nodes/edges/state; when to use a graph vs. a free agent loop. |
+| 📄 [**swyx — loopcraft: the art of stacking loops**](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking) | The essay that named the skill. |
+| 📄 [**The New Stack — FDE is AI's hottest job**](https://thenewstack.io/forward-deployed-engineer-fde-openai-google/) | What forward deployed engineers do and how to become one. |
+| 🌐 [**loopengineering.io**](https://loopengineering.io/) | Hands-on experiments with agentic loops. |
+| 📘 [**LangGraph docs — Graph API**](https://docs.langchain.com/oss/python/langgraph/graph-api) | Nodes, edges, and state, hands-on. |
+
+---
+
 ## 📊 Evals & Observability
 
 | Repo | Notes |

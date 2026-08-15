@@ -33,13 +33,14 @@ Agentic coding moves weekly. This final step is about **never falling behind**.
 ### 🗓 Quarterly (half a day)
 - Re-read Anthropic's *Building Effective Agents* — you'll notice new things each time.
 - Audit your rules/skills/hooks/MCP servers. Remove what you don't use.
+- Check the newest "X engineering" discipline (loop, graph, harness, …) — they rotate fast; re-read [Step 19](./19-agent-engineering.md).
 - Update your `AGENTS.md`.
 
 ---
 
 ## 2. People to follow on Twitter/X
 
-These 10 consistently produce high-signal content on agentic coding:
+These 11 consistently produce high-signal content on agentic coding:
 
 - **[@simonw](https://x.com/simonw)** (Simon Willison) — LLM tooling's best diary.
 - **[@karpathy](https://x.com/karpathy)** — transformer-era luminary; "LLM OS" came from him.
@@ -49,6 +50,7 @@ These 10 consistently produce high-signal content on agentic coding:
 - **[@swyx](https://x.com/swyx)** — Latent Space podcast host; great curator.
 - **[@HamelHusain](https://x.com/HamelHusain)** — evals & practical ML.
 - **[@hwchase17](https://x.com/hwchase17)** — LangChain founder.
+- **[@steipete](https://x.com/steipete)** — loop & graph engineering takes; the term "graph engineering" started here.
 - **[@mattpocockuk](https://x.com/mattpocockuk)** — clear AI + TS content.
 - **[@dair_ai](https://x.com/dair_ai)** — Elvis Saravia's daily AI feed.
 
@@ -186,4 +188,4 @@ Now the only thing left is to **build something cool** and ship it.
 
 ## 🧭 Loop back
 
-→ [README home](../README.md) · [Resources](../resources) · [Projects](../projects/practice-projects.md)
+→ [README home](../README.md) · [Resources](../resources) · [Projects](../projects/practice-projects.md) · [Step 19 · Agent System Engineering](./19-agent-engineering.md) — the capstone right before this one: loops, graphs, and harnesses.

@@ -43,6 +43,8 @@ Every agentic tool (Cursor, Claude Code) fires a similar set of events. Names an
 
 All hook configs should include `"version": 1` at the top level.
 
+> **Production note:** hooks are how the **event-driven loop** works — an agent that starts on webhooks and schedules instead of a human typing a prompt. See [Step 19](./19-agent-engineering.md).
+
 ---
 
 ## 2. Two flavors: command vs. prompt
