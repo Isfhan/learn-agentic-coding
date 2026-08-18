@@ -7,6 +7,8 @@ const { stdin, stdout, stderr } = require("node:process");
 const API_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
 const API_ITEM = "https://hacker-news.firebaseio.com/v0/item";
 const FETCH_TIMEOUT_MS = 5000;
+const PROTOCOL_VERSION = "2026-07-28";
+const SERVER_INFO = { name: "hn-context-server", version: "0.2.0" };
 
 function writeMessage(message) {
   stdout.write(`${JSON.stringify(message)}\n`);
@@ -92,18 +94,6 @@ async function handleCallTool(params) {
 
 async function routeRequest(msg) {
   switch (msg.method) {
-    case "initialize":
-      return {
-        protocolVersion: "2025-11-25",
-        capabilities: {
-          tools: {}
-        },
-        serverInfo: {
-          name: "hn-context-server",
-          version: "0.1.0"
-        }
-      };
-
     case "tools/list":
       return {
         tools: [
@@ -123,14 +113,13 @@ async function routeRequest(msg) {
               required: []
             }
           }
-        ]
+        ],
+        ttlMs: 60000,
+        cacheScope: "global"
       };
 
     case "tools/call":
       return handleCallTool(msg.params);
-
-    case "notifications/initialized":
-      return null;
 
     default:
       throw new Error(`Unsupported method: ${msg.method}`);
@@ -157,6 +146,7 @@ rl.on("line", async (line) => {
   try {
     const result = await routeRequest(msg);
     if (result !== null) {
+      result._meta = { protocolVersion: PROTOCOL_VERSION, serverInfo: SERVER_INFO };
       writeMessage({ jsonrpc: "2.0", id: msg.id, result });
     }
   } catch (err) {

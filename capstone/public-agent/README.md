@@ -78,7 +78,7 @@ If provider API keys are unavailable, record that eval execution was skipped and
 ## Test plan
 
 - [ ] Agent report file is generated.
-- [ ] MCP server responds to `initialize`, `tools/list`, and `tools/call`.
+- [ ] MCP server responds to `tools/list` and `tools/call` (stateless per MCP `2026-07-28`; no `initialize` handshake).
 - [ ] `python scripts/check_docs.py` passes.
 - [ ] `python -m py_compile agents/roadmap_agent.py scripts/check_docs.py` passes.
 - [ ] `node --check mcp/hn-context-server/server.js` passes.
@@ -104,7 +104,7 @@ Paste short summaries, not secrets or huge logs.
 Docs check: passed
 Python compile: passed
 Node syntax check: passed
-MCP initialize/tools/list/tools/call: passed
+MCP tools/list + tools/call (stateless 2026-07-28): passed
 Promptfoo evals: passed/failed/skipped because ...
 Threat model review: completed by ...
 ```

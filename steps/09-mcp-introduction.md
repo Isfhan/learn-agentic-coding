@@ -1,6 +1,6 @@
 # Step 09 · MCP — The Model Context Protocol
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 08
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 08 · **Best for:** AI Engineer, FDE, Automation, Data Engineer, AI PM
 
 This is the single most important piece of plumbing in the entire AI stack. Getting MCP is like getting HTTP in 1995. Everything else starts to make sense.
 
@@ -49,7 +49,7 @@ N + M integrations. Sanity.
 
 > 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources). **JSON-RPC** means the client and server send JSON messages that say “call this method with these arguments.”
 
-Anthropic open-sourced MCP in late 2024. By June 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
+Anthropic open-sourced MCP in late 2024. By August 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
 
 > **Current status:** MCP `2026-07-28` (shipped July 2026) made the protocol stateless — no `initialize` handshake, no `Mcp-Session-Id` header. Existing `2025-11-25` servers keep working; migrate once your clients support the new spec. See [modelcontextprotocol.io](https://modelcontextprotocol.io/).
 
@@ -209,7 +209,7 @@ Community-maintained registry: **[mcp.so](https://mcp.so/)** — hundreds of ser
 ## 📚 Read
 
 - 📘 [**modelcontextprotocol.io**](https://modelcontextprotocol.io/) — official spec + docs. Start here.
-- 📘 [**MCP transports**](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) — current stdio and Streamable HTTP details.
+- 📘 [**MCP transports**](https://modelcontextprotocol.io/specification/latest) — current stdio and Streamable HTTP details.
 - 📘 [**modelcontextprotocol/servers** (GitHub)](https://github.com/modelcontextprotocol/servers) — official servers to learn from.
 - 📘 [**mcp.so**](https://mcp.so/) — community registry of 100s of servers.
 - 📄 [**SynapseWire — MCP Practical Guide 2026**](https://synapsewire.com/en/posts/mcp-agentic-ai-practical-guide-2026/) — excellent overview.

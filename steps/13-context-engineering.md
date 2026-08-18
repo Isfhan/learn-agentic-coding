@@ -1,6 +1,6 @@
 # Step 13 · Context Engineering
 
-> **⏱️ Time:** ~3 hours · **Prereq:** Step 12
+> **⏱️ Time:** ~3 hours · **Prereq:** Step 12 · **Best for:** AI Engineer, ML, AI PM, Data Engineer, Prompt Engineer (core)
 
 > *"Context engineering: the delicate art and science of filling the context window with just the right information for the next step."* — Andrej Karpathy
 
@@ -32,7 +32,7 @@ They're complementary. **Prompt engineering is a subset of context engineering.*
 
 ## 2. The "bigger window" fallacy
 
-Models in June 2026 support 1M+ tokens on frontier models (`claude-opus-4-8`, `gpt-5.5`, `gemini-3.5-pro`). Problem solved, right?
+Models in August 2026 support 1M+ tokens on frontier models (`claude-opus-5`, `gpt-5.6`, `gemini-3.7-flash`). Problem solved, right?
 
 No. Bigger context increases capacity, but it does not guarantee attention, relevance, or correctness. Long prompts are vulnerable to **lost in the middle** behavior, where details buried inside a large context are easier for the model to miss. In practice, a focused context with the right files and facts often beats a bloated context full of stale logs, unrelated files, and old conversation history.
 

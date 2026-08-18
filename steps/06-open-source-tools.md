@@ -1,6 +1,6 @@
 # Step 06 · Open-Source Coding Agents
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 05
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 05 · **Best for:** every track (pick one OSS tool)
 
 Closed tools are convenient. Open-source tools give you **privacy, portability, and understanding** — you can literally read how the agent loop is implemented.
 
@@ -23,6 +23,7 @@ Closed tools are convenient. Open-source tools give you **privacy, portability, 
 | **Cline** | VS Code extension | Autonomous with step approval. Polished UI. |
 | **Continue** | VS Code + JetBrains | Most configurable. Great autocomplete + chat. |
 | **Qwen Code** | CLI | Alibaba's open-source agent. Runs massive local models. |
+| **OpenCode** | CLI | Model-agnostic (bring-your-own-model). Skills, hooks, MCP, subagents. Fast-growing community. |
 
 All are **free** — you pay only for LLM tokens (or zero if you self-host).
 
@@ -44,7 +45,7 @@ aider
 **Killer workflow:**
 ```bash
 # Use Claude for the plan, a fast model for edits
-aider --architect --editor-model openai/gpt-5.4-mini --model anthropic/claude-sonnet-4-6
+aider --architect --editor-model openai/gpt-5.4-mini --model anthropic/claude-sonnet-5
 ```
 "Architect mode" lets a strong reasoning model plan, while a faster/cheaper model does the mechanical edits.
 
@@ -74,7 +75,7 @@ Example `config.yaml`:
 models:
   - name: Claude Sonnet
     provider: anthropic
-    model: claude-sonnet-4-6
+    model: claude-sonnet-5
     roles: [chat, edit]
   - name: Qwen 2.5 Coder
     provider: ollama
@@ -103,6 +104,22 @@ Why it's exciting:
 
 ---
 
+## 4.5. OpenCode — the model-agnostic terminal agent
+
+OpenCode is a terminal-first agent that is deliberately **model-agnostic** (bring-your-own-model): point it at any Anthropic, OpenAI, Gemini, or local model and it works. It supports the same stack this roadmap teaches — **MCP**, **skills**, **hooks**, **subagents** — and has one of the largest OSS communities in the space (160k+ GitHub stars, 900+ contributors as of mid-2026). Note the project changed hands (now `anomalyco/opencode`) and Anthropic blocked its Claude OAuth flow in Jan 2026, so bring your own API keys for Claude models.
+
+```bash
+npm install -g opencode-ai
+opencode
+```
+
+Why it's worth knowing:
+- **No vendor lock-in** — switching models doesn't mean switching tools.
+- **Same primitives as the rest of this roadmap** — skills/rules/hooks concepts transfer directly.
+- **Great "second agent"** — keep a commercial tool as primary, use OpenCode when you want a BYO-model fallback or local models.
+
+---
+
 ## 5. Run an agent fully local (privacy mode)
 
 A fun exercise that'll make you popular at work:
@@ -120,7 +137,7 @@ aider --model ollama/qwen2.5-coder:7b --no-auto-commits
 
 Now you have a coding agent running **completely offline**. No API keys, no data leaving your machine.
 
-> ⚠️ Quality is noticeably below frontier cloud models (`claude-opus-4-8`, `gpt-5.5`). Use for privacy-critical tasks or experimentation, not everything.
+> ⚠️ Quality is noticeably below frontier cloud models (`claude-opus-5`, `gpt-5.6`). Use for privacy-critical tasks or experimentation, not everything.
 
 ---
 
@@ -165,6 +182,7 @@ Pick an OSS agent and **read its main loop file**. Aider's is in `aider/coders/b
 | Need approvals / audit trail | **Cline** |
 | Polyglot IDE team (VS Code + JetBrains) | **Continue** |
 | Air-gapped / regulated / privacy-critical | **Qwen Code** + Ollama |
+| Want any model without lock-in | **OpenCode** |
 | You want to *read* the agent source | Any of the above |
 
 ---
@@ -182,6 +200,7 @@ Pick an OSS agent and **read its main loop file**. Aider's is in `aider/coders/b
 - 📘 [**Cline** (GitHub)](https://github.com/cline/cline)
 - 📘 [**Continue** (GitHub)](https://github.com/continuedev/continue)
 - 📘 [**Qwen Code** (GitHub)](https://github.com/QwenLM/qwen-code)
+- 📘 [**OpenCode** (GitHub)](https://github.com/anomalyco/opencode)
 - 📄 [**"Aider vs Cline vs Continue" (vibecodemeta)**](https://vibecodemeta.com/blog/aider-vs-cline-vs-continue/)
 - 📄 [**"Best Open-Source AI Coding Agents 2026"**](https://cssauthor.com/best-open-source-ai-coding-agents/)
 

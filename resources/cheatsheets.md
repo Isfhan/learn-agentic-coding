@@ -141,8 +141,8 @@ See `example.md`.
 prompts:
   - 'Write {{language}} code to {{task}}. Return code only.'
 providers:
-  - anthropic:claude-sonnet-4-6
-  - openai:gpt-5.5
+  - anthropic:claude-sonnet-5
+  - openai:gpt-5.6
 tests:
   - vars: { language: Python, task: "reverse a string" }
     assert:

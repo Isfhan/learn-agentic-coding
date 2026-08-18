@@ -6,7 +6,7 @@ This folder contains Promptfoo checks for roadmap answer quality.
 
 - Install Promptfoo: `npm install -g promptfoo` or use `npx promptfoo`.
 - Set provider API keys for the models in `promptfooconfig.yaml`, such as `ANTHROPIC_API_KEY` and `OPENAI_API_KEY`.
-- Review the provider IDs before running. Model names change over time, so `anthropic:claude-sonnet-4-6` or `openai:gpt-5.5` may need to be replaced with the current IDs from Promptfoo and vendor docs.
+- Review the provider IDs before running. Model names change over time, so `anthropic:claude-sonnet-5` or `openai:gpt-5.6` may need to be replaced with the current IDs from Promptfoo and vendor docs.
 
 ## Run
 

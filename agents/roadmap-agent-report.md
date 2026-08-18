@@ -10,7 +10,7 @@ SUCCESS
 
 > A one-page big picture. Print it, screenshot it, put it on your desk.
 >
-> **Last verified: June 2026.** See [README.md](./README.md#-currency) for refresh guidance.
+> **Last verified: August 2026.** See [README.md](./README.md#-currency) for refresh guidance.
 
 ---
 
@@ -33,9 +33,9 @@ flowchart LR
         C1[MCP intro] --> C2[Build MCP server] --> C3[Hooks] --> C4[Subagents] --> C5[Context engineering] --> C6[Spec-Driven Dev]
     end
 
-    subgraph P4["🧠 Phase 4 · Architect (Steps 14-18)"]
+    subgraph P4["🧠 Phase 4 · Architect (Steps 14-19)"]
         direction TB
-        D1[Evals] --> D2[Security] --> D3[Build from scratch] --> D4[Advanced patterns] --> D5[Stay current]
+        D1[Evals] --> D2[Security] --> D3[Build from scratch] --> D4[Advanced patterns] --> D5[Agent system engineering] --> D6[Stay current]
     end
 
     P1 --> P2 --> P3 --> P4
@@ -43,8 +43,7 @@ flowchart LR
     style P1 fill:#dbeafe,stroke:#3b82f6
     style P2 fill:#dcfce7,stroke:#16a34a
     style P3 fill:#fce7f3,stroke:#db2777
-    style P4 fill:#fef3c7,stroke:#d97706
-`
+    sty
 ```
 
 ## Final Summary

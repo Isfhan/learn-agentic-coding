@@ -1,6 +1,6 @@
 # Step 16 · Build Your Own Agent From Scratch
 
-> **⏱️ Time:** ~4 hours · **Prereq:** Step 15
+> **⏱️ Time:** ~4 hours · **Prereq:** Step 15 · **Best for:** AI Engineer, FDE, Automation, ML (CAPSTONE)
 
 You've been *using* agents for 15 steps. Now you're going to build one — the full loop — in about **200 lines of code**. After this, agents stop feeling magical and start feeling like software.
 
@@ -161,7 +161,7 @@ def run(user_msg: str):
     messages = [{"role": "user", "content": user_msg}]
     while True:
         resp = client.messages.create(
-            model="claude-sonnet-4-6",
+            model="claude-sonnet-5",
             max_tokens=4096,
             system=SYSTEM,
             tools=TOOL_SCHEMAS,
@@ -230,7 +230,7 @@ async function run(userMsg: string) {
   const messages: any[] = [{ role: "user", content: userMsg }];
   while (true) {
     const resp = await client.messages.create({
-      model: "claude-sonnet-4-6",
+      model: "claude-sonnet-5",
       max_tokens: 4096,
       system: "You are Mini-Agent…",
       tools,

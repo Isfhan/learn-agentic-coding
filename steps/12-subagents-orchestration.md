@@ -1,6 +1,6 @@
 # Step 12 · Subagents & Orchestration
 
-> **⏱️ Time:** ~3 hours · **Prereq:** Step 11
+> **⏱️ Time:** ~3 hours · **Prereq:** Step 11 · **Best for:** AI Engineer, Automation (core); FDE, AgentOps (optional)
 
 Single-agent mode tops out somewhere around "refactor one module." Real projects need **teams of agents**. This step is how you get there.
 
@@ -47,7 +47,7 @@ Result: the parent stays focused, and the child can dive deep without polluting.
 
 ## 2. Built-in subagents (2026)
 
-Both Cursor and Claude Code ship these (June 2026):
+Both Cursor and Claude Code ship these (August 2026):
 
 | Subagent | What it's for | Mode |
 |----------|---------------|------|

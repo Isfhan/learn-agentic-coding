@@ -10,8 +10,8 @@ prompts:
     FORMAT: bullet list
 
 providers:
-  - anthropic:claude-sonnet-4-6
-  - openai:gpt-5.5
+  - anthropic:claude-sonnet-5
+  - openai:gpt-5.6
 
 tests:
   - vars:

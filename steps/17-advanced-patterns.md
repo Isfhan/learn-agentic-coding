@@ -1,6 +1,6 @@
 # Step 17 · Advanced Patterns
 
-> **⏱️ Time:** ~3 hours · **Prereq:** Step 16
+> **⏱️ Time:** ~3 hours · **Prereq:** Step 16 · **Best for:** AI Engineer, AgentOps, ML (core)
 
 Once you've built the core loop, you graduate to *architecting* systems of agents. This step is the pattern language.
 

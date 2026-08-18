@@ -41,18 +41,19 @@ Run the same build step manually:
 mkdir -p _site
 cp docs/index.html docs/read.html _site/
 cp -r steps ROADMAP.md CONTRIBUTING.md learning-log.template.md LICENSE _site/
-cp -r projects resources _site/ 2>/dev/null; true
+cp -r projects resources roles _site/ 2>/dev/null; true
 ```
 
 Then set the **publish directory** to `_site`.
 
 ## What's inside
 
-- **Hero** with animated orbs, grid background, and a live-looking `agent_loop.py` code card
+- **Hero** with animated orbs, grid background, and a live-typing `agent_loop.py` terminal card
 - **Tools marquee** (Cursor, Claude Code, Qwen, MCP servers, Spec Kit, OpenSpec, …)
 - **The big picture** — six thesis cards
 - **Four phases** (Foundations · Operator · Extender · Architect) color-coded
 - **All 21 steps** rendered from a single JS array — easy to update
+- **Role tracks** — 8 in-demand 2026–2027 roles with per-step mappings
 - **3-week plan** timeline
 - **What you'll build** — portfolio outputs
 - **Differentiators + final CTA + footer**

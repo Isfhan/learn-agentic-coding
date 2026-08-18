@@ -9,11 +9,12 @@ to *"I design, build, test, and ship production agent systems."*
 
 ![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-blue)
 ![Steps](https://img.shields.io/badge/Steps-21-purple)
+![Roles](https://img.shields.io/badge/Role%20Tracks-8-green)
 ![Updated](https://img.shields.io/badge/Last%20verified-August%202026-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)
 
-[**🌐 Live Site**](https://isfhan.github.io/learn-agentic-coding/) &nbsp;·&nbsp; [**Start Learning →**](./steps/00-introduction.md) &nbsp;·&nbsp; [Roadmap](./ROADMAP.md) &nbsp;·&nbsp; [Glossary](./resources/glossary.md) &nbsp;·&nbsp; [Resources](./resources) &nbsp;·&nbsp; [Projects](./projects/practice-projects.md) &nbsp;·&nbsp; [Contribute](./CONTRIBUTING.md)
+[**🌐 Live Site**](https://isfhan.github.io/learn-agentic-coding/) &nbsp;·&nbsp; [**Start Learning →**](./steps/00-introduction.md) &nbsp;·&nbsp; [Roadmap](./ROADMAP.md) &nbsp;·&nbsp; [**Role Tracks →**](./roles/README.md) &nbsp;·&nbsp; [Glossary](./resources/glossary.md) &nbsp;·&nbsp; [Resources](./resources) &nbsp;·&nbsp; [Projects](./projects/practice-projects.md) &nbsp;·&nbsp; [Contribute](./CONTRIBUTING.md)
 
 </div>
 
@@ -23,7 +24,7 @@ to *"I design, build, test, and ship production agent systems."*
 
 You already know basic programming: variables, loops, functions, and basic Git. You do **not** need to know agent tools yet.
 
-This roadmap is for learners who use, or want to use, **Cursor**, **Claude Code**, **Qwen CLI**, **GitHub Copilot**, **Codex**, **Gemini CLI**, **Google Antigravity**, or similar tools. It explains the buzzwords as you meet them: **MCP (Model Context Protocol: a standard way for AI tools to connect to tools and data)**, **skills (reusable agent instructions)**, **rules (project guidance)**, **hooks (scripts that run around agent actions)**, **subagents (smaller agents for focused work)**, **context engineering (choosing what the AI sees)**, and **evals (tests for AI behavior)**.
+This roadmap is for learners who use, or want to use, **Cursor**, **Claude Code**, **Qwen CLI**, **GitHub Copilot**, **Codex**, **Google Antigravity**, or similar tools. It explains the buzzwords as you meet them: **MCP (Model Context Protocol: a standard way for AI tools to connect to tools and data)**, **skills (reusable agent instructions)**, **rules (project guidance)**, **hooks (scripts that run around agent actions)**, **subagents (smaller agents for focused work)**, **context engineering (choosing what the AI sees)**, and **evals (tests for AI behavior)**.
 
 This roadmap maps the deeper layer under everyday AI coding.
 
@@ -107,6 +108,20 @@ flowchart TD
 
 ---
 
+## 🎓 Learn, then earn: role tracks
+
+The steps teach skills; the [**role tracks**](./roles/README.md) turn skills into a career. Pick the 2026–2027 most-in-demand role that matches how you like to work, follow its step order, do the role-specific additions, and ship the track capstone:
+
+- 👨‍💻 [**AI Engineer / Agent Developer**](./roles/ai-engineer.md) — #1 fastest-growing title (+143% postings)
+- 🚀 [**Forward Deployed Engineer (FDE)**](./roles/fde.md) — postings +800% YoY, $150K–$325K
+- ⚙️ [**Automation Engineer**](./roles/automation-engineer.md) — the RPA → agentic shift
+- 🛡️ [**AgentOps / Reliability Engineer**](./roles/agentops.md) — $185K–$320K, the newest ops discipline
+- 🤖 [**ML Engineer (applied)**](./roles/ml-engineer.md) · 🧭 [**AI Product Manager**](./roles/ai-product-manager.md) · 🗄️ [**Data Engineer**](./roles/data-engineer.md) · 💬 [**Prompt Engineer (entry)**](./roles/prompt-engineer.md)
+
+Every track reuses the same 21 steps — you never learn something twice.
+
+---
+
 ## 📦 What's inside this repo
 
 ```
@@ -116,6 +131,7 @@ flowchart TD
 ├── CONTRIBUTING.md          ← How to improve this roadmap
 ├── AGENTS.md                ← Project guidance for coding agents
 ├── steps/                   ← The 21 step files (00-19, including 13.5)
+├── roles/                   ← 8 role tracks: learn the steps, then earn (AI Engineer, FDE, Automation, AgentOps, ML, AI PM, Data, Prompt)
 ├── resources/               ← Curated YouTube, GitHub, books, communities
 ├── projects/                ← Hands-on portfolio projects
 ├── agents/                  ← Build-your-own-agent examples
@@ -146,7 +162,7 @@ Before you dive in, internalize these. Everything else is commentary.
 ## 🌟 What makes this roadmap different
 
 - ✅ **Tool-aware, not vendor-locked.** We cover Cursor, Claude Code, Qwen, Aider, Cline, Continue, Copilot, Codex, Gemini, Antigravity, and cloud agents.
-- ✅ **2026-current.** GPT-5.5, Claude Opus 4.8, Gemini 3.5, MCP stateless RC, Skills, Hooks, async subagents — the stuff that didn't exist 12 months ago.
+- ✅ **2026-current.** GPT-5.6, Claude Opus 5, Gemini 3.7 Flash, MCP stateless RC, Skills, Hooks, async subagents — the stuff that didn't exist 12 months ago.
 - ✅ **Free & open-source.** No course paywall. Every link is a YouTube video, docs page, or GitHub repo.
 - ✅ **Hands-on.** Every step ends with an exercise you can finish in under an hour.
 - ✅ **Maintained.** The AI tooling space moves weekly. We keep this current — [see CONTRIBUTING](./CONTRIBUTING.md).

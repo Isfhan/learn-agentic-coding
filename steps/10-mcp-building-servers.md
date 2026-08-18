@@ -1,6 +1,6 @@
 # Step 10 · Building MCP Servers
 
-> **⏱️ Time:** ~4 hours · **Prereq:** Step 09
+> **⏱️ Time:** ~4 hours · **Prereq:** Step 09 · **Best for:** AI Engineer, FDE, Automation, Data Engineer (CAPSTONE)
 
 Installing MCP servers is cool. Building one is a superpower. By the end of this step you will have **your own MCP server running** that Cursor and Claude Code can both use.
 
@@ -29,6 +29,8 @@ npm i @modelcontextprotocol/sdk zod
 npm i -D typescript @types/node tsx
 npx tsc --init
 ```
+
+> **SDK version note:** this tutorial uses the stable SDK v1 API. SDK **v2** (`@modelcontextprotocol/sdk@next`, currently `2.0.0-alpha.3+`) implements the stateless `2026-07-28` spec — no `initialize` handshake, protocol version carried per-request in `_meta`. v1 servers keep working during the transition window, so both APIs are valid to learn today. See the [what's-new guide](https://py.sdk.modelcontextprotocol.io/whats-new/) (Python v2) and the [TS SDK repo](https://github.com/modelcontextprotocol/typescript-sdk) for migration notes.
 
 ### `src/index.ts`
 

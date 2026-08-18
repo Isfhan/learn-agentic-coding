@@ -4,18 +4,36 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
-<title>The Agentic Coding Roadmap — Learn to build software with AI agents</title>
+<title>agentic.sh — The Agentic Coding Roadmap</title>
 <meta name="description" content="A free, open-source, 21-step roadmap from 'I type prompts into Cursor' to 'I design, build, and ship production agent systems.' MCP, Skills, Hooks, Subagents, Context Engineering, Spec-Driven Dev, Evals — all of it." />
-<meta name="theme-color" content="#0a0707" />
+<meta name="theme-color" content="#0d1117" />
 
-<meta property="og:title" content="The Agentic Coding Roadmap" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="favicon-180.png" />
+
+<meta property="og:title" content="agentic.sh — The Agentic Coding Roadmap" />
 <meta property="og:description" content="From 'I type prompts into Cursor' to 'I ship production agent systems.' 21 steps. Free. Open source. 2026-current." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://Isfhan.github.io/my-agentic-coding-roadmap/" />
+<meta property="og:site_name" content="agentic.sh" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://Isfhan.github.io/my-agentic-coding-roadmap/og-cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="agentic.sh — The Agentic Coding Roadmap: 21 steps from prompts to production agent systems" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="agentic.sh — The Agentic Coding Roadmap" />
+<meta name="twitter:description" content="From 'I type prompts into Cursor' to 'I ship production agent systems.' 21 steps. Free. Open source. 2026-current." />
+<meta name="twitter:image" content="https://Isfhan.github.io/my-agentic-coding-roadmap/og-cover.png" />
+<meta name="twitter:image:alt" content="agentic.sh — The Agentic Coding Roadmap: 21 steps from prompts to production agent systems" />
+
+<link rel="canonical" href="https://Isfhan.github.io/my-agentic-coding-roadmap/" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 <script>
@@ -23,29 +41,29 @@
     theme: {
       extend: {
         fontFamily: {
-          sans: ['"General Sans"', 'Inter', 'ui-sans-serif', 'system-ui'],
-          display: ['"General Sans"', 'Inter', 'ui-sans-serif', 'system-ui'],
+          sans: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          display: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
           mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         },
         colors: {
           ink: {
-            950: '#0a0707',
-            900: '#120a0b',
-            800: '#1a0e10',
-            700: '#231318',
-            600: '#2e181f',
+            950: '#0d1117',
+            900: '#161b22',
+            800: '#1c2128',
+            700: '#21262d',
+            600: '#30363d',
           },
           accent: {
-            // Rose/red family — preserving class names to avoid HTML churn.
-            violet: '#fecdd3', // rose-200  (Explorer, muted)
-            cyan:   '#fb7185', // rose-400  (Operator)
-            pink:   '#f43f5e', // rose-500  (Extender)
-            lime:   '#fda4af', // rose-300  (Build in public)
-            amber:  '#e11d48', // rose-600  (Architect / primary)
+            // Terminal Green family — class names preserved to avoid HTML churn.
+            violet: '#7ee787', // green-300 (Foundations, muted)
+            cyan:   '#58a6ff', // blue-400   (Operator)
+            pink:   '#d2a8ff', // purple-300 (Extender)
+            lime:   '#f0883e', // orange-400 (Build in public)
+            amber:  '#39d353', // phosphor green (Architect / primary)
           }
         },
         boxShadow: {
-          glow: '0 0 90px -18px rgba(225,29,72,0.55), 0 0 60px -20px rgba(244,63,94,0.22)',
+          glow: '0 0 90px -18px rgba(57,211,83,0.55), 0 0 60px -20px rgba(63,185,80,0.22)',
         }
       }
     }
@@ -54,24 +72,22 @@
 
 <style>
   :root {
-    /* Red/rose gradients — rose-400 → rose-600 → rose-900 */
-    --grad-1: linear-gradient(135deg, #fb7185 0%, #e11d48 55%, #9f1239 100%);
-    --grad-2: linear-gradient(135deg, #fecdd3 0%, #e11d48 55%, #881337 100%);
-    --grad-3: linear-gradient(135deg, #f43f5e 0%, #9f1239 100%);
+    /* Terminal gradients — phosphor green family */
+    --grad-1: linear-gradient(135deg, #7ee787 0%, #39d353 55%, #238636 100%);
+    --grad-2: linear-gradient(135deg, #56d364 0%, #39d353 55%, #238636 100%);
+    --grad-3: linear-gradient(135deg, #58a6ff 0%, #39d353 100%);
 
-    /* Primary CTA: rose-500 → rose-600 → rose-700 */
-    --btn-primary: linear-gradient(180deg, #f43f5e 0%, #e11d48 42%, #be123c 100%);
-    --btn-primary-hover: linear-gradient(180deg, #fb7185 0%, #e11d48 45%, #9f1239 100%);
+    /* Primary CTA: GitHub-style green button */
+    --btn-primary: linear-gradient(180deg, #2ea043 0%, #238636 42%, #1a7f37 100%);
+    --btn-primary-hover: linear-gradient(180deg, #3fb950 0%, #2ea043 45%, #238636 100%);
     --btn-primary-ring:
-      0 1px 0 rgba(255,255,255,0.22) inset,
-      0 0 0 1px rgba(253,164,175,0.35) inset,
-      0 14px 36px -16px rgba(225,29,72,0.7),
-      0 10px 28px -14px rgba(244,63,94,0.28);
+      0 1px 0 rgba(255,255,255,0.12) inset,
+      0 0 0 1px rgba(63,185,80,0.4),
+      0 10px 28px -14px rgba(0,0,0,0.5);
     --btn-primary-ring-hover:
-      0 1px 0 rgba(255,255,255,0.28) inset,
-      0 0 0 1px rgba(254,205,211,0.45) inset,
-      0 18px 44px -14px rgba(225,29,72,0.82),
-      0 12px 32px -12px rgba(244,63,94,0.38);
+      0 1px 0 rgba(255,255,255,0.16) inset,
+      0 0 0 1px rgba(126,231,135,0.5),
+      0 14px 34px -16px rgba(0,0,0,0.55);
   }
 
   .btn-primary-bg {
@@ -95,7 +111,7 @@
       rgba(255,255,255,0.28) 0%,
       rgba(255,255,255,0.06) 35%,
       transparent 55%,
-      rgba(251,113,133,0.1) 100%
+      rgba(126,231,135,0.1) 100%
     );
     opacity: 0;
     transition: opacity 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -110,15 +126,15 @@
     display: none;
   }
   .nav-disclosure[open] > summary {
-    border-color: rgba(251, 113, 133, 0.35);
+    border-color: rgba(57, 211, 83, 0.35);
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
   }
   /* Opaque menu panel — high contrast over busy page background */
   .nav-panel-solid {
-    background: #120a0b;
-    background-image: linear-gradient(180deg, #1a0e10 0%, #120a0b 100%);
-    border: 1px solid rgba(239, 230, 228, 0.14);
+    background: #161b22;
+    background-image: linear-gradient(180deg, #1c2128 0%, #161b22 100%);
+    border: 1px solid rgba(48, 54, 61, 0.6);
     box-shadow:
       0 28px 64px -24px rgba(0, 0, 0, 0.85),
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -152,7 +168,7 @@
     bottom: -1px;
     height: 2px;
     border-radius: 2px;
-    background: linear-gradient(90deg, #fb7185, #e11d48);
+    background: linear-gradient(90deg, #7ee787, #39d353);
     opacity: 0;
     transform: scaleX(0.45);
     transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -165,9 +181,9 @@
 
   html { scroll-behavior: smooth; }
   body {
-    background: #0a0707;
-    color: #efe6e4;
-    font-family: 'General Sans', 'Inter', system-ui, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -177,8 +193,8 @@
   /* Grid + noise background */
   .bg-grid {
     background-image:
-      linear-gradient(rgba(239,230,228,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(239,230,228,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(230,237,243,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,237,243,0.03) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 80%);
@@ -203,9 +219,9 @@
     pointer-events: none;
     animation: float 18s ease-in-out infinite;
   }
-  .orb.a { background: #e11d48; width: 520px; height: 520px; top: -120px; left: -120px; opacity: .32; }
-  .orb.b { background: #f43f5e; width: 420px; height: 420px; top: 40%; right: -140px; animation-delay: -6s; opacity: .24; }
-  .orb.c { background: #be123c; width: 380px; height: 380px; bottom: -140px; left: 30%; animation-delay: -12s; opacity: .22; }
+  .orb.a { background: #39d353; width: 520px; height: 520px; top: -120px; left: -120px; opacity: .32; }
+  .orb.b { background: #3fb950; width: 420px; height: 420px; top: 40%; right: -140px; animation-delay: -6s; opacity: .24; }
+  .orb.c { background: #238636; width: 380px; height: 380px; bottom: -140px; left: 30%; animation-delay: -12s; opacity: .22; }
   @keyframes float {
     0%,100% { transform: translate3d(0,0,0) scale(1); }
     50% { transform: translate3d(30px,-40px,0) scale(1.08); }
@@ -227,8 +243,8 @@
 
   /* Glass card */
   .glass {
-    background: linear-gradient(180deg, rgba(239,230,228,0.05), rgba(239,230,228,0.015));
-    border: 1px solid rgba(239,230,228,0.1);
+    background: linear-gradient(180deg, rgba(230,237,243,0.05), rgba(230,237,243,0.015));
+    border: 1px solid rgba(230,237,243,0.1);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
@@ -237,29 +253,29 @@
   }
   .glass-hover:hover {
     transform: translateY(-3px);
-    border-color: rgba(244,63,94,0.45);
+    border-color: rgba(63,185,80,0.45);
     box-shadow:
-      0 28px 72px -28px rgba(225,29,72,0.38),
-      0 16px 40px -20px rgba(244,63,94,0.18);
+      0 28px 72px -28px rgba(57,211,83,0.38),
+      0 16px 40px -20px rgba(63,185,80,0.18);
   }
 
   /* Outline CTAs (next to primary buttons): clearer glass + crisp label */
   .glass-cta {
-    color: rgba(247,240,240,0.96);
-    background: linear-gradient(180deg, rgba(239,230,228,0.07), rgba(244,63,94,0.04));
-    border: 1px solid rgba(239,230,228,0.14);
+    color: rgba(230,237,243,0.96);
+    background: linear-gradient(180deg, rgba(230,237,243,0.07), rgba(63,185,80,0.04));
+    border: 1px solid rgba(230,237,243,0.14);
     box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
   }
   .glass-cta.glass-hover:hover {
-    border-color: rgba(251,113,133,0.5);
-    background: linear-gradient(180deg, rgba(239,230,228,0.1), rgba(244,63,94,0.08));
+    border-color: rgba(126,231,135,0.5);
+    background: linear-gradient(180deg, rgba(230,237,243,0.1), rgba(63,185,80,0.08));
   }
 
   /* Gradient border card */
   .grad-border {
     position: relative;
     border-radius: 1.25rem;
-    background: #120a0b;
+    background: #161b22;
   }
   .grad-border::before {
     content: "";
@@ -277,7 +293,7 @@
 
   /* Shimmering underline link */
   .link-shim {
-    background-image: linear-gradient(90deg, #f43f5e, #e11d48);
+    background-image: linear-gradient(90deg, #3fb950, #39d353);
     background-size: 200% 2px;
     background-repeat: no-repeat;
     background-position: 0 100%;
@@ -316,34 +332,34 @@
     to { transform: translateX(-50%); }
   }
 
-  /* Code block */
+  /* Code block — terminal frame */
   .code-frame {
-    background: #0f0a0b;
-    border: 1px solid rgba(239,230,228,0.08);
-    border-radius: 14px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
     font-family: 'JetBrains Mono', monospace;
     font-size: .9rem;
     line-height: 1.65;
-    color: #efe6e4;
+    color: #e6edf3;
   }
-  .code-frame .cmt { color: #a09090; font-style: italic; }
-  .code-frame .kw  { color: #f43f5e; }
-  .code-frame .str { color: #fda4af; }
-  .code-frame .fn  { color: #fb7185; }
-  .code-frame .num { color: #fecdd3; }
+  .code-frame .cmt { color: #8b949e; font-style: italic; }
+  .code-frame .kw  { color: #39d353; }
+  .code-frame .str { color: #a5d6ff; }
+  .code-frame .fn  { color: #d2a8ff; }
+  .code-frame .num { color: #79c0ff; }
 
   /* Pulse dot */
   .pulse {
     position: relative;
     width: 8px; height: 8px;
     border-radius: 9999px;
-    background: #e11d48;
+    background: #39d353;
   }
   .pulse::after {
     content: "";
     position: absolute; inset: -4px;
     border-radius: 9999px;
-    background: #e11d48;
+    background: #39d353;
     opacity: .45;
     animation: ping 1.6s cubic-bezier(0,0,.2,1) infinite;
   }
@@ -351,7 +367,7 @@
 
   /* Step card number */
   .step-num {
-    font-family: 'General Sans', 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-style: normal;
     background: var(--grad-1);
@@ -361,13 +377,29 @@
   }
 
   /* Selection */
-  ::selection { background: #e11d48; color: #0a0707; }
+  ::selection { background: #39d353; color: #0d1117; }
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #0a0707; }
-  ::-webkit-scrollbar-thumb { background: #3a2a2c; border-radius: 999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #5a3038; }
+  ::-webkit-scrollbar-track { background: #0d1117; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+  /* CRT scan lines overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.32) 0 1px, transparent 1px 3px);
+    opacity: 0.35;
+  }
+
+  /* Terminal radius pass — sm 6px, md 12px */
+  .rounded-3xl { border-radius: 12px; }
+  .rounded-2xl { border-radius: 12px; }
+  .rounded-xl  { border-radius: 6px; }
 
   /* =================== Punch-Card / Eras section =================== */
 
@@ -403,8 +435,8 @@
     inset: 1.75rem 7% -1.25rem;
     border-radius: 999px;
     background:
-      radial-gradient(circle at 18% 35%, rgba(251,113,133,0.2), transparent 34%),
-      radial-gradient(circle at 80% 55%, rgba(225,29,72,0.18), transparent 36%);
+      radial-gradient(circle at 18% 35%, rgba(126,231,135,0.2), transparent 34%),
+      radial-gradient(circle at 80% 55%, rgba(57,211,83,0.18), transparent 36%);
     filter: blur(28px);
     opacity: .7;
     pointer-events: none;
@@ -417,7 +449,7 @@
     width: 100%;
     border-radius: 1.35rem;
     isolation: isolate;
-    box-shadow: 0 28px 90px -54px rgba(225,29,72,0.82);
+    box-shadow: 0 28px 90px -54px rgba(57,211,83,0.82);
   }
   .eras-viewport::before {
     content: "";
@@ -428,7 +460,7 @@
     border-radius: inherit;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.08),
-      inset 0 -1px 0 rgba(10,7,7,0.85);
+      inset 0 -1px 0 rgba(13,17,23,0.85);
   }
 
   /* Full-width track holding 5 cards side-by-side */
@@ -451,12 +483,12 @@
     border-radius: 1.35rem;
     padding: clamp(1.1rem, 2.2vw, 1.65rem);
     background:
-      radial-gradient(circle at 16% 0%, rgba(251,113,133,0.13), transparent 32%),
-      linear-gradient(140deg, rgba(239,230,228,0.075), rgba(239,230,228,0.018) 44%, rgba(225,29,72,0.035));
-    border: 1px solid rgba(239,230,228,0.12);
+      radial-gradient(circle at 16% 0%, rgba(126,231,135,0.13), transparent 32%),
+      linear-gradient(140deg, rgba(230,237,243,0.075), rgba(230,237,243,0.018) 44%, rgba(57,211,83,0.035));
+    border: 1px solid rgba(230,237,243,0.12);
     box-shadow:
       0 24px 80px -42px rgba(0,0,0,0.92),
-      0 18px 56px -46px rgba(225,29,72,0.8),
+      0 18px 56px -46px rgba(57,211,83,0.8),
       inset 0 1px 0 rgba(255,255,255,0.08);
     display: flex;
     flex-direction: column;
@@ -470,8 +502,8 @@
     z-index: -1;
     border-radius: inherit;
     background:
-      linear-gradient(90deg, rgba(255,255,255,0.08), transparent 20%, transparent 80%, rgba(225,29,72,0.12)),
-      radial-gradient(circle at 100% 0%, rgba(244,63,94,0.16), transparent 34%);
+      linear-gradient(90deg, rgba(255,255,255,0.08), transparent 20%, transparent 80%, rgba(57,211,83,0.12)),
+      radial-gradient(circle at 100% 0%, rgba(63,185,80,0.16), transparent 34%);
     opacity: .72;
     pointer-events: none;
   }
@@ -483,41 +515,41 @@
     width: 220px;
     height: 220px;
     border-radius: 9999px;
-    background: rgba(225,29,72,0.18);
+    background: rgba(57,211,83,0.18);
     filter: blur(44px);
     opacity: .55;
     pointer-events: none;
   }
   .era-card.active {
-    border-color: rgba(251,113,133,0.36);
+    border-color: rgba(126,231,135,0.36);
     box-shadow:
       0 30px 100px -46px rgba(0,0,0,0.95),
-      0 20px 66px -40px rgba(225,29,72,0.9),
+      0 20px 66px -40px rgba(57,211,83,0.9),
       inset 0 1px 0 rgba(255,255,255,0.1);
   }
   .era-card.is-featured {
-    border-color: rgba(225,29,72,0.48);
+    border-color: rgba(57,211,83,0.48);
     background:
-      radial-gradient(circle at 14% 0%, rgba(253,164,175,0.16), transparent 32%),
-      linear-gradient(140deg, rgba(225,29,72,0.105), rgba(239,230,228,0.026) 46%, rgba(159,18,57,0.13));
+      radial-gradient(circle at 14% 0%, rgba(126,231,135,0.16), transparent 32%),
+      linear-gradient(140deg, rgba(57,211,83,0.105), rgba(230,237,243,0.026) 46%, rgba(35,134,54,0.13));
   }
-  .era-card.is-featured .era-meta { color: #fb7185; }
+  .era-card.is-featured .era-meta { color: #7ee787; }
   .era-card.is-featured .era-artifact {
-    border-color: rgba(225,29,72,0.28);
+    border-color: rgba(57,211,83,0.28);
     background:
-      radial-gradient(circle at 86% 4%, rgba(225,29,72,0.18), transparent 30%),
-      linear-gradient(180deg, #12080a, #0b0607);
+      radial-gradient(circle at 86% 4%, rgba(57,211,83,0.18), transparent 30%),
+      linear-gradient(180deg, #0d1117, #0d1117);
   }
   .era-card.is-featured .era-artifact .bar {
-    color: #fda4af;
-    border-bottom-color: rgba(225,29,72,0.22);
+    color: #7ee787;
+    border-bottom-color: rgba(57,211,83,0.22);
   }
   @media (hover: hover) and (pointer: fine) {
     .era-card:hover {
-      border-color: rgba(244,63,94,0.34);
+      border-color: rgba(63,185,80,0.34);
       background:
-        radial-gradient(circle at 16% 0%, rgba(251,113,133,0.16), transparent 32%),
-        linear-gradient(140deg, rgba(239,230,228,0.085), rgba(239,230,228,0.02) 44%, rgba(225,29,72,0.048));
+        radial-gradient(circle at 16% 0%, rgba(126,231,135,0.16), transparent 32%),
+        linear-gradient(140deg, rgba(230,237,243,0.085), rgba(230,237,243,0.02) 44%, rgba(57,211,83,0.048));
     }
   }
 
@@ -552,19 +584,19 @@
     height: 6px;
     width: clamp(22px, 4vw, 42px);
     border-radius: 9999px;
-    background: rgba(239,230,228,0.14);
-    box-shadow: inset 0 0 0 1px rgba(239,230,228,0.06);
+    background: rgba(230,237,243,0.14);
+    box-shadow: inset 0 0 0 1px rgba(230,237,243,0.06);
     transition: background 0.35s, box-shadow 0.35s, opacity 0.35s;
   }
   .era-dot.completed {
-    background: rgba(244,63,94,0.38);
-    box-shadow: 0 0 16px -8px rgba(244,63,94,0.75);
+    background: rgba(63,185,80,0.38);
+    box-shadow: 0 0 16px -8px rgba(63,185,80,0.75);
   }
   .era-dot.active {
     background: var(--grad-1);
     box-shadow:
-      0 0 0 1px rgba(254,205,211,0.18),
-      0 0 24px -8px rgba(225,29,72,0.9);
+      0 0 0 1px rgba(86,211,100,0.18),
+      0 0 24px -8px rgba(57,211,83,0.9);
   }
 
   /* Step counter */
@@ -572,11 +604,11 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
     letter-spacing: 0.14em;
-    color: rgba(239,230,228,0.62);
+    color: rgba(230,237,243,0.62);
     padding: .45rem .65rem;
-    border: 1px solid rgba(239,230,228,0.08);
+    border: 1px solid rgba(230,237,243,0.08);
     border-radius: 9999px;
-    background: rgba(10,7,7,0.45);
+    background: rgba(13,17,23,0.45);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .era-meta {
@@ -584,24 +616,24 @@
     font-size: .7rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #a08082;
+    color: #8b949e;
   }
   .era-title {
-    font-family: 'General Sans', 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: clamp(1.45rem, 3.8vw, 2.05rem);
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin-top: .5rem;
-    color: #f7eded;
+    color: #e6edf3;
   }
   .era-tag {
     margin-top: auto;
     padding-top: 1.1rem;
-    font-family: 'General Sans', 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-style: italic;
     font-size: 1rem;
-    color: #d9bfc0;
+    color: #e6edf3;
     text-wrap: pretty;
   }
   @media (min-width: 768px) {
@@ -610,29 +642,29 @@
       max-width: 38%;
       margin-top: 0;
       padding: 1rem 0 1rem 1.45rem;
-      border-left: 1px solid rgba(239,230,228,0.1);
+      border-left: 1px solid rgba(230,237,243,0.1);
       align-self: center;
       font-size: 1.05rem;
       line-height: 1.55;
-      color: #ead1d2;
+      color: #e6edf3;
     }
   }
   .era-artifact {
     position: relative;
     margin-top: 1.1rem;
     background:
-      linear-gradient(180deg, rgba(18,9,10,0.98), rgba(8,5,6,0.98));
-    border: 1px solid rgba(239,230,228,0.11);
+      linear-gradient(180deg, rgba(22,27,34,0.98), rgba(13,17,23,0.98));
+    border: 1px solid rgba(230,237,243,0.11);
     border-radius: .95rem;
     padding: .85rem .95rem .9rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: .74rem;
     line-height: 1.55;
-    color: #efe0de;
+    color: #e6edf3;
     min-height: 148px;
     overflow: hidden;
     box-shadow:
-      inset 0 1px 0 rgba(239,230,228,0.06),
+      inset 0 1px 0 rgba(230,237,243,0.06),
       0 18px 42px -34px rgba(0,0,0,0.9);
   }
   .era-artifact::before {
@@ -640,8 +672,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(rgba(239,230,228,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(239,230,228,0.018) 1px, transparent 1px);
+      linear-gradient(rgba(230,237,243,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,237,243,0.018) 1px, transparent 1px);
     background-size: 18px 18px;
     opacity: .34;
     pointer-events: none;
@@ -652,41 +684,41 @@
     gap: .35rem;
     font-size: .62rem;
     letter-spacing: 0.14em;
-    color: #9a8585;
+    color: #8b949e;
     text-transform: uppercase;
     position: relative;
     margin-bottom: .65rem;
     padding-bottom: .55rem;
-    border-bottom: 1px solid rgba(239,230,228,0.08);
+    border-bottom: 1px solid rgba(230,237,243,0.08);
   }
   .era-artifact .bar::before {
     content: "";
     width: 6px; height: 6px; border-radius: 9999px;
-    background: #e11d48;
-    box-shadow: 0 0 0 3px rgba(225,29,72,0.2);
+    background: #39d353;
+    box-shadow: 0 0 0 3px rgba(57,211,83,0.2);
   }
   .era-artifact .row,
   .era-artifact .punch {
     position: relative;
   }
-  .era-artifact .row { color: #d8c0c2; }
-  .era-artifact .cmt { color: #9a7a7c; font-style: italic; }
-  .era-artifact .kw  { color: #f43f5e; }
-  .era-artifact .str { color: #fda4af; }
-  .era-artifact .fn  { color: #fb7185; }
-  .era-artifact .dim { color: #7a6266; }
+  .era-artifact .row { color: #e6edf3; }
+  .era-artifact .cmt { color: #8b949e; font-style: italic; }
+  .era-artifact .kw  { color: #3fb950; }
+  .era-artifact .str { color: #7ee787; }
+  .era-artifact .fn  { color: #7ee787; }
+  .era-artifact .dim { color: #8b949e; }
   .era-artifact .punch {
     letter-spacing: 0.22em;
-    color: #d9c0c2;
+    color: #8b949e;
   }
   .era-artifact .hole {
     display: inline-block;
     width: 10px; height: 14px; border-radius: 2px;
-    background: #efe6e4;
+    background: #e6edf3;
     margin: 0 2px 0 0;
     vertical-align: -2px;
   }
-  .era-artifact .hole.off { background: transparent; border: 1px solid rgba(239,230,228,0.18); }
+  .era-artifact .hole.off { background: transparent; border: 1px solid rgba(230,237,243,0.18); }
 
   /* On short screens, keep the story readable before decorative spacing. */
   @media (max-height: 640px) {
@@ -780,7 +812,7 @@
     .eras-viewport::before { display: none; }
     .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; transform: none !important; }
     .era-card     { flex: 0 0 auto; width: 100%; flex-direction: column; min-height: auto; }
-    .era-card.active { border-color: rgba(239,230,228,0.12); }
+    .era-card.active { border-color: rgba(230,237,243,0.12); }
     .eras-parallax-head { transform: none !important; }
     .eras-dots, .eras-counter { display: none; }
     .era-tag {
@@ -793,23 +825,86 @@
       align-self: stretch;
     }
   }
+
+  /* =================== Terminal Green additions =================== */
+
+  .text-anim {
+    background-size: 200% auto;
+    animation: grad-shift 7s ease-in-out infinite alternate;
+  }
+  @keyframes grad-shift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px; width: 0;
+    z-index: 80;
+    background: linear-gradient(90deg, #39d353, #7ee787);
+    box-shadow: 0 0 14px rgba(57,211,83,0.65);
+  }
+
+  .marquee-wrap {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee-wrap:hover .marquee { animation-play-state: paused; }
+
+  .caret {
+    display: inline-block;
+    width: .55em; height: 1.05em;
+    vertical-align: text-bottom;
+    background: #39d353;
+    box-shadow: 0 0 8px rgba(57,211,83,0.8);
+    animation: caret-blink 1s step-end infinite;
+  }
+  @keyframes caret-blink { 50% { opacity: 0; } }
+
+  .hero-tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .glass-hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(126,231,135,0.5), rgba(240,136,62,0.15), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+  }
+  .glass-hover:hover::before { opacity: 1; }
+
+  .site-nav-link.nav-active { color: rgba(255,255,255,0.95); }
+  .site-nav-link.nav-active::after { opacity: 1; transform: scaleX(1); }
 </style>
 </head>
 <body class="noise">
+
+<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
 <!-- =================== NAV =================== -->
 <header class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
     <div class="glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between gap-2 sm:gap-4 min-w-0">
-      <a href="#top" class="flex items-center gap-2 sm:gap-2.5 rounded-lg font-display font-bold tracking-tight outline-none min-w-0 shrink focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0707]">
+      <a href="#top" class="flex items-center gap-2 sm:gap-2.5 rounded-lg font-display font-bold tracking-tight outline-none min-w-0 shrink focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1117]">
         <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style="background: var(--grad-1)">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </span>
-        <span class="min-w-0 leading-tight text-[0.9375rem] sm:text-base">Agentic<span class="text-grad"> Coding</span></span>
+        <span class="min-w-0 leading-tight text-[0.9375rem] sm:text-base">agentic<span class="text-grad">.sh</span></span>
       </a>
       <div class="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3 md:gap-4 lg:gap-5">
         <details class="nav-disclosure nav-mobile relative shrink-0 md:hidden">
-          <summary class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:border-white/20 hover:bg-white/[0.07] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0707]" aria-label="Open menu">
+          <summary class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/85 hover:border-white/20 hover:bg-white/[0.07] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1117]" aria-label="Open menu">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </summary>
           <div class="nav-panel-solid absolute right-0 top-[calc(100%+0.5rem)] z-[60] flex w-[min(19rem,calc(100vw-2rem))] flex-col rounded-xl p-2 pb-3">
@@ -818,8 +913,10 @@
             <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#eras" onclick="this.closest('details').open=false">Eras</a>
             <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#models" onclick="this.closest('details').open=false">Big picture</a>
             <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#roadmap" onclick="this.closest('details').open=false">21 steps</a>
+            <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="read.html?path=roles/README.md" onclick="this.closest('details').open=false">Role tracks</a>
             <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#phases" onclick="this.closest('details').open=false">Phases</a>
             <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#plan" onclick="this.closest('details').open=false">3-week plan</a>
+            <a class="nav-panel-link rounded-lg px-3 py-2.5 text-sm font-medium" href="#build" onclick="this.closest('details').open=false">Portfolio</a>
             <div class="mx-2 my-2 border-t border-white/15"></div>
             <p class="nav-panel-muted px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em]">Start here</p>
             <a class="relative mx-1 mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none overflow-hidden group btn-primary-bg" href="read.html?path=steps/00-introduction.md" onclick="this.closest('details').open=false">
@@ -833,19 +930,21 @@
             </a>
           </div>
         </details>
-        <nav class="hidden min-w-0 md:flex md:flex-1 md:items-center md:justify-center md:gap-4 lg:gap-7 text-sm text-white/70" aria-label="Page sections">
-          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#eras">Eras</a>
-          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#models">Big picture</a>
-          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#roadmap">21 steps</a>
-          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#phases">Phases</a>
-          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#plan">3-week plan</a>
+        <nav class="hidden min-w-0 md:flex md:flex-1 md:items-center md:justify-center md:gap-4 lg:gap-6 text-sm text-white/70" aria-label="Page sections">
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#eras" data-spy>Eras</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#models" data-spy>Big picture</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#roadmap" data-spy>21 steps</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="read.html?path=roles/README.md">Role tracks</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#phases" data-spy>Phases</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#plan" data-spy>3-week plan</a>
+          <a class="site-nav-link whitespace-nowrap text-white/70 hover:text-white focus:outline-none focus-visible:text-white" href="#build" data-spy>Portfolio</a>
         </nav>
         <div class="hidden shrink-0 items-center gap-2 sm:gap-3 md:flex">
-          <a href="https://github.com/Isfhan/learn-agentic-coding" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-white/70 outline-none transition hover:bg-white/[0.06] hover:text-white focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0707]" aria-label="GitHub repository">
+          <a href="https://github.com/Isfhan/learn-agentic-coding" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-white/70 outline-none transition hover:bg-white/[0.06] hover:text-white focus-visible:ring-2 focus-visible:ring-accent-amber/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1117]" aria-label="GitHub repository">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.76 2.68 1.25 3.33.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.43-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.15v3.18c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
             <span class="hidden lg:inline" aria-hidden="true">GitHub</span>
           </a>
-          <a href="read.html?path=steps/00-introduction.md" class="relative inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-sm font-semibold text-white outline-none overflow-hidden group btn-primary-bg focus-visible:ring-2 focus-visible:ring-accent-amber/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0707] lg:px-4">
+          <a href="read.html?path=steps/00-introduction.md" class="relative inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-sm font-semibold text-white outline-none overflow-hidden group btn-primary-bg focus-visible:ring-2 focus-visible:ring-accent-amber/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1117] lg:px-4">
             <span class="btn-primary-overlay"></span>
             <span class="relative">Start Learning</span>
             <svg class="relative h-3.5 w-3.5 shrink-0 lg:h-4 lg:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -871,9 +970,9 @@
           <span>2026-current · MCP · Skills · Subagents · Loop Engineering · Spec-Driven Dev</span>
         </div>
 
-        <h1 class="reveal mt-6 font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.98]">
+        <h1 class="reveal mt-6 font-display font-bold tracking-tight text-[clamp(2.5rem,5vw,4rem)] leading-[0.98]">
           Learn to build software
-          <span class="block text-grad pb-3.5">with AI agents.</span>
+          <span class="block text-grad text-anim pb-3.5">with AI agents.</span>
         </h1>
 
         <p class="reveal mt-7 max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed" data-delay="1">
@@ -898,16 +997,16 @@
         </div>
 
         <!-- Mini stats -->
-        <div class="reveal mt-12 grid max-w-lg grid-cols-1 grid-rows-3 gap-0 divide-y divide-white/10 sm:grid-cols-3 sm:grid-rows-1 sm:divide-x sm:divide-y-0" data-delay="3">
-          <div class="py-3 sm:py-0 sm:pr-6">
+        <div class="reveal mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-lg" data-delay="3">
+          <div class="glass rounded-2xl px-5 py-4">
             <div class="font-display text-3xl font-bold text-grad">21</div>
             <div class="text-xs text-white/60 mt-1">structured steps</div>
           </div>
-          <div class="py-3 sm:py-0 sm:px-6">
+          <div class="glass rounded-2xl px-5 py-4">
             <div class="font-display text-3xl font-bold text-grad-2">~40h</div>
             <div class="text-xs text-white/60 mt-1">of deep learning</div>
           </div>
-          <div class="py-3 sm:py-0 sm:pl-6">
+          <div class="glass rounded-2xl px-5 py-4">
             <div class="font-display text-3xl font-bold" style="background: var(--grad-3); -webkit-background-clip:text; background-clip:text; color:transparent;">$0</div>
             <div class="text-xs text-white/60 mt-1">free &amp; open source</div>
           </div>
@@ -917,14 +1016,14 @@
       <!-- Hero visual -->
       <div class="lg:col-span-5 min-w-0">
         <div class="reveal relative min-w-0" data-delay="2">
-          <div class="grad-border min-w-0 p-5 md:p-6 rounded-3xl shadow-glow">
+          <div class="grad-border hero-tilt min-w-0 p-5 md:p-6 rounded-3xl shadow-glow">
             <div class="flex items-center gap-2 mb-4">
               <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
               <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
               <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
               <span class="ml-3 text-xs text-white/50 font-mono">agent_loop.py</span>
             </div>
-            <pre class="code-frame p-5 overflow-x-auto"><code><span class="cmt"># An agent is just an LLM in a loop with tools.</span>
+            <pre class="code-frame p-5 overflow-x-auto"><code id="term-code"><span class="cmt"># An agent is just an LLM in a loop with tools.</span>
 <span class="kw">while</span> <span class="kw">not</span> done:
     step  = llm.<span class="fn">plan</span>(state, <span class="str">"what next?"</span>)
     tool  = llm.<span class="fn">pick_tool</span>(step)
@@ -972,7 +1071,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-5">
     <p class="text-xs uppercase tracking-[0.2em] text-white/40 text-center">Tool-agnostic · Works with every major agentic IDE &amp; CLI</p>
   </div>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden marquee-wrap">
     <div class="marquee text-white/70 font-display text-xl md:text-2xl font-medium">
       <span class="flex items-center gap-12 pr-12">
         <span>Cursor</span><span class="text-white/20">·</span>
@@ -983,9 +1082,10 @@
         <span>Cline</span><span class="text-white/20">·</span>
         <span>Continue</span><span class="text-white/20">·</span>
         <span>Codex</span><span class="text-white/20">·</span>
-        <span>Gemini CLI</span><span class="text-white/20">·</span>
+        <span>Antigravity CLI</span><span class="text-white/20">·</span>
         <span>Windsurf</span><span class="text-white/20">·</span>
-        <span>Antigravity</span><span class="text-white/20">·</span>
+        <span>Muse Code</span><span class="text-white/20">·</span>
+        <span>OpenCode</span><span class="text-white/20">·</span>
         <span>OpenSpec</span><span class="text-white/20">·</span>
         <span>Spec Kit</span>
       </span>
@@ -998,9 +1098,10 @@
         <span>Cline</span><span class="text-white/20">·</span>
         <span>Continue</span><span class="text-white/20">·</span>
         <span>Codex</span><span class="text-white/20">·</span>
-        <span>Gemini CLI</span><span class="text-white/20">·</span>
+        <span>Antigravity CLI</span><span class="text-white/20">·</span>
         <span>Windsurf</span><span class="text-white/20">·</span>
-        <span>Antigravity</span><span class="text-white/20">·</span>
+        <span>Muse Code</span><span class="text-white/20">·</span>
+        <span>OpenCode</span><span class="text-white/20">·</span>
         <span>OpenSpec</span><span class="text-white/20">·</span>
         <span>Spec Kit</span>
       </span>
@@ -1015,23 +1116,23 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
       <div class="glass rounded-xl p-4">
         <div class="text-white/50 text-xs font-mono">OpenAI</div>
-        <div class="mt-1 font-semibold">GPT-5.5 · GPT-5.4 mini</div>
-        <div class="mt-1 text-white/55">Codex: gpt-5.2-codex</div>
+        <div class="mt-1 font-semibold">GPT-5.6 · GPT-5.4 mini</div>
+        <div class="mt-1 text-white/55">Codex: GPT-5.6 (Sol · Terra · Luna)</div>
       </div>
       <div class="glass rounded-xl p-4">
         <div class="text-white/50 text-xs font-mono">Anthropic</div>
-        <div class="mt-1 font-semibold">Opus 4.8 · Sonnet 4.6</div>
-        <div class="mt-1 text-white/55">Haiku 4.5 · Fable 5</div>
+        <div class="mt-1 font-semibold">Fable 5 · Opus 5 · Sonnet 5</div>
+        <div class="mt-1 text-white/55">Haiku 4.5</div>
       </div>
       <div class="glass rounded-xl p-4">
         <div class="text-white/50 text-xs font-mono">Google</div>
-        <div class="mt-1 font-semibold">Gemini 3.5 Flash</div>
-        <div class="mt-1 text-white/55">Gemini 3.5 Pro (2M ctx)</div>
+        <div class="mt-1 font-semibold">Gemini 3.7 Flash</div>
+        <div class="mt-1 text-white/55">Gemini 3.1 Pro (preview)</div>
       </div>
       <div class="glass rounded-xl p-4">
         <div class="text-white/50 text-xs font-mono">MCP</div>
-        <div class="mt-1 font-semibold">Spec 2025-11-25</div>
-        <div class="mt-1 text-white/55">Stateless RC: 2026-07-28</div>
+        <div class="mt-1 font-semibold">Spec 2026-07-28</div>
+        <div class="mt-1 text-white/55">Stateless (no initialize handshake)</div>
       </div>
     </div>
   </div>
@@ -1046,7 +1147,7 @@
 
       <!-- Backgrounds travel with the sticky panel -->
       <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
-      <div id="eras-parallax-bg" class="absolute -left-40 w-[420px] h-[420px] rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#e11d48; top:33%;"></div>
+      <div id="eras-parallax-bg" class="absolute -left-40 w-[420px] h-[420px] rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#39d353; top:33%;"></div>
 
       <!-- Screen-reader announcer -->
       <div id="eras-live" aria-live="polite" class="sr-only"></div>
@@ -1056,8 +1157,8 @@
 
         <!-- Intro copy — parallax layer -->
         <div class="eras-parallax-head max-w-3xl">
-          <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#fb7185">
-            <span class="h-px w-8" style="background:#fb7185"></span> A short history of abstraction
+          <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#7ee787">
+            <span class="h-px w-8" style="background:#7ee787"></span> A short history of abstraction
           </div>
           <h2 class="reveal mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
             Every era of software
@@ -1210,7 +1311,7 @@
     <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- 1 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#e11d48"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#39d353"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">01</div>
           <h3 class="mt-3 font-display text-xl font-semibold">Agents are just LLMs in a loop</h3>
@@ -1219,7 +1320,7 @@
       </div>
       <!-- 2 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="1">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#f43f5e"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#3fb950"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">02</div>
           <h3 class="mt-3 font-display text-xl font-semibold">Context is the product</h3>
@@ -1228,7 +1329,7 @@
       </div>
       <!-- 3 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="2">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fb7185"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#7ee787"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">03</div>
           <h3 class="mt-3 font-display text-xl font-semibold">MCP is the USB-C of AI</h3>
@@ -1237,7 +1338,7 @@
       </div>
       <!-- 4 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fda4af"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#7ee787"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">04</div>
           <h3 class="mt-3 font-display text-xl font-semibold">Skills &gt; Prompts &gt; Rules</h3>
@@ -1246,7 +1347,7 @@
       </div>
       <!-- 5 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="1">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#fecdd3"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#56d364"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">05</div>
           <h3 class="mt-3 font-display text-xl font-semibold">Evals beat vibes</h3>
@@ -1255,7 +1356,7 @@
       </div>
       <!-- 6 -->
       <div class="reveal glass glass-hover rounded-2xl p-7 relative overflow-hidden" data-delay="2">
-        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#9f1239"></div>
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30" style="background:#238636"></div>
         <div class="relative">
           <div class="text-5xl font-display step-num">06</div>
           <h3 class="mt-3 font-display text-xl font-semibold">Spec is the source of truth</h3>
@@ -1286,7 +1387,7 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
       <!-- Phase 1 -->
-      <div class="reveal relative rounded-2xl p-7 overflow-hidden" style="background: linear-gradient(160deg, rgba(254,205,211,.14), rgba(254,205,211,.02));border:1px solid rgba(254,205,211,.28)">
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" style="background: linear-gradient(160deg, rgba(86,211,100,.14), rgba(86,211,100,.02));border:1px solid rgba(86,211,100,.28)">
         <div class="text-xs font-mono text-accent-violet">PHASE 1 · Steps 00–03</div>
         <h3 class="mt-2 font-display text-2xl font-semibold">Foundations</h3>
         <p class="mt-3 text-sm text-white/60">Understand LLMs, tokens, context, and the modern AI coding tool landscape. Pick your stack.</p>
@@ -1297,7 +1398,7 @@
         </ul>
       </div>
       <!-- Phase 2 -->
-      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="1" style="background: linear-gradient(160deg, rgba(251,113,133,.16), rgba(251,113,133,.02));border:1px solid rgba(251,113,133,.3)">
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="1" style="background: linear-gradient(160deg, rgba(126,231,135,.16), rgba(126,231,135,.02));border:1px solid rgba(126,231,135,.3)">
         <div class="text-xs font-mono text-accent-cyan">PHASE 2 · Steps 04–08</div>
         <h3 class="mt-2 font-display text-2xl font-semibold">Operator</h3>
         <p class="mt-3 text-sm text-white/60">Master your IDE and CLI agents. Ship features 2–3× faster with Rules, Memory, and Skills.</p>
@@ -1308,7 +1409,7 @@
         </ul>
       </div>
       <!-- Phase 3 -->
-      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="2" style="background: linear-gradient(160deg, rgba(244,63,94,.18), rgba(244,63,94,.02));border:1px solid rgba(244,63,94,.32)">
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="2" style="background: linear-gradient(160deg, rgba(63,185,80,.18), rgba(63,185,80,.02));border:1px solid rgba(63,185,80,.32)">
         <div class="text-xs font-mono text-accent-pink">PHASE 3 · Steps 09–13.5</div>
         <h3 class="mt-2 font-display text-2xl font-semibold">Extender</h3>
         <p class="mt-3 text-sm text-white/60">Plug agents into the world. Build MCP servers, hooks, subagents. Drive features from specs.</p>
@@ -1319,7 +1420,7 @@
         </ul>
       </div>
       <!-- Phase 4 -->
-      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="3" style="background: linear-gradient(160deg, rgba(225,29,72,.2), rgba(225,29,72,.02));border:1px solid rgba(225,29,72,.35)">
+      <div class="reveal relative rounded-2xl p-7 overflow-hidden" data-delay="3" style="background: linear-gradient(160deg, rgba(57,211,83,.2), rgba(57,211,83,.02));border:1px solid rgba(57,211,83,.35)">
         <div class="text-xs font-mono text-accent-amber">PHASE 4 · Steps 14–19</div>
         <h3 class="mt-2 font-display text-2xl font-semibold">Architect</h3>
         <p class="mt-3 text-sm text-white/60">Ship production systems. Evals, security, your own agent from scratch, advanced patterns, loop/graph/harness engineering.</p>
@@ -1440,42 +1541,42 @@
 
     <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       <div class="reveal glass glass-hover rounded-2xl p-6">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fb7185, #e11d48)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #7ee787, #39d353)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">Your first MCP server</h3>
         <p class="mt-2 text-sm text-white/60">Expose a real API (GitHub, Postgres, your own) as tools any agent client can call.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="1">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fecdd3, #f43f5e)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #56d364, #3fb950)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A custom agent</h3>
         <p class="mt-2 text-sm text-white/60">Supervised Python agent stub + Step 16 LLM capstone: plan→act→verify, tool registry, safety gates.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="2">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fda4af, #e11d48)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #7ee787, #39d353)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">An eval suite</h3>
         <p class="mt-2 text-sm text-white/60">10+ promptfoo tests with rubric and LLM-as-judge assertions running on two models.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fb7185, #9f1239)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #7ee787, #238636)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A threat model</h3>
         <p class="mt-2 text-sm text-white/60">Threat/control table + hook-based guardrails that block destructive shell commands.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="1">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #f43f5e, #881337)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #3fb950, #238636)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A living spec</h3>
         <p class="mt-2 text-sm text-white/60">Spec-Driven Dev with GitHub Spec Kit or OpenSpec — specs version alongside code.</p>
       </div>
       <div class="reveal glass glass-hover rounded-2xl p-6" data-delay="2">
-        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fecdd3, #be123c)">
+        <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #56d364, #238636)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
         </div>
         <h3 class="mt-5 font-display text-lg font-semibold">A public capstone</h3>
@@ -1524,17 +1625,97 @@
   </div>
 </section>
 
+<!-- =================== ROLE TRACKS (August 2026) =================== -->
+<section class="relative py-14 border-b border-white/5 bg-ink-900/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <p class="reveal text-xs uppercase tracking-[0.2em] text-white/40 text-center mb-2">Learn the steps, then earn</p>
+    <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight text-center">8 role tracks · <span class="text-grad">most in-demand 2026–2027</span></h2>
+    <p class="reveal mt-3 text-white/60 text-center text-sm max-w-2xl mx-auto" data-delay="1">The 21 steps are the shared highway. Role tracks are the exit signs: which steps matter for your job, what to add on top, and what the market pays.</p>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      <a href="read.html?path=roles/ai-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="0">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 1 · +143% postings</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#3fb950;box-shadow:0 0 10px rgba(63,185,80,0.9)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>AI Engineer</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">Agent Developer · $130K–$155K mid</div>
+      </a>
+      <a href="read.html?path=roles/fde.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="1">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 1 · +800% postings</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#3fb950;box-shadow:0 0 10px rgba(63,185,80,0.9)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Forward Deployed Engineer</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$150K–$325K · $500K+ at labs</div>
+      </a>
+      <a href="read.html?path=roles/automation-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="2">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 1 · RPA → agentic</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#3fb950;box-shadow:0 0 10px rgba(63,185,80,0.9)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Automation Engineer</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$150K–$250K · workflow agents</div>
+      </a>
+      <a href="read.html?path=roles/agentops.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="3">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 1 · new in 2026</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#3fb950;box-shadow:0 0 10px rgba(63,185,80,0.9)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>AgentOps / Reliability</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$185K–$320K · run agents safely</div>
+      </a>
+      <a href="read.html?path=roles/ml-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="0">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 2 · +40% by 2027</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#f0883e;box-shadow:0 0 10px rgba(240,136,62,0.8)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>ML Engineer (applied)</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$140K–$200K+ · deployment side</div>
+      </a>
+      <a href="read.html?path=roles/ai-product-manager.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="1">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 2 · non-code</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#f0883e;box-shadow:0 0 10px rgba(240,136,62,0.8)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>AI Product Manager</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$145K–$210K+ · what &amp; why</div>
+      </a>
+      <a href="read.html?path=roles/data-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="2">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 2 · #1 search volume</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#f0883e;box-shadow:0 0 10px rgba(240,136,62,0.8)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>Data Engineer</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$120K–$160K · feeds the agents</div>
+      </a>
+      <a href="read.html?path=roles/prompt-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="3">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-white/50 text-xs font-mono">Tier 2 · entry point</div>
+          <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#f0883e;box-shadow:0 0 10px rgba(240,136,62,0.8)"></span>
+        </div>
+        <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>Prompt Engineer</div>
+        <div class="mt-1 text-white/55 text-[13px] leading-snug">$110K–$135K · launchpad role</div>
+      </a>
+    </div>
+    <p class="reveal mt-8 text-center">
+      <a href="read.html?path=roles/README.md" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold glass glass-hover glass-cta text-sm">See the full market dashboard →</a>
+    </p>
+  </div>
+</section>
+
 <!-- =================== FINAL CTA =================== -->
 <section class="relative py-32 overflow-hidden">
   <div class="absolute inset-0 bg-grid pointer-events-none"></div>
   <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full opacity-30 blur-3xl" style="background: var(--grad-1)"></div>
+  <div class="absolute right-[6%] top-[16%] w-72 h-72 rounded-full blur-3xl opacity-25 pointer-events-none" style="background:#f0883e"></div>
+  <div class="absolute left-[8%] bottom-[10%] w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none" style="background:#d2a8ff"></div>
   <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
     <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-white/80">
       <span class="pulse"></span> The next era belongs to builders who can direct agents
     </div>
     <h2 class="reveal mt-7 font-display text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1]" data-delay="1">
       Start today.
-      <span class="block text-grad pb-3.5">Ship in 3 weeks.</span>
+      <span class="block text-grad text-anim pb-3.5">Ship in 3 weeks.</span>
     </h2>
     <p class="reveal mt-6 text-lg text-white/70 max-w-xl mx-auto" data-delay="2">
       Free. Open source. MIT. Fork it, remix it, teach it. The only requirement is that you actually do the exercises.
@@ -1558,12 +1739,12 @@
       <div class="md:col-span-2">
         <div class="flex items-center gap-2.5 font-display font-bold tracking-tight text-lg">
           <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: var(--grad-1)">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
           </span>
-          <span>Agentic<span class="text-grad"> Coding</span></span>
+          <span>agentic<span class="text-grad">.sh</span></span>
         </div>
         <p class="mt-4 text-sm text-white/55 max-w-sm">
-          Made with 🤖 + ☕ for the next generation of AI-native builders. MIT Licensed. Fork, remix, teach.
+          Made with <svg class="inline-block w-[1em] h-[1em] align-[-0.15em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> + <svg class="inline-block w-[1em] h-[1em] align-[-0.15em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg> for the next generation of AI-native builders. MIT Licensed. Fork, remix, teach.
         </p>
       </div>
       <div>
@@ -1571,6 +1752,7 @@
         <ul class="mt-4 space-y-2 text-sm">
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=steps/00-introduction.md">Start at Step 00</a></li>
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=ROADMAP.md">Full ROADMAP.md</a></li>
+          <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=roles/README.md">Role tracks (learn & earn)</a></li>
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=projects/practice-projects.md">Practice projects</a></li>
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=resources/README.md">Resources</a></li>
         </ul>
@@ -1586,7 +1768,7 @@
       </div>
     </div>
     <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
-      <div>© 2026 · The Agentic Coding Roadmap</div>
+      <div>© 2026 · agentic.sh — The Agentic Coding Roadmap</div>
       <div class="flex items-center gap-5">
         <a href="#top" class="hover:text-white/70 transition">Back to top ↑</a>
       </div>
@@ -1622,10 +1804,10 @@
   ];
 
   const toneMap = {
-    violet: { bg: "rgba(254,205,211,.10)", border: "rgba(254,205,211,.26)", dot: "#fecdd3", label: "Foundations" },
-    cyan:   { bg: "rgba(251,113,133,.12)", border: "rgba(251,113,133,.28)", dot: "#fb7185", label: "Operator" },
-    pink:   { bg: "rgba(244,63,94,.14)",   border: "rgba(244,63,94,.32)",   dot: "#f43f5e", label: "Extender" },
-    amber:  { bg: "rgba(225,29,72,.16)",   border: "rgba(225,29,72,.36)",   dot: "#e11d48", label: "Architect" },
+    violet: { bg: "rgba(86,211,100,.10)", border: "rgba(86,211,100,.26)", dot: "#56d364", label: "Foundations" },
+    cyan:   { bg: "rgba(126,231,135,.12)", border: "rgba(126,231,135,.28)", dot: "#7ee787", label: "Operator" },
+    pink:   { bg: "rgba(63,185,80,.14)",   border: "rgba(63,185,80,.32)",   dot: "#3fb950", label: "Extender" },
+    amber:  { bg: "rgba(57,211,83,.16)",   border: "rgba(57,211,83,.36)",   dot: "#39d353", label: "Architect" },
   };
 
   const grid = document.getElementById('steps-grid');
@@ -1646,7 +1828,7 @@
       <div class="mt-3 flex items-start gap-4">
         <div class="font-display text-3xl font-bold step-num leading-none shrink-0 min-w-[56px]">${s.n}</div>
         <div>
-          <h3 class="font-display text-lg font-semibold leading-tight">${s.title}${s.hot ? ' <span class="ml-1 align-middle text-[10px] font-mono px-1.5 py-0.5 rounded-md" style="background:linear-gradient(135deg,#e11d48,#f43f5e);color:#fff">NEW</span>' : ''}</h3>
+          <h3 class="font-display text-lg font-semibold leading-tight">${s.title}${s.hot ? ' <span class="ml-1 align-middle text-[10px] font-mono px-1.5 py-0.5 rounded-md" style="background:linear-gradient(135deg,#39d353,#3fb950);color:#fff">NEW</span>' : ''}</h3>
           <p class="mt-1.5 text-sm text-white/55">${s.focus}</p>
         </div>
       </div>
@@ -1745,6 +1927,89 @@
 
     // Run once on load so initial state is correct
     update();
+  })();
+
+  // Scroll progress bar
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function () {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Nav scroll-spy
+  const spy = new IntersectionObserver(function (entries) {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.site-nav-link[data-spy]').forEach(function (l) {
+          l.classList.toggle('nav-active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    }
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  ['eras', 'models', 'roadmap', 'phases', 'plan', 'build'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
+  // Hero card tilt (skip on touch + reduced motion)
+  const tiltCard = document.querySelector('.hero-tilt');
+  if (tiltCard && !window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    tiltCard.addEventListener('mousemove', function (e) {
+      const r = tiltCard.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5;
+      const py = (e.clientY - r.top) / r.height - .5;
+      tiltCard.style.transform = 'perspective(900px) rotateY(' + (px * 6).toFixed(2) + 'deg) rotateX(' + (-py * 6).toFixed(2) + 'deg)';
+    });
+    tiltCard.addEventListener('mouseleave', function () { tiltCard.style.transform = ''; });
+  }
+
+  // Hero typing terminal (no-op for reduced motion / no-JS fallback keeps static code)
+  (function () {
+    const code = document.getElementById('term-code');
+    if (!code) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const L = [
+      [['# An agent is just an LLM in a loop with tools.', 'cmt']],
+      [['while', 'kw'], [' ', ''], ['not', 'kw'], [' done:', '']],
+      [['    step  = llm.', ''], ['plan', 'fn'], ['(state, ', ''], ['"what next?"', 'str'], [')', '']],
+      [['    tool  = llm.', ''], ['pick_tool', 'fn'], ['(step)', '']],
+      [['    obs   = registry.', ''], ['run', 'fn'], ['(tool, args)', '']],
+      [['    state = state.', ''], ['with_observation', 'fn'], ['(obs)', '']],
+      [],
+      [['    if evaluator.', ''], ['passes', 'fn'], ['(state, spec):', '']],
+      [['        done = ', ''], ['True', 'num']],
+      [],
+      [['# Context is the product. Evals beat vibes.', 'cmt']],
+    ];
+
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const plain = L.map(line => line.map(t => t[0]).join('')).join('\n');
+    const colored = () => L.map(line =>
+      line.map(t => t[1] ? '<span class="' + t[1] + '">' + esc(t[0]) + '</span>' : esc(t[0])).join('')
+    ).join('\n');
+
+    let i = 0;
+    const tick = () => {
+      i += 1;
+      if (i > plain.length) {
+        code.innerHTML = colored();
+        return setTimeout(() => { i = 0; code.textContent = ''; tick(); }, 3000);
+      }
+      code.innerHTML = esc(plain.slice(0, i)) + '<span class="caret"></span>';
+      return setTimeout(tick, i === 1 ? 450 : 22);
+    };
+
+    let started = false;
+    const io = new IntersectionObserver(function (entries) {
+      if (entries.some(e => e.isIntersecting) && !started) {
+        started = true;
+        io.disconnect();
+        tick();
+      }
+    }, { threshold: 0.4 });
+    io.observe(code);
   })();
 </script>
 

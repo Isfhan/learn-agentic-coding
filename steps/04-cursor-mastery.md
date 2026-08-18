@@ -1,6 +1,6 @@
 # Step 04 · Cursor Mastery
 
-> **⏱️ Time:** ~3 hours · **Prereq:** Step 03, Cursor installed
+> **⏱️ Time:** ~3 hours · **Prereq:** Step 03, Cursor installed · **Best for:** IDE-centric daily work (skim for most role tracks)
 
 We'll go from *"I use Tab + Chat"* to *"I configure agents, rules, skills, hooks, MCP servers, and plugins in Cursor 3.0."*
 

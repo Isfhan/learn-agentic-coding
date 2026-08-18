@@ -1,6 +1,6 @@
 # Step 19 · Agent System Engineering
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 17
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 17 · **Best for:** AI Engineer, FDE, AgentOps, ML (core)
 
 You can build an agent. You can wire five agents together. Now comes the meta-skill: **engineering the systems that run around the agent** — the loops it lives in, the graph it follows, the harness that holds it, and the job role that ships it. These are the "buzzword disciplines" of 2026, and each one is a real skill you can practice today.
 

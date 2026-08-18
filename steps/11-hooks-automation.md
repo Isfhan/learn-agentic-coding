@@ -1,6 +1,6 @@
 # Step 11 · Hooks & Automation
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 10
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 10 · **Best for:** Automation, AgentOps (core); FDE, ML (optional)
 
 Hooks are tiny scripts (or prompt-based checks) that run around the agent's actions. They're how you turn "the agent mostly follows my rules" into "the agent *cannot* violate my rules."
 

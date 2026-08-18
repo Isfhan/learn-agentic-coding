@@ -1,6 +1,6 @@
 # Step 15 · Security & Safety
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 14
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 14 · **Best for:** FDE, Automation, AgentOps, AI PM (core)
 
 Agents read your code, run your shell, call your APIs. They are the most privileged user on your laptop. Treat them accordingly.
 

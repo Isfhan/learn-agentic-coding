@@ -1,6 +1,6 @@
 # Step 07 · Rules & Memory
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 06
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 06 · **Best for:** AI Engineer, AgentOps (core); Automation (optional)
 
 Rules and memory turn a generic agent into *your team's* agent. Skipping this step is why people complain "AI doesn't understand our codebase."
 

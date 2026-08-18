@@ -1,6 +1,6 @@
 # Step 14 · Evals & Testing
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 13.5
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 13.5 · **Best for:** every track
 
 > *"If you can't measure it, you're not engineering. You're vibing (guessing from feel)."*
 
@@ -136,8 +136,8 @@ prompts:
   - 'Write a short Python function to {{task}}.'
 
 providers:
-  - anthropic:claude-sonnet-4-6
-  - openai:gpt-5.5
+  - anthropic:claude-sonnet-5
+  - openai:gpt-5.6
 
 tests:
   - vars:

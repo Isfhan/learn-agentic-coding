@@ -51,13 +51,54 @@ flowchart LR
 
 ---
 
+## 🎯 Role tracks: learn, then earn
+
+The 21 steps are the shared highway for everyone. **Role tracks** tell you which steps matter most for your target job, what to add on top, and what the market pays (verified August 2026).
+
+→ **[Pick your role track →](./roles/README.md)** (AI Engineer · FDE · Automation Engineer · AgentOps · ML Engineer · AI PM · Data Engineer · Prompt Engineer)
+
+### Role × step matrix
+
+● = core (do first) · ◐ = optional (do later) · ○ = skim (vocabulary only)
+
+| Step | AI Engineer | FDE | Automation | AgentOps | ML (Applied) | AI PM | Data Eng | Prompt |
+|---|---|---|---|---|---|---|---|---|
+| 00 · Introduction | ● | ● | ● | ○ | ● | ● | ● | ◐ |
+| 01 · LLM Foundations | ● | ● | ● | ○ | ● | ● | ● | ● |
+| 02 · Prompt Engineering | ● | ● | ● | ○ | ● | ● | ● | ● |
+| 03 · Tool Landscape | ● | ● | ● | ○ | ● | ● | ● | ● |
+| 04 · Cursor Mastery | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
+| 05 · Claude Code Mastery | ◐ | ● | ○ | ○ | ○ | ○ | ○ | ○ |
+| 06 · Open-Source Tools | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
+| 07 · Rules & Memory | ● | ○ | ◐ | ● | ○ | ◐ | ○ | ◐ |
+| 08 · Skills | ● | ○ | ◐ | ◐ | ○ | ◐ | ○ | ◐ |
+| 09 · MCP Introduction | ● | ● | ● | ○ | ◐ | ● | ● | ○ |
+| 10 · Building MCP Servers | ● | ● | ● | ○ | ◐ | ○ | ● | ○ |
+| 11 · Hooks & Automation | ◐ | ◐ | ● | ● | ◐ | ◐ | ◐ | ○ |
+| 12 · Subagents & Orchestration | ● | ◐ | ● | ◐ | ○ | ○ | ○ | ○ |
+| 13 · Context Engineering | ● | ○ | ◐ | ◐ | ● | ● | ● | ● |
+| 13.5 · Spec-Driven Dev | ● | ● | ○ | ○ | ○ | ● | ○ | ◐ |
+| 14 · Evals & Testing | ● | ● | ◐ | ● | ● | ● | ● | ● |
+| 15 · Security & Safety | ○ | ● | ● | ● | ◐ | ● | ◐ | ◐ |
+| 16 · Build Your Own Agent | ● | ● | ● | ◐ | ● | ○ | ◐ | ○ |
+| 17 · Advanced Patterns | ● | ◐ | ○ | ● | ● | ○ | ○ | ○ |
+| 18 · Staying Current | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
+| 19 · Agent System Engineering | ● | ● | ○ | ● | ● | ◐ | ○ | ○ |
+
+---
+
 ## Decision tree: *where should I start?*
 
 Fast path means **skim earlier steps for vocabulary**, not ignore them completely. If a term feels unclear, jump to the [glossary](./resources/glossary.md) or the earlier step that introduces it.
 
+> 🎯 **Know your target job?** Check the [role tracks](./roles/README.md) first — they map every step to AI Engineer, FDE, Automation Engineer, AgentOps, and more.
+
 ```mermaid
 flowchart TD
-    Q1{Have you ever<br/>used Cursor or<br/>Claude Code?}
+    Q0{What role<br/>are you training for?}
+    Q0 -->|Not sure yet| Q1{Have you ever<br/>used Cursor or<br/>Claude Code?}
+    Q0 -->|AI Engineer| Q1
+    Q0 -->|FDE / Automation /<br/>AgentOps / other| Q1
     Q1 -->|No| S0[Start at Step 00]
     Q1 -->|Yes| Q2{Do you know<br/>what MCP is?}
     Q2 -->|No| S4[Start at Step 04<br/>but skim 00-03]

@@ -1,6 +1,6 @@
 # Step 00 · Introduction to Agentic Coding
 
-> **⏱️ Time:** 30 minutes · **Prereq:** Basic programming and basic Git. If you have never used an AI coding agent, this step will show you what to watch for.
+> **⏱️ Time:** 30 minutes · **Prereq:** Basic programming and basic Git. If you have never used an AI coding agent, this step will show you what to watch for. · **Best for:** every track
 
 ---
 
@@ -84,7 +84,7 @@ For a longer plain-English reference, keep the [glossary](../resources/glossary.
 
 | Term | In plain English |
 |------|------------------|
-| **LLM** | The brain. `gpt-5.5`, `claude-opus-4-8`, `gemini-3.5-flash`, Qwen, Llama, etc. |
+| **LLM** | The brain. `gpt-5.6`, `claude-opus-5`, `gemini-3.7-flash`, Qwen, Llama, etc. |
 | **Context window** | Everything the LLM can "see" right now (code + chat + tool results). Measured in tokens. |
 | **Token** | A chunk of text (≈¾ of an English word). "hello" = 1 token, "unbelievable" = 3. |
 | **Prompt** | What you type. The question or instruction. |

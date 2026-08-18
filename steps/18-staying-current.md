@@ -1,6 +1,6 @@
 # Step 18 · Staying Current
 
-> **⏱️ Time:** ongoing · **Prereq:** All previous steps (or skim 00–03 for vocabulary if you're only here for the cadence)
+> **⏱️ Time:** ongoing · **Prereq:** All previous steps (or skim 00–03 for vocabulary if you're only here for the cadence) · **Best for:** every track
 
 Agentic coding moves weekly. This final step is about **never falling behind**.
 
@@ -23,7 +23,7 @@ Agentic coding moves weekly. This final step is about **never falling behind**.
 
 ### 📆 Weekly (30 minutes)
 - One issue of **Simon Willison's Weeknotes** + **Elvis Saravia's newsletter** + **Latent Space podcast** (pick 1 episode).
-- Skim release notes of: **Cursor, Claude Code, GitHub Copilot, Codex, Gemini CLI, OpenAI Agents SDK**. All publish often or change surfaces quickly.
+- Skim release notes of: **Cursor, Claude Code, GitHub Copilot, Codex, Antigravity (ex-Gemini CLI), OpenAI Agents SDK**. All publish often or change surfaces quickly.
 - Try **one new MCP server** or **one new skill**.
 
 ### 🗓 Monthly (2 hours)
@@ -132,7 +132,7 @@ Protect those. Replace specific tools as needed.
 
 Run this checklist once per quarter when you update your AI stack or this roadmap.
 
-- **Capability changed?** Check whether Cursor, Claude Code, Copilot, Codex, Gemini, Qwen, Cline, Continue, Aider, and cloud agents added or removed major features.
+- **Capability changed?** Check whether Cursor, Claude Code, Copilot, Codex, Gemini/Antigravity, Muse Code, OpenCode, Qwen, Cline, Continue, Aider, and cloud agents added or removed major features.
 - **MCP support changed?** Verify whether each tool supports MCP tools, resources, prompts, auth, and remote servers.
 - **Security model changed?** Review approval prompts, sandboxing, token storage, and destructive-action controls.
 - **Cost changed?** Note pricing, rate limits, context window size, and model availability.

@@ -1,6 +1,6 @@
 # Step 03 · The AI Coding Tool Landscape (2026)
 
-> **⏱️ Time:** ~1 hour · **Prereq:** Step 02
+> **⏱️ Time:** ~1 hour · **Prereq:** Step 02 · **Best for:** every track
 
 You do **not** need to master every tool. You need to know the *categories*, pick 1–2 daily drivers, and be comfortable switching.
 
@@ -34,7 +34,7 @@ Built into (or deeply integrated with) your code editor.
 | **Cursor** | Best-in-class agent (3.0 UI), Marketplace plugins, async subagents, worktrees, rules/skills/hooks | Forks VS Code (not VS Code itself) | ~$20/mo |
 | **GitHub Copilot (Agent Mode + coding agent)** | Universal, works in VS Code / JetBrains / Xcode; deep GitHub integration; MCP support | Less bleeding-edge than Cursor for some agent workflows | $10–39/mo |
 | **Windsurf** | Cascade "flow" feels very natural | Smaller ecosystem | ~$15/mo |
-| **Google Antigravity** | Gemini 3.5-native agent IDE; strong multimodal + Google Cloud integration | Newer; Google-ecosystem focused | Plan-based |
+| **Google Antigravity** | Gemini 3.7 Flash-native agent IDE; strong multimodal + Google Cloud integration | Newer; Google-ecosystem focused | Plan-based |
 
 ### 2. CLI-native (the "agent in a terminal" experience)
 
@@ -42,11 +42,13 @@ Run in your shell, see your files, execute commands directly.
 
 | Tool | Strength | Weakness | Pricing |
 |------|----------|----------|---------|
-| **Claude Code** | Most agent-native workflow; dynamic workflows, effort control, Skills, hooks, subagents, plugins | Tied to Anthropic | Usage-based (~$5/$25 per M tokens for Opus 4.8) |
-| **OpenAI Codex CLI** | GPT-5.5 default (ChatGPT sign-in); `gpt-5.2-codex` for API-key workflows | GPT-5.5 not yet on API-key auth | Usage-based |
-| **Gemini CLI** | Gemini 3.5 Flash/Pro access; 1M–2M context; Antigravity integration | Less standardized across teams | Usage-based / plan-based |
+| **Claude Code** | Most agent-native workflow; dynamic workflows, effort control, Skills, hooks, subagents, plugins | Tied to Anthropic | Usage-based (~$5/$25 per M tokens for Opus 5) |
+| **OpenAI Codex CLI** | GPT-5.6 default (ChatGPT sign-in); `gpt-5.6` family (Sol/Terra/Luna) for API-key workflows; tops Terminal-Bench | Tied to OpenAI | Usage-based |
+| **Gemini CLI → Antigravity CLI** | Gemini 3.7 Flash / 3.1 Pro access; 1M context; Google Search grounding built in | Sunset June 18, 2026 for non-enterprise users; Antigravity CLI is Go-based with async multi-agent workflows | Usage-based / plan-based |
 | **Qwen Code** | Fully open; Qwen3-Coder family; can run local or self-host | Infra required for best perf | Free (model costs) |
 | **Aider** | Token-efficient repo-map; git-native auto-commits | Terminal-only UX | Free (model costs) |
+| **OpenCode** | Model-agnostic (bring-your-own-model); large OSS community (~160k stars); MCP + skills + hooks support | Changed hands recently; Claude OAuth blocked Jan 2026 — bring API keys for Claude | Free (model costs) |
+| **Muse Code** (Meta, Aug 2026) | Fail-closed OS sandbox by default; cheap tokens ($1.25/$4.25 per M) | Brand new (shipped Aug 5, 2026); smaller ecosystem | Usage-based |
 
 ### 3. OSS extensions for VS Code / JetBrains
 
@@ -66,7 +68,7 @@ You assign a task, they return a PR.
 | **OpenHands** (formerly Devin-class OSS) | Open-source autonomous coding agent | Self-hosted infra required |
 | **GitHub Copilot Workspace / Copilot coding agent** | Tight GitHub issue → PR loop; good governance fit for GitHub teams | GitHub-only |
 | **Cursor Cloud Agents** | Spawn agents from phone/web; worktree isolation | Still maturing |
-| **OpenAI Codex (Cloud)** | Parallel multi-task execution; GPT-5.5 in Codex | Newer |
+| **OpenAI Codex (Cloud)** | Parallel multi-task execution; GPT-5.6 in Codex | Newer |
 | **Gemini Enterprise Agent Platform** | Strong if your team lives in Google Cloud or Workspace | Product surface changes quickly |
 
 ---
@@ -108,7 +110,7 @@ Pick a **primary** (your daily driver) and a **sidekick** (for when the primary 
 | **Claude Code** | **Cursor** | Power users who live in the terminal but want an IDE for browsing |
 | **GitHub Copilot** | **Aider** | GitHub-heavy teams wanting governance + a free terminal fallback |
 | **Copilot coding agent** | **Codex CLI** | GitHub-first teams that want issue-to-PR automation plus a terminal backup |
-| **Gemini CLI** | **Cursor or Antigravity** | Learners who want large-context exploration (Gemini 3.5) plus a familiar editor agent |
+| **Antigravity CLI** | **Cursor or Claude Code** | Learners who want large-context exploration (Gemini 3.7 Flash) plus a familiar editor agent |
 | **Cline** | **Qwen Code** | Privacy-focused / self-hosted / no-cloud environments |
 
 > Going through this roadmap, **we'll use both Cursor (Step 04) and Claude Code (Step 05)**. If you can, install both. They're complementary.
@@ -144,7 +146,7 @@ Use this checklist when a new tool appears. Tool names change fast; capabilities
 
 ## ✍️ Exercise (30 min)
 
-1. Install **two** tools from different categories — e.g., Cursor (IDE) + Claude Code (CLI), Copilot Agent + Codex CLI, Gemini CLI + Cursor, or VS Code + Cline + Aider.
+1. Install **two** tools from different categories — e.g., Cursor (IDE) + Claude Code (CLI), Copilot Agent + Codex CLI, Antigravity CLI + Cursor, or VS Code + Cline + Aider.
 2. Give them **the same small task** (e.g., "add input validation to the /login endpoint of my demo repo").
 3. Fill in this table in your learning log:
 

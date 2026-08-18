@@ -1,6 +1,6 @@
 # Step 05 · Claude Code Mastery
 
-> **⏱️ Time:** ~3 hours · **Prereq:** Step 04 · Claude Code installed (`npm i -g @anthropic-ai/claude-code`)
+> **⏱️ Time:** ~3 hours · **Prereq:** Step 04 · Claude Code installed (`npm i -g @anthropic-ai/claude-code`) · **Best for:** FDE, AI Engineer (terminal-native work)
 
 Claude Code is a terminal-native agent. Pair it with Cursor and you become dangerous.
 
@@ -72,7 +72,7 @@ Frequently used:
 - `/clear` — reset context (start fresh — you'll do this often).
 - `/compact` — summarize & compress context when it's getting full.
 - `/edit` — enter edit mode on a file.
-- `/model` — switch between Haiku / Sonnet / Opus mid-session (e.g., `claude-sonnet-4-6`, `claude-opus-4-8`).
+- `/model` — switch between Haiku / Sonnet / Opus mid-session (e.g., `claude-sonnet-5`, `claude-opus-5`).
 - `/plugin` — manage plugins.
 
 ### Custom slash commands

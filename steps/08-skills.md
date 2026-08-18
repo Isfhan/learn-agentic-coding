@@ -1,6 +1,6 @@
 # Step 08 · Skills
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 07
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 07 · **Best for:** AI Engineer (core); Automation, AgentOps (optional)
 
 Skills are **the 2026 breakout feature** for agentic coding. If rules are "how to be," skills are "how to *do*."
 

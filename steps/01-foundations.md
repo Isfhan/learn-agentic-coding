@@ -1,6 +1,6 @@
 # Step 01 · Foundations of LLMs
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 00
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 00 · **Best for:** every track
 
 You don't need a PhD. But you need *intuition* for how LLMs think, because **every weird agent behavior ultimately traces back to these fundamentals.**
 
@@ -60,13 +60,13 @@ The **context window** is the LLM's short-term memory. Everything the model sees
            LLM RESPONDS
 ```
 
-Examples of common limits in June 2026. Check current vendor docs before treating these as exact:
+Examples of common limits in August 2026. Check current vendor docs before treating these as exact:
 
 | Model family | Example models | Context window |
 |--------------|----------------|----------------|
-| OpenAI GPT-5.5 / Codex | `gpt-5.5`, `gpt-5.2-codex` | ~1M tokens (GPT-5.5); 400K in Codex |
-| Anthropic Claude | `claude-opus-4-8`, `claude-sonnet-4-6` | Up to 1M tokens |
-| Google Gemini 3.5 | `gemini-3.5-flash`, `gemini-3.5-pro` | 1M (Flash); up to 2M (Pro) |
+| OpenAI GPT-5.6 / Codex | `gpt-5.6` (Sol · Terra · Luna), `gpt-5.4-mini` | 372K (GPT-5.6); 400K (mini) |
+| Anthropic Claude | `claude-opus-5`, `claude-sonnet-5` | Up to 1M tokens |
+| Google Gemini | `gemini-3.7-flash`, `gemini-3.1-pro-preview` | 1M (Flash); 1M (Pro preview) |
 | Open-source (Qwen, Llama) | Qwen3-Coder, Llama 4 | 128K–256K tokens |
 
 ### ⚠️ The cliff
@@ -114,8 +114,8 @@ In an agent loop, hallucinations compound:
 | Type | What it is | Example | When coders use it |
 |------|-----------|---------|---------------------|
 | **Base model** | Raw next-token predictor, not yet tuned with RLHF (reinforcement learning from human feedback) | Llama 3 base | Almost never directly |
-| **Instruct model** | Fine-tuned to follow instructions | `gpt-5.4-mini`, `claude-sonnet-4-6`, `gemini-3.5-flash` | Default for most agent work |
-| **Reasoning model** | Generates a hidden "thinking" pass before answering | `gpt-5.5`, `claude-opus-4-8`, DeepSeek R1 | Hard debugging, architecture, multi-step planning |
+| **Instruct model** | Fine-tuned to follow instructions | `gpt-5.4-mini`, `claude-sonnet-5`, `gemini-3.7-flash` | Default for most agent work |
+| **Reasoning model** | Generates a hidden "thinking" pass before answering | `gpt-5.6`, `claude-opus-5`, DeepSeek V4 | Hard debugging, architecture, multi-step planning |
 
 **Rule of thumb for coding:**
 

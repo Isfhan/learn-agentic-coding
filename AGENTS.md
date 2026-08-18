@@ -8,6 +8,7 @@
 
 ## Structure
 - `steps/`: 21 step files (00-19, including 13.5)
+- `roles/`: 8 role tracks (AI Engineer, FDE, Automation, AgentOps, ML, AI PM, Data, Prompt) mapping shared steps + market data
 - `resources/`: external references and cheatsheets
 - `.cursor/rules/`: persistent project guidance
 - `.cursor/skills/`: reusable agent capabilities

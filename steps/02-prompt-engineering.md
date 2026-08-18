@@ -1,6 +1,6 @@
 # Step 02 · Prompt Engineering for Coders
 
-> **⏱️ Time:** ~2 hours · **Prereq:** Step 01
+> **⏱️ Time:** ~2 hours · **Prereq:** Step 01 · **Best for:** every track
 
 > *"The difference between a senior and a junior with the same AI tool is entirely in their prompts."*
 

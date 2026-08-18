@@ -37,6 +37,7 @@ jobs:
           cp LICENSE _site/LICENSE
           cp -r projects _site/projects 2>/dev/null || true
           cp -r resources _site/resources 2>/dev/null || true
+          cp -r roles _site/roles 2>/dev/null || true
           # Disable Jekyll so files starting with _ or . are served as-is
           touch _site/.nojekyll
 
