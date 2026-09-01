@@ -366,163 +366,50 @@
     color: #0A0A0A;
   }
 
-  /* =================== Punch-Card / Eras section =================== */
+  /* =================== Eras — scrollytelling feature =================== */
 
   /* Anchor offset so sticky nav doesn't overlap when scrolling to #eras */
   #eras { scroll-margin-top: 80px; }
 
-  /* Tall outer container — its height drives the sticky pin duration */
+  /* Tall outer container — its height drives the pinned duration */
   .eras-scrolly {
     position: relative;
-    height: calc(100vh * 3.5);
+    height: calc(100vh * 4);
   }
 
-  /* Sticky pinned panel — locks in place while .eras-scrolly scrolls past */
+  /* Sticky pinned panel — black feature well */
   .eras-sticky {
     position: sticky;
     top: 0;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    /* Charcoal band — dark contrast section on the white page */
     background: #0A0A0A;
-  }
-
-  /* Parallax heading layer */
-  .eras-parallax-head { will-change: transform; }
-
-  .eras-card-area {
-    position: relative;
-  }
-  .eras-card-area::before {
-    display: none;
-  }
-
-  /* Clipping viewport for the horizontal card track */
-  .eras-viewport {
     overflow: hidden;
-    position: relative;
-    width: 100%;
-    border-radius: 0;
-    isolation: isolate;
-    box-shadow: none;
-    border: 2px solid #404040;
-  }
-  .eras-viewport::before {
-    display: none;
   }
 
-  /* Full-width track holding 5 cards side-by-side */
-  .eras-track {
-    display: flex;
-    width: 500%;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
+  /* Giant issue-style numeral */
+  .era-num {
+    font-family: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: #FAFAFA;
   }
 
-  /* Each card occupies 20% of the 500%-wide track = 100% of the viewport */
-  .era-card {
-    flex: 0 0 20%;
-    box-sizing: border-box;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    border-radius: 0;
-    padding: clamp(1.1rem, 2.2vw, 1.65rem);
-    background: #0A0A0A;
-    border: 2px solid #404040;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    min-height: 292px;
-    transition: border-color .25s, background .25s;
-  }
-  .era-card::before {
-    display: none;
-  }
-  .era-card::after {
-    display: none;
-  }
-  .era-card.active {
-    border-color: #FAFAFA;
-  }
-  .era-card.is-featured {
-    border-color: #404040;
-    border-top: 4px solid #EF4444;
-  }
-  .era-card.is-featured .era-meta { color: #EF4444; }
-  .era-card.is-featured .era-artifact {
-    border-color: #404040;
-    background: #0A0A0A;
-  }
-  .era-card.is-featured .era-artifact .bar {
-    color: #EF4444;
-    border-bottom-color: #404040;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .era-card:hover {
-      border-color: #FAFAFA;
-    }
-    .era-card.is-featured:hover {
-      border-color: #404040;
-      border-top-color: #EF4444;
-    }
-  }
-
-  /* Left column: meta, title, artifact */
-  .era-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  /* Split into two columns on wider viewports: body left, tag right */
-  @media (min-width: 768px) {
-    .era-card {
-      flex-direction: row;
-      align-items: stretch;
-      gap: 1.5rem;
-    }
-    .era-body {
-      flex: 1 1 60%;
-    }
-  }
-
-  /* Progress dots */
-  .eras-progress {
-    position: relative;
-    z-index: 1;
-    padding: 0 .15rem;
-  }
-  .eras-dots { display: flex; align-items: center; gap: 7px; }
-  .era-dot {
-    height: 6px;
-    width: clamp(22px, 4vw, 42px);
-    border-radius: 0;
-    background: rgba(250,250,250,0.14);
-    transition: background 0.35s, opacity 0.35s;
-  }
-  .era-dot.completed {
-    background: rgba(250,250,250,0.45);
-  }
-  .era-dot.active {
+  /* Red rule that draws itself in when a plate activates */
+  .era-rule {
+    width: 72px;
+    height: 4px;
+    margin-top: .9rem;
     background: #EF4444;
+    transform-origin: left;
+    transform: scaleX(0);
   }
+  .era-plate.active .era-rule {
+    animation: eraRuleDraw .7s cubic-bezier(.2,.7,.2,1) .12s forwards;
+  }
+  @keyframes eraRuleDraw { to { transform: scaleX(1); } }
 
-  /* Step counter */
-  .eras-counter {
-    font-family: 'Space Mono', 'Courier New', Consolas, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    color: rgba(245,245,245,0.62);
-    padding: .45rem .65rem;
-    border: 1px solid rgba(245,245,245,0.08);
-    border-radius: 0;
-    background: transparent;
-  }
   .era-meta {
     font-family: 'Space Mono', 'Courier New', Consolas, monospace;
     font-size: .7rem;
@@ -532,47 +419,96 @@
   }
   .era-title {
     font-family: 'Archivo Black', Impact, 'Arial Black', sans-serif;
-    font-size: clamp(1.45rem, 3.8vw, 2.05rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.75rem);
     font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-top: .5rem;
+    line-height: 1.05;
+    margin-top: .55rem;
     color: #FAFAFA;
   }
+  /* Pull-quote with editorial left border */
   .era-tag {
-    margin-top: auto;
-    padding-top: 1.1rem;
-    font-family: 'Space Mono', 'Courier New', Consolas, monospace;
+    padding: .35rem 0 .35rem 1.1rem;
+    border-left: 4px solid #404040;
+    font-size: 1.05rem;
+    line-height: 1.55;
     font-style: italic;
-    font-size: 1rem;
-    color: #FAFAFA;
+    color: rgba(250,250,250,0.88);
     text-wrap: pretty;
   }
-  @media (min-width: 768px) {
-    .era-tag {
-      flex: 0 0 38%;
-      max-width: 38%;
-      margin-top: 0;
-      padding: 1rem 0 1rem 1.45rem;
-      border-left: 1px solid rgba(230,237,243,0.1);
-      align-self: center;
-      font-size: 1.05rem;
-      line-height: 1.55;
-      color: #e6edf3;
-    }
+
+  /* Plate stage — all plates share one grid cell; the active one shows */
+  .era-stage { display: grid; }
+  .era-plate {
+    grid-area: 1 / 1;
+    min-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition:
+      opacity .5s cubic-bezier(.2,.7,.2,1),
+      transform .5s cubic-bezier(.2,.7,.2,1),
+      visibility 0s linear .5s;
+    pointer-events: none;
   }
+  .era-plate.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      opacity .5s cubic-bezier(.2,.7,.2,1),
+      transform .5s cubic-bezier(.2,.7,.2,1),
+      visibility 0s;
+    pointer-events: auto;
+  }
+
+  /* Continuous scroll progress line */
+  .eras-progressline {
+    height: 2px;
+    background: rgba(250,250,250,0.14);
+    overflow: hidden;
+  }
+  .eras-progressline-fill {
+    height: 100%;
+    width: 0;
+    background: #EF4444;
+  }
+
+  /* Era index — clickable, tracks scroll position */
+  .era-index-item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .32rem 0 .32rem .85rem;
+    border: 0;
+    border-left: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Space Mono', 'Courier New', Consolas, monospace;
+    font-size: .72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #A3A3A3;
+    transition: color .2s, border-color .2s;
+  }
+  .era-index-item:hover { color: #FAFAFA; }
+  .era-index-item.active {
+    color: #FAFAFA;
+    border-left-color: #EF4444;
+  }
+  .era-index-item.active .n { color: #EF4444; }
+
   .era-artifact {
     position: relative;
-    margin-top: 1.1rem;
     background: #0A0A0A;
     border: 2px solid #404040;
     border-radius: 0;
-    padding: .85rem .95rem .9rem;
+    padding: 1.15rem 1.35rem 1.2rem;
     font-family: 'Space Mono', 'Courier New', Consolas, monospace;
-    font-size: .74rem;
-    line-height: 1.55;
+    font-size: .92rem;
+    line-height: 1.6;
     color: #FAFAFA;
-    min-height: 148px;
     overflow: hidden;
     box-shadow: none;
   }
@@ -582,19 +518,19 @@
   .era-artifact .bar {
     display: flex;
     align-items: center;
-    gap: .35rem;
-    font-size: .62rem;
+    gap: .4rem;
+    font-size: .72rem;
     letter-spacing: 0.14em;
     color: #a3a3a3;
     text-transform: uppercase;
     position: relative;
-    margin-bottom: .65rem;
-    padding-bottom: .55rem;
+    margin-bottom: .8rem;
+    padding-bottom: .6rem;
     border-bottom: 1px solid #404040;
   }
   .era-artifact .bar::before {
     content: "";
-    width: 6px; height: 6px; border-radius: 0;
+    width: 7px; height: 7px; border-radius: 0;
     background: #EF4444;
   }
   .era-artifact .row,
@@ -613,117 +549,43 @@
   }
   .era-artifact .hole {
     display: inline-block;
-    width: 10px; height: 14px; border-radius: 2px;
+    width: 12px; height: 17px; border-radius: 2px;
     background: #FAFAFA;
-    margin: 0 2px 0 0;
-    vertical-align: -2px;
+    margin: 0 3px 0 0;
+    vertical-align: -3px;
   }
   .era-artifact .hole.off { background: transparent; border: 1px solid rgba(245,245,245,0.18); }
 
-  /* On short screens, keep the story readable before decorative spacing. */
-  @media (max-height: 640px) {
-    .eras-parallax-head p { display: none; }
-    .eras-card-area { margin-top: 1rem; }
-    .era-card {
-      min-height: 228px;
-      padding: .95rem;
-    }
-    .era-artifact {
-      min-height: 112px;
-      margin-top: .75rem;
-      padding: .65rem .75rem;
-      font-size: .68rem;
-      line-height: 1.45;
-    }
-    .era-tag {
-      padding-top: .75rem;
-      font-size: .92rem;
-      line-height: 1.4;
-    }
+  /* Compact viewports — keep the pinned spread readable */
+  @media (max-height: 820px) and (min-width: 768px) {
+    .era-num { font-size: clamp(3.2rem, 8vw, 6rem); }
+    .era-artifact { font-size: .78rem; padding: .9rem 1rem .95rem; }
+    .era-title { font-size: clamp(1.5rem, 3vw, 2rem); }
+    .eras-head-lede { display: none; }
   }
-
   @media (max-width: 767px) {
-    .eras-viewport { border-radius: 1rem; }
-    .era-card {
-      min-height: 330px;
-    }
-    .eras-dots { gap: 5px; }
-    .era-dot { width: clamp(18px, 9vw, 32px); }
-    .era-artifact {
-      font-size: .68rem;
-      min-height: 132px;
-    }
+    .eras-scrolly { height: calc(100vh * 4.5); }
+    .eras-head-lede { display: none; }
+    .era-num { font-size: clamp(3.4rem, 16vw, 6rem); }
+    .era-artifact { font-size: .78rem; }
+    .era-tag { font-size: .95rem; }
   }
 
-  @media (min-width: 768px) and (max-width: 980px) {
-    .eras-parallax-head h2 {
-      font-size: clamp(2.35rem, 5.8vw, 3.2rem) !important;
-    }
-    .eras-parallax-head p {
-      max-width: 34rem;
-      font-size: .98rem;
-      line-height: 1.55;
-    }
-    .era-card {
-      min-height: 250px;
-      padding: 1rem;
-      gap: 1rem;
-    }
-    .era-title {
-      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
-    }
-    .era-artifact {
-      min-height: 118px;
-      font-size: .68rem;
-      line-height: 1.45;
-    }
-    .era-tag {
-      font-size: .95rem;
-      line-height: 1.45;
-      padding-left: 1rem;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 980px) and (max-height: 960px) {
-    .eras-parallax-head p { display: none; }
-    .eras-card-area { margin-top: 1rem; }
-    .era-card {
-      min-height: 220px;
-      padding: .9rem;
-    }
-    .era-artifact {
-      min-height: 100px;
-      margin-top: .65rem;
-      padding: .6rem .7rem;
-    }
-    .era-scroll-hint { display: none; }
-  }
-
-  /* Reduced-motion: drop sticky scroll, show all cards in a column */
+  /* Reduced motion — no pinning, all plates stacked as a static timeline */
   @media (prefers-reduced-motion: reduce) {
     .eras-scrolly { height: auto; }
-    .eras-sticky  { position: static; height: auto; overflow: visible; }
-    .eras-card-area::before { display: none; }
-    .eras-viewport {
-      overflow: visible;
-      border-radius: 0;
-      box-shadow: none;
+    .eras-sticky { position: static; height: auto; overflow: visible; }
+    .era-stage { display: block; }
+    .era-plate {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: none;
+      padding: 2.25rem 0;
     }
-    .eras-viewport::before { display: none; }
-    .eras-track   { width: 100%; flex-direction: column; gap: 1.25rem; transition: none; transform: none !important; }
-    .era-card     { flex: 0 0 auto; width: 100%; flex-direction: column; min-height: auto; }
-    .era-card.active { border-color: rgba(245,245,245,0.12); }
-    .eras-parallax-head { transform: none !important; }
-    .eras-dots, .eras-counter { display: none; }
-    .era-tag {
-      flex: 0 0 auto;
-      max-width: none;
-      margin-top: auto;
-      padding-top: 1rem;
-      padding-left: 0;
-      border-left: 0;
-      align-self: stretch;
-    }
+    .era-plate + .era-plate { border-top: 2px solid #404040; }
+    .era-rule { transform: scaleX(1); animation: none; }
+    .eras-progressline, .eras-index { display: none; }
   }
 
   /* =================== Tomato additions =================== */
@@ -906,7 +768,7 @@
               <span class="h-3 w-3 rounded-full bg-[#EF4444]"></span>
               <span class="h-3 w-3 rounded-full bg-[#D4D4D4]"></span>
               <span class="h-3 w-3 rounded-full bg-[#0A0A0A]"></span>
-              <span class="ml-3 text-xs text-ink/50 font-mono">agent_loop.py</span>
+              <span class="ml-3 text-xs text-ink/70 font-mono">agent_loop.py</span>
             </div>
             <pre class="code-frame p-5 overflow-x-auto"><code id="term-code"><span class="cmt"># An agent is just an LLM in a loop with tools.</span>
 <span class="kw">while</span> <span class="kw">not</span> done:
@@ -921,15 +783,15 @@
 <span class="cmt"># Context is the product. Evals beat vibes.</span></code></pre>
             <div class="mt-5 grid grid-cols-3 gap-1.5 sm:gap-3 min-w-0">
               <div class="glass rounded-xl px-2 py-2 sm:px-3 sm:py-2.5 text-center min-w-0">
-                <div class="text-[10px] uppercase tracking-wider text-ink/50">Plan</div>
+                <div class="text-[10px] uppercase tracking-wider text-ink/70">Plan</div>
                 <div class="text-sm font-semibold mt-0.5">Spec</div>
               </div>
               <div class="glass rounded-xl px-2 py-2 sm:px-3 sm:py-2.5 text-center min-w-0">
-                <div class="text-[10px] uppercase tracking-wider text-ink/50">Act</div>
+                <div class="text-[10px] uppercase tracking-wider text-ink/70">Act</div>
                 <div class="text-sm font-semibold mt-0.5">Tools + MCP</div>
               </div>
               <div class="glass rounded-xl px-2 py-2 sm:px-3 sm:py-2.5 text-center min-w-0">
-                <div class="text-[10px] uppercase tracking-wider text-ink/50">Verify</div>
+                <div class="text-[10px] uppercase tracking-wider text-ink/70">Verify</div>
                 <div class="text-sm font-semibold mt-0.5">Evals</div>
               </div>
             </div>
@@ -954,7 +816,7 @@
 <!-- =================== TOOLS MARQUEE =================== -->
 <section class="relative py-10 border-y border-white/5 bg-ink-950">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-5">
-    <p class="text-xs uppercase tracking-[0.2em] text-white/40 text-center">Tool-agnostic · Works with every major agentic IDE &amp; CLI</p>
+    <p class="text-xs uppercase tracking-[0.2em] text-white/60 text-center">Tool-agnostic · Works with every major agentic IDE &amp; CLI</p>
   </div>
   <div class="overflow-hidden marquee-wrap">
     <div class="marquee text-white/70 font-display text-xl md:text-2xl font-medium">
@@ -997,184 +859,161 @@
 <!-- =================== MODELS (September 2026) =================== -->
 <section class="relative py-14 border-b border-ink/5 bg-[#F5F5F5]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <p class="text-xs uppercase tracking-[0.2em] text-ink/40 text-center mb-6">Frontier models referenced in this roadmap · Last verified September 2026</p>
+    <p class="text-xs uppercase tracking-[0.2em] text-ink/60 text-center mb-6">Frontier models referenced in this roadmap · Last verified September 2026</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
       <div class="glass rounded-xl p-4">
-        <div class="text-ink/50 text-xs font-mono">OpenAI</div>
+        <div class="text-ink/70 text-xs font-mono">OpenAI</div>
         <div class="mt-1 font-semibold">GPT-5.6 · GPT-5.4 mini</div>
-        <div class="mt-1 text-ink/55">Codex: GPT-5.6 (Sol · Terra · Luna)</div>
+        <div class="mt-1 text-ink/70">Codex: GPT-5.6 (Sol · Terra · Luna)</div>
       </div>
       <div class="glass rounded-xl p-4">
-        <div class="text-ink/50 text-xs font-mono">Anthropic</div>
+        <div class="text-ink/70 text-xs font-mono">Anthropic</div>
         <div class="mt-1 font-semibold">Fable 5 · Opus 5 · Sonnet 5</div>
-        <div class="mt-1 text-ink/55">Haiku 4.5 · Fable 5.1 (Sept 1)</div>
+        <div class="mt-1 text-ink/70">Haiku 4.5 · Fable 5.1 (Sept 1)</div>
       </div>
       <div class="glass rounded-xl p-4">
-        <div class="text-ink/50 text-xs font-mono">Google</div>
+        <div class="text-ink/70 text-xs font-mono">Google</div>
         <div class="mt-1 font-semibold">Gemini 3.7 Flash</div>
-        <div class="mt-1 text-ink/55">Gemini 3.1 Pro · 3.5 Flash</div>
+        <div class="mt-1 text-ink/70">Gemini 3.1 Pro · 3.5 Flash</div>
       </div>
       <div class="glass rounded-xl p-4">
-        <div class="text-ink/50 text-xs font-mono">MCP</div>
+        <div class="text-ink/70 text-xs font-mono">MCP</div>
         <div class="mt-1 font-semibold">Spec 2026-07-28</div>
-        <div class="mt-1 text-ink/55">Stateless (no initialize handshake)</div>
+        <div class="mt-1 text-ink/70">Stateless (no initialize handshake)</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =================== ERAS / PUNCH CARDS =================== -->
+<!-- =================== ERAS — A SHORT HISTORY OF ABSTRACTION =================== -->
 <section id="eras" class="relative">
-
-  <!-- Tall scrolly wrapper — its height sets how long the sticky panel stays pinned -->
   <div class="eras-scrolly" id="eras-scrolly">
-    <div class="eras-sticky" id="eras-sticky">
-
-      <!-- Backgrounds travel with the sticky panel -->
-      <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
-      <div id="eras-parallax-bg" class="hidden"></div>
+    <div class="eras-sticky">
 
       <!-- Screen-reader announcer -->
       <div id="eras-live" aria-live="polite" class="sr-only"></div>
 
-      <!-- Centred content column -->
-      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-6 sm:py-8">
+      <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 h-full grid gap-8 lg:gap-14 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-center py-6">
 
-        <!-- Intro copy — parallax layer -->
-        <div class="eras-parallax-head max-w-3xl">
-          <div class="reveal inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style="color:#EF4444">
+        <!-- Left: header, progress line, era index -->
+        <div class="min-w-0">
+          <div class="reveal inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]" style="color:#EF4444">
             <span class="h-px w-8" style="background:#EF4444"></span> A short history of abstraction
           </div>
-          <h2 class="reveal mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.02]" data-delay="1">
+          <h2 class="reveal mt-3 font-display text-3xl sm:text-4xl md:text-5xl leading-[1.02] text-[#FAFAFA]" data-delay="1">
             Every era of software
-            <span class="italic text-grad pr-[10px]">rewrote the job</span>.
+            <span class="text-grad">rewrote the job.</span>
           </h2>
-          <p class="reveal mt-4 text-white/65 text-base sm:text-lg max-w-2xl" data-delay="2">
-            Each new layer automated what the last generation did by hand. The developers who figured out the layer first became the ones everyone else relied on. Agents are the current layer. Your job is to learn to direct them.
+          <p class="eras-head-lede reveal mt-4 text-white/65 text-base max-w-md" data-delay="2">
+            Each new layer automated what the last generation did by hand. Agents are the current layer. Your job is to learn to direct them.
           </p>
+
+          <div class="eras-progressline mt-8 max-w-md" aria-hidden="true">
+            <div class="eras-progressline-fill" id="eras-progress-fill"></div>
+          </div>
+
+          <div class="eras-index mt-5 flex flex-wrap md:flex-col gap-x-6 gap-y-0.5" role="tablist" aria-label="Eras">
+            <button type="button" class="era-index-item active" data-era="0" aria-current="true"><span class="n">01</span> Punch Cards</button>
+            <button type="button" class="era-index-item" data-era="1" aria-current="false"><span class="n">02</span> Assembly</button>
+            <button type="button" class="era-index-item" data-era="2" aria-current="false"><span class="n">03</span> High-Level Languages</button>
+            <button type="button" class="era-index-item" data-era="3" aria-current="false"><span class="n">04</span> Frameworks &amp; OSS</button>
+            <button type="button" class="era-index-item" data-era="4" aria-current="false"><span class="n">05</span> Agentic Coding</button>
+          </div>
         </div>
 
-        <!-- Cards area -->
-        <div class="eras-card-area mt-6 sm:mt-8">
+        <!-- Right: plate stage -->
+        <div class="era-stage relative min-w-0">
 
-          <!-- Progress dots + step counter -->
-          <div class="eras-progress flex items-center justify-between mb-4">
-            <div class="eras-dots" id="eras-dots" aria-hidden="true">
-              <span class="era-dot active"></span>
-              <span class="era-dot"></span>
-              <span class="era-dot"></span>
-              <span class="era-dot"></span>
-              <span class="era-dot"></span>
+          <!-- 01 · Punch Cards -->
+          <article class="era-plate active">
+            <div class="era-num" aria-hidden="true">01</div>
+            <div class="era-rule" aria-hidden="true"></div>
+            <div class="era-meta mt-4">1940s – 50s · Step 1 / 5</div>
+            <h3 class="era-title">Punch Cards</h3>
+            <div class="era-artifact mt-5 max-w-2xl" aria-hidden="true">
+              <div class="bar">IBM 80-col card</div>
+              <div class="punch">
+                <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
+              </div>
+              <div class="punch mt-1">
+                <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
+              </div>
+              <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
             </div>
-            <div class="eras-counter">
-              <span id="eras-current">1</span><span style="opacity:.4"> / 5</span>
+            <p class="era-tag mt-5 max-w-xl">“We punched ones and zeroes, one hole at a time.”</p>
+          </article>
+
+          <!-- 02 · Assembly -->
+          <article class="era-plate">
+            <div class="era-num" aria-hidden="true">02</div>
+            <div class="era-rule" aria-hidden="true"></div>
+            <div class="era-meta mt-4">1950s – 60s · Step 2 / 5</div>
+            <h3 class="era-title">Assembly</h3>
+            <div class="era-artifact mt-5 max-w-2xl" aria-hidden="true">
+              <div class="bar">&gt;_ monitor v2.1</div>
+              <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
+              <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
+              <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
+              <div class="row mt-2 cmt">; names for operations, finally</div>
             </div>
-          </div>
+            <p class="era-tag mt-5 max-w-xl">“We stopped memorising the machine and started naming it.”</p>
+          </article>
 
-          <!-- Clipping viewport hides all but the active card -->
-          <div class="eras-viewport" id="eras-viewport">
-            <div class="eras-track" id="eras-track">
+          <!-- 03 · High-Level Languages -->
+          <article class="era-plate">
+            <div class="era-num" aria-hidden="true">03</div>
+            <div class="era-rule" aria-hidden="true"></div>
+            <div class="era-meta mt-4">1960s – 80s · Step 3 / 5</div>
+            <h3 class="era-title">High-Level Languages</h3>
+            <div class="era-artifact mt-5 max-w-2xl" aria-hidden="true">
+              <div class="bar">greet.py</div>
+              <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
+              <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
+              <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
+              <div class="row mt-2 cmt"># say what, not how</div>
+            </div>
+            <p class="era-tag mt-5 max-w-xl">“We described the what. The compiler figured out the how.”</p>
+          </article>
 
-              <!-- Era 1 · Punch Cards -->
-              <article class="era-card">
-                <div class="era-body">
-                  <div class="era-meta">1940s – 50s · Step 1 / 5</div>
-                  <h3 class="era-title">Punch Cards</h3>
-                  <div class="era-artifact" aria-hidden="true">
-                    <div class="bar">IBM 80-col card</div>
-                    <div class="punch">
-                      <span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole off"></span>
-                    </div>
-                    <div class="punch mt-1">
-                      <span class="hole off"></span><span class="hole"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole off"></span><span class="hole"></span><span class="hole"></span>
-                    </div>
-                    <div class="row mt-2 dim">01001010 · 11010011 · 00110100</div>
-                  </div>
-                </div>
-                <p class="era-tag">“We punched ones and zeroes, one hole at a time.”</p>
-              </article>
+          <!-- 04 · Frameworks & OSS -->
+          <article class="era-plate">
+            <div class="era-num" aria-hidden="true">04</div>
+            <div class="era-rule" aria-hidden="true"></div>
+            <div class="era-meta mt-4">2000s – 10s · Step 4 / 5</div>
+            <h3 class="era-title">Frameworks &amp; OSS</h3>
+            <div class="era-artifact mt-5 max-w-2xl" aria-hidden="true">
+              <div class="bar">app.tsx</div>
+              <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+              <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+              <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
+              <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
+              <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
+              <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
+            </div>
+            <p class="era-tag mt-5 max-w-xl">“We stopped writing primitives and started composing other people’s.”</p>
+          </article>
 
-              <!-- Era 2 · Assembly -->
-              <article class="era-card">
-                <div class="era-body">
-                  <div class="era-meta">1950s – 60s · Step 2 / 5</div>
-                  <h3 class="era-title">Assembly</h3>
-                  <div class="era-artifact" aria-hidden="true">
-                    <div class="bar">&gt;_ monitor v2.1</div>
-                    <div class="row"><span class="dim">0100:</span> <span class="kw">MOV</span> AX, <span class="str">0x41</span></div>
-                    <div class="row"><span class="dim">0103:</span> <span class="kw">INT</span> <span class="str">0x10</span></div>
-                    <div class="row"><span class="dim">0105:</span> <span class="kw">HLT</span></div>
-                    <div class="row mt-2 cmt">; names for operations, finally</div>
-                  </div>
-                </div>
-                <p class="era-tag">“We stopped memorising the machine and started naming it.”</p>
-              </article>
+          <!-- 05 · Agentic Coding — the featured era -->
+          <article class="era-plate">
+            <div class="era-num" aria-hidden="true">05</div>
+            <div class="era-rule" aria-hidden="true"></div>
+            <div class="era-meta mt-4">2020s → now · Step 5 / 5</div>
+            <h3 class="era-title">Agentic Coding</h3>
+            <div class="era-artifact mt-5 max-w-2xl" aria-hidden="true">
+              <div class="bar">agent · &gt;_ task</div>
+              <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
+              <div class="row dim mt-1">· reading spec.md</div>
+              <div class="row dim">· calling mcp://github</div>
+              <div class="row dim">· running evals (8/8)</div>
+              <div class="row mt-2 cmt"># you direct, it executes</div>
+            </div>
+            <p class="era-tag mt-5 max-w-xl">“We stopped typing every character and started directing the machine.”</p>
+          </article>
 
-              <!-- Era 3 · High-Level Languages -->
-              <article class="era-card">
-                <div class="era-body">
-                  <div class="era-meta">1960s – 80s · Step 3 / 5</div>
-                  <h3 class="era-title">High-Level Languages</h3>
-                  <div class="era-artifact" aria-hidden="true">
-                    <div class="bar">greet.py</div>
-                    <div class="row"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
-                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="str">"hello, "</span> + name)</div>
-                    <div class="row mt-1"><span class="fn">greet</span>(<span class="str">"world"</span>)</div>
-                    <div class="row mt-2 cmt"># say what, not how</div>
-                  </div>
-                </div>
-                <p class="era-tag">“We described the what. The compiler figured out the how.”</p>
-              </article>
-
-              <!-- Era 4 · Frameworks & OSS -->
-              <article class="era-card">
-                <div class="era-body">
-                  <div class="era-meta">2000s – 10s · Step 4 / 5</div>
-                  <h3 class="era-title">Frameworks &amp; OSS</h3>
-                  <div class="era-artifact" aria-hidden="true">
-                    <div class="bar">app.tsx</div>
-                    <div class="row"><span class="dim">&lt;</span><span class="kw">App</span><span class="dim">&gt;</span></div>
-                    <div class="row">&nbsp;&nbsp;<span class="dim">&lt;</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Dashboard</span> <span class="dim">/&gt;</span></div>
-                    <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">&lt;</span><span class="fn">Settings</span> <span class="dim">/&gt;</span></div>
-                    <div class="row">&nbsp;&nbsp;<span class="dim">&lt;/</span><span class="kw">Router</span><span class="dim">&gt;</span></div>
-                    <div class="row"><span class="dim">&lt;/</span><span class="kw">App</span><span class="dim">&gt;</span></div>
-                  </div>
-                </div>
-                <p class="era-tag">“We stopped writing primitives and started composing other people’s.”</p>
-              </article>
-
-              <!-- Era 5 · Agents -->
-              <article class="era-card is-featured">
-                <div class="era-body">
-                  <div class="era-meta">2020s → now · Step 5 / 5</div>
-                  <h3 class="era-title">Agentic Coding</h3>
-                  <div class="era-artifact" aria-hidden="true">
-                    <div class="bar">agent · &gt;_ task</div>
-                    <div class="row"><span class="kw">&gt;</span> build the auth flow</div>
-                    <div class="row dim mt-1">· reading spec.md</div>
-                    <div class="row dim">· calling mcp://github</div>
-                    <div class="row dim">· running evals (8/8)</div>
-                    <div class="row mt-2 cmt"># you direct, it executes</div>
-                  </div>
-                </div>
-                <p class="era-tag">“We stopped typing every character and started directing the machine.”</p>
-              </article>
-
-            </div><!-- /.eras-track -->
-          </div><!-- /.eras-viewport -->
-
-          <!-- Scroll hint -->
-          <div class="era-scroll-hint mt-4 flex flex-wrap items-center gap-2 text-xs text-white/40 max-w-full">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-            <span>Scroll down to step through each era — each one rewrote the job.</span>
-          </div>
-
-        </div><!-- /.cards area -->
-      </div><!-- /.content column -->
-    </div><!-- /.eras-sticky -->
-  </div><!-- /.eras-scrolly -->
-
+        </div><!-- /.era-stage -->
+      </div>
+    </div>
+  </div>
 </section>
 <!-- =================== BIG PICTURE =================== -->
 <section id="models" class="relative py-28 md:py-36">
@@ -1513,73 +1352,73 @@
 <!-- =================== ROLE TRACKS (September 2026) =================== -->
 <section class="relative py-14 border-b border-ink/5 bg-[#F5F5F5]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <p class="reveal text-xs uppercase tracking-[0.2em] text-ink/40 text-center mb-2">Learn the steps, then earn</p>
+    <p class="reveal text-xs uppercase tracking-[0.2em] text-ink/60 text-center mb-2">Learn the steps, then earn</p>
     <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight text-center">8 role tracks · <span class="text-grad">most in-demand 2026–2027</span></h2>
     <p class="reveal mt-3 text-ink/60 text-center text-sm max-w-2xl mx-auto" data-delay="1">The 21 steps are the shared highway. Role tracks are the exit signs: which steps matter for your job, what to add on top, and what the market pays.</p>
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
       <a href="read.html?path=roles/ai-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="0">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 1 · +143% postings</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 1 · +143% postings</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#0A0A0A"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>AI Engineer</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">Agent Developer · $130K–$160K mid</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">Agent Developer · $130K–$160K mid</div>
       </a>
       <a href="read.html?path=roles/fde.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="1">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 1 · +800% postings</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 1 · +800% postings</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#0A0A0A"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Forward Deployed Engineer</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$185K–$330K · $385K+ at labs</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$185K–$330K · $385K+ at labs</div>
       </a>
       <a href="read.html?path=roles/automation-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="2">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 1 · RPA → agentic</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 1 · RPA → agentic</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#0A0A0A"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Automation Engineer</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$150K–$250K · workflow agents</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$150K–$250K · workflow agents</div>
       </a>
       <a href="read.html?path=roles/agentops.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="3">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 1 · new in 2026</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 1 · new in 2026</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#0A0A0A"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>AgentOps / Reliability</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$185K–$320K · run agents safely</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$185K–$320K · run agents safely</div>
       </a>
       <a href="read.html?path=roles/ml-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="0">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 2 · +40% by 2027</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 2 · +40% by 2027</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#A3A3A3"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>ML Engineer (applied)</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$140K–$200K+ · deployment side</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$140K–$200K+ · deployment side</div>
       </a>
       <a href="read.html?path=roles/ai-product-manager.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="1">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 2 · non-code</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 2 · non-code</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#A3A3A3"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>AI Product Manager</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$145K–$175K · what &amp; why</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$145K–$175K · what &amp; why</div>
       </a>
       <a href="read.html?path=roles/data-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="2">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 2 · #1 search volume</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 2 · #1 search volume</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#A3A3A3"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>Data Engineer</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$120K–$160K · feeds the agents</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$120K–$160K · feeds the agents</div>
       </a>
       <a href="read.html?path=roles/prompt-engineer.md" class="reveal group relative glass glass-hover rounded-xl p-4 block" data-delay="3">
         <div class="flex items-center justify-between gap-2">
-          <div class="text-ink/50 text-xs font-mono">Tier 2 · entry point</div>
+          <div class="text-ink/70 text-xs font-mono">Tier 2 · entry point</div>
           <span class="h-1.5 w-1.5 rounded-full shrink-0" style="background:#A3A3A3"></span>
         </div>
         <div class="mt-1.5 font-semibold leading-tight"><svg class="inline-block w-[1.05em] h-[1.05em] align-[-0.15em] mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>Prompt Engineer</div>
-        <div class="mt-1 text-ink/55 text-[13px] leading-snug">$110K–$135K · launchpad role</div>
+        <div class="mt-1 text-ink/70 text-[13px] leading-snug">$110K–$135K · launchpad role</div>
       </a>
     </div>
     <p class="reveal mt-8 text-center">
@@ -1622,18 +1461,18 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid md:grid-cols-4 gap-10">
       <div class="md:col-span-2">
-        <div class="flex items-center gap-2.5 font-display font-bold tracking-tight text-lg">
+        <div class="flex items-center gap-2.5 font-display font-bold tracking-tight text-lg text-white">
           <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg" style="background: #0A0A0A">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FAFAFA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
           </span>
           <span>agentic<span class="text-grad">.sh</span></span>
         </div>
-        <p class="mt-4 text-sm text-white/55 max-w-sm">
+        <p class="mt-4 text-sm text-white/70 max-w-sm">
           Made with <svg class="inline-block w-[1em] h-[1em] align-[-0.15em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> + <svg class="inline-block w-[1em] h-[1em] align-[-0.15em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg> for the next generation of AI-native builders. MIT Licensed. Fork, remix, teach.
         </p>
       </div>
       <div>
-        <div class="text-xs uppercase tracking-[0.2em] text-white/40">Roadmap</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-white/60">Roadmap</div>
         <ul class="mt-4 space-y-2 text-sm">
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=steps/00-introduction.md">Start at Step 00</a></li>
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=ROADMAP.md">Full ROADMAP.md</a></li>
@@ -1643,7 +1482,7 @@
         </ul>
       </div>
       <div>
-        <div class="text-xs uppercase tracking-[0.2em] text-white/40">Community</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-white/60">Community</div>
         <ul class="mt-4 space-y-2 text-sm">
           <li><a class="text-white/70 hover:text-white transition link-shim" href="https://github.com/Isfhan/learn-agentic-coding" target="_blank" rel="noopener">Source on GitHub</a></li>
           <li><a class="text-white/70 hover:text-white transition link-shim" href="read.html?path=CONTRIBUTING.md">Contribute</a></li>
@@ -1652,7 +1491,7 @@
         </ul>
       </div>
     </div>
-    <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
+    <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/60">
       <div>© 2026 · agentic.sh — The Agentic Coding Roadmap</div>
       <div class="flex items-center gap-5">
         <a href="#top" class="hover:text-white/70 transition">Back to top ↑</a>
@@ -1706,7 +1545,7 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full" style="background:${t.dot}"></span>
-          <span class="text-[10px] uppercase tracking-[0.18em] text-ink/50">${t.label}</span>
+          <span class="text-[10px] uppercase tracking-[0.18em] text-ink/70">${t.label}</span>
         </div>
         <span class="text-[10px] px-2 py-0.5 rounded-full bg-ink/5 border border-ink/10 text-ink/60 font-mono">${s.time}</span>
       </div>
@@ -1714,10 +1553,10 @@
         <div class="font-display text-3xl font-bold step-num leading-none shrink-0 min-w-[56px]">${s.n}</div>
         <div>
           <h3 class="font-display text-lg font-semibold leading-tight">${s.title}${s.hot ? ' <span class="ml-1 align-middle text-[10px] font-mono px-1.5 py-0.5 rounded-md" style="background:#0A0A0A;color:#FAFAFA">NEW</span>' : ''}</h3>
-          <p class="mt-1.5 text-sm text-ink/55">${s.focus}</p>
+          <p class="mt-1.5 text-sm text-ink/70">${s.focus}</p>
         </div>
       </div>
-      <div class="mt-5 flex items-center gap-1.5 text-xs font-medium text-ink/50 group-hover:text-ink transition">
+      <div class="mt-5 flex items-center gap-1.5 text-xs font-medium text-ink/70 group-hover:text-ink transition">
         Open module
         <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </div>
@@ -1750,68 +1589,65 @@
     document.querySelectorAll('.nav-disclosure[open]').forEach((d) => { d.open = false; });
   });
 
-  // ======================== Eras scroll-driven slider ========================
+  // ======================== Eras scrollytelling ========================
   (function () {
-    var scrolly   = document.getElementById('eras-scrolly');
-    var track     = document.getElementById('eras-track');
-    var dots      = document.querySelectorAll('.era-dot');
-    var cards     = track ? track.querySelectorAll('.era-card') : [];
-    var counter   = document.getElementById('eras-current');
-    var live      = document.getElementById('eras-live');
-    var pHead     = document.querySelector('.eras-parallax-head');
-    var pBg       = document.getElementById('eras-parallax-bg');
-    var N         = 5;
-    var currentIdx = -1;
-    var rafId     = null;
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var scrolly = document.getElementById('eras-scrolly');
+    if (!scrolly) return;
 
-    if (!scrolly || !track) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var plates  = Array.prototype.slice.call(scrolly.querySelectorAll('.era-plate'));
+    var buttons = Array.prototype.slice.call(scrolly.querySelectorAll('.era-index-item'));
+    var fill    = document.getElementById('eras-progress-fill');
+    var live    = document.getElementById('eras-live');
+    var N       = plates.length;
+    var currentIdx = -1;
+    var rafId = null;
 
     function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
 
+    function setActive(idx) {
+      if (idx === currentIdx) return;
+      currentIdx = idx;
+      plates.forEach(function (p, i) { p.classList.toggle('active', i === idx); });
+      buttons.forEach(function (b, i) {
+        b.classList.toggle('active', i === idx);
+        b.setAttribute('aria-current', i === idx ? 'true' : 'false');
+      });
+      var title = plates[idx] && plates[idx].querySelector('.era-title');
+      if (title && live) live.textContent = title.textContent;
+    }
+
     function update() {
       rafId = null;
-      var rect       = scrolly.getBoundingClientRect();
+      var rect = scrolly.getBoundingClientRect();
       var scrollable = scrolly.offsetHeight - window.innerHeight;
-      var t          = clamp(-rect.top / Math.max(scrollable, 1), 0, 1);
+      if (scrollable <= 0) return;
+      var t = clamp(-rect.top / scrollable, 0, 1);
 
-      // Discrete index — each era occupies an equal scroll band
-      var idx = Math.min(Math.floor(t * N), N - 1);
+      if (fill) fill.style.width = (t * 100).toFixed(2) + '%';
 
-      if (reducedMotion) return;
-
-      // Slide the track: each step is 20% of the 500%-wide track
-      track.style.transform = 'translate3d(-' + (idx * 20) + '%, 0, 0)';
-
-      // Update visual state and aria-live only on index change
-      if (idx !== currentIdx) {
-        currentIdx = idx;
-        dots.forEach(function (d, i) {
-          d.classList.toggle('completed', i < idx);
-          d.classList.toggle('active', i === idx);
-        });
-        cards.forEach(function (card, i) {
-          card.classList.toggle('active', i === idx);
-        });
-        if (counter) counter.textContent = String(idx + 1);
-        var title = track.querySelectorAll('.era-title')[idx];
-        if (title && live) live.textContent = title.textContent;
-      }
-
-      // Subtle parallax — head drifts up -24px, bg glow drifts up -44px
-      if (pHead) pHead.style.transform = 'translateY(' + (-(t * 24)) + 'px)';
-      if (pBg)   pBg.style.transform   = 'translateY(' + (-(t * 44)) + 'px)';
+      var idx = clamp(Math.floor(t * N), 0, N - 1);
+      setActive(idx);
     }
 
     function scheduleUpdate() {
       if (!rafId) rafId = requestAnimationFrame(update);
     }
 
-    window.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    if (!reduced) {
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleUpdate, { passive: true });
+      update();
 
-    // Run once on load so initial state is correct
-    update();
+      // Clicking an era jumps to the middle of its scroll band
+      buttons.forEach(function (b, i) {
+        b.addEventListener('click', function () {
+          var scrollable = scrolly.offsetHeight - window.innerHeight;
+          var top = scrolly.getBoundingClientRect().top + window.scrollY + ((i + 0.5) / N) * scrollable;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+      });
+    }
   })();
 
   // Scroll progress bar
