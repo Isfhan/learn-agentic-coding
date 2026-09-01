@@ -28,7 +28,7 @@ Turns business processes into agent-powered workflows. The RPA (robotic process 
 | 2027 outlook | McKinsey: agents automate ~30% of knowledge-work tasks by end of 2027 |
 | Entry path | DevOps/backend engineers can pivot in ~2–4 months of targeted upskilling |
 
-Sources: Futurum Group, Automation Atlas (2026), Stanford AI Index, published salary surveys (Aug 2026).
+Sources: Futurum Group, Automation Atlas (2026), Stanford AI Index, published salary surveys (Sep 2026).
 
 ---
 

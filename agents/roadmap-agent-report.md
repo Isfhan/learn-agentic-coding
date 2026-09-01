@@ -10,7 +10,7 @@ SUCCESS
 
 > A one-page big picture. Print it, screenshot it, put it on your desk.
 >
-> **Last verified: August 2026.** See [README.md](./README.md#-currency) for refresh guidance.
+> **Last verified: September 2026.** See [README.md](./README.md#-currency) for refresh guidance.
 
 ---
 
@@ -40,9 +40,9 @@ flowchart LR
 
     P1 --> P2 --> P3 --> P4
 
-    style P1 fill:#dbeafe,stroke:#3b82f6
-    style P2 fill:#dcfce7,stroke:#16a34a
-    style P3 fill:#fce7f3,stroke:#db2777
+    style P1 fill:#FAFAFA,stroke:#0A0A0A
+    style P2 fill:#F5F5F5,stroke:#EF4444
+    style P3 fill:#E5E5E5,stroke:#DC2626
     sty
 ```
 

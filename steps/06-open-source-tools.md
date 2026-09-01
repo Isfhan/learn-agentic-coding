@@ -79,7 +79,7 @@ models:
     roles: [chat, edit]
   - name: Qwen 2.5 Coder
     provider: ollama
-    model: qwen2.5-coder:7b
+    model: qwen3-coder:30b
     roles: [autocomplete]
 contextProviders:
   - name: codebase
@@ -106,7 +106,7 @@ Why it's exciting:
 
 ## 4.5. OpenCode — the model-agnostic terminal agent
 
-OpenCode is a terminal-first agent that is deliberately **model-agnostic** (bring-your-own-model): point it at any Anthropic, OpenAI, Gemini, or local model and it works. It supports the same stack this roadmap teaches — **MCP**, **skills**, **hooks**, **subagents** — and has one of the largest OSS communities in the space (160k+ GitHub stars, 900+ contributors as of mid-2026). Note the project changed hands (now `anomalyco/opencode`) and Anthropic blocked its Claude OAuth flow in Jan 2026, so bring your own API keys for Claude models.
+OpenCode is a terminal-first agent that is deliberately **model-agnostic** (bring-your-own-model): point it at any Anthropic, OpenAI, Gemini, or local model and it works. It supports the same stack this roadmap teaches — **MCP**, **skills**, **hooks**, **subagents** — and has one of the largest OSS communities in the space (200k+ GitHub stars, 950+ contributors as of September 2026). Note the project changed hands (now `anomalyco/opencode`) and Anthropic blocked its Claude OAuth flow in Jan 2026 (removed Feb 2026), so bring your own API keys for Claude models.
 
 ```bash
 npm install -g opencode-ai
@@ -129,10 +129,10 @@ A fun exercise that'll make you popular at work:
 ```bash
 # 1. Install Ollama: https://ollama.com
 # 2. Pull a coding model
-ollama pull qwen2.5-coder:7b  # size varies; check Ollama docs for your hardware
+ollama pull qwen3-coder:30b  # size varies; check Ollama docs for your hardware
 
 # 3. Point Aider at it
-aider --model ollama/qwen2.5-coder:7b --no-auto-commits
+aider --model ollama/qwen3-coder:30b --no-auto-commits
 ```
 
 Now you have a coding agent running **completely offline**. No API keys, no data leaving your machine.
@@ -210,7 +210,7 @@ Pick an OSS agent and **read its main loop file**. Aider's is in `aider/coders/b
 
 1. Install **Aider** and give it a real task on one of your projects.
 2. Pick one OSS agent repo (Aider, Cline, or Continue). Open its main file on GitHub. Read the agent loop. Can you map it to the pseudocode above?
-3. Bonus: install **Ollama**, pull `qwen2.5-coder:7b`, and run Aider fully offline on a toy task.
+3. Bonus: install **Ollama**, pull `qwen3-coder:30b`, and run Aider fully offline on a toy task.
 4. Log:
    - What surprised you about the source code?
    - Which OSS tool would you bring to a privacy-sensitive job?

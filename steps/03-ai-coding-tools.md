@@ -31,8 +31,8 @@ Built into (or deeply integrated with) your code editor.
 
 | Tool | Strength | Weakness | Pricing |
 |------|----------|----------|---------|
-| **Cursor** | Best-in-class agent (3.0 UI), Marketplace plugins, async subagents, worktrees, rules/skills/hooks | Forks VS Code (not VS Code itself) | ~$20/mo |
-| **GitHub Copilot (Agent Mode + coding agent)** | Universal, works in VS Code / JetBrains / Xcode; deep GitHub integration; MCP support | Less bleeding-edge than Cursor for some agent workflows | $10–39/mo |
+| **Cursor** | Best-in-class agent (3.x Agents Window), Marketplace plugins, async subagents, worktrees, rules/skills/hooks | Forks VS Code (not VS Code itself) | ~$20/mo |
+| **GitHub Copilot (Agent Mode + coding agent)** | Universal, works in VS Code / JetBrains / Xcode; deep GitHub integration; MCP support; AI Credits billing since June 2026 | Less bleeding-edge than Cursor for some agent workflows | Free–$39/mo (Max $100) |
 | **Windsurf** | Cascade "flow" feels very natural | Smaller ecosystem | ~$15/mo |
 | **Google Antigravity** | Gemini 3.7 Flash-native agent IDE; strong multimodal + Google Cloud integration | Newer; Google-ecosystem focused | Plan-based |
 
@@ -42,13 +42,13 @@ Run in your shell, see your files, execute commands directly.
 
 | Tool | Strength | Weakness | Pricing |
 |------|----------|----------|---------|
-| **Claude Code** | Most agent-native workflow; dynamic workflows, effort control, Skills, hooks, subagents, plugins | Tied to Anthropic | Usage-based (~$5/$25 per M tokens for Opus 5) |
-| **OpenAI Codex CLI** | GPT-5.6 default (ChatGPT sign-in); `gpt-5.6` family (Sol/Terra/Luna) for API-key workflows; tops Terminal-Bench | Tied to OpenAI | Usage-based |
-| **Gemini CLI → Antigravity CLI** | Gemini 3.7 Flash / 3.1 Pro access; 1M context; Google Search grounding built in | Sunset June 18, 2026 for non-enterprise users; Antigravity CLI is Go-based with async multi-agent workflows | Usage-based / plan-based |
+| **Claude Code** | Most agent-native workflow; dynamic workflows, effort control, Skills, hooks, subagents, plugins | Tied to Anthropic | Usage-based (~$5/$25 per M tokens for Opus 5); Pro from $20/mo |
+| **OpenAI Codex CLI** | GPT-5.6 default (ChatGPT sign-in); `gpt-5.6` family (Sol/Terra/Luna) for API-key workflows; open-source Rust CLI; strong Terminal-Bench scores | Tied to OpenAI | Usage-based |
+| **Gemini CLI → Antigravity CLI** | Gemini 3.7 Flash / 3.1 Pro access; 1M context; Google Search grounding built in | Gemini CLI sunset June 18, 2026 for consumer tiers; Antigravity CLI is Go-based with async multi-agent workflows | Usage-based / plan-based |
 | **Qwen Code** | Fully open; Qwen3-Coder family; can run local or self-host | Infra required for best perf | Free (model costs) |
 | **Aider** | Token-efficient repo-map; git-native auto-commits | Terminal-only UX | Free (model costs) |
-| **OpenCode** | Model-agnostic (bring-your-own-model); large OSS community (~160k stars); MCP + skills + hooks support | Changed hands recently; Claude OAuth blocked Jan 2026 — bring API keys for Claude | Free (model costs) |
-| **Muse Code** (Meta, Aug 2026) | Fail-closed OS sandbox by default; cheap tokens ($1.25/$4.25 per M) | Brand new (shipped Aug 5, 2026); smaller ecosystem | Usage-based |
+| **OpenCode** | Model-agnostic (75+ providers, bring-your-own-model); large OSS community (~200k stars); MCP + skills + hooks support | Moved to the anomalyco org; Claude OAuth blocked Jan 2026 (removed Feb 2026) — bring API keys for Claude | Free (model costs) |
+| **Muse Code** (Meta, Aug 2026) | Fail-closed OS sandbox by default; cheap tokens ($1.25/$4.25 per M); async background agents with an audit event log | Brand new (shipped Aug 5, 2026); smaller ecosystem | Usage-based |
 
 ### 3. OSS extensions for VS Code / JetBrains
 
@@ -65,8 +65,8 @@ You assign a task, they return a PR.
 | Tool | Strength | Weakness |
 |------|----------|----------|
 | **Devin** | Full autonomous "employee" UX | Expensive; mixed reviews |
-| **OpenHands** (formerly Devin-class OSS) | Open-source autonomous coding agent | Self-hosted infra required |
-| **GitHub Copilot Workspace / Copilot coding agent** | Tight GitHub issue → PR loop; good governance fit for GitHub teams | GitHub-only |
+| **OpenHands** (formerly OpenDevin) | Open-source autonomous coding agent | Self-hosted infra required |
+| **GitHub Copilot coding agent** | Tight GitHub issue → PR loop; good governance fit for GitHub teams | GitHub-only |
 | **Cursor Cloud Agents** | Spawn agents from phone/web; worktree isolation | Still maturing |
 | **OpenAI Codex (Cloud)** | Parallel multi-task execution; GPT-5.6 in Codex | Newer |
 | **Gemini Enterprise Agent Platform** | Strong if your team lives in Google Cloud or Workspace | Product surface changes quickly |
@@ -80,7 +80,7 @@ flowchart TD
     Q1{Where do you<br/>spend most<br/>of your time?}
     Q1 -->|VS Code / JetBrains| Q2{Willing to use<br/>a VS Code fork?}
     Q1 -->|Terminal| Q3{Do you want<br/>Anthropic models<br/>as default?}
-    Q1 -->|GitHub PRs| GH[GitHub Copilot Agent<br/>+ Copilot Workspace]
+    Q1 -->|GitHub PRs| GH[GitHub Copilot Agent<br/>+ coding agent]
 
     Q2 -->|Yes, best-in-class| CUR[Cursor]
     Q2 -->|No, stay on VS Code| CL[Cline or<br/>Copilot Agent]
@@ -90,12 +90,12 @@ flowchart TD
     Q4 -->|Yes| QW[Qwen Code]
     Q4 -->|No| AI[Aider]
 
-    style CUR fill:#10b981,color:#fff
-    style CC fill:#6366f1,color:#fff
-    style GH fill:#24292f,color:#fff
-    style CL fill:#f59e0b,color:#fff
-    style QW fill:#ef4444,color:#fff
-    style AI fill:#8b5cf6,color:#fff
+    style CUR fill:#EF4444,color:#fff
+    style CC fill:#DC2626,color:#fff
+    style GH fill:#0A0A0A,color:#fff
+    style CL fill:#E5E5E5,color:#0A0A0A
+    style QW fill:#D4D4D4,color:#0A0A0A
+    style AI fill:#B91C1C,color:#fff
 ```
 
 ---

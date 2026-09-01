@@ -23,12 +23,12 @@ Builds the agent systems themselves: LLM apps, RAG, tool use, orchestration, eva
 | Signal | Number |
 |---|---|
 | Posting growth | +143% YoY (LinkedIn, 2026); 13x role growth in 2 years |
-| Mid-level US salary | $130K–$155K |
+| Mid-level US salary | $130K–$160K (median ~$154K, Levels.fyi) |
 | Senior / frontier labs | $180K–$300K+ |
 | Remote share | ~85% of AI agent developer postings (2026) |
 | 2027 outlook | Strongest growth continues; agent-specific roles are the fastest subcategory |
 
-Sources: LinkedIn, Indeed Hiring Lab, Stanford AI Index 2026, published salary surveys (Aug 2026).
+Sources: LinkedIn Jobs on the Rise 2026, Indeed Hiring Lab, Stanford AI Index 2026, Levels.fyi (Sep 2026).
 
 ---
 

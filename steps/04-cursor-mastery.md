@@ -172,13 +172,13 @@ Cursor supports MCP servers out of the box. Add them at `.cursor/mcp.json`:
 
 Now the agent can query your DB and GitHub. We'll cover MCP properly in [Step 09](./09-mcp-introduction.md) and [Step 10](./10-mcp-building-servers.md).
 
-> **Heads-up (August 2026):** MCP `2026-07-28` made the protocol stateless — no `initialize` handshake, no session IDs. Existing `2025-11-25` servers keep working; migrate when your client supports the new spec.
+> **Heads-up (September 2026):** MCP `2026-07-28` made the protocol stateless — no `initialize` handshake, no session IDs. Existing `2025-11-25` servers keep working; migrate when your client supports the new spec.
 
 ---
 
 ## 7. Marketplace plugins — install capabilities in one click
 
-Cursor 2.5+ ships a **Marketplace** at [cursor.com/plugins](https://cursor.com/plugins). Plugins bundle skills, subagents, MCP servers, hooks, and rules into one install.
+Cursor 3.x ships a **Marketplace** at [cursor.com/marketplace](https://cursor.com/marketplace). Plugins bundle skills, subagents, MCP servers, hooks, and rules into one install.
 
 ```text
 /add-plugin    # browse and install from the editor
@@ -208,7 +208,7 @@ Browse plugins from Amplitude, AWS, Figma, Linear, Stripe, and more. When your t
 
 - **[Official Cursor tutorials](https://cursor.com/learn)** — Cursor's own onboarding.
 - **["Cursor rules, commands, skills, and hooks: a complete guide"](https://theodoroskokosioulis.com/blog/cursor-rules-commands-skills-hooks-guide/)** — one of the best deep dives.
-- **["12 Hidden Settings To Enable In Your Cursor/Claude Setup" — AI LABS](https://www.youtube.com/watch?v=pDoBe4qbFPE)** — optimization tips.
+- **["Cursor: coding agents tutorial (2026)" — leerob](https://www.youtube.com/watch?v=kF2WQgk1LtY)** — official-flavored end-to-end agent walkthrough.
 - **YouTube search:** [`"Cursor AI tutorial 2026"`](https://www.youtube.com/results?search_query=cursor+ai+tutorial+2026) — this space refreshes monthly, prefer recent vids.
 
 ## 📚 Read

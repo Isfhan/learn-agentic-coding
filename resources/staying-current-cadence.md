@@ -15,7 +15,7 @@
 ## Subscriptions
 
 - Cursor docs, changelog, and [cursor.com/plugins](https://cursor.com/plugins)
-- Anthropic + OpenAI developer updates (GPT-5.6, Claude Opus 5)
+- Anthropic + OpenAI developer updates (GPT-5.6, Claude Fable 5)
 - MCP ecosystem: `2026-07-28` stateless spec shipped — check client support and migrate servers
 - Loop/graph/harness engineering articles (Step 19) — new "X engineering" disciplines appear often; re-check quarterly
 - AI engineering communities listed in `resources/communities.md`

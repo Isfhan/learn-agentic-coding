@@ -28,7 +28,7 @@ flowchart LR
 
     X[⚠️ Malicious content<br/>README.md, web page,<br/>issue comment] -.->|prompt injection| A
 
-    style X fill:#fee,stroke:#f00
+    style X fill:#F5F5F5,stroke:#EF4444
 ```
 
 An agent reads inputs from *many* sources. Any of them can carry an attacker's instructions. The agent doesn't know which parts of its context came from *you* vs. from *random GitHub comment #47*.
@@ -143,12 +143,13 @@ Same ranking applies to skills/plugins you install.
 
 ## 7. OWASP for LLMs (the official checklist)
 
-OWASP maintains a **Top 10 for LLM Applications**. Read it top-to-bottom. Notable ones:
+OWASP maintains a **Top 10 for LLM Applications** (2025 v2.0). Read it top-to-bottom. Notable ones:
 
 - **LLM01: Prompt Injection**
 - **LLM02: Sensitive Information Disclosure**
 - **LLM03: Supply Chain**
 - **LLM06: Excessive Agency** ← this one is literally "your agent has too many tools with too much power"
+- **LLM07: System Prompt Leakage** ← new in 2025; never assume your system prompt stays secret
 - **LLM08: Vector and Embedding Weaknesses**
 
 Bookmark: **[owasp.org/www-project-top-10-for-large-language-model-applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)**

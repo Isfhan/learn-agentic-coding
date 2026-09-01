@@ -40,9 +40,9 @@
 - **Search:** [`"Cursor rules hooks skills"`](https://www.youtube.com/results?search_query=cursor+rules+hooks+skills)
 
 ### Claude Code
-- **["Claude Code Skills Just Got a MASSIVE Upgrade"](https://www.youtube.com/watch?v=UxfeF4bSBYI)** — Chase AI
-- **["Claude Plugins & Skills Tutorial"](https://www.youtube.com/watch?v=6EFOT6hjvAU)** — Ansh Mehra (26 min)
-- **["12 Hidden Settings In Your Claude Code Setup"](https://www.youtube.com/watch?v=pDoBe4qbFPE)** — AI LABS
+- **["Mastering Claude Code in 30 Minutes" — Anthropic](https://www.youtube.com/watch?v=AOfogJZ70OQ)**
+- **["Claude Code Plugins Tutorial" — Leon van Zyl](https://www.youtube.com/watch?v=-KusSduAP1A)**
+- **["How to Set Up Claude Code in 2026" — Leon van Zyl](https://www.youtube.com/watch?v=kddjxKEeCuM)**
 - **Search:** [`"Claude Code 2026"`](https://www.youtube.com/results?search_query=claude+code+tutorial+2026&sp=EgIIBQ%253D%253D)
 
 ### MCP

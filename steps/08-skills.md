@@ -210,8 +210,8 @@ When your skills + commands + hooks pile up, it's time to turn them into a plugi
 
 ## 🎥 Watch
 
-- **["Claude Code Skills Just Got a MASSIVE Upgrade" — Chase AI](https://www.youtube.com/watch?v=UxfeF4bSBYI)** — covers the Skill Creator tool.
-- **["Claude Plugins & Skills Tutorial" — Ansh Mehra (26 min)](https://www.youtube.com/watch?v=6EFOT6hjvAU)** — most comprehensive free video.
+- **["Mastering Claude Code in 30 Minutes" — Anthropic](https://www.youtube.com/watch?v=AOfogJZ70OQ)** — official walkthrough incl. skills.
+- **["Claude Code Plugins Tutorial" — Leon van Zyl](https://www.youtube.com/watch?v=-KusSduAP1A)** — most comprehensive free video.
 - **[Official Anthropic Skill tutorial](https://claude.com/resources/tutorials/creating-your-first-skill)**
 
 ## 📚 Read

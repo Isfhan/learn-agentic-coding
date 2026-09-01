@@ -25,7 +25,7 @@ The top-paying non-code path in AI: figuring out *what* to build with AI and why
 | Demand driver | Enterprise AI going strategic: someone must own what gets built and whether it works |
 | Note | Most AI PMs come from product/domain experience + AI literacy, not CS degrees |
 
-Sources: published 2026 salary surveys (Aug 2026).
+Sources: published 2026 salary surveys (Sep 2026).
 
 ---
 

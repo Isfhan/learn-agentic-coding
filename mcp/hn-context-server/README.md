@@ -9,7 +9,7 @@ Minimal MCP-compatible server (protocol `2026-07-28`, stateless) that connects t
 - **Stateless:** the `initialize` handshake and `Mcp-Session-Id` are gone. Protocol version, client info, and capabilities travel in a `_meta` field on each request; the server reports its identity in `_meta` on each reply.
 - **Tool list caching:** `tools/list` results carry `ttlMs` and `cacheScope` so clients know how long the list stays fresh.
 - **Stateful apps:** this server is read-only and stateless by design. If you add an app that needs state across calls, use the explicit-handle pattern (a tool mints an id and returns it; the model passes it back as an ordinary argument) instead of hidden session state.
-- **SDKs:** the official TypeScript SDK v2 (`2.0.0-alpha.3+`) and Python SDK v2 (`2.0.0a3+`) implement the new spec. Older clients (spec `2025-11-25`) that begin with `initialize` will not work with this server; it no longer answers the handshake.
+- **SDKs:** the official TypeScript SDK v2 (`@modelcontextprotocol/server` + `client`, stable `2.0.0+`) and Python SDK v2 (stable `mcp` 2.0.0) implement the new spec. Older clients (spec `2025-11-25`) that begin with `initialize` will not work with this server; it no longer answers the handshake.
 
 ## Why this exists
 

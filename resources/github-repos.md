@@ -29,7 +29,7 @@
 | **[QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)** | Alibaba's open CLI agent. |
 | **[RooCodeInc/Roo-Code](https://github.com/RooCodeInc/Roo-Code)** | Cline fork with role-based modes. |
 | **[huggingface/smolagents](https://github.com/huggingface/smolagents)** | Tiny, readable agent framework — great for learning. |
-| **[openhands-ai/OpenHands](https://github.com/All-Hands-AI/OpenHands)** | Open-source autonomous coding agent (formerly OpenDevin). |
+| **[All-Hands-AI/OpenHands](https://github.com/All-Hands-AI/OpenHands)** | Open-source autonomous coding agent (formerly OpenDevin). |
 
 ---
 
@@ -53,7 +53,7 @@
 |------|-------|
 | **[anthropics/skills](https://github.com/anthropics/skills)** | Official Claude skill examples. |
 | **[PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** | Thousands of `.cursor/rules` examples. |
-| **[openai/agents.md](https://github.com/openai/agents.md)** | Emerging AGENTS.md spec. |
+| **[agents.md](https://agents.md/)** | AGENTS.md spec — stewarded by the Agentic AI Foundation (Linux Foundation). |
 
 ---
 

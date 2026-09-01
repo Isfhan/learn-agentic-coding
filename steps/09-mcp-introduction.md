@@ -49,7 +49,7 @@ N + M integrations. Sanity.
 
 > 🧠 **The analogy everyone uses:** MCP is the **USB-C of AI**. One port (protocol), many devices (data sources). **JSON-RPC** means the client and server send JSON messages that say “call this method with these arguments.”
 
-Anthropic open-sourced MCP in late 2024. By August 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
+Anthropic open-sourced MCP in late 2024. By September 2026, it has broad support across major AI tooling, including Anthropic, OpenAI, Google, GitHub, and many developer tools.
 
 > **Current status:** MCP `2026-07-28` (shipped July 2026) made the protocol stateless — no `initialize` handshake, no `Mcp-Session-Id` header. Existing `2025-11-25` servers keep working; migrate once your clients support the new spec. See [modelcontextprotocol.io](https://modelcontextprotocol.io/).
 
@@ -79,8 +79,8 @@ flowchart LR
     MC <-->|JSON-RPC| S3
     MC <-->|JSON-RPC| S4
 
-    style Host fill:#dbeafe,stroke:#3b82f6
-    style Servers fill:#dcfce7,stroke:#16a34a
+    style Host fill:#FAFAFA,stroke:#0A0A0A
+    style Servers fill:#F5F5F5,stroke:#EF4444
 ```
 
 | Component | What it is |

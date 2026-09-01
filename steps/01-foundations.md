@@ -60,13 +60,13 @@ The **context window** is the LLM's short-term memory. Everything the model sees
            LLM RESPONDS
 ```
 
-Examples of common limits in August 2026. Check current vendor docs before treating these as exact:
+Examples of common limits in September 2026. Check current vendor docs before treating these as exact:
 
 | Model family | Example models | Context window |
 |--------------|----------------|----------------|
-| OpenAI GPT-5.6 / Codex | `gpt-5.6` (Sol · Terra · Luna), `gpt-5.4-mini` | 372K (GPT-5.6); 400K (mini) |
-| Anthropic Claude | `claude-opus-5`, `claude-sonnet-5` | Up to 1M tokens |
-| Google Gemini | `gemini-3.7-flash`, `gemini-3.1-pro-preview` | 1M (Flash); 1M (Pro preview) |
+| OpenAI GPT-5.6 / Codex | `gpt-5.6` (Sol · Terra · Luna), `gpt-5.4-mini` | ~1M (GPT-5.6 tiers); 400K (mini) |
+| Anthropic Claude | `claude-fable-5`, `claude-opus-5`, `claude-sonnet-5` | 1M (Fable · Opus · Sonnet); 200K (Haiku 4.5) |
+| Google Gemini | `gemini-3.7-flash`, `gemini-3.1-pro` | 1M (all current 3.x tiers) |
 | Open-source (Qwen, Llama) | Qwen3-Coder, Llama 4 | 128K–256K tokens |
 
 ### ⚠️ The cliff
@@ -113,9 +113,9 @@ In an agent loop, hallucinations compound:
 
 | Type | What it is | Example | When coders use it |
 |------|-----------|---------|---------------------|
-| **Base model** | Raw next-token predictor, not yet tuned with RLHF (reinforcement learning from human feedback) | Llama 3 base | Almost never directly |
+| **Base model** | Raw next-token predictor, not yet tuned with RLHF (reinforcement learning from human feedback) | Llama 4 base | Almost never directly |
 | **Instruct model** | Fine-tuned to follow instructions | `gpt-5.4-mini`, `claude-sonnet-5`, `gemini-3.7-flash` | Default for most agent work |
-| **Reasoning model** | Generates a hidden "thinking" pass before answering | `gpt-5.6`, `claude-opus-5`, DeepSeek V4 | Hard debugging, architecture, multi-step planning |
+| **Reasoning model** | Generates a hidden "thinking" pass before answering | `gpt-5.6`, `claude-fable-5`, `claude-opus-5` | Hard debugging, architecture, multi-step planning |
 
 **Rule of thumb for coding:**
 

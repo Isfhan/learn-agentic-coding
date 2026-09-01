@@ -25,7 +25,7 @@ The agentic angle is why you're here: agents eat clean, well-modeled data. Engin
 | Entry path | The most common pivot for backend/SQL developers |
 | 2027 outlook | Pipelines stay foundational; RAG/agent data plumbing is the growth area |
 
-Sources: SignalHire recruiter-search analysis, published salary surveys (Aug 2026).
+Sources: SignalHire recruiter-search analysis, published salary surveys (Sep 2026).
 
 ---
 

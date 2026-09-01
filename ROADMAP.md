@@ -2,7 +2,7 @@
 
 > A one-page big picture. Print it, screenshot it, put it on your desk.
 >
-> **Last verified: August 2026.** See [README.md](./README.md#-currency) for refresh guidance.
+> **Last verified: September 2026.** See [README.md](./README.md#-currency) for refresh guidance.
 
 ---
 
@@ -32,10 +32,10 @@ flowchart LR
 
     P1 --> P2 --> P3 --> P4
 
-    style P1 fill:#dbeafe,stroke:#3b82f6
-    style P2 fill:#dcfce7,stroke:#16a34a
-    style P3 fill:#fce7f3,stroke:#db2777
-    style P4 fill:#fef3c7,stroke:#d97706
+    style P1 fill:#FAFAFA,stroke:#0A0A0A
+    style P2 fill:#F5F5F5,stroke:#EF4444
+    style P3 fill:#E5E5E5,stroke:#DC2626
+    style P4 fill:#D4D4D4,stroke:#B91C1C
 ```
 
 ---
@@ -53,7 +53,7 @@ flowchart LR
 
 ## 🎯 Role tracks: learn, then earn
 
-The 21 steps are the shared highway for everyone. **Role tracks** tell you which steps matter most for your target job, what to add on top, and what the market pays (verified August 2026).
+The 21 steps are the shared highway for everyone. **Role tracks** tell you which steps matter most for your target job, what to add on top, and what the market pays (verified September 2026).
 
 → **[Pick your role track →](./roles/README.md)** (AI Engineer · FDE · Automation Engineer · AgentOps · ML Engineer · AI PM · Data Engineer · Prompt Engineer)
 
@@ -110,12 +110,12 @@ flowchart TD
     Q4 -->|No| S14[Start at Step 14]
     Q4 -->|Yes| S17[You're ahead!<br/>Go to Step 17]
 
-    style S0 fill:#6366f1,color:#fff
-    style S4 fill:#10b981,color:#fff
-    style S9 fill:#ef4444,color:#fff
-    style S135 fill:#0ea5e9,color:#fff
-    style S14 fill:#f59e0b,color:#fff
-    style S17 fill:#8b5cf6,color:#fff
+    style S0 fill:#0A0A0A,color:#fff
+    style S4 fill:#E5E5E5,color:#0A0A0A
+    style S9 fill:#EF4444,color:#fff
+    style S135 fill:#DC2626,color:#fff
+    style S14 fill:#D4D4D4,color:#0A0A0A
+    style S17 fill:#B91C1C,color:#fff
 ```
 
 ---

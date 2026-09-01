@@ -25,7 +25,7 @@ An honest heads-up: in 2026, **standalone prompt engineer titles are declining**
 | Entry path | Lowest technical barrier of all tracks — start today |
 | Warning | Don't build a career on the title; build it on the skill + shipping |
 
-Sources: published 2026 salary surveys (Aug 2026).
+Sources: published 2026 salary surveys (Sep 2026).
 
 ---
 

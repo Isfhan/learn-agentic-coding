@@ -28,7 +28,7 @@ The newest ops discipline: **running agents in production**. Agents fail differe
 | Entry path | SRE/DevOps/backend engineers pivot in ~2–3 months |
 | 2027 outlook | AgentOps becomes a standard enterprise function; converges with MLOps/LLMOps |
 
-Sources: The AI Career Lab 2026 guide, Futurum Group, Stanford AI Index (Aug 2026).
+Sources: The AI Career Lab 2026 guide, Futurum Group, Stanford AI Index (Sep 2026).
 
 ---
 

@@ -72,7 +72,7 @@ Frequently used:
 - `/clear` — reset context (start fresh — you'll do this often).
 - `/compact` — summarize & compress context when it's getting full.
 - `/edit` — enter edit mode on a file.
-- `/model` — switch between Haiku / Sonnet / Opus mid-session (e.g., `claude-sonnet-5`, `claude-opus-5`).
+- `/model` — switch between Haiku / Sonnet / Opus / Fable mid-session (e.g., `claude-sonnet-5`, `claude-opus-5`, `claude-fable-5`).
 - `/plugin` — manage plugins.
 
 ### Custom slash commands
@@ -220,9 +220,9 @@ Open Claude Code at a parent folder containing 5 repos. Ask: *"In each subdirect
 ## 🎥 Watch
 
 - **[Official Claude Code tutorials](https://claude.com/resources/tutorials)** — Anthropic's own.
-- **["Claude Code Skills Just Got a MASSIVE Upgrade"](https://www.youtube.com/watch?v=UxfeF4bSBYI)** — Chase AI, the skill creator tool.
-- **["Claude Plugins & Skills Tutorial (All Updates Combined)"](https://www.youtube.com/watch?v=6EFOT6hjvAU)** — Ansh Mehra, 26-min deep dive.
-- **["12 Hidden Settings To Enable In Your Claude Code Setup"](https://www.youtube.com/watch?v=pDoBe4qbFPE)** — AI LABS, optimization tips.
+- **["Mastering Claude Code in 30 Minutes" — Anthropic](https://www.youtube.com/watch?v=AOfogJZ70OQ)** — official feature walkthrough incl. skills.
+- **["Claude Code Plugins Tutorial: Install **["Claude Plugins & Skills Tutorial (All Updates Combined)"](https://www.youtube.com/watch?v=-KusSduAP1A)** — Ansh Mehra, 26-min deep dive. Build Your Own" — Leon van Zyl](https://www.youtube.com/watch?v=-KusSduAP1A)** — plugins + skills deep dive.
+- **["How to Set Up Claude Code in 2026" — Leon van Zyl](https://www.youtube.com/watch?v=kddjxKEeCuM)** — current setup + settings walkthrough.
 
 ## 📚 Read
 

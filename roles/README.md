@@ -2,7 +2,7 @@
 
 > The 21 steps in `steps/` are the shared highway: everyone drives the same road. These role pages are the **exit signs** — they tell you which steps matter most for your target job, what to add on top, and what the market pays.
 
-> **Last verified: August 2026.** Salaries and demand numbers move fast. Treat ranges as directional, check live job boards before committing to a target.
+> **Last verified: September 2026.** Salaries and demand numbers move fast. Treat ranges as directional, check live job boards before committing to a target.
 
 ---
 
@@ -20,16 +20,16 @@ Agentic AI job postings grew **280% year-over-year** to ~90,000 US listings (Sta
 
 | Role | 2026 demand signal | US salary (mid-level) | 2027 outlook | Track |
 |---|---|---|---|---|
-| **AI Engineer / Agent Developer** | #1 fastest-growing LinkedIn title (+143% postings) | $130K–$155K (senior $180K+) | Strongest growth continues | [Full track](./ai-engineer.md) |
-| **Forward Deployed Engineer (FDE)** | +800% postings YoY; 42x role growth | $150K–$325K ($500K+ at labs) | Enterprise AI bottleneck | [Full track](./fde.md) |
+| **AI Engineer / Agent Developer** | #1 fastest-growing LinkedIn title (+143% postings) | $130K–$160K (median ~$154K) | Strongest growth continues | [Full track](./ai-engineer.md) |
+| **Forward Deployed Engineer (FDE)** | +800% postings YoY; 42x role growth | $185K–$330K ($385K+ at frontier labs) | Enterprise AI bottleneck | [Full track](./fde.md) |
 | **Automation Engineer** | RPA → agentic shift; 60% of new enterprise projects have agentic components | $150K–$250K | Agents automate ~30% of knowledge work by 2027 | [Full track](./automation-engineer.md) |
-| **AgentOps / Reliability Engineer** | New role family (2025–26); agentic postings +280% YoY | $185K–$320K | AgentOps becomes a standard enterprise function | [Full track](./agentops.md) |
+| **AgentOps / Reliability Engineer** | New role family (2025–26); rides the +280% agentic-postings wave | $185K–$320K | AgentOps becomes a standard enterprise function | [Full track](./agentops.md) |
 | **ML Engineer (applied)** | WEF: AI/ML fastest-growing job by 2027 (~1M new jobs, +40%) | $140K–$170K (senior $200K+) | +40% growth by 2027 | [Adjacent](./ml-engineer.md) |
-| **AI Product Manager** | Top-paying non-code path | $145K–$210K+ | Grows as AI goes strategic | [Adjacent](./ai-product-manager.md) |
+| **AI Product Manager** | Top-paying non-code path | $145K–$175K (senior $210K+) | Grows as AI goes strategic | [Adjacent](./ai-product-manager.md) |
 | **Data Engineer** | #1 in recruiter search volume | $120K–$160K | Pipelines stay foundational | [Adjacent](./data-engineer.md) |
 | **Prompt Engineer** | Exists but merging INTO AI Engineer | $110K–$135K | Standalone titles decline | [Adjacent](./prompt-engineer.md) |
 
-Sources: Stanford AI Index 2026, WEF Future of Jobs, LinkedIn AI hiring data, Indeed Hiring Lab, SignalHire recruiter-search data, published salary surveys (Aug 2026).
+Sources: Stanford AI Index 2026 (Lightcast labor data), WEF Future of Jobs, LinkedIn Jobs on the Rise 2026, Indeed Hiring Lab, Levels.fyi, Perspective AI FDE Compensation Report 2026.
 
 ---
 
@@ -46,11 +46,11 @@ flowchart TD
     Q3 -->|Running agents<br/>in production| OPS[AgentOps track]
     Q3 -->|Building agents<br/>and apps| AIE[AI Engineer<br/>track]
 
-    style AIE fill:#6366f1,color:#fff
-    style FDE fill:#10b981,color:#fff
-    style AUTO fill:#ef4444,color:#fff
-    style OPS fill:#f59e0b,color:#fff
-    style PM fill:#8b5cf6,color:#fff
+    style AIE fill:#0A0A0A,color:#fff
+    style FDE fill:#EF4444,color:#fff
+    style AUTO fill:#DC2626,color:#fff
+    style OPS fill:#D4D4D4,color:#0A0A0A
+    style PM fill:#B91C1C,color:#fff
 ```
 
 ---

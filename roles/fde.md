@@ -24,11 +24,11 @@ The hottest enterprise-AI role of 2026: postings up **800%+ year-over-year**, 42
 |---|---|
 | Posting growth | +800% YoY (187 → 450+ US listings across scans) |
 | Role growth | 42x over 2 years (fastest-growing technical title) |
-| US salary | $150K–$325K disclosed bands; $500K+ at frontier labs |
+| US salary | $185K–$330K typical total comp; $385K–$510K+ at frontier labs (Levels.fyi median ~$208K) |
 | Employers | OpenAI, Anthropic, Palantir, Scale AI, Salesforce, Snowflake, TCS (8,900 FDE roles), Tredence (200 FDEs) |
 | 2027 outlook | Enterprise AI's biggest bottleneck — demand keeps outpacing supply |
 
-Sources: Dexity JD scan (2026), jobsbyculture/Stanford AI Index (2026), AEI analysis (May 2026).
+Sources: Dexity JD scan (2026), jobsbyculture/Stanford AI Index (2026), Perspective AI FDE Compensation Report (2026), Levels.fyi (Sep 2026).
 
 ---
 

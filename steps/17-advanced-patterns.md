@@ -30,11 +30,11 @@ flowchart TD
     Q4 -->|Yes| P3[Parallelization]
     Q4 -->|No| P4[Orchestrator-workers<br/>or Agent]
 
-    style P0 fill:#d4d4d4
-    style P1 fill:#93c5fd
-    style P2 fill:#a7f3d0
-    style P3 fill:#fde68a
-    style P4 fill:#fca5a5
+    style P0 fill:#0A0A0A
+    style P1 fill:#D4D4D4
+    style P2 fill:#E5E5E5
+    style P3 fill:#EF4444
+    style P4 fill:#DC2626
 ```
 
 ---

@@ -7,12 +7,12 @@
 A free, open-source, step-by-step roadmap that takes you from *"I know basic code and ask AI for help"*
 to *"I design, build, test, and ship production agent systems."*
 
-![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-blue)
-![Steps](https://img.shields.io/badge/Steps-21-purple)
-![Roles](https://img.shields.io/badge/Role%20Tracks-8-green)
-![Updated](https://img.shields.io/badge/Last%20verified-August%202026-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)
+![Level](https://img.shields.io/badge/Level-Beginner%20→%20Advanced-EF4444)
+![Steps](https://img.shields.io/badge/Steps-21-0A0A0A)
+![Roles](https://img.shields.io/badge/Role%20Tracks-8-DC2626)
+![Updated](https://img.shields.io/badge/Last%20verified-September%202026-EF4444)
+![License](https://img.shields.io/badge/License-MIT-0A0A0A)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-EF4444)
 
 [**🌐 Live Site**](https://isfhan.github.io/learn-agentic-coding/) &nbsp;·&nbsp; [**Start Learning →**](./steps/00-introduction.md) &nbsp;·&nbsp; [Roadmap](./ROADMAP.md) &nbsp;·&nbsp; [**Role Tracks →**](./roles/README.md) &nbsp;·&nbsp; [Glossary](./resources/glossary.md) &nbsp;·&nbsp; [Resources](./resources) &nbsp;·&nbsp; [Projects](./projects/practice-projects.md) &nbsp;·&nbsp; [Contribute](./CONTRIBUTING.md)
 
@@ -59,13 +59,13 @@ flowchart TD
     P --> R[19 · Agent System Engineering]
     R --> Q[18 · Staying Current]
 
-    style A fill:#6366f1,color:#fff
-    style H fill:#ef4444,color:#fff
-    style G fill:#ef4444,color:#fff
-    style L2 fill:#0ea5e9,color:#fff
-    style O fill:#10b981,color:#fff
-    style Q fill:#f59e0b,color:#fff
-    style R fill:#14b8a6,color:#fff
+    style A fill:#0A0A0A,color:#fff
+    style H fill:#EF4444,color:#fff
+    style G fill:#EF4444,color:#fff
+    style L2 fill:#DC2626,color:#fff
+    style O fill:#E5E5E5,color:#0A0A0A
+    style Q fill:#D4D4D4,color:#0A0A0A
+    style R fill:#B91C1C,color:#fff
 ```
 
 ---
@@ -113,7 +113,7 @@ flowchart TD
 The steps teach skills; the [**role tracks**](./roles/README.md) turn skills into a career. Pick the 2026–2027 most-in-demand role that matches how you like to work, follow its step order, do the role-specific additions, and ship the track capstone:
 
 - 👨‍💻 [**AI Engineer / Agent Developer**](./roles/ai-engineer.md) — #1 fastest-growing title (+143% postings)
-- 🚀 [**Forward Deployed Engineer (FDE)**](./roles/fde.md) — postings +800% YoY, $150K–$325K
+- 🚀 [**Forward Deployed Engineer (FDE)**](./roles/fde.md) — postings +800% YoY, $185K–$330K
 - ⚙️ [**Automation Engineer**](./roles/automation-engineer.md) — the RPA → agentic shift
 - 🛡️ [**AgentOps / Reliability Engineer**](./roles/agentops.md) — $185K–$320K, the newest ops discipline
 - 🤖 [**ML Engineer (applied)**](./roles/ml-engineer.md) · 🧭 [**AI Product Manager**](./roles/ai-product-manager.md) · 🗄️ [**Data Engineer**](./roles/data-engineer.md) · 💬 [**Prompt Engineer (entry)**](./roles/prompt-engineer.md)
@@ -162,7 +162,7 @@ Before you dive in, internalize these. Everything else is commentary.
 ## 🌟 What makes this roadmap different
 
 - ✅ **Tool-aware, not vendor-locked.** We cover Cursor, Claude Code, Qwen, Aider, Cline, Continue, Copilot, Codex, Gemini, Antigravity, and cloud agents.
-- ✅ **2026-current.** GPT-5.6, Claude Opus 5, Gemini 3.7 Flash, MCP stateless RC, Skills, Hooks, async subagents — the stuff that didn't exist 12 months ago.
+- ✅ **2026-current.** GPT-5.6, Claude Fable 5, Gemini 3.7 Flash, the stateless MCP `2026-07-28` spec, Skills, Hooks, async subagents — the stuff that didn't exist 12 months ago.
 - ✅ **Free & open-source.** No course paywall. Every link is a YouTube video, docs page, or GitHub repo.
 - ✅ **Hands-on.** Every step ends with an exercise you can finish in under an hour.
 - ✅ **Maintained.** The AI tooling space moves weekly. We keep this current — [see CONTRIBUTING](./CONTRIBUTING.md).
@@ -171,7 +171,7 @@ Before you dive in, internalize these. Everything else is commentary.
 
 ## 📅 Currency
 
-**Last verified: August 2026.** Model names, tool features, and pricing change weekly. When something looks off, check [Step 18 · Staying Current](./steps/18-staying-current.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). Priority refresh targets: [Step 03](./steps/03-ai-coding-tools.md) (tool landscape), [Step 01](./steps/01-foundations.md) (model context windows), and [resources/staying-current-cadence.md](./resources/staying-current-cadence.md).
+**Last verified: September 2026.** Model names, tool features, and pricing change weekly. When something looks off, check [Step 18 · Staying Current](./steps/18-staying-current.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). Priority refresh targets: [Step 03](./steps/03-ai-coding-tools.md) (tool landscape), [Step 01](./steps/01-foundations.md) (model context windows), and [resources/staying-current-cadence.md](./resources/staying-current-cadence.md).
 
 ---
 

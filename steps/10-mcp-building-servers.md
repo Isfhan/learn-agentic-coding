@@ -30,7 +30,7 @@ npm i -D typescript @types/node tsx
 npx tsc --init
 ```
 
-> **SDK version note:** this tutorial uses the stable SDK v1 API. SDK **v2** (`@modelcontextprotocol/sdk@next`, currently `2.0.0-alpha.3+`) implements the stateless `2026-07-28` spec — no `initialize` handshake, protocol version carried per-request in `_meta`. v1 servers keep working during the transition window, so both APIs are valid to learn today. See the [what's-new guide](https://py.sdk.modelcontextprotocol.io/whats-new/) (Python v2) and the [TS SDK repo](https://github.com/modelcontextprotocol/typescript-sdk) for migration notes.
+> **SDK version note:** SDK **v2 is now the stable release line** (TS `2.0.0+`, split into `@modelcontextprotocol/server` and `@modelcontextprotocol/client`; Python ships stable `mcp` 2.0.0, where `FastMCP` was renamed `MCPServer`). v2 implements the stateless `2026-07-28` spec — no `initialize` handshake, protocol version carried per-request in `_meta`. The tutorial below uses the v1 API for clarity; v1 keeps working during the transition window (bug + security fixes through early 2027), so both APIs are valid to learn today. See the [v2 docs](https://ts.sdk.modelcontextprotocol.io/v2/) and the [TS SDK repo](https://github.com/modelcontextprotocol/typescript-sdk) for migration notes.
 
 ### `src/index.ts`
 

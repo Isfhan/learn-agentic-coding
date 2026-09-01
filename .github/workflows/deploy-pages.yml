@@ -29,6 +29,9 @@ jobs:
           # HTML files are the entry points
           cp docs/index.html _site/index.html
           cp docs/read.html _site/read.html
+          # Site assets (favicon + social preview)
+          cp docs/favicon.svg _site/favicon.svg
+          cp docs/og-cover.png _site/og-cover.png
           # Content referenced by the reader (paths are relative to read.html, no ../ needed)
           cp -r steps _site/steps
           cp ROADMAP.md _site/ROADMAP.md

@@ -47,7 +47,7 @@ Result: the parent stays focused, and the child can dive deep without polluting.
 
 ## 2. Built-in subagents (2026)
 
-Both Cursor and Claude Code ship these (August 2026):
+Both Cursor and Claude Code ship these (September 2026):
 
 | Subagent | What it's for | Mode |
 |----------|---------------|------|

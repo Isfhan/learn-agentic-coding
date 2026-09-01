@@ -25,7 +25,7 @@ If your target is pure model training, use this page as a *supplement*, not the 
 | Senior | $200K+ at well-funded companies |
 | Entry path | Strong Python + ML fundamentals; applied/agent skills are the differentiator |
 
-Sources: WEF Future of Jobs, LinkedIn/Indeed salary data (Aug 2026).
+Sources: WEF Future of Jobs, LinkedIn/Indeed salary data (Sep 2026).
 
 ---
 
